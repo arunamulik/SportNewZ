@@ -1,0 +1,125 @@
+<!--
+    * @Page Name: VariationCreationPage
+    * @Description: Designed Visualforce page to create variations for specific Investment Schedule.
+    * ===================================================================================================
+    *       Version   | Date        | Author             | Comments
+    * ===================================================================================================
+    *       1.0       | 24/05/2018  | Eternus Solutions  | 1. Created page
+    * ===================================================================================================
+   -->
+<apex:page standardController="Business_Case__c" extensions="InitiateVariatonController" sidebar="false" showHeader="true">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        var $j = jQuery.noConflict();
+
+        $j(document).ready(function() {
+            var x = document.getElementById('spinner');
+            x.style.display = "block";
+            spinnerFun();
+        });
+
+        function showPopup(){
+            closespinner();
+            $j("#displaySectn").addClass('slds-fade-in-open');
+        }
+
+        function closespinner(){
+            var x = document.getElementById('spinner');
+            x.style.display = "none";
+        }
+    </script>
+    
+    <apex:form id="errorMsg">
+    <apex:outputPanel id="op3">
+    <apex:actionFunction name="spinnerFun" oncomplete="setTimeout(showPopup, 2000);"/>
+    
+    
+    
+    <apex:detail subject="{!Business_Case__c.Id}" relatedList="false" title="false"/>
+    <apex:slds />
+
+    <div id="modal1" class="demo-only">
+        <section id="displaySectn"  role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal"> <!--slds-fade-in-open-->
+            <div id="div1" class="slds-modal__container" style="max-width: 70rem;width: 68%">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="cancelJFun();">
+                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close" />
+                        </svg>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Initiate Variation</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+                <apex:pageMessages id="errorMsg" escape="false"/>
+
+                <apex:outputPanel rendered="{!(IF(Business_Case__c.Status__c =='Approved' || Business_Case__c.Status__c =='Signed' || Business_Case__c.Status__c =='Closed',true,false))}" id="op2">
+                    <apex:pageBlock rendered="{!showMessage}">
+                        <apex:pageBlockSection >
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel >Investment Schedule ID</apex:outputLabel>
+                                <apex:outputLabel >{!isNum}</apex:outputLabel>
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel >Initiation Date</apex:outputLabel>
+                                <apex:outputText value="{0,date,dd/MM/yy}"> <apex:param value="{!initiationDate}" /> </apex:outputText>
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel >Investment Schedule Name</apex:outputLabel>
+                                <apex:outputLabel >{!isName}</apex:outputLabel>
+                            </apex:pageBlockSectionItem>
+                            
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel >Initiated By</apex:outputLabel>
+                                <apex:outputLabel >{!initiatedBy}</apex:outputLabel>
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem helpText="{!$ObjectType.Variation__c.fields.Comments__c.InlineHelpText}" dataStyleClass="InlineHelpText" >
+                               <apex:outputLabel >Comments  <apex:outputLabel style="color: red;">*</apex:outputLabel></apex:outputLabel>
+                                
+                                <apex:inputTextarea id="ssCmnts" value="{!comments}" style="width: 400px; height: 66px;"/>
+                            </apex:pageBlockSectionItem>
+                            <!--<apex:inputField value="{!objVar.Comments__c}">
+                                
+                            </apex:inputField>-->
+                        </apex:pageBlockSection>
+                     </apex:pageBlock>
+                </apex:outputPanel>
+                </div>
+               
+                <footer class="slds-modal__footer">
+                    <apex:commandButton id="saveBtn" action="{!insertVariation}" value="Save" styleclass="slds-button slds-button_brand" rendered="{!showMessage}" />
+                    <apex:commandButton action="{!cancelVariation}" value="Cancel" styleclass="slds-button slds-button_neutral" immediate="true" />
+                    <apex:commandButton action="{!cancelVariation}" value="Continue" styleclass="slds-button slds-button_neutral" immediate="true" rendered="{!showContinue}"/>
+                     <apex:commandButton action="{!NextButtonMethod}" value="Next" styleclass="slds-button slds-button_brand" immediate="true" rendered="{!showVariation}"/>
+
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+
+        <!-- Display Spinner -->
+        <div class="demo-only" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
+                                opacity: 0.75; z-index: 1000; background-color: #ddd;display: none" id="spinner">
+            <div role="status" class="slds-spinner slds-spinner_medium">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    
+    </apex:outputPanel>
+  </apex:form>
+    <style>
+    .helpText{
+       position: fixed;
+       z-index:10001;
+       width: 200px;
+       height:auto;
+     }
+    </style>
+    
+</apex:page>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Conga_Workflow_URL__c</fullName>
+    <externalId>false</externalId>
+    <formula>&quot;&amp;id=&quot; + Id + 
+&quot;&amp;Queryid=[Orgmeasures]a0iN0000004ff3E?pv0=&quot; + Organisation__r.Id + 
+&quot;&amp;Queryid=[Orgrequirements]a0iN0000004ff39?pv0=&quot; + Organisation__r.Id + &quot;[Initirequirements]a0iN0000004ff2z&quot; + &quot;[Initipayments]a0iN0000004ff34&quot; + 
+&quot;&amp;OFN=&quot; + SUBSTITUTE (Name,&quot;&amp;&quot;,&quot;{~~~}&quot;) + 
+&quot;+-+Report&quot; + 
+&quot;&amp;TemplateId=&quot; + SUBSTITUTE (Report_Type__c ,&quot;&amp;&quot;,&quot;{~~~}&quot;) + SUBSTITUTE (T_C_PDF__c,&quot;&amp;&quot;,&quot;{~~~}&quot;) + 
+&quot;&amp;FP0=0&quot; + 
+&quot;&amp;EmailToId=00590000002P6ND&quot; +
+&quot;&amp;EmailRelatedToId=&quot; + Id +  
+&quot;&amp;EmailTemplateId=a0kN0000002syGi&quot; + 
+&quot;&amp;EmailSubject=Investment+Schedule+Report&quot; + SUBSTITUTE (Name,&quot;&amp;&quot;,&quot;{~~~}&quot;) + 
+&quot;&amp;DefaultPDF=1&quot; + 
+&quot;&amp;OFN=Terms+and+Conditions&quot; + 
+&quot;&amp;UFO=1&quot; + 
+&quot;&amp;DS7=12&quot; + 
+&quot;&amp;QMode=3&quot;</formula>
+    <label>Conga Workflow URL</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

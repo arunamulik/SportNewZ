@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>How_much_did_you_do__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Please provide a brief, high-level description of the key activities you undertook and the outputs you produced over the past 12 months that contributed towards the outcomes you set out to achieve.</inlineHelpText>
+    <label>What did you do?</label>
+    <length>5000</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>5</visibleLines>
+</CustomField>

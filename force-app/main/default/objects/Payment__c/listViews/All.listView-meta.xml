@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Invoice_Number_Link__c</columns>
+    <columns>Partner__c</columns>
+    <columns>Vendor__c</columns>
+    <columns>Initiative__c</columns>
+    <columns>Date__c</columns>
+    <columns>Amount__c</columns>
+    <columns>Status__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>Pending_Requirements__c</columns>
+    <columns>Overdue_Requirements__c</columns>
+    <columns>Organisation_Flag__c</columns>
+    <columns>Sage_Batch_Entry__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

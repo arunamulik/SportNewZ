@@ -1,0 +1,157 @@
+<apex:page StandardController="Plan__c" extensions="PlanEditExtension">
+   <script type="text/javascript">    
+    var __sfdcSessionId = '{!GETSESSIONID()}';
+</script>
+
+<script src="../../soap/ajax/23.0/connection.js" type="text/javascript"></script>
+<script type="text/javascript">
+	 
+	
+	function reloadEditor() {
+		//call the vf actionfunction
+		refresh();
+	}
+
+	
+	//new section field names 
+	var sectionHeaders = '';
+	var sectionFieldName='';
+	var sectionFieldNameReq ='';
+	
+	//Getting Fields Apiname on the basis of Pagelayout(using RecordType)
+	function editDetailLayoutResults(result,Layoutname) 
+	{
+		var allTheLayouts = result.getArray("layouts");    //adding fields and sections
+		for (var i = 0; i < allTheLayouts.length; i++) 
+		{
+			var layout = allTheLayouts[i];
+			var editLayoutSections = layout.getArray(Layoutname);
+
+			//console.log('## editLayoutSections edit =>' + editLayoutSections);
+
+			for (var j = 0; j < editLayoutSections.length; j++) 
+			{
+				var els = editLayoutSections[j];
+				var sectionFields = '';
+				if(sectionHeaders.indexOf(els.heading)=='-1' && els.useHeading == 'true'){ //finds the section header in the string..
+					sectionHeaders += els.heading + ':#' + els.columns + '::#'; //eg. Project Detail:2||
+					
+					//now build the fields 
+					if(els.layoutRows instanceof Array) {
+						//console.log('## array length==>' + els.layoutRows.length);
+						for (var k = 0; k < els.layoutRows.length; k++) {
+							var Items = els.layoutRows[k];
+							if( typeof Items.layoutItems.layoutComponents !== 'undefined'){
+								//console.log('## Items count  =>' + k + Items.layoutItems.layoutComponents.value );
+								sectionFields == ''; //resets
+									if(sectionFields.indexOf(Items.layoutItems.layoutComponents.value) == '-1') {
+											if(Items.layoutItems.layoutComponents.value != 'RecordTypeId')
+											sectionFields +=Items.layoutItems.layoutComponents.value + '##';
+									}
+							}
+								for (var l = 0; l < Items.layoutItems.length; l++) {
+									var perItem = Items.layoutItems[l];
+									sectionFields == ''; //resets
+									//console.log('## perItem  =>' + perItem );
+									if(typeof perItem.layoutComponents !== 'undefined') {
+										
+										if(sectionFields.indexOf(perItem.layoutComponents.value) == '-1') {
+											if(perItem.layoutComponents.value != 'RecordTypeId')
+											sectionFields +=perItem.layoutComponents.value + '##';
+										}
+										
+									}					
+								}								
+							
+						}
+					} else {
+						//console.log('## not array==>' + els.layoutRows);
+						//console.log('## not array layoutitems =>' + els.layoutRows.layoutItems);
+						if(typeof els.layoutRows.layoutItems.length !== 'undefined') {
+							for (var l = 0; l < els.layoutRows.layoutItems.length; l++) {
+							var perItem = els.layoutRows.layoutItems[l];
+							if(typeof  perItem.layoutComponents !== 'undefined'){
+							//console.log('## perItem.layoutComponents =>' + perItem.layoutComponents);
+									if(sectionFields.indexOf(perItem.layoutComponents.value) == '-1') {
+										if(perItem.layoutComponents.value != 'RecordTypeId')
+										sectionFields +=perItem.layoutComponents.value + '##';
+									}
+							
+								}				
+							
+							} //endfor
+						
+						} else { // no length
+							if(sectionFields.indexOf(els.layoutRows.layoutItems.layoutComponents.value) == '-1') {
+										if(els.layoutRows.layoutItems.layoutComponents.value != 'RecordTypeId')
+										sectionFields +=els.layoutRows.layoutItems.layoutComponents.value + '##';
+								}
+						}
+						
+					}
+					
+				}
+					
+					
+			sectionHeaders += sectionFields + ':::#'; //section separator
+				
+			}
+		}
+		//console.log('## sectionHeaders  =>' + sectionHeaders);
+		
+	}
+	
+	
+	/*Produce Fields on pagelayout using detailLayoutResults Method*/
+	function getEditFieldsOnPageLayout(SObject) 
+	{ 
+		try 
+		{
+			var objectname=SObject;
+			var RecordTypeId = '{!rtId}'; //passed from controller 
+			//console.log('### RecordTypeId' + RecordTypeId);
+			var result;
+			if (RecordTypeId != '' && RecordTypeId != null)
+				result = sforce.connection.describeLayout(objectname, new Array(RecordTypeId)); 
+				editDetailLayoutResults(result,'editLayoutSections');          // getting fields from Editlayout
+				//call salesforce method and pass the param						
+				loadEditSectionCall(sectionHeaders);
+				       
+			}
+				catch (error) 
+			{
+			 	//console.log('## error =>' + error);
+				var  result = sforce.connection.describeLayout(objectname);                
+				editDetailLayoutResults(result,'editLayoutSections');          // getting fields from Editlayout
+				loadEditSectionCall(sectionHeaders);
+				
+
+		}
+	}   	
+
+</script>
+ 
+	<apex:form id="frmid">
+	
+		
+	   <apex:pageMessages id="errMsg" />
+	<apex:actionFunction name="loadEditSectionCall" action="{!loadEditSectionCall}"  status="mystatus"  oncomplete="reloadEditor();" >
+		<apex:param name="param2" assignTo="{!pageSectionFields}" value=""/>
+	</apex:actionFunction>
+
+	<apex:actionFunction name="refresh" action="{!refreshPage}"  />
+
+	
+	<apex:actionStatus id="mystatus" startText="Loading... please wait..." stopText="" style="left: 100px;top: 50px;">
+		<apex:facet name="start">&nbsp;&nbsp;Loading... please wait...                
+		<img src="/apexpages/devmode/img/saveStatus.gif" />
+		</apex:facet>
+	</apex:actionStatus>
+	
+	</apex:form>
+	<script>
+	    getEditFieldsOnPageLayout('Plan__c');
+	</script>   
+   
+   
+</apex:page>

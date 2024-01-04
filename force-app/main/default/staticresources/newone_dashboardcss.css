@@ -1,0 +1,28 @@
+
+.intro{
+	
+   
+    background-image:linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.34)),url("image_main");
+            
+      text-align: center;
+    
+      font-weight: bold;
+      position: fixed;
+      top: 0;
+      height:495px ;
+      background-color:white;
+     background-repeat: no-repeat;
+      background-size:106%;
+        background-position: 50% 50%;
+      
+        
+        
+    }
+    .intro--alt
+    {
+height:495px ;
+
+    }
+ 
+
+    

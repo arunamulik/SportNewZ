@@ -1,0 +1,23 @@
+<apex:page sidebar="false">
+    <!--<apex:sectionHeader title="Programme and Event Participation"
+        subtitle="Programme and Event Participation" />
+    <apex:form >
+        <ul>           
+            <li>
+            <apex:outputLink value="/a1A?fcf=00Bp0000000up9k" target="_self">Programme and Event Data</apex:outputLink>
+            </li>                                          
+        </ul>
+    </apex:form>-->
+    <script>
+        function redirect(){
+        var profile = "{!$User.Profile_Name__c}";       
+            if(profile.includes("Partner")) {
+                window.location.href='/partners/a1B';
+            }
+            else {
+                window.location.href='/a1B';
+            }
+        }
+        window.onload = window.setTimeout(redirect());
+    </script>
+</apex:page>

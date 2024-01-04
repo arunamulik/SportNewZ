@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Priority__c</fullName>
+    <description>Must
+- We have agreed to commit resources to this initiative. It is important for overall success.
+Should
+- This initiative is a good idea, but we are not committing resources to it at this stage.  
+We will undertake these Initiatives if there are sufficient resources. 
+Could
+ - This is the default status, used for logging ideas before they are reviewed and prioritised by the Partner Team. 
+Wont
+- This has been considered, and the Partner Team has agreed it will not be actioned at this stage.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Must - Agreed to commit resource. Important for overall success.
+Should - If there are sufficient resources we will commit.
+Could - Idea logged before the review/prioritise process.
+Wont - Partner team has agreed it will not be actioned at this stage.</inlineHelpText>
+    <label>Priority</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Must</fullName>
+                <default>false</default>
+                <label>Must</label>
+            </value>
+            <value>
+                <fullName>Should</fullName>
+                <default>false</default>
+                <label>Should</label>
+            </value>
+            <value>
+                <fullName>Could</fullName>
+                <default>false</default>
+                <label>Could</label>
+            </value>
+            <value>
+                <fullName>Won&apos;t</fullName>
+                <default>false</default>
+                <label>Won&apos;t</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

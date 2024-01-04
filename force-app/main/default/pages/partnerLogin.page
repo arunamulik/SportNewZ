@@ -1,0 +1,181 @@
+<apex:page applyBodyTag="false" docType="html-5.0" showHeader="false" standardStylesheets="false" controller="CommunitiesLoginController"
+           title="{!$Label.site.site_login}">
+    <apex:stylesheet value="{!URLFOR($Resource.bundlecss)}"/>
+    <style>
+        
+        button, input, optgroup, textarea {
+        color:black !important;
+        width:100%;
+        height:35px;
+        }
+        .btn {
+        color:#ffffff !important;
+        }
+        input[type="radio"], input[type="checkbox"] {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 0;
+        width: 0;
+        }
+        .livicon-evo-holder {
+        width: 0; /*to prevent "flickering" while rendering*/
+        }
+        div.livicon-evo-holder {
+        display: block;
+        }
+        span.livicon-evo-holder {
+        display: inline-block;
+        vertical-align: middle;
+        }
+        .livicon-evo-holder .lievo-svg-wrapper {
+        display: inline-block;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%!important;
+        padding-bottom: 100%!important;
+        vertical-align: middle;
+        overflow: hidden!important;
+        }
+        .livicon-evo-holder svg {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden!important;
+        width: 100%!important;
+        height: 100%!important;
+        }
+        .livicon-evo-holder svg,
+        .livicon-evo-holder svg * {
+        -webkit-box-sizing: border-box; 
+        -moz-box-sizing: border-box;
+        box-sizing: border-box; 
+        }
+        .livicon-evo-error {
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        border: 1px solid #c94242;
+        }
+        .livicon-evo-error span {
+        text-align: center;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 20px;
+        margin-top: -4px;
+        }
+        .livicon-evo-error acronym {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        cursor:help;
+        color:#c94242;
+        border-bottom: 1px dotted #c94242;
+        }
+        .form-checkbox{
+        margin-top:15px;
+        }
+        .section-login .section__media :after {
+        content: none ;
+        
+        }
+    </style>
+    
+    <div class="wrapper">
+        <section class="section-login">
+            <a href="#" class="logo-login">
+            </a>
+            <div class="section__inner">
+                <div class="section__media">
+                    <div class="section__media-inner" >
+                        <div class="video">
+                            <div class="video-js">
+                                <apex:pageBlock >
+                                    <apex:pageBlockTable value="{!obj}" var="a">  
+                                        <apex:column >
+                                            <apex:outputPanel rendered="{!if(a.Background_Image__c != null && a.Embed_Video__c != null, true ,false)}">
+                                                
+                                                <!--<apex:outputField style="width='1280', height='720' " value="{!a.Background_Image__c}"/> -->
+                                                <iframe width="1280" height="720" 
+                                                        src="{!a.Embed_Video__c}" 
+                                                        frameborder="0" 
+                                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                                                        allowfullscreen=""></iframe>
+                                                <!--<iframe width="1280" height="720" src="https://www.youtube.com/embed/-wXDPJF9Ins?autoplay=1" 
+frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ></iframe>-->
+                                            </apex:outputPanel>
+                                        </apex:column>
+                                        <apex:column >
+                                            <apex:outputPanel rendered="{!if(a.Embed_Video__c == null , true ,false)}"> 
+                                                <img id="logo" 
+                                                     class="logo" 
+                                                     src="{!URLFOR($Resource.PartnerCommunityLoginBGimg)}" 
+                                                     alt="NZ Sport Partner Community"
+                                                     height="720"
+                                                     width="1280"
+                                                     name="logo" />
+                                               
+                                                <!--apex:outputField style="width='1280', height='720' " value="{!a.Background_Image__c}"/>
+                                                <!--<apex:iframe width="1280" height="720" src="{!a.Embed_Video__c}" />-->
+                                            </apex:outputPanel>
+                                        </apex:column>
+                                        
+                                    </apex:pageBlockTable>
+                                    
+                                </apex:pageBlock>
+                                <apex:pageBlock >
+                                </apex:pageBlock>
+                                
+                                <!-- <apex:image url="{!$Resource.TestImage}"/>
+<iframe width="1280" height="720" 
+src="https://www.youtube.com/embed/Wimkqo8gDZ0?autoplay=1" 
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen=""></iframe>-->
+                            </div><!-- /.video-js -->
+                            
+                        </div><!-- /.video -->
+                    </div><!-- /.section__media-inner -->
+                </div><!-- /.section__media -->
+                <div class="section__content">
+                    <div class="section__content-inner">
+                        <header class="section__head">
+                            <apex:pageMessages /><br/>
+                            <h3 class="section__title">
+                                Partner Portal
+                            </h3><!-- /.section__title -->
+                        </header><!-- /.section__head -->
+                        <div class="section__body">
+                            <div class="form form-login">
+                                <apex:form >
+                                    <label for="username">Username:</label>     
+                                    <apex:input value="{!username}" id="username"/>
+                                    <!--<input type="text"  value="{!username}" name="username" id="username" class="form-control" />-->
+                                    <br/><br/>
+                                    <label for="password">Password:</label>
+                                    <apex:inputSecret value="{!password}" id="password"/><br/><br/>
+                                    <!--<input type="password" value="{!password}"  name="password" class="form-control" id="password" placeholder="" />-->
+                                    <apex:commandButton action="{!loginPatnerUser}" styleClass="btn btn--block js-sweet-alert"  value="Login"/>     
+                                    
+                                    <!-- <div class="form-checkbox">
+<apex:inputCheckbox />                                    
+<label for="remember">Remember me</label>
+</div>-->
+                                    
+                                    
+                                   
+<div class="form__help">
+<apex:outputLink value="/secur/forgotpassword.jsp?locale=us"> {!$Label.site.forgot_your_password_q}
+       </apex:outputLink> 
+</div>
+                                </apex:form>
+                            </div>
+                        </div>
+                    </div><!-- /.section__content-inner -->
+                </div><!-- /.section__content -->
+            </div><!-- /.section__inner -->
+        </section><!-- /.section-login -->    
+        
+    </div> 
+    
+</apex:page>

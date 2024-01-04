@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sign_Off_Approval_Date__c</fullName>
+    <description>Enter the date that the Initiative was approved by Investment, Partnerships and Expertise and Capability</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter the date that the Initiative was approved by Investment, Partnerships and Expertise and Capability</inlineHelpText>
+    <label>Sign-Off Approval Date</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

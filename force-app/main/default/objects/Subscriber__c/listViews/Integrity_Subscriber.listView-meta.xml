@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Integrity_Subscriber</fullName>
+    <columns>NAME</columns>
+    <columns>First_Name__c</columns>
+    <columns>Last_Name__c</columns>
+    <columns>Email_Address__c</columns>
+    <columns>Integrity__c</columns>
+    <columns>Role__c</columns>
+    <columns>Location__c</columns>
+    <columns>Organisation__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Integrity__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Integrity Subscriber</label>
+</ListView>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Notes__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>If you are entering programmes &apos;as you go&apos; you should use this box to help you identify one entry from the next, e.g. make a note of the date, location or staff involved.</inlineHelpText>
+    <label>Notes</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

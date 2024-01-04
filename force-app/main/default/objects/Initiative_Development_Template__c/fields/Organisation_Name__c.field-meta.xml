@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Organisation_Name__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Organisation Name</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Initiative Development Templates</relationshipLabel>
+    <relationshipName>Initiative_Development_Templates</relationshipName>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

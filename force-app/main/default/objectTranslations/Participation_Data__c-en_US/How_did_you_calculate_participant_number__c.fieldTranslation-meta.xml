@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>How_did_you_calculate_participant_number__c</name>
+    <picklistValues>
+        <masterLabel>Actual numbers from a database</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Actual numbers from a list</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Calculated by number of teams</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Estimated Numbers</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Paid_direct_vendor</fullName>
+    <active>false</active>
+    <description>When a payment is set up on a &quot;Paid direct vendor&quot; we need to add an additional validation rule that stops a vendor being added to the Vendor field</description>
+    <errorConditionFormula>IF( AND(ISPICKVAL( Initiative__r.Type__c,&quot;Paid Direct&quot;),   NOT( ISBLANK(Vendor__c ))) , true, false)</errorConditionFormula>
+    <errorDisplayField>Vendor__c</errorDisplayField>
+    <errorMessage>You can&apos;t add vendor.</errorMessage>
+</ValidationRule>

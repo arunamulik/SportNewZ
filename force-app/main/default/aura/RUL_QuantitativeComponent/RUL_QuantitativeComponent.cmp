@@ -1,0 +1,2025 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable"  access="global" 
+                controller="Activity_dashboardPageController">
+    
+    
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TWR</title>
+    
+
+    
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    <aura:attribute name="userInfo" type="user"/> 
+    <aura:attribute name="activitiesRelatedtoUser" type="boolean" default="false"/> 
+    <aura:attribute name="height" type="integer"/> 
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="newActivity" type="Activity__c" default="{ 'sobjectType': 'Activity__c'}"/>
+    <aura:attribute name="Activityitems" type="LIST"/>
+    <aura:attribute name="FemaleAndMaleValues" type="List"/>
+    <aura:attribute name="picklistValuesHOPoutcome" type="Object" />
+    <aura:attribute name="firstStepActivityWizard" type="boolean" default="true"/>
+    <aura:attribute name="secondStepActivityWizard" type="boolean" default="false"/>
+    <aura:attribute name="thirdStepActivityWizard" type="boolean" default="false"/>
+    <aura:attribute name="VideoURL" type="String"/> 
+    <aura:attribute name="imageRichText" type="String"/> 
+    <aura:attribute name="activitiesRelatedtoHOP" type="List" />
+    <aura:attribute name="HOPoutcomeVal1" type="String"/> 
+    <aura:attribute name="HOPoutcomeVal2" type="String"/> 
+    <aura:attribute name="HOPoutcomeVal3" type="String"/> 
+    <aura:attribute name="activitiySelected" type="Activity__c" />
+    <aura:attribute name="disablebuttonid" type="Boolean" default="false" />
+    <aura:attribute name="PicklistValuesActivity" type="Activity__c" />
+    <aura:attribute name="ByOrgGoverned" type="list"/>
+    <aura:attribute name="ActivityGMD" type="list"/>
+    <aura:attribute name="selectedGovernedBy" type="string"/>
+    <aura:attribute name="total_part" type="Integer" />
+    
+    <aura:attribute name="ThroughTypeOfActivityPicklistValues" type="list"/>
+    <aura:attribute name="InOnActivitiesPicklistValues" type="list"/>
+    <aura:attribute name="SignificanceLoactionPicklistValues" type="list"/>
+    <aura:attribute name="UseOfTeReoPickilistValues" type="list"/>
+    <aura:attribute name="PurposeOfTeReoPickilistValues" type="list"/>
+    <aura:attribute name="DiamensionScorePicklistValues" type="list"/>
+    <aura:attribute name="tabId" type="String" default="tab1" />
+    <aura:attribute name="DisablePre" type="Boolean" default="false" />
+    <aura:attribute name="DisableNext" type="Boolean" default="false" />
+    <aura:handler event="force:refreshView" action="{!c.doInit}" />
+    <aura:attribute name="refreshCount" type="Integer" default="0"/>    
+    <aura:attribute name="refreshFlag" type="boolean" default="true"/> 
+    <aura:attribute name="DisableRichTextFields" type="boolean" default="false"/>
+    <aura:attribute name="disableAnswersOnSaveComplete1" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete2" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete3" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete4" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete5" type="boolean" default=""/>
+    <aura:attribute name="PartnerLogoImage" type="String"/> 
+    <aura:attribute name="submitChangeRequest" type="boolean" default="true"/>
+    <aura:attribute name="ShowChangeReqModal" type="boolean" default="false"/>
+    <aura:method name="viewActivity" action="{!c.viewActivity}" />
+    <aura:method name="closeModel" action="{!c.closeModel}" />
+    <aura:attribute name="isReadOnly" type="Activity__c"
+                    default="{ 'sobjectType': 'Activity__c',
+                             'Is_Read_Only__c':''}"/>
+    <aura:handler event="c:getIdToNavigate" action="{!c.doInit}"/>
+     <aura:handler event="c:SelectedActivityEvent" action="{!c.onsectiontoggle}"/>
+    <aura:handler event="c:SelectedActivityEvent" action="{!c.doInit}"/>
+     <aura:attribute name="activitiySelectedRecord" type="Activity__c" />
+    <aura:method name="callChild" action="{!c.doInit}" />
+    <aura:attribute name="isDueDatePassed" type="boolean"/>
+    <aura:attribute name="FormattedDate" type="String"/>
+    
+    <aura:attribute name="filteryear" type="String"/>
+    
+<div class="container">
+                    <div class="section__inner">
+                        
+                        <header class="section__head">
+                            <div class="section__head-inner">
+                                <div class="section__date">
+                                    <p>
+                                        Due date: <strong>{!v.FormattedDate}</strong>
+                                    </p>
+                                </div><!-- /.section__date -->
+                                
+                                <h2 class="section__title">
+                                    Raraunga Tatau
+                                </h2><!-- /.section__title -->
+                                
+                                <p>
+                                   <ui:outputText value="{!$Label.c.Label_for_Raraunga_Tatou_content}"/>
+                                </p>
+                            </div><!-- /.section__head-inner -->
+                            
+                            <div class="section__head-logo">
+                                <!--<img src="{!$Resource.SportNorthlandLogo}" alt="Sport Logo"/>-->
+                                <c:UserLogo/>
+                            </div><!-- /.section__head-logo -->
+                        </header><!-- /.section__head -->
+                    </div><!-- /.section__inner -->
+                </div><!-- /.container -->
+
+            <section class="section-quantity" onactive="{!c.fetchAllPicklistValues}">
+                <div class="container">
+                    <div class="slds-text-color_error">                
+                        <!--          <aura:if isTrue="{!v.showError}">  
+                         <p class="slds-align_absolute-center">{!v.errorMessage}</p>    
+                   </aura:if>     -->
+                    </div> 
+                    <div class="section__inner">
+                        <div class="divider">
+                            <h3 class="divider__title">
+                                <span>By</span>
+                             
+                            </h3><!-- /.divider__title -->
+                            <p style="font-size:16px; color: #5a5a5a; padding-top:10px; padding-bottom:20px;">Are your services / activities  governed, managed and/or delivered  by Māori?</p>
+                        </div><!-- /.divider -->
+                        
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <div class="field-info">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Org Governed
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="select select-simple">
+                                                <label for="org-govorened">Org Governed</label>
+                                                
+                                                <aura:if isTrue="{!v.isDueDatePassed}">
+                                                <div class="slds-select_container">
+                                                    <ui:inputSelect value="{!v.activitiySelected.By_OrgGoverned__c}" aura:id="" class="slds-select"  change="{!c.onPicklistChange}">
+                                                        <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                        <aura:iteration items="{!v.ByOrgGoverned}" var="OrgGov">
+                                                            <aura:if isTrue="{!(OrgGov == v.activitiySelected.By_OrgGoverned__c)}">
+                                                                <ui:inputSelectOption value="true" label="{!OrgGov}" text="{!OrgGov}"/>
+                                                                <aura:set attribute="else">
+                                                                    <ui:inputSelectOption label="{!OrgGov}" text="{!OrgGov}"/>
+                                                                </aura:set>
+                                                            </aura:if> 
+                                                        </aura:iteration>
+                                                    </ui:inputSelect>
+                                                    
+                                                </div>
+                                                <aura:set attribute="else">
+                                                                {!v.activitiySelected.By_OrgGoverned__c}
+                                                            </aura:set> 
+                                                        </aura:if>    
+                                                
+                                                
+                                                <!--    <select>
+                                                    <option value="0">Not at all</option>
+                                                    
+                                                    <option value="1">Option 1</option>
+                                                    
+                                                    <option value="2">Option 2</option>
+                                                    <option value="2">Option 3</option>
+                                                    <option value="2">Option 4</option>
+                                                    
+                                                    
+                                                    
+                                                </select>  -->
+                                                <!--option value="0">Not at all</option>
+
+               <option value="1">Option 1</option>
+
+               <option value="2">Option 2</option-->
+                                                
+                                                
+                                                <!--div class="slds-select_container"-->
+                                                
+                                                <!--ui:inputSelect value="{!v.activitiySelected.By_OrgGoverned__c}" aura:id="accIndustry" class="nice-select"  change="{!c.onPicklistChange}">
+                                                                <aura:iteration items="{!v.ByOrgGoverned}" var="byGov">
+                                                                    <aura:if isTrue="{!(byGov == v.activitiySelected.By_OrgGoverned__c)}">
+                                                                        <ui:inputSelectOption value="true" label="{!byGov}" text="{!byGov}"/>
+                                                                        <aura:set attribute="else">
+                                                                            <ui:inputSelectOption label="{!byGov}" text="{!byGov}"/>
+                                                                        </aura:set>
+                                                                    </aura:if> 
+                                                                </aura:iteration>                                               
+                                                            </ui:inputSelect-->
+                                                
+                                                
+                                                <!--/div-->
+                                                
+                                            </div><!-- /.select -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col-md-4 -->
+                        </div><!-- /.row -->
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="field-info">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Activity GMD
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-4">
+                                                    <div class="select select-simple">
+                                                        <label for="govorened">Governed</label>
+                                                        
+                                                        <!--select name="govorened" id="govorened">
+                 <option value=""></option>
+               
+                 <option value="1">Option 1</option>
+               
+                 <option value="2">Option 2</option>
+                </select-->
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">      
+                                                        <div class="slds-select_container"> 
+                                                            <ui:inputSelect value="{!v.activitiySelected.By_ActivityGMDgoverned__c}" aura:id="activityGMDGovernedPicklist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                                <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                                <aura:iteration items="{!v.ActivityGMD}" var="ActGMD">
+                                                                    <aura:if isTrue="{!(ActGMD == v.activitiySelected.By_ActivityGMDgoverned__c)}">
+                                                                        <ui:inputSelectOption value="true" label="{!ActGMD}" text="{!ActGMD}"/>
+                                                                        <aura:set attribute="else">
+                                                                            <ui:inputSelectOption label="{!ActGMD}" text="{!ActGMD}"/>
+                                                                        </aura:set>
+                                                                    </aura:if> 
+                                                                </aura:iteration>
+                                                            </ui:inputSelect>
+                                                        </div>
+                                                        <aura:set attribute="else">
+                                                                {!v.activitiySelected.By_ActivityGMDgoverned__c}
+                                                            </aura:set> 
+                                                        </aura:if>    
+                                                        
+                                                        
+                                                        
+                                                        
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-4 -->
+                                                
+                                                <div class="col-md-4">
+                                                    <div class="select select-simple">
+                                                        <label for="govorened-1">Managed</label>
+                                                        
+                                                        <!--select name="govorened-1" id="govorened-1">
+                 <option value=""></option>
+               
+                 <option value="1">Option 1</option>
+               
+                 <option value="2">Option 2</option>
+                </select-->                            
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <div class="slds-select_container">
+                                                            <ui:inputSelect value="{!v.activitiySelected.By_ActivityGMDmanaged__c}" aura:id="" class="slds-select"  change="{!c.onPicklistChange}">
+                                                                <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                                <aura:iteration items="{!v.ActivityGMD}" var="ActGMD">
+                                                                    <aura:if isTrue="{!(ActGMD == v.activitiySelected.By_ActivityGMDmanaged__c)}">
+                                                                        <ui:inputSelectOption value="true" label="{!ActGMD}" text="{!ActGMD}"/>
+                                                                        <aura:set attribute="else">
+                                                                            <ui:inputSelectOption label="{!ActGMD}" text="{!ActGMD}"/>
+                                                                        </aura:set>
+                                                                    </aura:if> 
+                                                                </aura:iteration>
+                                                            </ui:inputSelect>
+                                                        </div>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.By_ActivityGMDmanaged__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-4 -->
+                                                
+                                                <div class="col-md-4">
+                                                    <div class="select select-simple">
+                                                        <label for="govorened-2">Delivered</label>
+                                                        
+                                                        <!--select name="govorened-2" id="govorened-2">
+                 <option value=""></option>
+               
+                 <option value="1">Option 1</option>
+               
+                 <option value="2">Option 2</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">  
+                                                        <div class="slds-select_container">
+                                                            <ui:inputSelect value="{!v.activitiySelected.By_ActivityGMDdelivered__c}" aura:id="" class="slds-select"  change="{!c.onPicklistChange}">
+                                                                <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                                <aura:iteration items="{!v.ActivityGMD}" var="ActGMD">
+                                                                    <aura:if isTrue="{!(ActGMD == v.activitiySelected.By_ActivityGMDdelivered__c)}">
+                                                                        <ui:inputSelectOption value="true" label="{!ActGMD}" text="{!ActGMD}"/>
+                                                                        <aura:set attribute="else">
+                                                                            <ui:inputSelectOption label="{!ActGMD}" text="{!ActGMD}"/>
+                                                                        </aura:set>
+                                                                    </aura:if> 
+                                                                </aura:iteration>
+                                                            </ui:inputSelect>
+                                                        </div>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.By_ActivityGMDdelivered__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-4 -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                        
+                        <div class="divider">
+                            <h3 class="divider__title">
+                                <span>Through</span>
+                            </h3><!-- /.divider__title -->
+                            <p style="font-size:16px; color: #5a5a5a; padding-top:10px; padding-bottom:20px;">What is the type of activity? Select all that apply, numbering 1, 2 and 3 in order of emphasis, with 1 being the highest.</p>
+                        </div><!-- /.divider -->
+                        
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="field-info">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Type of Activity
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="nga-taonga">Nga Taonga Taakaro</label>
+                                                        <!--select name="nga-taonga" id="nga-taonga">
+                 <option value="1">1</option>
+              
+                 <option value="2">2</option>
+              
+                 <option value="3">3</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <div class="slds-select_container">
+                                                            <ui:inputSelect value="{!v.activitiySelected.Through_TypeActNgaTaonga__c}" aura:id="ThroughTypeOfActivityPicklist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                                <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                                <aura:iteration items="{!v.ThroughTypeOfActivityPicklistValues}" var="TypeofAct">
+                                                                    <aura:if isTrue="{!(TypeofAct == v.activitiySelected.Through_TypeActNgaTaonga__c)}">
+                                                                        <ui:inputSelectOption value="true" label="{!TypeofAct}" text="{!TypeofAct}"/>
+                                                                        <aura:set attribute="else">
+                                                                            <ui:inputSelectOption label="{!TypeofAct}" text="{!TypeofAct}"/>
+                                                                        </aura:set>
+                                                                    </aura:if> 
+                                                                </aura:iteration>
+                                                            </ui:inputSelect>
+                                                        </div>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.Through_TypeActNgaTaonga__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <!-- <div class="col-md-3">
+                                                    <div class="select select-simple select-simple-small">
+                                                        <label for="nga-kemu">Nga Kemu Tawhito</label> -->
+                                                        
+                                                        <!--select name="nga-kemu" id="nga-kemu">
+                 <option value="2">2</option>
+              
+                 <option value="1">1</option>
+              
+                 <option value="3">3</option>
+                </select-->
+                                                        <!-- <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <div class="slds-select_container">
+                                                            <ui:inputSelect value="{!v.activitiySelected.Through_TypeActNgaKemu__c}" aura:id="ThroughTypeOfActivityPicklist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                                <ui:inputSelectOption value="true" label="-Select-" text="-Select-"/>
+                                                                <aura:iteration items="{!v.ThroughTypeOfActivityPicklistValues}" var="TypeofAct">
+                                                                    <aura:if isTrue="{!(TypeofAct == v.activitiySelected.Through_TypeActNgaKemu__c)}">
+                                                                        <ui:inputSelectOption value="true" label="{!TypeofAct}" text="{!TypeofAct}"/>
+                                                                        <aura:set attribute="else">
+                                                                            <ui:inputSelectOption label="{!TypeofAct}" text="{!TypeofAct}"/>
+                                                                        </aura:set>
+                                                                    </aura:if> 
+                                                                </aura:iteration>
+                                                            </ui:inputSelect>
+                                                        </div>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.Through_TypeActNgaKemu__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div>
+                                                </div>--><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="nga-mahi">Nga Mahi a te Rehia</label>
+                                                        
+                                                        <!--select name="nga-mahi" id="nga-mahi">
+                 <option value="3">3</option>
+              
+                 <option value="1">1</option>
+              
+                 <option value="2">2</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <div class="slds-select_container">
+                                                            <ui:inputSelect value="{!v.activitiySelected.Through_TypeActNgaMahi__c}" aura:id="ThroughTypeOfActivityPicklist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                                <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                                <aura:iteration items="{!v.ThroughTypeOfActivityPicklistValues}" var="TypeofAct">
+                                                                    <aura:if isTrue="{!(TypeofAct == v.activitiySelected.Through_TypeActNgaMahi__c)}">
+                                                                        <ui:inputSelectOption value="true" label="{!TypeofAct}" text="{!TypeofAct}"/>
+                                                                        <aura:set attribute="else">
+                                                                            <ui:inputSelectOption label="{!TypeofAct}" text="{!TypeofAct}"/>
+                                                                        </aura:set>
+                                                                    </aura:if> 
+                                                                </aura:iteration>
+                                                            </ui:inputSelect>
+                                                        </div>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.Through_TypeActNgaMahi__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="hakinakina">Hākinakina Auraki</label>
+                                                        
+                                                        <!--select name="hakinakina" id="hakinakina">
+                 <option value="4">4</option>
+              
+                 <option value="1">1</option>
+              
+                 <option value="2">2</option>
+
+                 <option value="3">3</option>
+
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <div class="slds-select_container">
+                                                            <ui:inputSelect value="{!v.activitiySelected.Through_typeActHakinakina__c}" aura:id="ThroughTypeOfActivityPicklist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                                <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                                <aura:iteration items="{!v.ThroughTypeOfActivityPicklistValues}" var="TypeofAct">
+                                                                    <aura:if isTrue="{!(TypeofAct == v.activitiySelected.Through_typeActHakinakina__c)}">
+                                                                        <ui:inputSelectOption value="true" label="{!TypeofAct}" text="{!TypeofAct}"/>
+                                                                        <aura:set attribute="else">
+                                                                            <ui:inputSelectOption label="{!TypeofAct}" text="{!TypeofAct}"/>
+                                                                        </aura:set>
+                                                                    </aura:if> 
+                                                                </aura:iteration>
+                                                            </ui:inputSelect>
+                                                        </div>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.Through_typeActHakinakina__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.field__row -->
+                                        
+                                        <div class="field__row">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="l-o">Learning and Organisation Capability</label>
+                                                        
+                                                        <!--select name="l-o" id="l-o">
+                 <option value="3">3</option>
+              
+                 <option value="1">1</option>
+
+                 <option value="2">2</option>
+              
+                 <option value="4">4</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <div class="slds-select_container">
+                                                            <ui:inputSelect value="{!v.activitiySelected.Through_typeActLandO__c}" aura:id="ThroughTypeOfActivityPicklist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                                <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                                <aura:iteration items="{!v.ThroughTypeOfActivityPicklistValues}" var="TypeofAct">
+                                                                    <aura:if isTrue="{!(TypeofAct == v.activitiySelected.Through_typeActLandO__c)}">
+                                                                        <ui:inputSelectOption value="true" label="{!TypeofAct}" text="{!TypeofAct}"/>
+                                                                        <aura:set attribute="else">
+                                                                            <ui:inputSelectOption label="{!TypeofAct}" text="{!TypeofAct}"/>
+                                                                        </aura:set>
+                                                                    </aura:if> 
+                                                                </aura:iteration>
+                                                            </ui:inputSelect>
+                                                        </div>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.Through_typeActLandO__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                        
+                        <div class="divider">
+                            <h3 class="divider__title">
+                                <span>In/on</span>
+                            </h3><!-- /.divider__title -->
+                            <p style="font-size: 16px; padding-top:10px; color: #5a5a5a; padding-bottom:20px;">Where does the activity take place? Select all that apply numbering 1, 2 and 3 in order of emphasis, with 1 being the highest.</p>
+                        </div><!-- /.divider -->
+                        
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="field-info">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Location of Activity
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="maunga">Maunga</label>
+                                                        
+                                                        <!--select name="maunga" id="maunga">
+                 <option value="1">1</option>
+              
+                 <option value="2">2</option>
+              
+                 <option value="3">3</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <ui:inputSelect value="{!v.activitiySelected.InOn_LocateActMaunga__c}" aura:id="InOnActivitiesPicklist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                            <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                            <aura:iteration items="{!v.InOnActivitiesPicklistValues}" var="InOnValues">
+                                                                <aura:if isTrue="{!(InOnValues == v.activitiySelected.InOn_LocateActMaunga__c)}">
+                                                                    <ui:inputSelectOption value="true" label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    <aura:set attribute="else">
+                                                                        <ui:inputSelectOption label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    </aura:set>
+                                                                </aura:if> 
+                                                            </aura:iteration>
+                                                        </ui:inputSelect>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.InOn_LocateActMaunga__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="moana">Awa / Moana</label>
+                                                        
+                                                        <!--select name="moana" id="moana">
+                 <option value="2">2</option>
+              
+                 <option value="1">1</option>
+              
+                 <option value="3">3</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <ui:inputSelect value="{!v.activitiySelected.InOn_LocateActAwa__c}" aura:id="InOnActivitiesPicklist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                            <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                            <aura:iteration items="{!v.InOnActivitiesPicklistValues}" var="InOnValues">
+                                                                <aura:if isTrue="{!(InOnValues == v.activitiySelected.InOn_LocateActAwa__c)}">
+                                                                    <ui:inputSelectOption value="true" label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    <aura:set attribute="else">
+                                                                        <ui:inputSelectOption label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    </aura:set>
+                                                                </aura:if> 
+                                                            </aura:iteration>
+                                                        </ui:inputSelect>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.InOn_LocateActAwa__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="marae">Marae</label>
+                                                        
+                                                        <!--select name="marae" id="marae">
+                 <option value="3">3</option>
+              
+                 <option value="1">1</option>
+              
+                 <option value="2">2</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <ui:inputSelect value="{!v.activitiySelected.InOn_LocateActMarae__c}" aura:id="InOnActivitiesPicklist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                            <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                            <aura:iteration items="{!v.InOnActivitiesPicklistValues}" var="InOnValues">
+                                                                <aura:if isTrue="{!(InOnValues == v.activitiySelected.InOn_LocateActMarae__c)}">
+                                                                    <ui:inputSelectOption value="true" label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    <aura:set attribute="else">
+                                                                        <ui:inputSelectOption label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    </aura:set>
+                                                                </aura:if> 
+                                                            </aura:iteration>
+                                                        </ui:inputSelect>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.InOn_LocateActMarae__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="kohanga">Kohanga</label>
+                                                        
+                                                        <!--select name="kohanga" id="kohanga">
+                 <option value="4">4</option>
+              
+                 <option value="1">1</option>
+              
+                 <option value="2">2</option>
+
+                 <option value="3">3</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <ui:inputSelect value="{!v.activitiySelected.InOn_LocateActKohanga__c}" aura:id="InOnActivitiesPicklist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                            <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                            <aura:iteration items="{!v.InOnActivitiesPicklistValues}" var="InOnValues">
+                                                                <aura:if isTrue="{!(InOnValues == v.activitiySelected.InOn_LocateActKohanga__c)}">
+                                                                    <ui:inputSelectOption value="true" label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    <aura:set attribute="else">
+                                                                        <ui:inputSelectOption label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    </aura:set>
+                                                                </aura:if> 
+                                                            </aura:iteration>
+                                                        </ui:inputSelect>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.InOn_LocateActKohanga__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.field__row -->
+                                        
+                                        <div class="field__row">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="kura">Kura</label>
+                                                        
+                                                        <!--select name="kura" id="kura">
+                 <option value="3">3</option>
+              
+                 <option value="1">1</option>
+
+                 <option value="2">2</option>
+              
+                 <option value="4">4</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <ui:inputSelect value="{!v.activitiySelected.InOn_LocateActKura__c}" aura:id="InOnActivitiesPicklist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                            <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                            <aura:iteration items="{!v.InOnActivitiesPicklistValues}" var="InOnValues">
+                                                                <aura:if isTrue="{!(InOnValues == v.activitiySelected.InOn_LocateActKura__c)}">
+                                                                    <ui:inputSelectOption value="true" label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    <aura:set attribute="else">
+                                                                        <ui:inputSelectOption label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    </aura:set>
+                                                                </aura:if> 
+                                                            </aura:iteration>
+                                                        </ui:inputSelect>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.InOn_LocateActKura__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="wahi-kaupapa">Wāhi Kaupapa Māori</label>
+                                                        
+                                                        <!--select name="wahi-kaupapa" id="wahi-kaupapa">
+                 <option value=""></option>
+              
+                 <option value="1">1</option>
+
+                 <option value="2">2</option>
+              
+                 <option value="3">3</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <ui:inputSelect value="{!v.activitiySelected.InOn_LocateActWahi__c}" aura:id="InOnActivitiesPicklist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                            <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                            <aura:iteration items="{!v.InOnActivitiesPicklistValues}" var="InOnValues">
+                                                                <aura:if isTrue="{!(InOnValues == v.activitiySelected.InOn_LocateActWahi__c)}">
+                                                                    <ui:inputSelectOption value="true" label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    <aura:set attribute="else">
+                                                                        <ui:inputSelectOption label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    </aura:set>
+                                                                </aura:if> 
+                                                            </aura:iteration>
+                                                        </ui:inputSelect>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.InOn_LocateActWahi__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="src-facilities">SRC Facilities (I/M Owned)</label>
+                                                        
+                                                        <!--select name="src-facilities" id="src-facilities">
+                 <option value=""></option>
+              
+                 <option value="1">1</option>
+
+                 <option value="2">2</option>
+              
+                 <option value="3">3</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <ui:inputSelect value="{!v.activitiySelected.InOn_LocateActSRC__c}" aura:id="InOnActivitiesPicklist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                            <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                            <aura:iteration items="{!v.InOnActivitiesPicklistValues}" var="InOnValues">
+                                                                <aura:if isTrue="{!(InOnValues == v.activitiySelected.InOn_LocateActSRC__c)}">
+                                                                    <ui:inputSelectOption value="true" label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    <aura:set attribute="else">
+                                                                        <ui:inputSelectOption label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    </aura:set>
+                                                                </aura:if> 
+                                                            </aura:iteration>
+                                                        </ui:inputSelect>
+                                                             <aura:set attribute="else">
+                                                                {!v.activitiySelected.InOn_LocateActSRC__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="pakeha">SRC Facilities (Pakeha O)</label>
+                                                        
+                                                        <!--select name="pakeha" id="pakeha">
+                 <option value=""></option>
+              
+                 <option value="1">1</option>
+
+                 <option value="2">2</option>
+              
+                 <option value="3">3</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <ui:inputSelect value="{!v.activitiySelected.InOn_LocateActSRC2__c}" aura:id="InOnActivitiesPicklist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                            <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                            <aura:iteration items="{!v.InOnActivitiesPicklistValues}" var="InOnValues">
+                                                                <aura:if isTrue="{!(InOnValues == v.activitiySelected.InOn_LocateActSRC2__c)}">
+                                                                    <ui:inputSelectOption value="true" label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    <aura:set attribute="else">
+                                                                        <ui:inputSelectOption label="{!InOnValues}" text="{!InOnValues}"/>
+                                                                    </aura:set>
+                                                                </aura:if> 
+                                                            </aura:iteration>
+                                                        </ui:inputSelect>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.InOn_LocateActSRC2__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                        
+                        <div class="row align-items-center">
+                            <div class="col-xl-4 col-lg-6 col-md-5">
+                                <div class="field-info">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Significance of Location
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="select select-simple">
+                                                <label for="significance">Significance</label>
+                                                
+                                                <!--select name="significance" id="significance">
+               <option value="1">Very significant</option>
+
+               <option value="2">Less significant</option>
+              </select-->
+                                                <aura:if isTrue="{!v.isDueDatePassed}">
+                                                <ui:inputSelect value="{!v.activitiySelected.InOn_SignificanceLocation__c}" aura:id="SignificanceLoactionPicklist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                    <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                    <aura:iteration items="{!v.SignificanceLoactionPicklistValues}" var="SigniLocationValues">
+                                                        <aura:if isTrue="{!(SigniLocationValues == v.activitiySelected.InOn_SignificanceLocation__c)}">
+                                                            <ui:inputSelectOption value="true" label="{!SigniLocationValues}" text="{!SigniLocationValues}"/>
+                                                            <aura:set attribute="else">
+                                                                <ui:inputSelectOption label="{!SigniLocationValues}" text="{!SigniLocationValues}"/>
+                                                            </aura:set>
+                                                        </aura:if> 
+                                                    </aura:iteration>
+                                                </ui:inputSelect>
+                                                    <aura:set attribute="else">
+                                                        {!v.activitiySelected.InOn_SignificanceLocation__c}
+                                                    </aura:set>
+                                                </aura:if>
+                                            </div><!-- /.select -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col-md-4 -->
+                        </div><!-- /.row -->
+                        
+                        <div class="divider">
+                            <h3 class="divider__title">
+                                <span>With</span>
+                            </h3><!-- /.divider__title -->
+                            <p style="font-size:16px; color: #5a5a5a; padding-top:10px; padding-bottom:20px;">Te Reo and tikanga significance. Select levels of significance and numbering 1, 2 and 3 in order of emphasis, with 1 being the most often used for this activity.</p>
+                        </div><!-- /.divider -->
+                        
+                        <div class="row align-items-center">
+                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                <div class="field-info">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Use of Te Reo
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="select select-simple">
+                                                <label for="use-te-reo">Use of Te Reo</label>
+                                                
+                                                <!--select name="use-te-reo" id="use-te-reo">
+               <option value="0">Mix of Māori &amp; English</option>
+
+               <option value="1">Option 1</option>
+
+               <option value="2">Option 2</option>
+              </select-->
+                                                <aura:if isTrue="{!v.isDueDatePassed}">
+                                                <ui:inputSelect value="{!v.activitiySelected.With_UseOfTeReo__c}" aura:id="UseOfTeReoPickilist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                    <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                    <aura:iteration items="{!v.UseOfTeReoPickilistValues}" var="UseOfTeReo">
+                                                        <aura:if isTrue="{!(UseOfTeReo == v.activitiySelected.With_UseOfTeReo__c)}">
+                                                            <ui:inputSelectOption value="true" label="{!UseOfTeReo}" text="{!UseOfTeReo}"/>
+                                                            <aura:set attribute="else">
+                                                                <ui:inputSelectOption label="{!UseOfTeReo}" text="{!UseOfTeReo}"/>
+                                                            </aura:set>
+                                                        </aura:if> 
+                                                    </aura:iteration>
+                                                </ui:inputSelect>
+                                                    <aura:set attribute="else">
+                                                        {!v.activitiySelected.With_UseOfTeReo__c}
+                                                    </aura:set>
+                                                </aura:if>
+                                            </div><!-- /.select -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col-md-4 -->
+                            
+                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                <div class="field-info">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Purpose of Te Reo
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="select select-simple">
+                                                <label for="purpose-te-reo">Normal practice</label>
+                                                
+                                                <!--select name="purpose-te-reo" id="purpose-te-reo">
+               <option value="0">Not at all</option>
+
+               <option value="1">Option 1</option>
+
+               <option value="2">Option 2</option>
+              </select-->
+                                                <aura:if isTrue="{!v.isDueDatePassed}">
+                                                <ui:inputSelect value="{!v.activitiySelected.With_PrposeTeRaoIntegral__c}" aura:id="UseOfTeReoPickilist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                    <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                    <aura:iteration items="{!v.ActivityGMD}" var="PrposeTeRaoIntegral">
+                                                        <aura:if isTrue="{!(PrposeTeRaoIntegral == v.activitiySelected.With_PrposeTeRaoIntegral__c)}">
+                                                            <ui:inputSelectOption value="true" label="{!PrposeTeRaoIntegral}" text="{!PrposeTeRaoIntegral}"/>
+                                                            <aura:set attribute="else">
+                                                                <ui:inputSelectOption label="{!PrposeTeRaoIntegral}" text="{!PrposeTeRaoIntegral}"/>
+                                                            </aura:set>
+                                                        </aura:if> 
+                                                    </aura:iteration>
+                                                </ui:inputSelect>
+                                                    <aura:set attribute="else">
+                                                        {!v.activitiySelected.With_PrposeTeRaoIntegral__c}
+                                                    </aura:set>
+                                                </aura:if>
+                                            </div><!-- /.select -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col-md-4 -->
+                            
+                            <div class="col-xl-4 col-lg-6 col-md-6 col-spacing">
+                                <div class="field-info">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Significance of Te Reo
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="select select-simple">
+                                                <label for="significance-te-reo">Significance</label>
+                                                
+                                                <!--select name="significance-te-reo" id="significance-te-reo">
+               <option value="0">Very significant</option>
+
+               <option value="1">Less significant</option>
+              </select-->
+                                                <aura:if isTrue="{!v.isDueDatePassed}">
+                                                <ui:inputSelect value="{!v.activitiySelected.With_SignificanceTeRao__c}" aura:id="UseOfTeReoPickilist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                    <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                    <aura:iteration items="{!v.SignificanceLoactionPicklistValues}" var="SigniOfTeReo">
+                                                        <aura:if isTrue="{!(SigniOfTeReo == v.activitiySelected.With_SignificanceTeRao__c)}">
+                                                            <ui:inputSelectOption value="true" label="{!SigniOfTeReo}" text="{!SigniOfTeReo}"/>
+                                                            <aura:set attribute="else">
+                                                                <ui:inputSelectOption label="{!SigniOfTeReo}" text="{!SigniOfTeReo}"/>
+                                                            </aura:set>
+                                                        </aura:if> 
+                                                    </aura:iteration>
+                                                </ui:inputSelect>
+                                                    <aura:set attribute="else">
+                                                        {!v.activitiySelected.With_SignificanceTeRao__c}
+                                                    </aura:set>
+                                                </aura:if>
+                                            </div><!-- /.select -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col-md-4 -->
+                        </div><!-- /.row -->
+                        
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="field-info">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Purpose of Te Reo
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="raise-awareness">Raise awareness</label>
+                                                        
+                                                        <!--select name="raise-awareness" id="raise-awareness">
+                 <option value="1">1</option>
+              
+                 <option value="2">2</option>
+              
+                 <option value="3">3</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <ui:inputSelect value="{!v.activitiySelected.With_PrposeTeReoAwareness__c}" aura:id="PurposeOfTeReoPickilist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                            <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                            <aura:iteration items="{!v.PurposeOfTeReoPickilistValues}" var="PurposeOfTeReo">
+                                                                <aura:if isTrue="{!(PurposeOfTeReo == v.activitiySelected.With_PrposeTeReoAwareness__c)}">
+                                                                    <ui:inputSelectOption value="true" label="{!PurposeOfTeReo}" text="{!PurposeOfTeReo}"/>
+                                                                    <aura:set attribute="else">
+                                                                        <ui:inputSelectOption label="{!PurposeOfTeReo}" text="{!PurposeOfTeReo}"/>
+                                                                    </aura:set>
+                                                                </aura:if> 
+                                                            </aura:iteration>
+                                                        </ui:inputSelect>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.With_PrposeTeReoAwareness__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="build-knowledge">Build knowledge</label>
+                                                        
+                                                        <!--select name="build-knowledge" id="build-knowledge">
+                 <option value="2">2</option>
+              
+                 <option value="1">1</option>
+              
+                 <option value="3">3</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <ui:inputSelect value="{!v.activitiySelected.With_PrposeTeReaoKnowledge__c}" aura:id="PurposeOfTeReoPickilist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                            <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                            <aura:iteration items="{!v.PurposeOfTeReoPickilistValues}" var="PurposeOfTeReo">
+                                                                <aura:if isTrue="{!(PurposeOfTeReo == v.activitiySelected.With_PrposeTeReaoKnowledge__c)}">
+                                                                    <ui:inputSelectOption value="true" label="{!PurposeOfTeReo}" text="{!PurposeOfTeReo}"/>
+                                                                    <aura:set attribute="else">
+                                                                        <ui:inputSelectOption label="{!PurposeOfTeReo}" text="{!PurposeOfTeReo}"/>
+                                                                    </aura:set>
+                                                                </aura:if> 
+                                                            </aura:iteration>
+                                                        </ui:inputSelect>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.With_PrposeTeReaoKnowledge__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="extend-knowledge">Extend activity knowledge</label>
+                                                        
+                                                        <!--select name="extend-knowledge" id="extend-knowledge">
+                 <option value="3">3</option>
+              
+                 <option value="1">1</option>
+              
+                 <option value="2">2</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <ui:inputSelect value="{!v.activitiySelected.With_PrposeTeReaoExtendAct__c}" aura:id="PurposeOfTeReoPickilist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                            <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                            <aura:iteration items="{!v.PurposeOfTeReoPickilistValues}" var="PurposeOfTeReo">
+                                                                <aura:if isTrue="{!(PurposeOfTeReo == v.activitiySelected.With_PrposeTeReaoExtendAct__c)}">
+                                                                    <ui:inputSelectOption value="true" label="{!PurposeOfTeReo}" text="{!PurposeOfTeReo}"/>
+                                                                    <aura:set attribute="else">
+                                                                        <ui:inputSelectOption label="{!PurposeOfTeReo}" text="{!PurposeOfTeReo}"/>
+                                                                    </aura:set>
+                                                                </aura:if> 
+                                                            </aura:iteration>
+                                                        </ui:inputSelect>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.With_PrposeTeReaoExtendAct__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple">
+                                                        <label for="other-1">Other</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <lightning:input style="display: grid;width: 70%;" type="number" value="{!v.activitiySelected.With_PrposeTeReaoOther__c}"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.With_PrposeTeReaoOther__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div>
+                                                </div><!-- /.col-md-3 -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                        
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="field-info">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Purpose of Tikanga
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="raise-awareness-1">Raise awareness</label>
+                                                        
+                                                        <!--select name="raise-awareness-1" id="raise-awareness-1">
+                 <option value="1">1</option>
+              
+                 <option value="2">2</option>
+              
+                 <option value="3">3</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <ui:inputSelect value="{!v.activitiySelected.With_PrposeTikangaRaiseAwareness__c}" aura:id="PurposeOfTeReoPickilist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                            <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                            <aura:iteration items="{!v.PurposeOfTeReoPickilistValues}" var="PurposeOfTeReo">
+                                                                <aura:if isTrue="{!(PurposeOfTeReo == v.activitiySelected.With_PrposeTikangaRaiseAwareness__c)}">
+                                                                    <ui:inputSelectOption value="true" label="{!PurposeOfTeReo}" text="{!PurposeOfTeReo}"/>
+                                                                    <aura:set attribute="else">
+                                                                        <ui:inputSelectOption label="{!PurposeOfTeReo}" text="{!PurposeOfTeReo}"/>
+                                                                    </aura:set>
+                                                                </aura:if> 
+                                                            </aura:iteration>
+                                                        </ui:inputSelect>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.With_PrposeTikangaRaiseAwareness__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="build-knowledge-2">Build knowledge</label>
+                                                        
+                                                        <!--select name="build-knowledge-2" id="build-knowledge-2">
+                 <option value="2">2</option>
+              
+                 <option value="1">1</option>
+              
+                 <option value="3">3</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <ui:inputSelect value="{!v.activitiySelected.With_PrposeTikangaBuildKnowledge__c}" aura:id="PurposeOfTeReoPickilist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                            <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                            <aura:iteration items="{!v.PurposeOfTeReoPickilistValues}" var="PurposeOfTeReo">
+                                                                <aura:if isTrue="{!(PurposeOfTeReo == v.activitiySelected.With_PrposeTikangaBuildKnowledge__c)}">
+                                                                    <ui:inputSelectOption value="true" label="{!PurposeOfTeReo}" text="{!PurposeOfTeReo}"/>
+                                                                    <aura:set attribute="else">
+                                                                        <ui:inputSelectOption label="{!PurposeOfTeReo}" text="{!PurposeOfTeReo}"/>
+                                                                    </aura:set>
+                                                                </aura:if> 
+                                                            </aura:iteration>
+                                                        </ui:inputSelect>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.With_PrposeTikangaBuildKnowledge__c}  
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="select select-simple select-simple--small">
+                                                        <label for="opportunity-apply">Opportunity to Apply</label>
+                                                        
+                                                        <!--select name="opportunity-apply" id="opportunity-apply">
+                 <option value="3">3</option>
+              
+                 <option value="1">1</option>
+              
+                 <option value="2">2</option>
+                </select-->
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <ui:inputSelect value="{!v.activitiySelected.With_PrposeTikangaOppApply__c}" aura:id="PurposeOfTeReoPickilist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                            <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                            <aura:iteration items="{!v.PurposeOfTeReoPickilistValues}" var="PurposeOfTeReo">
+                                                                <aura:if isTrue="{!(PurposeOfTeReo == v.activitiySelected.With_PrposeTikangaOppApply__c)}">
+                                                                    <ui:inputSelectOption value="true" label="{!PurposeOfTeReo}" text="{!PurposeOfTeReo}"/>
+                                                                    <aura:set attribute="else">
+                                                                        <ui:inputSelectOption label="{!PurposeOfTeReo}" text="{!PurposeOfTeReo}"/>
+                                                                    </aura:set>
+                                                                </aura:if> 
+                                                            </aura:iteration>
+                                                        </ui:inputSelect>
+                                                            <aura:set attribute="else">
+                                                                {!v.activitiySelected.With_PrposeTikangaOppApply__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </div><!-- /.select -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple">
+                                                        <label for="other-2">Other</label>
+                                                        
+                                                         <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="other-2"/-->
+                                                        <lightning:input style="display: grid;width: 70%;" type="number" value="{!v.activitiySelected.With_PrposeTikangaOther__c}"/>
+                                                   		<aura:set attribute="else">
+                                                              {!v.activitiySelected.With_PrposeTikangaOther__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                        
+                        <div class="row align-items-center">
+                            <div class="col-xl-4 col-lg-5 col-md-5">
+                                <div class="field-info">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Purpose of Tikanga
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="select select-simple">
+                                                <label for="significance-1">Integral and normal practice</label>
+                                                
+                                                <!--select name="significance-1" id="significance-1">
+               <option value="0">Very significant</option>
+
+               <option value="1">Less significant</option>
+              </select-->
+                                                <aura:if isTrue="{!v.isDueDatePassed}">
+                                                <ui:inputSelect value="{!v.activitiySelected.With_PrposeTikangaIntegral__c}" aura:id="UseOfTeReoPickilist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                    <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                    <aura:iteration items="{!v.ActivityGMD}" var="PurposeOfTikangaIntegral">
+                                                        <aura:if isTrue="{!(PurposeOfTikangaIntegral == v.activitiySelected.With_PrposeTikangaIntegral__c)}">
+                                                            <ui:inputSelectOption value="true" label="{!PurposeOfTikangaIntegral}" text="{!PurposeOfTikangaIntegral}"/>
+                                                            <aura:set attribute="else">
+                                                                <ui:inputSelectOption label="{!PurposeOfTikangaIntegral}" text="{!PurposeOfTikangaIntegral}"/>
+                                                            </aura:set>
+                                                        </aura:if> 
+                                                    </aura:iteration>
+                                                </ui:inputSelect>
+                                                    <aura:set attribute="else">
+                                                        {!v.activitiySelected.With_PrposeTikangaIntegral__c}
+                                                    </aura:set>
+                                                </aura:if>
+                                            </div><!-- /.select -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col-md-4 -->
+                            
+                            <div class="col-xl-4 col-lg-6 col-md-5">
+                                <div class="field-info">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Significance of Tikanga
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="select select-simple">
+                                                <label for="significance-2">Significance</label>
+                                                
+                                                <!--select name="significance-2" id="significance-2">
+               <option value="0">Very significant</option>
+
+               <option value="1">Less significant</option>
+              </select-->
+                                                <aura:if isTrue="{!v.isDueDatePassed}">
+                                                <ui:inputSelect value="{!v.activitiySelected.With_SigniOfTikanga__c}" aura:id="UseOfTeReoPickilist" class="slds-select"  change="{!c.onPicklistChange}">
+                                                    <ui:inputSelectOption value="true" label="--Select--" text="--Select--"/>
+                                                    <aura:iteration items="{!v.SignificanceLoactionPicklistValues}" var="SigniOfTikanga">
+                                                        <aura:if isTrue="{!(SigniOfTikanga == v.activitiySelected.With_SigniOfTikanga__c)}">
+                                                            <ui:inputSelectOption value="true" label="{!SigniOfTikanga}" text="{!SigniOfTikanga}"/>
+                                                            <aura:set attribute="else">
+                                                                <ui:inputSelectOption label="{!SigniOfTikanga}" text="{!SigniOfTikanga}"/>
+                                                            </aura:set>
+                                                        </aura:if> 
+                                                    </aura:iteration>
+                                                </ui:inputSelect>
+                                                    <aura:set attribute="else">
+                                                        {!v.activitiySelected.With_SigniOfTikanga__c}  
+                                                    </aura:set>
+                                                </aura:if>
+                                            </div><!-- /.select -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col-md-4 -->
+                        </div><!-- /.row -->
+                        
+                        <div class="divider">
+                            <h3 class="divider__title">
+                                <span>For / Participation</span>
+                            </h3><!-- /.divider__title -->
+                            <p style="font-size:16px; color: #5a5a5a; padding-top:10px; padding-bottom:20px;">How many people participated in this activity? Please enter the grand total into the number of participants box below. Then continue onto the remaining sections, ensuring that your totals for each section, match the grand total entered into the number of particpants box.</p>
+                        </div><!-- /.divider -->
+                        
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="field-info js-total-container">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Number of Participants
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body" >
+                                        <div class="field__row">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="number-of-participants">Number of Participants</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="number-of-participants" class="js-field-amount" value="580"/-->
+                                                        <lightning:input class="participantCss" default="0" aura:id="NumberOfparticipant"  min="0" type="number" value="{!v.activitiySelected.Participation_NoOfParticipants__c}"/>
+                                                         <aura:set attribute="else">
+                                                                {!v.activitiySelected.Participation_NoOfParticipants__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                    
+                                    <div class="field__total">
+                                        <p>
+                                            Total: <!--strong class="js-total">580</strong-->{!v.activitiySelected.Participation_NoOfParticipants__c}
+                                        </p>
+                                    </div><!-- /.field__total -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                        
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="field-info js-total-container">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Participants by Whānau Type
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="marae-t">Marae</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="marae-t" class="js-field-amount" value="5"/-->
+                                                        <lightning:input style="display:grid;"  min="0" type="number" aura:id="MaraeNumber" value="{!v.activitiySelected.Particaipation_WhanauType_Marae__c}" onchange="{!c.calculateWhanauTypeTotal}" />
+                                                          <aura:set attribute="else">
+                                                                {!v.activitiySelected.Particaipation_WhanauType_Marae__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="hapu-t">Hapu</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="hapu-t" class="js-field-amount" value=""/-->
+                                                        <lightning:input style="display: grid;"  min="0" aura:id="HapuNumber" type="number" value="{!v.activitiySelected.Particaipation_WhanauType_Hapu__c}" onchange="{!c.calculateWhanauTypeTotal}"/>
+                                                       	<aura:set attribute="else">
+                                                                {!v.activitiySelected.Particaipation_WhanauType_Hapu__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="iwi-t">Iwi</label>
+                                                       
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="iwi-t" class="js-field-amount" value=""/-->
+                                                        <lightning:input style="display: grid;"  min="0" type="number" aura:id="IwiNumber" value="{!v.activitiySelected.Particaipation_WhanauType_lwi__c}" onchange="{!c.calculateWhanauTypeTotal}"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.Particaipation_WhanauType_lwi__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="whanau-t">Whānau</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="whanau-t" class="js-field-amount" value="" /-->
+                                                        <lightning:input style="display: grid;"  min="0" aura:id="WhanauNumber" type="number" onchange="{!c.calculateWhanauTypeTotal}" value="{!v.activitiySelected.Particaipation_WhanauType_Wh_nau__c}"/>
+                                                   		<aura:set attribute="else">
+                                                                {!v.activitiySelected.Particaipation_WhanauType_Wh_nau__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                            
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.field__row -->
+                                        
+                                        <div class="field__row">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="kohanga-t">Kohanga / Puna Reo</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="kohanga-t" class="js-field-amount" value="" /-->
+                                                        <lightning:input style="display: grid;"  min="0" type="number" aura:id="KohangaNumber" onchange="{!c.calculateWhanauTypeTotal}" value="{!v.activitiySelected.Particaipation_WhanauType_KohangaPunaReo__c}"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.Particaipation_WhanauType_KohangaPunaReo__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="kura-t">Kura Kaupapa</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="kura-t" class="js-field-amount" value="" /-->
+                                                        <lightning:input style="display: grid;"  min="0" type="number" aura:id="KuraNumber" onchange="{!c.calculateWhanauTypeTotal}" value="{!v.activitiySelected.Particaipation_WhanauType_Kura_Kaupapa__c}"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.Particaipation_WhanauType_Kura_Kaupapa__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="whare-t">Whare Kura</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="whare-t" class="js-field-amount" value="5" /-->
+                                                        <lightning:input style="display: grid;"  min="0" type="number" aura:id="WhareNumber" onchange="{!c.calculateWhanauTypeTotal}" value="{!v.activitiySelected.Particaipation_WhanauType_Whare_Kura__c}"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.Particaipation_WhanauType_Whare_Kura__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="whare-wananga-t">Whare Wananga</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="whare-wananga-t" class="js-field-amount" value="" /-->
+                                                        <lightning:input style="display: grid;"  min="0" type="number" aura:id="WanagaNumber" onchange="{!c.calculateWhanauTypeTotal}" value="{!v.activitiySelected.Particaipation_WhanauType_Whare_Wananga__c}"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.Particaipation_WhanauType_Whare_Wananga__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.field__row -->
+                                        
+                                        <div class="field__row">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="kaupapa-hakinakina-t">Kaupapa Hākinakina</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="kaupapa-hakinakina-t" class="js-field-amount" value="0" /-->
+                                                        <lightning:input style="display: grid;"  min="0" type="number" aura:id="KaupapaNumber" onchange="{!c.calculateWhanauTypeTotal}" value="{!v.activitiySelected.Particaipation_WhanauType_Kaupapa_H_kina__c}"/>
+                                                   		<aura:set attribute="else">
+                                                                {!v.activitiySelected.Particaipation_WhanauType_Kaupapa_H_kina__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="other-t">Whānau Whaikaha</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="other-t" class="js-field-amount" value="5" /-->
+                                                        <lightning:input  style="display: grid;"  min="0" type="number" aura:id="WhanauWhaikahaWhanauNumber" onchange="{!c.calculateWhanauTypeTotal}" value="{!v.activitiySelected.Particaipation_WhanauType_Whanau_Whaikah__c}"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.Particaipation_WhanauType_Whanau_Whaikah__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="other-t">Mana Tipua</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="other-t" class="js-field-amount" value="5" /-->
+                                                        <lightning:input  style="display: grid;"  min="0" type="number" aura:id="ManaTipuaWhanauNumber" onchange="{!c.calculateWhanauTypeTotal}" value="{!v.activitiySelected.Particaipation_WhanauType_Mana_Tipua__c}"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.Particaipation_WhanauType_Mana_Tipua__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="other-t">Other</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <lightning:input style="display: grid;"  min="0" type="number" aura:id="OtherWhanauNumber" onchange="{!c.calculateWhanauTypeTotal}" value="{!v.activitiySelected.Particaipation_WhanauType_Other__c}"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.Particaipation_WhanauType_Other__c}
+                                                            </aura:set>
+                                                       </aura:if>
+                                                        </div>
+                                                </div> 
+                                            </div><!-- /.row -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                    
+                                    <div class="field__total">
+                                        <p>
+                                            Total: <!--strong class="js-total">5</strong-->
+                                            {!v.activitiySelected.Particaipation_WhanauType_Total__c }
+                                            <!--ui:outputNumber class="gridClass" value="{!v.activitiySelected.Particaipation_WhanauType_Total__c }"/-->
+                                        </p>
+                                    </div><!-- /.field__total -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                        
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="field-info js-total-container">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Age of Participants
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="mokopuna-t">Mokopuna (0-4)</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="mokopuna-t" class="js-field-amount" value="5" /-->
+                                                        <lightning:input style="display:grid;"  min="0" type="number" aura:id="MokoNumber" onchange="{!c.ageofParticipantTotal}" value="{!v.activitiySelected.AgeOfParticipants_Mokopuna__c  }"/>
+                                                   		<aura:set attribute="else">
+                                                                {!v.activitiySelected.AgeOfParticipants_Mokopuna__c  }
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="taiohi-t">Tamariki (5-12)</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="taiohi-t" class="js-field-amount" value="" /-->
+                                                        <lightning:input style="display: grid;"  min="0" type="number"  aura:id="TaioNumber"   onchange="{!c.ageofParticipantTotal}" value="{!v.activitiySelected.AgeOfParticipants_Taiohi__c  }"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.AgeOfParticipants_Taiohi__c  }
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="rangatahi-t">Rangatahi (13-19)</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="rangatahi-t" class="js-field-amount" value="" /-->
+                                                        <lightning:input style="display: grid;"  min="0" type="number"  aura:id="RangaNumberOne"   onchange="{!c.ageofParticipantTotal}" value="{!v.activitiySelected.AgeOfParticipants_Rangatahi13_19__c }"/>
+                                                    	 <aura:set attribute="else">
+                                                                {!v.activitiySelected.AgeOfParticipants_Rangatahi13_19__c } 
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                               <!-- <div class="col-md-3">
+                                                    <div class="field-simple field-simplesmall">
+                                                        <label for="rangatahi-older-t">Rangatahi (16-19)</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                       
+                                                        <lightning:input style="display: grid;"  min="0" type="number" aura:id="RangaNumberTwo"   onchange="{!c.ageofParticipantTotal}" value="{!v.activitiySelected.AgeOfParticipants_Rangatahi16_19__c  }"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.AgeOfParticipants_Rangatahi16_19__c  }
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div>
+                                                </div>--><!-- /.col-md-3 -->
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="rangatahi-older-t">Matua (20-39)</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                       
+                                                        <lightning:input style="display: grid;"  min="0" type="number" aura:id="MatauOne"   onchange="{!c.ageofParticipantTotal}" value="{!v.activitiySelected.AgeOfParticipants_Matua_20_39__c  }"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.AgeOfParticipants_Matua_20_39__c  }
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div>
+                                                </div>
+                                            </div><!-- /.row -->
+                                        </div><!-- /.field__row -->
+                                        
+                                        <div class="field__row">
+                                            <div class="row align-items-center">
+                                               <!-- <div class="col-md-3">
+                                                    <div class="field-simple field-simplesmall">
+                                                        <label for="pakeke-t">Pakeke (20-39)</label>
+                                                        
+                                                         <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        
+                                                        <lightning:input style="display: grid;"  min="0" type="number"  aura:id="PakekeNumberOne"   onchange="{!c.ageofParticipantTotal}" value="{!v.activitiySelected.AgeOfParticipants_Pakeke_20_39__c }"/>
+                                                   		<aura:set attribute="else">
+                                                                {!v.activitiySelected.AgeOfParticipants_Pakeke_20_39__c }
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div>
+                                                </div>--><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="pakeke-old-t">Pakeke (40-59)</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="pakeke-old-t" class="js-field-amount" value="" /-->
+                                                        <lightning:input style="display: grid;"  min="0" type="number"  aura:id="PakekeNumberTwo"  onchange="{!c.ageofParticipantTotal}" value="{!v.activitiySelected.AgeOfParticipants_Pakeke40_59__c }"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.AgeOfParticipants_Pakeke40_59__c }
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="kaumatua-t">Kaumātua (60+)</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="kaumatua-t" class="js-field-amount" value="5" /-->
+                                                        <lightning:input style="display: grid;"  min="0" type="number"  aura:id="KauNumber"   onchange="{!c.ageofParticipantTotal}" value="{!v.activitiySelected.AgeOfParticipants_Kaum_tua__c  }"/>
+                                                   		<aura:set attribute="else">
+                                                                {!v.activitiySelected.AgeOfParticipants_Kaum_tua__c  }
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="no-response-data-t">No response / No Data</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="no-response-data-t" class="js-field-amount" value="" /-->
+                                                        <lightning:input style="display: grid;"  min="0" type="number"  aura:id="AgeResNumber"   onchange="{!c.ageofParticipantTotal}" value="{!v.activitiySelected.AgeOfParticipants_DidNotRespond__c  }"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.AgeOfParticipants_DidNotRespond__c  }
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                    
+                                    <div class="field__total">
+                                        <p>
+                                            Total: {!v.activitiySelected.AgeOfParticipants_Total__c}
+                                            <!--ui:outputNumber class="gridClass" value="{!v.activitiySelected.AgeOfParticipants_Total__c  }"/-->
+                                        </p>
+                                    </div><!-- /.field__total -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                        
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="field-info js-total-container">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Gender of Participants
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="tane-t">Tāne</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="mokopuna-t" class="js-field-amount" value="1" /-->
+                                                        <lightning:input style="display:grid;"  min="0" type="number" aura:id="TaneNumber" onchange="{!c.genderParticipantTotal}" value="{!v.activitiySelected.GenderOfParticipants_Tane__c}"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.GenderOfParticipants_Tane__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="wahine-t">Wahine</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="wahine-t" class="js-field-amount" value="2" /-->
+                                                        <lightning:input style="display: grid;"  min="0" type="number"  aura:id="WahinNumber" onchange="{!c.genderParticipantTotal}" value="{!v.activitiySelected.GenderOfParticipants_Wahine__c}"/>
+                                                   		<aura:set attribute="else">
+                                                                {!v.activitiySelected.GenderOfParticipants_Wahine__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="no-response-data-2-t">No response / No Data</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="no-response-data-2-t" class="js-field-amount" value="3" /-->
+                                                        <lightning:input style="display: grid;"  min="0" type="number" aura:id="ResNumber" onchange="{!c.genderParticipantTotal}" value="{!v.activitiySelected.GenderOfParticipants_DidNotRespond__c}"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.GenderOfParticipants_DidNotRespond__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                    
+                                    <div class="field__total">
+                                        <p>
+                                            Total: <!--strong class="js-total">5</strong-->
+                                            {!v.activitiySelected.GenderOfParticipants_Total__c}
+                                            <!--ui:outputNumber class="gridClass" value="{!v.activitiySelected.GenderOfParticipants_Total__c}"/-->
+                                        </p>
+                                    </div><!-- /.field__total -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                        
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="field-info js-total-container">
+                                    <div class="field__head">
+                                        <h6 class="field__title">
+                                            Ethnicity of Participants
+                                        </h6><!-- /.field__title -->
+                                    </div><!-- /.field__head -->
+                                    
+                                    <div class="field__body">
+                                        <div class="field__row">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="maori-t">Māori</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="mokopuna-t" class="js-field-amount" value="1" /-->
+                                                        <lightning:input style="display:grid;" min="0"  type="number" aura:id="MaoriNumber" onchange="{!c.EthnicityTotal}" value="{!v.activitiySelected.EthnicityOfParticipants_M_ori__c}" />
+                                                   		<aura:set attribute="else">
+                                                                {!v.activitiySelected.EthnicityOfParticipants_M_ori__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="non-maori-t">Non Māori</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="non-maori-t" class="js-field-amount" value="2" /-->
+                                                        <lightning:input style="display: grid;" min="0" type="number" aura:id="NonMaoriNumber" onchange="{!c.EthnicityTotal}" value="{!v.activitiySelected.EthnicityOfParticipants_Non_M_ori__c}"/>
+                                                    	<aura:set attribute="else">
+                                                                {!v.activitiySelected.EthnicityOfParticipants_Non_M_ori__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                                
+                                                <div class="col-md-3">
+                                                    <div class="field-simple field-simple--small">
+                                                        <label for="no-response-data-3-t">No response / No Data</label>
+                                                        
+                                                        <aura:if isTrue="{!v.isDueDatePassed}">
+                                                        <!--input type="text" id="no-response-data-3-t" class="js-field-amount" value="3" /-->
+                                                        <lightning:input style="display: grid;"  min="0" type="number" aura:id="NoResEthin" onchange="{!c.EthnicityTotal}"  value="{!v.activitiySelected.EthnicityOfParticipants_DidNotRespond__c}"/>
+                                                        <aura:set attribute="else">
+                                                                {!v.activitiySelected.EthnicityOfParticipants_DidNotRespond__c}
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        
+                                                    </div><!-- /.field-simple -->
+                                                </div><!-- /.col-md-3 -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.field__row -->
+                                    </div><!-- /.field__body -->
+                                    
+                                    <div class="field__total">
+                                        <p>
+                                            Total: <!--strong class="js-total">5</strong-->
+                                            {!v.activitiySelected.EthnicityOfParticipants_Total__c}
+                                            <!--ui:outputNumber class="gridClass" value="{!v.activitiySelected.EthnicityOfParticipants_Total__c}"/-->
+                                        </p>
+                                    </div><!-- /.field__total -->
+                                </div><!-- /.field-info -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div><!-- /.section__inner -->
+                </div><!-- /.container -->
+                
+                <aura:if isTrue="{!v.isDueDatePassed}">
+                <div class="slds-align_absolute-center" style="height:5rem">  
+                    <lightning:button variant="brand"
+                                      label="Save"
+                                      title="OK"
+                                      onclick="{!c.savePicklistValues}"/>  
+                </div>
+               </aura:if>
+                
+                
+            </section><!-- /.section-quantity -->
+        <!-- /.main -->
+        
+        
+        
+        <div class="popup js-popup popup-login" id="popup-add-activity">
+            <div class="popup__background js-popup-close"></div><!-- /.popup__background -->
+            
+            <div class="popup__inner">
+                <button type="button" class="js-popup-close popup__close">
+                    <img src="assets/images/png/popup-close.png" alt="Close Icon"/>
+                </button><!-- popup__close -->
+                
+                <div class="form form-steps">
+                    <form action="?" method="post">
+                        <div class="steps" id="steps">
+                            
+                            
+                            <!-- STEP ONE -->
+                            
+                            
+                            <div class="step active" data-step-index="0">
+                                <div class="login">
+                                    <div class="login__head">
+                                        <h4 class="login__title">
+                                            Activity Details
+                                        </h4><!-- /.login__title -->
+                                    </div><!-- /.login__head -->
+                                    
+                                    <div class="login__body">
+                                        <div class="form-group">
+                                            <label for="activity_name">Activity Name</label>
+                                            
+                                            <input type="text" name="activity-name" id="activity_name" class="form-control form-control--big" placeholder="Enter the planned activity name"/>
+                                        </div><!-- /.form-group -->
+                                        
+                                        <div class="form-group">
+                                            <label for="primaryHop">Primary HOP Outcome</label>
+                                            
+                                            <div class="select-big">
+                                                <select name="primary-hop" id="primaryHop">
+                                                    <option data-display="Select a HOP Outcome to assign this activity to"></option>
+                                                    
+                                                    <option value="1">Option 2</option>
+                                                    
+                                                    <option value="1">Option 3</option>
+                                                    
+                                                    <option value="1">Option 4</option>
+                                                </select>
+                                            </div><!-- /.select-big -->
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.login__body -->
+                                </div><!-- /.login -->
+                            </div><!-- /.step -->
+                            
+                            
+                            <!-- STEP Two -->
+                            
+                            
+                            <div class="step" data-step-index="1">
+                                <div class="login">
+                                    <div class="login__head">
+                                        <h4 class="login__title">
+                                            Purpose of Activity
+                                        </h4><!-- /.login__title -->
+                                    </div><!-- /.login__head -->
+                                    
+                                    <div class="login__body">
+                                        <div class="form-group">
+                                            <label for="activityPurpose">What is the purpose of this activity?</label>
+                                            
+                                            <textarea name="activity-purpose" id="activityPurpose" class="form-control form-textarea" placeholder="A breif description outlining the purpose of this activity"></textarea>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.login__body -->
+                                </div><!-- /.login -->
+                            </div><!-- /.step -->
+                            
+                            
+                            <!-- STEP Three -->
+                            
+                            
+                            <div class="step" data-step-index="2">
+                                <div class="login">
+                                    <div class="login__head">
+                                        <h4 class="login__title">
+                                            Expectations of Impact
+                                        </h4><!-- /.login__title -->
+                                    </div><!-- /.login__head -->
+                                    
+                                    <div class="login__body">
+                                        <div class="form-group">
+                                            <label for="impact">What impact will this have on whanau hapu iwi?</label>
+                                            
+                                            <textarea name="what-impact" id="impact" class="form-control form-textarea" placeholder="Breifly describe the impact this activity will have on whanau, hapu and iwi."></textarea>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.login__body -->
+                                </div><!-- /.login -->
+                            </div><!-- /.step -->
+                            
+                            
+                            <div class="steps__actions">
+                                <button type="button" class="js-move step__btn step__prev" data-move-to="prev">Go Back</button>
+                                
+                                <div class="steps__dots">
+                                    <ul>
+                                        <li class="active">
+                                            <button type="button" class="js-move step__dot" data-move-to="0">Dot</button>
+                                        </li>
+                                        
+                                        <li>
+                                            <button type="button" class="js-move step__dot" data-move-to="1">Dot</button>
+                                        </li>
+                                        
+                                        <li>
+                                            <button type="button" class="js-move step__dot" data-move-to="2">Dot</button>
+                                        </li>
+                                    </ul>
+                                    
+                                    
+                                </div><!-- /.steps__dots -->
+                                
+                                <button type="button" class="js-move step__btn step__next" data-move-to="next">Next</button>
+                                
+                                <button type="submit" value="GO" class="js-popup-close step__btn step__submit">SAVE</button> 
+                            </div><!-- /.steps__actions -->
+                        </div><!-- /.steps -->
+                    </form>
+                </div>
+            </div><!-- /.form -->
+        </div><!-- /.popup__inner -->
+
+    
+    <!--Use aura:if tag to display/hide popup based on isModalOpen value-->  
+    
+    <aura:if isTrue="{!v.isModalOpen}">             
+        <c:createActivitiy parent="{! this}"/>
+    </aura:if>
+    <aura:if isTrue="{!v.isDeletePopup}">
+        
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{!c.closeDeleteModal }"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Are you sure?</h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p style="text-align:center">If you delete this activity you won't be able to restore this activity.
+                        
+                    </p>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral"
+                                      label="No"
+                                      title="No"
+                                      onclick="{! c.closeDeleteModal }"/>
+                    <lightning:button variant="brand"
+                                      label="Yes,I want to delete"
+                                      title="Yes"
+                                      onclick="{!c.deleteDetails}"
+                                      />
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

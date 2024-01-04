@@ -1,0 +1,39 @@
+<apex:page sidebar="false">
+    <apex:sectionHeader title="Participation and Membership Data"
+        subtitle="Participation and Membership Data" />
+    <apex:form >
+        <ul>
+            <li>
+            <apex:outputLink value="/a12?fcf=00B6F00000AZhsX" target="_self">Course Participation</apex:outputLink>
+            </li>
+       <!-- <li>
+            <apex:outputLink value="/a12/e?retURL=%2Fa12%2Fo" target="_blank">Course Activity Profile (Add a New Course)</apex:outputLink>
+            </li> 
+       -->
+            <li>
+            <apex:outputLink value="/a16?fcf=00B6F00000AZhsb" target="_self">Activity Participation</apex:outputLink>
+            </li>
+       <!-- <li>
+            <apex:outputLink value="/a14/e?retURL=%2Fa14%2Fo" target="_blank">Activity Participation Profile (Add New)</apex:outputLink>
+            </li>
+       -->
+            <li>
+            <apex:outputLink value="/a14?fcf=00B6F00000AZhsZ" target="_self">Membership by Sport NZ Categories</apex:outputLink>
+            </li>
+            <li>
+            <apex:outputLink value="/a1G?fcf=00B6F00000AZhsk" target="_self">Coaches and Volunteers</apex:outputLink>
+            </li>
+       <!-- <li>
+            <apex:outputLink value="/a1C/e?retURL=%2Fa1C%2Fo" target="_blank">Workforce Numbers (Add a new category)</apex:outputLink>
+            </li>  
+       -->
+            <li>
+            <apex:outputLink value="/a19?fcf=00B6F00000AZhse" target="_self">Performance/Representative Events</apex:outputLink>
+            </li>
+       <!-- <li>
+            <apex:outputLink value="/a18/e?retURL=%2Fa18%2Fo" target="_blank">Performance/Representative Events (Add a new category)</apex:outputLink>
+            </li>
+       -->         
+        </ul>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StrategicArea_closed_Investment_Schedule</fullName>
+    <active>true</active>
+    <description>Can&apos;t create Investment schedule of closed strategic area.</description>
+    <errorConditionFormula>IF(ISPICKVAL(Investment_Area__r.Strategic_Area__r.Status__c,&quot;Closed&quot;)&amp;&amp;  ISNEW(), true, false)</errorConditionFormula>
+    <errorMessage>The associated Strategic Area is closed, so no new Investment schedules can be added.</errorMessage>
+</ValidationRule>

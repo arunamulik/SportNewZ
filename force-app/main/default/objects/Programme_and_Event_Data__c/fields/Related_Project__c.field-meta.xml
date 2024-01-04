@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Project__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Some organisations group their programmes within projects or categories. This feature is for your convenience only. If you don&apos;t use &apos;projects&apos; you could use this field to categorise your programmes by type. We only recommend this if it might be useful</inlineHelpText>
+    <label>Related Project</label>
+    <length>100</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

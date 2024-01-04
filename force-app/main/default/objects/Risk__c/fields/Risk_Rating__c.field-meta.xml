@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Risk_Rating__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(TEXT( Impact_Rating__c )),null, 
+
+IMAGE( 
+
+CASE(TEXT( Impact_Rating__c ), 
+
+&quot;Extreme&quot;, 
+
+CASE(TEXT(  Likelihood_Rating__c ), 
+
+&quot;Unlikely&quot;, $Setup.Icons__c.Yellow__c, 
+&quot;Possible/Occasional&quot;,$Setup.Icons__c.Orange__c, 
+&quot;Likely&quot;,$Setup.Icons__c.Red__c, 
+&quot;Highly Likely&quot;,$Setup.Icons__c.Red__c, 
+&quot;&quot;), 
+
+&quot;Major&quot;, 
+
+CASE(TEXT( Likelihood_Rating__c ), 
+
+&quot;Unlikely&quot;, $Setup.Icons__c.Yellow__c, 
+&quot;Possible/Occasional&quot;,$Setup.Icons__c.Orange__c, 
+&quot;Likely&quot;,$Setup.Icons__c.Orange__c, 
+&quot;Highly Likely&quot;,$Setup.Icons__c.Red__c, 
+&quot;&quot;), 
+
+&quot;Moderate&quot;, 
+
+CASE(TEXT( Likelihood_Rating__c ), 
+
+&quot;Unlikely&quot;, $Setup.Icons__c.Green__c , 
+&quot;Possible/Occasional&quot;,$Setup.Icons__c.Yellow__c, 
+&quot;Likely&quot;,$Setup.Icons__c.Orange__c, 
+&quot;Highly Likely&quot;,$Setup.Icons__c.Orange__c, 
+&quot;&quot;), 
+
+&quot;Minor&quot;, 
+
+CASE(TEXT( Likelihood_Rating__c ), 
+
+&quot;Unlikely&quot;, $Setup.Icons__c.Green__c, 
+&quot;Possible/Occasional&quot;,$Setup.Icons__c.Green__c, 
+&quot;Likely&quot;,$Setup.Icons__c.Yellow__c, 
+&quot;Highly Likely&quot;,$Setup.Icons__c.Yellow__c, 
+&quot;&quot;), 
+&quot;&quot;), 
+&quot;&quot;) 
+)</formula>
+    <label>Risk Rating</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

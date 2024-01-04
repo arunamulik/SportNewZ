@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Application_Create_Assessment</fullName>
+        <field>Create_Assessments__c</field>
+        <literalValue>1</literalValue>
+        <name>Application Create Assessment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+        <targetObject>Application_Round__c</targetObject>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Application_Name_Application_Round</fullName>
+        <field>Name__c</field>
+        <formula>Application_Round__r.Name</formula>
+        <name>Application Name=Application Round</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>New Application Created</fullName>
+        <actions>
+            <name>Application_Create_Assessment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Application__c.CreatedDate</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

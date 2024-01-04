@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Application Round</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Application Rounds</value>
+    </caseValues>
+    <layouts>
+        <layout>Active Communities EOI Layout</layout>
+        <sections>
+            <label></label>
+            <section>Application Form SharePoint URL</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Active Communities Full Layout</layout>
+        <sections>
+            <label></label>
+            <section>Application Form SharePoint URL</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>He Oranga Poutama Layout</layout>
+        <sections>
+            <label></label>
+            <section>Application Form SharePoint URL</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Hillary Expedition Layout</layout>
+        <sections>
+            <label></label>
+            <section>Application Form SharePoint URL</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Innovation Layout</layout>
+        <sections>
+            <label></label>
+            <section>Application Form SharePoint URL</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Procurement EOI Layout</layout>
+        <sections>
+            <label></label>
+            <section>Application Form SharePoint URL</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Procurement Full Layout</layout>
+        <sections>
+            <label></label>
+            <section>Application Form SharePoint URL</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Research Layout</layout>
+        <sections>
+            <label></label>
+            <section>Application Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label></label>
+        <name>Active_Communities_EOI</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Active_Communities_Full</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>He_Oranga_Poutama</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Hillary_Expedition</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Innovation</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Procurement_EOI</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Procurement_Full</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Research</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>EOI_and_Full_Application_Round_Names</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Assessor_Scoring</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Create_Assessments</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Enter_Final_Assessment_Decisions</name>
+    </webLinks>
+</CustomObjectTranslation>

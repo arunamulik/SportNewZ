@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Currency_Completed</fullName>
+    <active>true</active>
+    <description>Currency result uneditable</description>
+    <label>Currency Completed</label>
+    <picklistValues>
+        <picklist>Reporting_Type__c</picklist>
+        <values>
+            <fullName>Sport NZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Verbal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Verbal with Documentation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Written</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Met</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Met</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partially Met</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Number</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Percent</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Approved__c</fullName>
+    <externalId>false</externalId>
+    <label>Total Approved</label>
+    <summarizedField>Investment_Area__c.Approved__c</summarizedField>
+    <summaryForeignKey>Investment_Area__c.Strategic_Area__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

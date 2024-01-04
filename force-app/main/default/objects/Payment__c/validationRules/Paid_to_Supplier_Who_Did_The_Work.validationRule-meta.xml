@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Paid_to_Supplier_Who_Did_The_Work</fullName>
+    <active>true</active>
+    <errorConditionFormula>ispickval( Initiative__r.Type__c, &quot;Paid to Supplier&quot;) &amp;&amp; not(isblank(Who_did_the_work__c))</errorConditionFormula>
+    <errorDisplayField>Who_did_the_work__c</errorDisplayField>
+    <errorMessage>Specifying &apos;Who did the work&apos; is not required for Initiatives that are &apos;Paid to Supplier&apos;. Please remove this value.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Financial_Year__c</fullName>
+    <defaultValue>(&quot;2022 - 2024&quot;)</defaultValue>
+    <description>Select the financial year that your investment relates to.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select the financial year that Sport NZ is investing for.</inlineHelpText>
+    <label>Financial Year</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>2021 - 2022</fullName>
+                <default>false</default>
+                <label>2021 - 2022</label>
+            </value>
+            <value>
+                <fullName>2021 - 2024</fullName>
+                <default>false</default>
+                <label>2021 - 2024</label>
+            </value>
+            <value>
+                <fullName>2022-2024</fullName>
+                <default>false</default>
+                <label>2022-2024</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

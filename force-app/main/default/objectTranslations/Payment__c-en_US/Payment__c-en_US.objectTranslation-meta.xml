@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Payment</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Payments</value>
+    </caseValues>
+    <layouts>
+        <layout>Credit Layout</layout>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Funding Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Other</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Credit Layout Read Only</layout>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Funding Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Other</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Payment Layout</layout>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Funding Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment System Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reports</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Payment Read Only</layout>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Funding Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment System Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reports</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Refund Layout</layout>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Funding Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Other</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Refund Layout Read Only</layout>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Funding Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Other</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Service Credit Layout</layout>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Funding Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Other</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Service Credit Layout Read Only</layout>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Funding Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Other</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment System Information</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>Test</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>Test_Payment</name>
+    </quickActions>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Buy_Back_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Credit</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Credit_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Payment</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>RUL_Payment_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Refund</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Refund_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Service_Credit</name>
+    </recordTypes>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Buy_back_amount_exceeds_related_payment</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>CannotEditRecordsOfApprovedIS</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cannot_Edit_Payment</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Credit_Amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Credit_Related_Payment</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Credit_vendor</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Finance_Cannot_Create_Payments</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Hold_Reason_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Manual_Hold_Reason_Blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>No_Backdating_Payment_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Paid_Third_Party_Vendor</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Paid_direct_vendor</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Paid_to_Partner_Vendor</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Paid_to_Supplier_Who_Did_The_Work</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Payment_Amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Payment_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Refund_Amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Refund_Related_Payment</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Service_Credit_Amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Supplier_Invoice_Date_cannot_be_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Time_and_Advice_cannot_have_payments</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Add_Hold</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Change_Status_of_Payments</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Related_Payments</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Related_Requirements</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Remove_Hold</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Schedule_Payments</name>
+    </webLinks>
+</CustomObjectTranslation>

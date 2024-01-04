@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Draft</fullName>
+    <columns>NAME</columns>
+    <columns>Invoice_Number_Link__c</columns>
+    <columns>Partner__c</columns>
+    <columns>Vendor__c</columns>
+    <columns>Amount__c</columns>
+    <columns>Date__c</columns>
+    <columns>Initiative__c</columns>
+    <columns>Pending_Requirements__c</columns>
+    <columns>Overdue_Requirements__c</columns>
+    <columns>Status__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>Organisation_Flag__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Draft</value>
+    </filters>
+    <label>Draft Payments</label>
+</ListView>

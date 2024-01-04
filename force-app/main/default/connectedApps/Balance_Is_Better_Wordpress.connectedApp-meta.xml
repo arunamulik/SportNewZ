@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>aruna.mulik@eternussolutions.com</contactEmail>
+    <label>Balance Is Better Wordpress</label>
+    <oauthConfig>
+        <callbackUrl>https://dev.balanceisbetter.org.nz/wp-admin/options-general.php?page=object-sync-salesforce-admin&amp;tab=authorize</callbackUrl>
+        <consumerKey>3MVG9Po2PmyYruunIZR7z32Xb6EULOZrQ0RBZILNEk7LfU9v18b6N5CeuI.gJxQkEuc6cT_q1iQyeUkjdzIx4</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

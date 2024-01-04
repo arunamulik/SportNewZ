@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_a_New_Course</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Add a New Course</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>{!IF(CONTAINS(User.Profile_Name__c,&apos;Partner&apos;),
+URLFOR(&quot;/partners/a12/e?retURL=%2Fa12%2Fo&quot;),
+URLFOR(&quot;/a12/e?retURL=%2Fa12%2Fo&quot;))}</url>
+</WebLink>

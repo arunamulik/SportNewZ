@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outcome_Area__c</fullName>
+    <externalId>false</externalId>
+    <label>Outcome Area</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>BC TEAM OUTCOMES</fullName>
+                <default>false</default>
+                <label>BC Team Outcomes</label>
+            </value>
+            <value>
+                <fullName>Commercial Outcomes</fullName>
+                <default>false</default>
+                <label>Commercial Outcomes</label>
+            </value>
+            <value>
+                <fullName>Finance and Corporate Services Outcomes</fullName>
+                <default>false</default>
+                <label>Finance and Corporate Services Outcomes</label>
+            </value>
+            <value>
+                <fullName>GOVERNANCE &amp; PLANNING OUTCOMES</fullName>
+                <default>false</default>
+                <label>Governance &amp; Planning Outcomes</label>
+            </value>
+            <value>
+                <fullName>People and Culture Outcomes</fullName>
+                <default>false</default>
+                <label>People and Culture Outcomes</label>
+            </value>
+            <value>
+                <fullName>Technology Outcomes</fullName>
+                <default>false</default>
+                <label>Technology Outcomes</label>
+            </value>
+            <value>
+                <fullName>Active Recreation​</fullName>
+                <default>false</default>
+                <label>Active Recreation​</label>
+            </value>
+            <value>
+                <fullName>Insights and Evaluation​</fullName>
+                <default>false</default>
+                <label>Insights and Evaluation​</label>
+            </value>
+            <value>
+                <fullName>Leadership and Connectivity​</fullName>
+                <default>false</default>
+                <label>Leadership and Connectivity​</label>
+            </value>
+            <value>
+                <fullName>Physical Education</fullName>
+                <default>false</default>
+                <label>Physical Education</label>
+            </value>
+            <value>
+                <fullName>Play</fullName>
+                <default>false</default>
+                <label>Play</label>
+            </value>
+            <value>
+                <fullName>Spaces and Places​</fullName>
+                <default>false</default>
+                <label>Spaces and Places​</label>
+            </value>
+            <value>
+                <fullName>Sport</fullName>
+                <default>false</default>
+                <label>Sport</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_Strategic_Priority__c</fullName>
+    <externalId>false</externalId>
+    <label>CS Strategic Priority</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Insights – Demographics and trends</fullName>
+                <default>false</default>
+                <label>Insights – Demographics and trends</label>
+            </value>
+            <value>
+                <fullName>Insights - Customer insight</fullName>
+                <default>false</default>
+                <label>Insights - Customer insight</label>
+            </value>
+            <value>
+                <fullName>People - Workforce</fullName>
+                <default>false</default>
+                <label>People - Workforce</label>
+            </value>
+            <value>
+                <fullName>People - Coaching</fullName>
+                <default>false</default>
+                <label>People - Coaching</label>
+            </value>
+            <value>
+                <fullName>Spaces and Places - Facility Development</fullName>
+                <default>false</default>
+                <label>Spaces and Places - Facility Development</label>
+            </value>
+            <value>
+                <fullName>Spaces and Places - Collaboration &amp; Partnerships</fullName>
+                <default>false</default>
+                <label>Spaces and Places - Collaboration &amp; Partnerships</label>
+            </value>
+            <value>
+                <fullName>Partners and Providers - Organisational Role &amp; Purpose</fullName>
+                <default>false</default>
+                <label>Partners and Providers - Organisational Role &amp; Purpose</label>
+            </value>
+            <value>
+                <fullName>Partners and Providers - Business Capability</fullName>
+                <default>false</default>
+                <label>Partners and Providers - Business Capability</label>
+            </value>
+            <value>
+                <fullName>Partners and Providers - Partnering</fullName>
+                <default>false</default>
+                <label>Partners and Providers - Partnering</label>
+            </value>
+            <value>
+                <fullName>Partners/Providers - Provider Network</fullName>
+                <default>false</default>
+                <label>Partners/Providers - Provider Network</label>
+            </value>
+            <value>
+                <fullName>Pathways - Physical Literacy</fullName>
+                <default>false</default>
+                <label>Pathways - Physical Literacy</label>
+            </value>
+            <value>
+                <fullName>Pathways - Talent Identification &amp; Development</fullName>
+                <default>false</default>
+                <label>Pathways - Talent Identification &amp; Development</label>
+            </value>
+            <value>
+                <fullName>Pathways - Competition Structure</fullName>
+                <default>false</default>
+                <label>Pathways - Competition Structure</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

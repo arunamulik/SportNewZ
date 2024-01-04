@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Closed_strategic_area_Initiative</fullName>
+    <active>true</active>
+    <description>Creation of Initiative is not allowed when Investment area of initiative is associated with closed strategic area.</description>
+    <errorConditionFormula>IF(ISPICKVAL(Investment_Area__r.Strategic_Area__r.Status__c,&quot;Closed&quot;) &amp;&amp; ISNEW(), true, false)</errorConditionFormula>
+    <errorMessage>An initiative cannot be added to an Investment Area which is associated with a closed Strategic Area.</errorMessage>
+</ValidationRule>

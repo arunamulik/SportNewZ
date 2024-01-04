@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Service_Credit_Amount</fullName>
+    <active>true</active>
+    <errorConditionFormula>(RecordType.DeveloperName  = &apos;Service_Credit&apos; || 
+RecordType.DeveloperName  = &apos;Buy_Back_Read_Only&apos;) &amp;&amp;  
+( Amount__c &gt;= 0 || abs(Amount__c) &gt;  abs(Initiative__r.Planned__c))</errorConditionFormula>
+    <errorDisplayField>Amount__c</errorDisplayField>
+    <errorMessage>Please enter a negative amount that isn&apos;t greater than the related Initiative planned amount.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>KiwiSport Data</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>KiwiSport Data</value>
+    </caseValues>
+    <layouts>
+        <layout>KiwiSport Data Layout</layout>
+        <sections>
+            <label></label>
+            <section>Contributions:</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>KiwiSport Data Layout Partner</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Financial Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Leverage</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Location Information (Only Complete One Box or the Other, not Both)</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Other Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Participation Data</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Project Characteristics</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Project Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Project Funding</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Partner_can_not_update_Name</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Valid_End_Date</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Add_a_New_Kiwisport_Project</name>
+    </webLinks>
+</CustomObjectTranslation>

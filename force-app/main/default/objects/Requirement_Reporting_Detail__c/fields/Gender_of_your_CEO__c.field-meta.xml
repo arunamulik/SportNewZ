@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gender_of_your_CEO__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Gender diverse means the person does not identify as male or female</inlineHelpText>
+    <label>Gender of your CEO</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Gender Diverse</fullName>
+                <default>false</default>
+                <label>Gender Diverse</label>
+            </value>
+            <value>
+                <fullName>Woman</fullName>
+                <default>false</default>
+                <label>Self-identified woman</label>
+            </value>
+            <value>
+                <fullName>Man</fullName>
+                <default>false</default>
+                <label>Self-identified man</label>
+            </value>
+            <value>
+                <fullName>Men</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Men</label>
+            </value>
+            <value>
+                <fullName>Women</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Women</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

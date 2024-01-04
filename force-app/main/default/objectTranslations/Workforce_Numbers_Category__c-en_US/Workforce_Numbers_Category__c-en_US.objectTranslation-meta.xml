@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Workforce Numbers Category</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Workforce Numbers Category</value>
+    </caseValues>
+    <layouts>
+        <layout>Workforce Numbers Category Admin Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Workforce Numbers Category Admin Read Only Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Workforce Numbers Category Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label></label>
+        <name>Administrator</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Partner_User</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Valid_End_Date</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Add_a_new_Coaches_or_Volunteers_Course</name>
+    </webLinks>
+</CustomObjectTranslation>

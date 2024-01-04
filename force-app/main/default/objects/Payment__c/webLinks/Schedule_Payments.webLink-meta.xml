@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Schedule_Payments</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Schedule Payments</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/28.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/28.0/apex.js&quot;)} 
+
+if(&apos;{!Initiative__c.Status__c}&apos; == &quot;Draft&quot; || &apos;{!Initiative__c.Status__c}&apos; == &quot;Pending Business Case Submission&quot; || &apos;{!Initiative__c.Status__c}&apos; == &quot;Pending Business Case Approval&quot; || &apos;{!Initiative__c.Status__c}&apos; == &quot;Declined&quot; || &apos;{!Initiative__c.Status__c}&apos; == &quot;Error&quot;){ 
+
+alert(&quot;Payments for this Initiative cannot be scheduled until the Initiative has been approved&quot;); 
+
+}
+
+else if(&apos;{!Initiative__c.Schedule_Payments_Check__c}&apos; == 0){
+
+alert(&quot;The &apos;Draft&apos; Payments cannot be scheduled as total more than was has been planned and approved for this Initiative.&quot;); 
+
+}
+
+else if(&apos;{!Initiative__c.Security_Schedule_Payments__c}&apos; == false){
+
+alert(&quot;You are not authorised to Schedule Payments&quot;);
+
+}
+
+else{ 
+
+var i = new sforce.SObject(&quot;Initiative__c&quot;); 
+
+i.Id = &apos;{!Initiative__c.Id}&apos;; 
+
+i.Payments_Scheduled__c = 1; 
+
+var result = sforce.connection.update([i]); 
+
+window.location.href=window.location.href; 
+
+}</url>
+</WebLink>

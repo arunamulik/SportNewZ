@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Value_of_Auckland__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Amount, in dollars, that was invested in Auckland. Please enter a number without symbols. E,g. if $4,500 was invested in Auckland, please enter 4500</inlineHelpText>
+    <label>Value of Auckland</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

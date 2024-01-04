@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Added Value Report</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Added Value Report</value>
+    </caseValues>
+    <layouts>
+        <layout>Added Value Report Admin Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Facilities</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Human Resources</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Income</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Media</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Sports Houses</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Added Value Report Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Facilities</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Human Resources</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Income</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Media</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Sports Houses</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Valid_End_Date</name>
+    </validationRules>
+</CustomObjectTranslation>

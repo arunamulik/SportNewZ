@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Send_for_Payment__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( AND( NOT( Pending_Requirements__c ), NOT(Overdue_Requirements__c ),text(Status__c) = &quot;Scheduled&quot;, Date__c &lt; today() + 15,Organisation_Flag__c =&quot;HPSNZ&quot;), True, 
+IF( AND( NOT( Pending_Requirements__c ), NOT(Overdue_Requirements__c ),text(Status__c) = &quot;Scheduled&quot;, Date__c &lt; today() + 15,Organisation_Flag__c = &quot;Sport NZ&quot;),
+							True, False))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Send for Payment</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

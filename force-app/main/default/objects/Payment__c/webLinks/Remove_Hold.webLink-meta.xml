@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Remove_Hold</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Remove Hold</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/28.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/28.0/apex.js&quot;)} 
+
+if(&apos;{!Payment__c.Status__c}&apos; != &quot;On Hold&quot;){ 
+
+alert(&quot;There is no hold on this Payment to remove&quot;); 
+
+}
+
+else if(&apos;{!Payment__c.Hold_Reason__c}&apos; != &quot;Manual&quot;){
+
+alert(&quot;The hold on this Payment has been automatically set by the system and cannot be removed. Please review and update the requirements due for this Partner to remove the hold&quot;);
+
+} 
+
+else if(&apos;{!Payment__c.Security_Remove_Hold__c}&apos; == false){
+
+alert(&quot;You are not authorised to Remove Holds on Payments&quot;);
+
+}
+
+else{
+
+var p = new sforce.SObject(&quot;Payment__c&quot;); 
+p.Id = &apos;{!Payment__c.Id}&apos;; 
+p.Status__c = &quot;Scheduled&quot;; 
+p.Hold_Reason__c = null; 
+p.Manual_Hold_Reason__c = null; 
+var result = sforce.connection.update([p]); 
+window.location.href=window.location.href; 
+
+}</url>
+</WebLink>

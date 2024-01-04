@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>High_Performance_Sport_NZ</fullName>
+    <active>true</active>
+    <description>Used for contacts who subscribe to any HPSNZ publications</description>
+    <label>High Performance Sport NZ</label>
+    <picklistValues>
+        <picklist>Ko_wai_koe__c</picklist>
+        <values>
+            <fullName>Individual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marae</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rangatahi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Researcher</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School%2FKura</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Location__c</picklist>
+        <values>
+            <fullName>Auckland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bay of Plenty</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Canterbury%2FWest Coast</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Counties Manakau</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gisborne</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hawkes Bay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manawatu</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>North Harbour</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Northland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Otago</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Southland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Taranaki</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tasman</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waikato</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waitakere</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wellington</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Whanganui</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Partner_Type__c</picklist>
+        <values>
+            <fullName>Education</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Government</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>National Recreation Organisation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>National Sporting Organisation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regional Sports Trust</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Territorial Authority</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Role__c</picklist>
+        <values>
+            <fullName>Athlete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coach</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rangatahi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sport Leader%2FAdministrator</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Teacher</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Both</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HPSNZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sport NZ</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Youth_sport_options__c</picklist>
+        <values>
+            <fullName>I am a coach</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>I am a teacher</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>I am a volunteer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>I am a youth sport administrator</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>I am the parent%2Fguardian of a participant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Scheduled_Initiatives</fullName>
+    <columns>NAME</columns>
+    <columns>Partner__c</columns>
+    <columns>Plan__c</columns>
+    <columns>Investment_Area__c</columns>
+    <columns>Start_Date__c</columns>
+    <columns>End_Date__c</columns>
+    <columns>Planned__c</columns>
+    <columns>Paid__c</columns>
+    <columns>Type__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Scheduled</value>
+    </filters>
+    <label>Scheduled Initiatives</label>
+</ListView>

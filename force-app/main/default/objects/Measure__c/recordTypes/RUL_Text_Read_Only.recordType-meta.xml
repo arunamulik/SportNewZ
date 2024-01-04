@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RUL_Text_Read_Only</fullName>
+    <active>true</active>
+    <description>This record type will be used to prevent edit of record when Inv schedule status is Approved or Signed.</description>
+    <label>Text Read Only</label>
+    <picklistValues>
+        <picklist>Reporting_Type__c</picklist>
+        <values>
+            <fullName>Sport NZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Verbal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Verbal with Documentation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Written</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Met</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Met</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partially Met</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Variation</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Number</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Percent</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

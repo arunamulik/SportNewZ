@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Test_Partner_Plan_Workflow__c</fullName>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(&quot;https://workflow.congamerge.com/?SessionId=&quot;
++  $Api.Session_ID + &quot;&amp;ServerURL=&quot; + $Api.Partner_Server_URL_290 + &quot;&amp;id=&quot; + Id + 
+&quot;&amp;templateid=[PartnerPlanReport]a0k9000000KwcLM&quot; + 
+&quot;&amp;fp0=0&quot; + 
+&quot;&amp;queryid=[OrgProfile]a0i90000005bDfC?pv0=&quot; + Id + &quot;,[PlanInitiatives]a0i90000005bDfq?pv0=&quot; + Id + &quot;,[PlanPayments]a0i90000005bDfR?pv0=&quot; + Id + &quot;,[PlanChallenges]a0i90000005bDf2?pv0=&quot; + Id + &quot;,[PlanOpportunities]a0i90000005bDes?pv0=&quot; + Id + &quot;,[PlanRequirements]a0i90000005bDgK?pv0=&quot; + Id + &quot;,[PlanEvents]a0i90000005bDfv?pv0=&quot; + Id + &quot;,[PlanTasks]a0i90000005bDfW?pv0=&quot; + Id + &quot;,[PartnerTeam]a0i90000005bDgA?pv0=&quot; + Id + 
+&quot;&amp;ofn=&quot; + P_Name__c + &quot; - Report&quot; + 
+&quot;&amp;qmode=Attachments&quot;, &quot;Test Conga Partner Plan&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Test Partner Plan Workflow</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

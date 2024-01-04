@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AgeOfParticipants_Total__c</fullName>
+    <externalId>false</externalId>
+    <formula>AgeOfParticipants_DidNotRespond__c  +  AgeOfParticipants_Kaum_tua__c  +  AgeOfParticipants_Mokopuna__c  +  AgeOfParticipants_Pakeke40_59__c + AgeOfParticipants_Matua_20_39__c  +  AgeOfParticipants_Rangatahi13_19__c  + AgeOfParticipants_Taiohi__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Age Of Participants Total</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

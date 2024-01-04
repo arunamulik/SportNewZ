@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DateSigned_field_cannot_be_a_future_date</fullName>
+    <active>true</active>
+    <errorConditionFormula>Date_Signed_By_External_Party__c  &gt;  TODAY()</errorConditionFormula>
+    <errorDisplayField>Date_Signed_By_External_Party__c</errorDisplayField>
+    <errorMessage>Contract Date signed cannot be future date</errorMessage>
+</ValidationRule>

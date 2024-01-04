@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enter_Final_Assessment_Decisions</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Enter Final Assessment Decisions</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>/apex/FinalAssessorScoring?FinalDecision=true&amp;appRoundId={!Application_Round__c.Id}</url>
+</WebLink>

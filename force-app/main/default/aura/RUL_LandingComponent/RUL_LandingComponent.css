@@ -1,0 +1,478 @@
+.THIS .landingPageBackgroundDiv1{
+    width:60%;
+    float: left;
+}
+.THIS .landingPageBackgroundDiv2{
+    width:40%;
+    float: left;
+    background: #980101;
+}
+.THIS .userNameAdmin{
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5%;
+}
+.THIS .textforNewUser{
+    color: white;
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 2%;
+    font-size: 1em !important;
+    font-weight: inherit;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+}
+.THIS .getStartedButton{
+    background: #5a0000;
+    border: none;
+    border-radius: 0;
+    color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    width: 25%;
+}
+.THIS .getStartedButton:hover {
+    background: #3e0000;
+    color: white;
+}
+.THIS .accClass:open{
+   background-color: #660000;
+      color: #ffffff;
+}
+
+.THIS .sample{
+    padding-top:7px;
+}
+
+.THIS .sample:hover a{
+ color: #f5a523;
+}
+
+.THIS .test:hover a{
+ color: #f5a523;
+}
+
+.THIS .slds-accordion__summary-action:hover{
+     color: #f5a523;
+}
+
+/*.THIS .slds-accordion__section:active{
+      background-color: #660000;
+      color: #ffffff;
+}*/
+.THIS .sample{
+    padding-top:7px;
+}
+
+.THIS .sample:hover a{
+ color: #f5a523;
+}
+
+.THIS .test:hover a{
+ color: #f5a523;
+}
+
+.THIS .sectionitem{
+    padding-left:28px;
+}
+
+
+.THIS .slds-accordion__summary-action:hover{
+     color: #f5a523;
+}
+
+
+.THIS .slds-accordion__summary-action:focus{
+     color: white;
+}
+
+.THIS .slds-accordion__summary-action.slds-active:after{
+     color: black;
+}
+
+
+.THIS .slds-accordion__summary-heading .slds-button:focus{
+    text-decoration:none;
+}
+
+.THIS .slds-accordion__section{
+    padding : 0rem 0rem .75rem .25rem;
+}
+
+.THIS .slds-accordion__summary-action svg{
+		display :none;
+}
+
+.THIS .slds-truncate{
+    font-size:14px;
+    padding-left:25px;
+}
+
+
+.THIS .slds-accordion__summary-heading {
+   background-image: url(/resource/twoarrows);
+   background-repeat: no-repeat;
+    background-position : 5% 46%;
+   height:35px;
+}
+
+
+.THIS .slds-is-open > .slds-accordion__summary > .slds-accordion__summary-heading{
+    background-color:#660000;
+    color: #ffffff;
+    border-left: 1px solid #f5a523;
+    border-radius: 0px;
+    font-size:14px;
+}
+
+
+.THIS  .slds-is-open > .slds-accordion__content{
+   transition: .3s; 
+}
+.THIS .slds-rich-text-editor__toolbar_bottom{
+    color: #cc0000;
+}
+
+.THIS .slds-button__icon{
+    color: #cc0000;
+}
+
+.THIS .ql-editor{
+    height:300px;
+}
+
+.THIS .slds-button_icon{
+    border-color:black;
+}
+
+.THIS .slds-combobox__form-element{
+    color: red;
+}
+
+.THIS .slds-combobox__input{
+    color : red;
+    
+}
+
+
+
+.THIS .slds-button__icon{
+    /*color: white;*/
+}
+/*.THIS .slds-dropdown_left{
+    left: -117px;
+}*/
+.THIS .slds-dropdown{
+    border: none;
+    overflow:visible;
+    overflow-y:scroll;
+    width: auto;
+    max-width:220px;
+}
+.THIS #score1, .THIS #score2, .THIS #score3, .THIS #score4, .THIS #score5{
+        -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    border-radius: 5px;
+    border: solid 1px #e8e8e8;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: normal;
+    height: 42px;
+    line-height: 40px;
+    outline: none;
+    padding-left: 18px;
+    padding-right: 30px;
+    position: relative;
+    text-align: left !important;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    width: auto;
+    color : red;
+}
+
+/*.THIS .intro, .THIS .fixed, .THIS .intro__fader {
+    height: 50px;
+}
+.THIS .intro, .THIS .intro__fader {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 0px;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #ececec), to(rgba(236, 236, 236, 0)));
+    background-image: -o-linear-gradient(#ececec 20%, rgba(236, 236, 236, 0) 100%);
+    background-image: linear-gradient(#ececec 20%, rgba(236, 236, 236, 0) 100%);
+    -webkit-transition: height .4s, background-image .4s, opacity .4s ease-out;
+    -o-transition: height .4s, background-image .4s, opacity .4s ease-out;
+    transition: height .4s, background-image .4s, opacity .4s ease-out;
+    opacity: 0;
+}*/
+
+.THIS .intro {
+    position: fixed;
+    top: 0;
+    left: 256px;
+    width: calc(100% - 256px);
+    height: 915px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    will-change: height;
+    z-index: 1100;
+	 
+}
+
+.THIS .header {
+    z-index:1200;
+}
+
+.THIS .intro__inner{
+    margin-top: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.THIS .scroll-to-next svg {
+    opacity: .6;
+    -webkit-transition: opacity .4s;
+    -o-transition: opacity .4s;
+    transition: opacity .4s;
+    fill: black;
+    /* border-style: groove; */
+    /* offset-rotate: reverse; */
+    /* cx: 30; */
+    /* cy: 30; */
+    width: 2.2rem;
+    height: 2.2rem;
+    /* r: 23; */
+    transform: rotateY(45deg);
+    transform: rotate(-90deg);
+    /* transform: rotateX(45deg); */
+    transform: rotate(90deg, 30, 30);
+    /* width: 0%; */
+    /* height: 10%; */
+    background: white;
+    border-radius: 60%;
+    size: 20%;
+}
+.THIS .slds-combobox__form-element {
+    color: red;
+    display: none;
+}
+.THIS .ql-strike{
+    display: none;
+}
+.THIS .ql-indent, .THIS .ql-list .THIS .ql-align .THIS .ql-clean, .THIS .ql-align, .THIS .ql-clean{
+    display: none;
+}
+.THIS .slds-button-group-list li:first-child .slds-button,.THIS .slds-button-group .slds-button:first-child {
+   
+    height: 50px;
+    width: 70px;
+   
+}
+.THIS .slds-button-group .slds-button+.slds-button,.THIS .slds-button-group .slds-button+.slds-button_last .slds-button,.THIS .slds-button-group .slds-button+.slds-button--last .slds-button,.THIS .slds-button-group-list li+li .slds-button {
+    margin-left: -1px;
+    height: 50px;
+    width: 70px;
+   
+
+}
+
+.THIS .slds-rich-text-editor__toolbar_bottom {
+    border-radius: 0 0 .25rem .25rem;
+    border-top: 1px solid rgb(217, 219, 221);
+    border-bottom: 0;
+}
+.THIS .slds-rich-text-editor__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    white-space: nowrap;
+     position: relative; 
+     padding: 0rem 0rem 0rem 0rem !important; 
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    border-bottom: 1px solid rgb(217, 219, 221);
+    background-color: #ececec;
+}
+
+
+.THIS .slds-rich-text-editor__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    white-space: nowrap;
+    position: relative;
+    padding: 0 0 0 0!important;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom: 0;
+    background-color: #ececec;
+    }
+.THIS .slds-wrap {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    display: none;
+}
+
+
+.THIS .slds-rich-text-editor .slds-button-group-list {
+     margin-right: 0 !important; 
+     margin-bottom: 0 !important; 
+    margin-left: 0;
+}
+
+.THIS .slds-button_icon-border-filled,.THIS .slds-button--icon-border-filled {
+    background-color: #ececec ;
+}
+.THIS .btnClass{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    height: 50px;
+    background: transparent;
+    border: 3px solid #cc0000;
+    color: #cc0000;
+    font-weight: bolder;
+}
+.THIS .btnClass:hover{
+    background: #cc0000;
+    border: 3px solid #cc0000;
+}
+.THIS .dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.THIS .dropbtn:hover, .THIS .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.THIS .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.THIS .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.THIS .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.THIS .dropdown a:hover {background-color: #ddd;}
+
+.THIS .show {display: contents;}
+
+.THIS .nameAct{
+    height: 35px;
+    padding-top: 4%;
+    cursor: pointer;
+    color: #000000;
+    background: transparent;
+    font-weight: bolder;
+}
+.THIS .nameAct:hover{
+    color: #f5a523;
+}
+.THIS .toggleDivclass{
+    Background: #660000;
+    color: white !important;
+}
+.THIS .customCss{
+    width: 40%;
+    float: right;
+    padding: 6%;
+    padding-left: 8% !important;
+    color: #cc0000;
+    font-weight: bolder;
+}
+.THIS .picklistValues, .THIS .picklistValues1{
+    color: black;
+    font-weight: lighter;
+}
+.THIS .uiOutputRichText,.THIS .uiOutputRichText p,.THIS .uiOutputRichText img{
+    height: 100% !important;
+}
+
+.THIS .uiOutputRichText p,.THIS .uiOutputRichText img{
+    margin-bottom: 0px !important;
+}
+.THIS .richtextImage{
+    background-size: cover;
+    height: 100%;
+}
+.THIS .slds-modal__close{
+    border: none;
+}
+
+.THIS .lightningInputs{
+    padding: 4%;
+}
+/*.THIS .slds-select_container:after{	
+	border-top: 5px solid rgba(183, 181, 181, 1);
+    bottom: calc((1.75rem / 2) - 6px);
+    padding-bottom: 4%;
+}
+.THIS .slds-select_container:before{	
+	border-top: 5px solid rgba(183, 181, 181, 1);
+    bottom: calc((1.75rem / 2) - 6px);
+    padding-top: 4%;
+}
+.THIS .niceSelect{
+    width: 32%;
+}*/
+
+.THIS .content {
+    margin-left: 256px;
+    padding-top: 0 !important; 
+}
+
+.THIS .tabs .tabs__nav ul li.active:after {
+    height: 3px !important;
+    background-color: #333333 !important; 
+}
+.THIS .icn svg{
+    fill:black;
+}
+.THIS .section-edit {
+    padding: 0 !important;
+}
+.THIS .tabs .tabs__nav ul li:hover {
+    cursor: pointer;
+}

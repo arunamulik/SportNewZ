@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Draft_Initiatives__c</fullName>
+    <description>sum of planned amounts for all initiatives associated with this investment area, where initiative status is Draft</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Planned amounts on draft initiatives</inlineHelpText>
+    <label>Draft Initiatives</label>
+    <summarizedField>Initiative__c.Planned__c</summarizedField>
+    <summaryFilterItems>
+        <field>Initiative__c.Status_Text__c</field>
+        <operation>equals</operation>
+        <value>Draft</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Initiative__c.Investment_Area__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

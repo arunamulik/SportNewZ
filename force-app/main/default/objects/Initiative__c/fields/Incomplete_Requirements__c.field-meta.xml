@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Incomplete_Requirements__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Number of related requirements with status &apos;Pending&apos; or &apos;Overdue&apos;</inlineHelpText>
+    <label>Incomplete Requirements</label>
+    <summaryFilterItems>
+        <field>Requirement__c.Status__c</field>
+        <operation>equals</operation>
+        <value>Pending, Overdue, Variation</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Requirement__c.Initiative__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

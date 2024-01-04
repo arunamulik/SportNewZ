@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CannotEditRecordsOfApprovedIS</fullName>
+    <active>true</active>
+    <description>This validation rule is preventing required fields of Measure to update manually on Approved or Signed status of Investment Schedule</description>
+    <errorConditionFormula>AND(OR(ISPICKVAL(Initiative__r.Business_Case__r.Status__c , &apos;Approved&apos;),ISPICKVAL(Initiative__r.Business_Case__r.Status__c , &apos;Signed&apos;)), $Profile.Name =&apos;Kahiwi&apos;,OR(ISCHANGED(Name),If(ISCHANGED(Status__c),If(OR(ISPICKVAL(Status__c, &apos;Met&apos;),ISPICKVAL(Status__c, &apos;Partially Met&apos;),ISPICKVAL(Status__c, &apos;Not Met&apos;),ISPICKVAL(Status__c, &apos;Variation&apos;)),true,false),false)))</errorConditionFormula>
+    <errorMessage>Woops! Current business rules will correctly prevent you from editing these fields. To proceed, you must Initiate a Variation.</errorMessage>
+</ValidationRule>

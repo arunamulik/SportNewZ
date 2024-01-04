@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Women_in_HP_Coaching</fullName>
+    <columns>NAME</columns>
+    <columns>Partner__c</columns>
+    <columns>Description__c</columns>
+    <columns>Start_Date__c</columns>
+    <columns>End_Date__c</columns>
+    <columns>Requested__c</columns>
+    <columns>Cost_Centre__c</columns>
+    <columns>Expense_Code__c</columns>
+    <columns>ActivityID__c</columns>
+    <columns>ProjectID__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Investment_Area__c</field>
+        <operation>contains</operation>
+        <value>Women</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Initiative__c.Partner_Plan</value>
+    </filters>
+    <label>Women in HP Coaching</label>
+</ListView>

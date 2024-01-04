@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Particaipation_WhanauType_Total__c</fullName>
+    <externalId>false</externalId>
+    <formula>Particaipation_WhanauType_Hapu__c  +  Particaipation_WhanauType_Kaupapa_H_kina__c  +  Particaipation_WhanauType_KohangaPunaReo__c  +  Particaipation_WhanauType_Kura_Kaupapa__c  +  Particaipation_WhanauType_lwi__c  +  Particaipation_WhanauType_Marae__c  +  Particaipation_WhanauType_Other__c  +  Particaipation_WhanauType_Waka__c  +  Particaipation_WhanauType_Wh_nau__c  +  Particaipation_WhanauType_Whare_Kura__c  +  Particaipation_WhanauType_Whare_Wananga__c + Particaipation_WhanauType_Whanau_Whaikah__c + Particaipation_WhanauType_Mana_Tipua__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>WhanauType Total</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

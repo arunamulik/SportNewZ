@@ -1,0 +1,131 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,lightning:isUrlAddressable"  
+                controller="ActivityOnboardingLandingPageController" access="global">
+    
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TWR</title>
+
+    
+    
+    <aura:handler event="force:refreshView" action="{!c.doInit}"/>
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    <aura:attribute name="PurposeOfActivity" type="boolean" default="true"/>
+    <aura:attribute name="ExpectationsOfImpact" type="boolean" default="false"/>
+    <aura:attribute name="HOPDomain" type="boolean" default="false"/>
+    <aura:handler event="c:SelectedActivityEvent" action="{!c.onsectiontoggle}"/>
+    <aura:handler event="c:SelectedActivityEvent" action="{!c.doInit}"/>
+    <aura:attribute name="activitiySelected" type="Activity__c" default="{ 'sobjectType': 'Activity__c'}"/>
+        <aura:attribute name="activitiySelectedRecord" type="Activity__c" />
+    <aura:method name="callChild" action="{!c.doInit}"/>
+    
+    <aura:attribute name="filteryear" type="String"/>
+    
+    <section class="section-simple overlay overlay--yellow js-section-alt-color" style="margin-top: 0 !important; " data-color="245,165,35">
+        <div class="container container--small">
+            <div class="tabs tabs-simple">
+                <div class="tabs__head">
+                    <div class="tabs__nav">
+                        <ul>
+                            <li aura:id="tab1" class="active" onclick="{!c.PurposeOfActivity}">
+                                <button type="button" data-target="#tab-1" >
+                                    Purpose of activity
+                                </button>
+                            </li>
+                            
+                            <li aura:id="tab2" onclick="{!c.HOPDomain}">
+                                <button type="button" data-target="#tab-2" >
+                                    Outcome Domain
+                                </button>
+                            </li>
+                            <li aura:id="tab3" onclick="{!c.ExpectationsOfImpact}">
+                                <button type="button" data-target="#tab-3" >
+                                    Expectations of impact
+                                </button>
+                            </li>
+                        </ul>
+                    </div><!-- /.tabs__nav -->
+                </div><!-- /.tabs__head -->	  
+                <div class="tabs__body">
+                    
+                    <aura:if isTrue="{!v.PurposeOfActivity}">
+                        <div class="tab active" id="tab-1">
+                            <div class="block-strong-text">
+                                <p>
+                                    {!v.activitiySelected.Description__c}
+                                </p>
+                            </div><!-- /.block-strong-text -->
+                        </div><!-- /#tab-1.tab -->      
+                        <aura:set attribute="else">				
+                            <div class="tab" id="tab-2">
+                                <div class="block-strong-text">
+                                    <p>
+                                        {!v.activitiySelected.Expectations_of_Impact__c}
+                                    </p>
+                                </div><!-- /.block-strong-text -->
+                            </div><!-- /#tab-2.tab -->
+                        </aura:set>
+                    </aura:if> 
+                    <aura:if isTrue="{!v.HOPDomain}">
+                        <div class="tab active" id="tab-2">
+                            <div class="block-strong-text">
+                                <p>
+                                    {!v.activitiySelected.HOP_Outcome_Domain__c}
+                                </p>
+                            </div><!-- /.block-strong-text -->
+                        </div><!-- /#tab-2.tab -->  
+                        <aura:set attribute="else">	
+                            <div class="tab" id="tab-1">
+                                <div class="block-strong-text">
+                                    <p>
+                                        {!v.activitiySelected.Description__c}
+                                    </p>
+                                </div><!-- /.block-strong-text -->
+                            </div><!-- /#tab-1.tab -->
+                            
+                        </aura:set>
+                    </aura:if>
+                    <aura:if isTrue="{!v.ExpectationsOfImpact}">
+                        <div class="tab active" id="tab-3">
+                            <div class="block-strong-text">
+                                <p>
+                                    {!v.activitiySelected.Expectations_of_Impact__c}
+                                </p>
+                            </div><!-- /.block-strong-text -->
+                        </div><!-- /#tab-2.tab -->  
+                        <aura:set attribute="else">	
+                            <div class="tab" id="tab-1">
+                                <div class="block-strong-text">
+                                    <p>
+                                        {!v.activitiySelected.Description__c}
+                                    </p>
+                                </div><!-- /.block-strong-text -->
+                            </div><!-- /#tab-1.tab -->
+                            
+                        </aura:set>
+                    </aura:if>
+                    
+                    
+                    
+                    
+                </div><!-- /.tabs__body -->
+                
+                <!--end-->
+            </div><!-- /.tabs -->
+        </div><!-- /.container -->
+    </section><!-- /.section-simple -->
+    
+    
+    <section class="section-edit section-edit--alt" style="padding:0 !important;">
+        <div class="container">
+            <div class="section__inner">
+                
+                <iframe src="{!'/SportNZ/apex/QuillRichTextEditor?Id=' + v.activitiySelected.Id}" 
+                            width="100%" height="1600px;" Scrolling="no"/>
+
+            </div><!-- /.section__inner -->
+        </div><!-- /.container -->
+    </section><!-- /.section-edit -->
+    
+    
+    
+</aura:component>

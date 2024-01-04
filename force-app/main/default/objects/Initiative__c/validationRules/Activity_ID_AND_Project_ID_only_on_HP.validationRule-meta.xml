@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activity_ID_AND_Project_ID_only_on_HP</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ ISPICKVAL( Investment_Area__r.Strategic_Area__r.Entity__c  , &quot;Sport NZ&quot;),
+OR(
+NOT(ISBLANK(ActivityID__c)),
+NOT(ISBLANK(ProjectID__c) )
+)
+)</errorConditionFormula>
+    <errorDisplayField>Activity_ID__c</errorDisplayField>
+    <errorMessage>Activity ID and Project ID can only be populated if the initiative is related to a &apos;High Performance&apos; strategic area</errorMessage>
+</ValidationRule>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>MakeCheckForTrigger</fullName>
+        <field>CheckForTrigger__c</field>
+        <literalValue>1</literalValue>
+        <name>MakeCheckForTrigger</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Payments_Scheduled_False</fullName>
+        <field>Payments_Scheduled__c</field>
+        <literalValue>0</literalValue>
+        <name>Payments Scheduled &gt; False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Status_Text</fullName>
+        <field>Status_Text__c</field>
+        <formula>Status__c</formula>
+        <name>Set Status Text</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Status_Val</fullName>
+        <field>Status_Value__c</field>
+        <formula>Status__c</formula>
+        <name>Set Status Val</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Close the InvSch 2</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Initiative__c.Status_Text__c</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>MakeCheckForTrigger</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Initiative__c.End_Date__c</offsetFromField>
+            <timeLength>24</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Set Status Text</fullName>
+        <actions>
+            <name>Set_Status_Text</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_Status_Val</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>copy initiative status values in to status text values(this will be used in to roll up summary field)</description>
+        <formula>Status_Text__c &lt;&gt; Status__c ||  Status_Value__c &lt;&gt; Status__c</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Unset Payments Scheduled Flag</fullName>
+        <actions>
+            <name>Payments_Scheduled_False</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Initiative__c.Payments_Scheduled__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Sets the Payments Scheduled check box to false once trigger has run and updated Payments to Scheduled.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

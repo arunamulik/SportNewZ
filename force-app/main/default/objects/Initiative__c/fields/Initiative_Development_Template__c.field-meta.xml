@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Initiative_Development_Template__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Enter the Initiative Development Template that the Initiative relates to</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter the Initiative Development Template that the Initiative relates to</inlineHelpText>
+    <label>Initiative Development Template</label>
+    <referenceTo>Initiative_Development_Template__c</referenceTo>
+    <relationshipLabel>Initiatives</relationshipLabel>
+    <relationshipName>Initiatives</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Youth_sport_options__c</fullName>
+    <externalId>false</externalId>
+    <label>Youth sport options</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>I am a coach</fullName>
+                <default>false</default>
+                <label>I am a coach</label>
+            </value>
+            <value>
+                <fullName>I am a teacher</fullName>
+                <default>false</default>
+                <label>I am a teacher</label>
+            </value>
+            <value>
+                <fullName>I am the parent/guardian of a participant</fullName>
+                <default>false</default>
+                <label>I am the parent/guardian of a participant</label>
+            </value>
+            <value>
+                <fullName>I am a youth sport administrator</fullName>
+                <default>false</default>
+                <label>I am a youth sport administrator</label>
+            </value>
+            <value>
+                <fullName>I am a volunteer</fullName>
+                <default>false</default>
+                <label>I am a volunteer</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

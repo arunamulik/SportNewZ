@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Low_Participation_Targets__c</fullName>
+    <externalId>false</externalId>
+    <label>Low Participation Targets</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Low Participating Communities</fullName>
+                <default>false</default>
+                <label>Low Participating Communities</label>
+            </value>
+            <value>
+                <fullName>Asian</fullName>
+                <default>false</default>
+                <label>Asian</label>
+            </value>
+            <value>
+                <fullName>Indian</fullName>
+                <default>false</default>
+                <label>Indian</label>
+            </value>
+            <value>
+                <fullName>Low Decile</fullName>
+                <default>false</default>
+                <label>Low Decile</label>
+            </value>
+            <value>
+                <fullName>Samoan</fullName>
+                <default>false</default>
+                <label>Samoan</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

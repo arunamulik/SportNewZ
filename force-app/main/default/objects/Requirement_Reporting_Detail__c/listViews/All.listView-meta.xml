@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Requirement_Reporting_Detail_ID__c</columns>
+    <columns>Requirement__c</columns>
+    <columns>Partner__c</columns>
+    <columns>Comments__c</columns>
+    <columns>Status__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>Requirement_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Requirement_Reporting_Detail__c.PI_National_y2</value>
+    </filters>
+    <label>All</label>
+</ListView>

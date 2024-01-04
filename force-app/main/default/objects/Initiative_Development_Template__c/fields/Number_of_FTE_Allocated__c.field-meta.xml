@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_of_FTE_Allocated__c</fullName>
+    <description>Please enter the number of FTE that will be dedicated to this initiative.  This is for all employees named in the &quot;Who will lead this area?&quot; question.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Please enter the number of FTE that will be dedicated to this initiative.  This is for all employees named in the &quot;Who will lead this area?&quot; question.</inlineHelpText>
+    <label>Number of FTE Allocated</label>
+    <length>131072</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

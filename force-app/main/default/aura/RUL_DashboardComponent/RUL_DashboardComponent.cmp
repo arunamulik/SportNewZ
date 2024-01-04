@@ -1,0 +1,736 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,forceCommunity:profileMenuInterface" access="global" 
+                controller="Activity_dashboardPageController">
+    
+    
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    
+    
+    
+    <!--ltng:require scripts="{!$Resource.Chartjs+ '/Chart.min.js'}"/>
+                 <ltng:require scripts="{!$Resource.chartjslabelplugin+ '/src/chartjs-plugin-labels.js'}"   afterScriptsLoaded="{!c.scriptsLoaded1}"  /-->
+    <!--ltng:require   scripts="{!join(',',$Resource.Chartjs + '/Chart.min.js', 
+                                     
+                                     $Resource.plugin)}"    afterScriptsLoaded="{!c.scriptsLoaded1}"  /-->
+    <!--ltng:require scripts="/resource/jquery_imp,/resource/canvas12"  afterScriptsLoaded="{!c.generateChart}" /-->
+    <ltng:require scripts="/resource/jquery_imp,/resource/highchart"  
+                  afterScriptsLoaded="{!c.generateChart12}" />
+   <ltng:require styles="/resource/newone,/resource/NiceSelectCSS,/resource/bundleMK"
+                  scripts="/resource/jquery_imp,/resource/NewJquery,/resource/imp1234,/resource/JLoadJsQuant"  
+                  afterScriptsLoaded="{!c.scriptsLoaded}" />
+    
+    <ltng:require styles="{!$Resource.QualitiveCSS}" />
+    <!--<ltng:require styles="{!$Resource.dashboard_bundlecss}" />-->
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    <aura:attribute name="userInfo" type="user"/> 
+    <aura:attribute name="activitiesRelatedtoUser" type="boolean" default="false"/> 
+    <aura:attribute name="height" type="integer"/> 
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="newActivity" type="Activity__c" default="{ 'sobjectType': 'Activity__c'}"/>
+    <aura:attribute name="Activityitems" type="LIST"/>
+    <aura:attribute name="DiamensionValues" type="List"/>
+    <aura:attribute name="DiamensionValuesInList" type="List"/>
+    <aura:attribute name="TotalDiamensionValues" type="LIST"/>
+    <aura:attribute name="FemaleAndMaleValues" type="List"/>
+    <aura:attribute name="picklistValuesHOPoutcome" type="Object" />
+    <aura:attribute name="truthy" type="boolean" default="true"/>
+    <aura:attribute name="firstStepActivityWizard" type="boolean" default="true"/>
+    <aura:attribute name="secondStepActivityWizard" type="boolean" default="false"/>
+    <aura:attribute name="thirdStepActivityWizard" type="boolean" default="false"/>
+    <aura:attribute name="VideoURL" type="String"/> 
+    <aura:attribute name="imageRichText" type="String"/> 
+    <aura:attribute name="activitiesRelatedtoHOP" type="List" />
+    <aura:attribute name="HOPoutcomeVal1" type="String"/> 
+    <aura:attribute name="HOPoutcomeVal2" type="String"/> 
+    <aura:attribute name="HOPoutcomeVal3" type="String"/> 
+    <aura:attribute name="activitiySelected" type="Activity__c" />
+    <aura:attribute name="disablebuttonid" type="Boolean" default="false" />
+    <aura:attribute name="PicklistValuesActivity" type="Activity__c" />
+    <aura:attribute name="ByOrgGoverned" type="list"/>
+    <aura:attribute name="ActivityGMD" type="list"/>
+    <aura:attribute name="selectedGovernedBy" type="string"/>
+    <aura:attribute name="total_part" type="Integer" />
+    
+    <aura:attribute name="ThroughTypeOfActivityPicklistValues" type="list"/>
+    <aura:attribute name="InOnActivitiesPicklistValues" type="list"/>
+    <aura:attribute name="SignificanceLoactionPicklistValues" type="list"/>
+    <aura:attribute name="UseOfTeReoPickilistValues" type="list"/>
+    <aura:attribute name="PurposeOfTeReoPickilistValues" type="list"/>
+    <aura:attribute name="DiamensionScorePicklistValues" type="list"/>
+    <aura:attribute name="tabId" type="String" default="tab1" />
+    <aura:attribute name="DisablePre" type="Boolean" default="false" />
+    <aura:attribute name="DisableNext" type="Boolean" default="false" />
+    <aura:handler event="force:refreshView" action="{!c.doInit}" />
+    <aura:attribute name="refreshCount" type="Integer" default="0"/>    
+    <aura:attribute name="refreshFlag" type="boolean" default="true"/> 
+    <aura:attribute name="DisableRichTextFields" type="boolean" default="false"/>
+    <aura:attribute name="disableAnswersOnSaveComplete1" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete2" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete3" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete4" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete5" type="boolean" default=""/>
+    <aura:attribute name="PartnerLogoImage" type="String"/> 
+    <aura:attribute name="submitChangeRequest" type="boolean" default="true"/>
+    <aura:attribute name="ShowChangeReqModal" type="boolean" default="false"/>
+    <aura:method name="viewActivity" action="{!c.viewActivity}" />
+    <aura:method name="closeModel" action="{!c.closeModel}" />
+    <aura:attribute name="MalePercentValues" type="string"/>
+    <aura:attribute name="feMalePercentValues" type="string"/>
+    <aura:registerEvent name="activitiyEventSelectedID" type="c:getRecordId"/>
+    <aura:attribute name="isDeletePopup" type="boolean" default="false"/>
+    <aura:attribute name="IdToDelete" type="String"/> 
+    
+    <aura:attribute name="checked" type="boolean" default="false"/>
+    <aura:attribute name="options" type="String[]" default="logout" />  <!--  -->
+     <aura:handler event="c:SelectedActivityEvent" action="{!c.onsectiontoggle}"/>
+    <aura:handler event="c:SelectedActivityEvent" action="{!c.doInit}"/>
+    <aura:attribute name="activitiySelectedRecord" type="Activity__c" />
+    
+    <aura:attribute name="filteryear" type="String"/>
+ 
+                    <div class="container">
+                        <div class="section__inner">
+                            <header class="section__head">
+                                <div class="section__head-inner">
+                                    <h2 class="section__title">
+                                        Papatohu
+                                    </h2><!-- /.section__title -->
+                                    
+                                    <p>
+                                        <ui:outputText value="{!$Label.c.Label_for_Papatohu_content}"/>
+                                    </p>
+                                </div><!-- /.section__head-inner -->
+                                
+                                <div class="section__head-logo">
+                                    <c:UserLogo/>
+                                    <!--<img src="{!$Resource.SportNorthlandLogo}" alt="Sport Logo"/>-->
+                                </div><!-- /.section__head-logo -->
+                            </header><!-- /.section__head -->
+                        </div><!-- /.section__inner -->
+                    </div><!-- /.container -->
+                
+                <section class="section-charts js-charts">
+                    <div class="container">
+                        <div class="section__inner">
+                            <div class="cards-stats">
+                                <div class="card-stats card-stats--transparent card-stats--big card-stats--red-border">
+                                    <div class="card__inner">
+                                        <div class="card__head">
+                                            <h4 class="card__title">
+                                                Total participants
+                                            </h4><!-- /.card__title -->
+                                        </div><!-- /.card__head -->
+                                        
+                                        <div class="card__body">
+                                            <div class="card__body-inner">
+                                                
+                                                <div class="progress-circle">
+                                                    <canvas width="200" height="200" id="counter"></canvas>
+                                                    
+                                                    <div class="number-up">
+                                                        <strong class="js-number-up">{!v.total_part}</strong>
+                                                        
+                                                        <p>
+                                                            TOTAL All  ACTIVITIES
+                                                        </p>
+                                                    </div><!-- /.number-up -->
+                                                </div><!-- /.progress-circle -->
+                                                
+                                                
+                                                <div class="list-highlight-numbers">
+                                                    <h4 class="list__title">
+                                                        Total participants by activity
+                                                    </h4><!-- /.list__title -->
+                                                    <div style="height: 202px;overflow-y:scroll;">
+                                                        <aura:iteration items="{!v.Activityitems}" var="item">
+                                                            <ul>
+                                                                
+                                                                <li>
+                                                                    <div class="participantbyactivity">
+                                                                        <strong>{!item.Participation_NoOfParticipants__c}</strong> {!item.Name} 
+                                                                    </div>
+                                                                </li>
+                                                                
+                                                                
+                                                            </ul>
+                                                        </aura:iteration>	
+                                                    </div>
+                                                </div><!-- /.list-highlight-numbers -->
+                                            </div><!-- /.card__body-inner -->
+                                        </div><!-- /.card__body -->
+                                    </div><!-- /.card__inner -->
+                                </div><!-- /.card-stats -->
+                                
+                                
+                                
+                                
+                                <div class="card-stats">
+                                    <div class="card__inner">
+                                        <div class="card__head">
+                                            <h4 class="card__title">
+                                                Org Governed
+                                            </h4><!-- /.card__title -->
+                                            
+                                            <p>
+                                                Aggregated across all activities
+                                            </p>
+                                            
+                                        </div><!-- /.card__head -->
+                                        
+                                        
+                                        
+                                        <div class="card__body">
+                                            <div class="chart-circle">
+                                                <div class="chart" id="chart-org-governed">
+                                                </div><!-- /.chart -->
+                                            </div><!-- /.chart-circle -->
+                                        </div><!-- /.card__body -->
+                                        <!-- /.chart-circle -->
+                                       <!-- <div class="card__foot">
+                                            <h6 class="card__legend-title">
+                                                KEY:
+                                            </h6>
+                                            
+                                            <ul class="list-legend list-legend__horizontal">
+                                                <li>
+                                                    Fully
+                                                </li>
+                                                
+                                                <li>
+                                                    Partial
+                                                </li>
+                                                
+                                                <li>
+                                                    Not at all
+                                                </li>
+                                            </ul>
+                                        </div>-->
+                                        
+                                    </div><!-- /.card__inner -->
+                                    
+                                </div><!-- /.card-stats -->
+                                
+                                
+                                
+                                
+                                
+                                <div class="card-stats">
+                                    <div class="card__inner">
+                                        <div class="card__head">
+                                            <h4 class="card__title">
+                                                Governed
+                                            </h4><!-- /.card__title -->
+                                            
+                                            <p>
+                                                Aggregated across all activities
+                                            </p>
+                                            
+                                        </div><!-- /.card__head -->
+                                        
+                                        
+                                        
+                                        <div class="card__body">
+                                            <div class="chart-circle">
+                                                <div class="chart" id="chart-pie-governed"></div><!-- /.chart -->
+                                            </div><!-- /.chart-circle -->
+                                        </div><!-- /.card__body -->
+                                        <!-- /.chart-circle -->
+                                       <!-- <div class="card__foot">
+                                            <h6 class="card__legend-title">
+                                                KEY:
+                                            </h6>
+                                            
+                                            <ul class="list-legend list-legend__horizontal">
+                                                <li>
+                                                    Fully
+                                                </li>
+                                                
+                                                <li>
+                                                    Partial
+                                                </li>
+                                                
+                                                <li>
+                                                    Not at all
+                                                </li>
+                                            </ul>
+                                        </div>-->
+                                        
+                                    </div><!-- /.card__inner -->
+                                    
+                                </div><!-- /.card-stats -->
+                                
+                                <div class="card-stats">
+                                    <div class="card__inner">
+                                        <div class="card__head">
+                                            <h4 class="card__title">
+                                                Delivered
+                                            </h4><!-- /.card__title -->
+                                            
+                                            <p>
+                                                Aggregated across all activities
+                                            </p>
+                                        </div><!-- /.card__head -->
+                                        
+                                        <div class="chart-circle">
+                                            <div class="chart" id="chart-delivered"></div><!-- /.chart -->
+                                        </div><!-- /.chart-circle -->
+                                        
+                                       <!-- <div class="card__foot">
+                                            <h6 class="card__legend-title">
+                                                KEY:
+                                            </h6>
+                                            
+                                            <ul class="list-legend list-legendhorizontal">
+                                                <li>
+                                                    Fully
+                                                </li>
+                                                
+                                                <li>
+                                                    Partial
+                                                </li>
+                                                
+                                                <li>
+                                                    Not at all
+                                                </li>
+                                            </ul>
+                                        </div> -->
+                                    </div><!-- /.card__inner -->
+                                </div><!-- /.card-stats -->
+                                
+                                <div class="card-stats">
+                                    <div class="card__inner">
+                                        <div class="card__head">
+                                            <h4 class="card__title">
+                                                Managed
+                                            </h4><!-- /.card__title -->
+                                            
+                                            <p>
+                                                Aggregated across all activities
+                                            </p>
+                                        </div><!-- /.card__head -->
+                                        
+                                        
+                                        <div class="card__body">
+                                            <div class="chart-circle">
+                                                <div class="chart" id="chart-managed"></div><!-- /.chart -->
+                                            </div><!-- /.chart-circle -->
+                                        </div><!-- /.card__body -->
+                                        
+                                        
+                                       <!--<div class="card__foot">
+                                            <h6 class="card__legend-title">
+                                                KEY:
+                                            </h6>
+                                            
+                                            <ul class="list-legend list-legend-horizontal">
+                                                <li>
+                                                    Fully
+                                                </li>
+                                                
+                                                <li>
+                                                    Partial
+                                                </li>
+                                                
+                                                <li>
+                                                    Not at all
+                                                </li>
+                                            </ul>
+                                        </div> -->
+                                    </div><!-- /.card__inner -->
+                                </div><!-- /.card-stats -->
+                                
+                                <div class="card-stats card-stats--gender card-stats--transparent card-stats--big card-stats--yellow-border">
+                                    <div class="card__inner">
+                                        <div class="card__head">
+                                            <h4 class="card__title">
+                                                Gender of participants
+                                            </h4><!-- /.card__title -->
+                                        </div><!-- /.card__head -->
+                                        
+                                        <div class="card__body">
+                                            <div class="block-gender-activity">
+                                                <div class="block__cols">
+                                                    
+                                                    <div class="block__col">
+                                                        <div class="gender-primary">
+                                                            <div class="gender__inner">
+                                                                <p>
+                                                                    <strong class="js-number-up-1">{!v.feMalePercentValues}</strong>
+                                                                </p>
+                                                                
+                                                                <img src="{!$Resource.gender_female}" alt="Female" />
+                                                            </div><!-- /.gender__inner -->
+                                                        </div><!-- /.gender-primary -->
+                                                        
+                                                        <div class="gender-primary">
+                                                            <div class="gender__inner">
+                                                                <p>
+                                                                    <strong class="js-number-up-2">{!v.MalePercentValues}</strong>
+                                                                </p>
+                                                                
+                                                                <img src="{!$Resource.gender_male}" alt="male" />
+                                                            </div><!-- /.gender__inner -->
+                                                        </div><!-- /.gender-primary -->
+                                                    </div><!-- /.block__col -->
+                                                    
+                                                    <div class="block__col">
+                                                        <h4 class="block__title">
+                                                            Total numbers by Activity
+                                                        </h4><!-- /.block__title -->
+                                                        <div style="height: 202px;overflow-y:scroll;">
+                                                            <aura:iteration items="{!v.FemaleAndMaleValues}" var="itemList" indexVar="keyList" >	
+                                                                
+                                                                <div class="list-gender">
+                                                                    
+                                                                    <h4 class="list__title">
+                                                                        {!itemList.Name}
+                                                                    </h4><!-- /.list__title -->
+                                                                    
+                                                                    <ul>
+                                                                        <li>
+                                                                            <img src="{!$Resource.gender_female}" alt="Female" width="17" height="35" />
+                                                                            
+                                                                            <strong class="js-number-up-3"> {!itemList.GenderOfParticipants_Wahine__c}</strong>
+                                                                        </li>
+                                                                        
+                                                                        <li>
+                                                                            <img src="{!$Resource.gender_male}" alt="male" width="15" height="35" /> 
+                                                                            
+                                                                            <strong class="js-number-up-4"> {!itemList.GenderOfParticipants_Tane__c}</strong>
+                                                                        </li>
+                                                                    </ul>
+                                                                    
+                                                                </div><!-- /.list-gender -->
+                                                                
+                                                            </aura:iteration>
+                                                        </div>
+                                                        
+                                                    </div><!-- /.block__col -->
+                                                </div><!-- /.block__cols -->
+                                            </div><!-- /.block-gender-activity -->
+                                        </div><!-- /.card__body -->
+                                    </div><!-- /.card__inner -->
+                                </div><!-- /.card-stats -->
+                                
+                                <div class="card-stats card-stats--big card-stats--age card-stats--red-border">
+                                    <div class="card__inner">
+                                        <div class="card__head">
+                                            <h4 class="card__title">
+                                                Age of participants
+                                            </h4><!-- /.card__title -->
+                                            
+                                            <p>
+                                                Aggregated across all activities
+                                            </p>
+                                        </div><!-- /.card__head -->
+                                        
+                                        <div class="card__body">
+                                            <div class="chart-circle">
+                                                <div class="chart-line-graph" id="chart-age"></div><!-- /.chart -->
+                                            </div><!-- /.chart-circle -->
+                                        </div><!-- /.card__body -->
+                                    </div><!-- /.card__inner -->
+                                </div><!-- /.card-stats -->
+                                
+                                <div class="card-stats">
+                                    <div class="card__inner">
+                                        <div class="card__head">
+                                            <h4 class="card__title">
+                                                Ethnicity of <br/> participants
+                                            </h4><!-- /.card__title -->
+                                            
+                                            <p>
+                                                Aggregated across all activities
+                                            </p>
+                                        </div><!-- /.card__head -->
+                                        
+                                        
+                                        <div class="card__body">
+                                            <div class="chart-circle">
+                                                <div class="chart" id="chart-ethnicity"></div><!-- /.chart -->
+                                            </div><!-- /.chart-circle -->
+                                        </div><!-- /.card__body -->
+                                        
+                                        <!--<div class="card__foot">
+                                            <h6 class="card__legend-title">
+                                                KEY:
+                                            </h6>
+                                            
+                                            <ul class="list-legend list-legendhorizontal">
+                                                <li>
+                                                    Maori
+                                                </li>
+                                                
+                                                <li>
+                                                    Non Maori
+                                                </li>
+                                            </ul>
+                                        </div>--><!-- /.card__foot -->
+                                    </div><!-- /.card__inner -->
+                                </div><!-- /.card-stats -->
+                                
+                                <div class="card-stats">
+                                    <div class="card__inner">
+                                        <div class="card__head">
+                                            <h4 class="card__title">
+                                                Purpose of <br/>Te Reo Maori
+                                            </h4><!-- /.card__title -->
+                                            
+                                            <p>
+                                                Aggregated across all activities
+                                            </p>
+                                        </div><!-- /.card__head -->
+                                        
+                                        <div class="card__body">
+                                            <div class="chart-circle">
+                                                <div class="chart" id="chart-te-reo"></div><!-- /.chart -->
+                                            </div><!-- /.chart-circle -->
+                                        </div><!-- /.card__body -->
+                                        
+                                        <!--<div class="card__foot">
+                                            <h6 class="card__legend-title">
+                                                KEY:
+                                            </h6>
+                                            
+                                            <ul class="list-legend">
+                                                <li>
+                                                    Raise awareness 
+                                                    
+                                                </li>
+                                                
+                                                <li>
+                                                    Build knowledge
+                                                </li>
+                                                
+                                                <li>
+                                                    Extended activity
+                                                </li>
+                                            </ul>
+                                        </div>--><!-- /.card__foot -->
+                                    </div><!-- /.card__inner -->
+                                </div><!-- /.card-stats -->
+                                
+                                <div class="card-stats">
+                                    <div class="card__inner">
+                                        <div class="card__head">
+                                            <h4 class="card__title">
+                                                Purpose of <br />Tikanga Maori
+                                            </h4><!-- /.card__title -->
+                                            
+                                            <p>
+                                                Aggregated across all activities
+                                            </p>
+                                        </div><!-- /.card__head -->
+                                        
+                                        
+                                        <div class="card__body">
+                                            <div class="chart-circle">
+                                                <div class="chart" id="chart-tikanga"></div><!-- /.chart -->
+                                            </div><!-- /.chart-circle -->
+                                        </div><!-- /.card__body -->
+                                        
+                                        <!--<div class="card__foot">
+                                            <h6 class="card__legend-title">
+                                                KEY:
+                                            </h6>
+                                            
+                                            <ul class="list-legend">
+                                                <li>
+                                                    Raise awareness
+                                                </li>
+                                                
+                                                <li>
+                                                    Build knowledge
+                                                </li>
+                                                
+                                                <li>
+                                                    Opportunity to Apply
+                                                </li>
+                                            </ul>
+                                        </div>--><!-- /.card__foot -->
+                                    </div><!-- /.card__inner -->
+                                </div><!-- /.card-stats -->
+                                
+                                <div class="card-stats card-stats--yellow card-stats--big card-stats--representation card-stats--red-border">
+                                    <div class="card__inner">
+                                        <div class="card__head">
+                                            <h4 class="card__title">
+                                                Whanau representation
+                                            </h4><!-- /.card__title -->
+                                            
+                                            <p>
+                                                Aggregated across all activities
+                                            </p>
+                                        </div><!-- /.card__head -->
+                                        
+                                        <div class="card__body">
+                                            <div class="chart-circle">
+                                                <div class="chart-line-graph" id="chart-representation"></div><!-- /.chart -->
+                                            </div><!-- /.chart-circle -->
+                                        </div><!-- /.card__body -->
+                                    </div><!-- /.card__inner -->
+                                </div><!-- /.card-stats -->
+                                
+                                
+                                <div class="card-stats">
+                                    <div class="card__inner">
+                                        <div class="card__head">
+                                            <h4 class="card__title">
+                                                Links to HOP <br />outcomes
+                                            </h4><!-- /.card__title -->
+                                            
+                                            <p>
+                                                Aggregated across all activities
+                                            </p>
+                                        </div><!-- /.card__head -->
+                                        
+                                        <div class="card__body">
+                                            <div class="chart-circle">
+                                                <div class="chart" id="chartContainer"></div><!-- /.chart -->
+                                            </div><!-- /.chart-circle -->
+                                        </div><!-- /.card__body -->
+                                        <!-- /.chart-circle -->
+                                        <div class="card__foot">
+                                            <!--<h6 class="card__legend-title">
+                                                KEY:
+                                            </h6>
+                                            
+                                            <ul class="list-legend">
+                                                <li title='Kaiwhakahaere participating as Leaders in their community'>
+                                                    Kaiwhakahaere participating as Leaders in their community<br/>
+                                                </li>
+                                                
+                                                <li title='Increased opportunities to participate in sport and traditional physical recreation'>
+                                                    Increased opportunities to participate in sport and traditional physical recreation<br/>
+                                                </li>
+                                                
+                                                <li title='Development and revitalisation of sport and traditional physical recreation'>
+                                                    Development and revitalisation of sport and traditional physical recreation
+                                                </li>
+                                            </ul>-->
+                                        </div><!-- /.card__foot -->
+                                        
+                                    </div><!-- /.card__inner -->
+                                    
+                                </div><!-- /.card-stats -->
+                                
+                                <div class="card-stats card-stats--big card-stats--location card-stats--red-border">
+                                    <div class="card__inner">
+                                        <div class="card__head">
+                                            <h4 class="card__title">
+                                                Setting location
+                                            </h4><!-- /.card__title -->
+                                            
+                                            <p>
+                                                Aggregated across all activities
+                                            </p>
+                                        </div><!-- /.card__head -->
+                                        
+                                        <div class="card__body">
+                                            <div class="chart-circle">
+                                                <div class="chart-line-graph" id="chart-location"></div><!-- /.chart -->
+                                            </div><!-- /.chart-circle -->
+                                        </div><!-- /.card__body -->
+                                    </div><!-- /.card__inner -->
+                                </div><!-- /.card-stats -->
+                                
+                                <div class="card-table">
+                                    <div class="card__inner">
+                                        <div class="card__head">
+                                            <h4 class="card__title">
+                                                Te Whetu Rehua
+                                            </h4><!-- /.card__title -->
+                                        </div><!-- /.card__head -->
+                                        
+                                        <div class="card__body">
+                                            <div class="table-stats">
+                                                
+                                                <table>
+                                                    <div style="height: 300px;overflow-y:scroll;">
+                                                        <tr>
+                                                            <th>Activity Name</th>
+                                                            
+                                                            <th>For</th>
+                                                            
+                                                            <th>With</th>
+                                                            
+                                                            <th>In/On</th>
+                                                            
+                                                            <th>Through</th>
+                                                            
+                                                            <th>By</th>
+                                                            
+                                                            <th>TOTAL</th>
+                                                        </tr>
+                                                        
+                                                        
+                                                        <!--aura:set attribute="truthy" value="False" /-->
+                                                        <aura:iteration items="{!v.DiamensionValues}" var="cus" indexVar="key">
+                                                            <tr><td>  {!cus.key} </td>
+                                                                
+                                                                <aura:iteration items="{!cus.value}" var="HOPvalue" indexVar="key1" >
+                                                                    <td >  {!HOPvalue}</td>
+                                                                    
+                                                                    
+                                                                </aura:iteration>      
+                                                                
+                                                            </tr>
+                                                        </aura:iteration>  
+                                                        
+                                                    </div>
+                                                </table>
+                                                
+                                                
+                                            </div><!-- /.table -->
+                                        </div><!-- /.card__body -->
+                                    </div><!-- /.card__inner -->
+                                </div><!-- /.card-table -->
+                            </div><!-- /.cards-stats -->
+                        </div><!-- /.section__inner -->
+                    </div><!-- /.container -->
+                </section><!-- /.section-charts -->
+            <!--Use aura:if tag to display/hide popup based on isModalOpen value-->  
+            
+            <aura:if isTrue="{!v.isModalOpen}">             
+                <c:createActivitiy parent="{! this}"/>
+            </aura:if>
+            <!-- Your footer goes here -->
+
+
+    <aura:if isTrue="{!v.isDeletePopup}">
+        
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{!c.closeDeleteModal }"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Are you sure?</h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p style="text-align:center">If you delete this activity you won't be able to restore this activity.
+                    </p>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral"
+                                      label="No"
+                                      title="No"
+                                      onclick="{! c.closeDeleteModal }"/>
+                    <lightning:button variant="brand"
+                                      label="Yes,I want to delete"
+                                      title="Yes"
+                                      onclick="{!c.deleteDetails}"
+                                      />
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

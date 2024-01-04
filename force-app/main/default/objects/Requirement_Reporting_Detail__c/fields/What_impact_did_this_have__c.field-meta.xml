@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>What_impact_did_this_have__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Please demonstrate the change and impact this initiative has had towards the outcomes you set out to achieve. 
+ 
+Use evidence (quantitative and qualitative, in alignment to the outcome measures you stated in your initiative plan) to show what change have you observed as a result of implementing, the activities and outputs, and how you know that this change has occurred.</inlineHelpText>
+    <label>What impact did this have?</label>
+    <length>5000</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>5</visibleLines>
+</CustomField>

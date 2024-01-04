@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>KC Relationship Agreement</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>KC Relationship Agreements</value>
+    </caseValues>
+    <layouts>
+        <layout>KC Agreement Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label></label>
+        <name>Custom_Save</name>
+    </webLinks>
+</CustomObjectTranslation>

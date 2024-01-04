@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clone_Application</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Clone Application</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/31.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/31.0/apex.js&quot;)}
+
+var recordTypeNameStr = &apos;{!Application__c.RecordType}&apos;;
+var applicationIdStr = &apos;{!Application__c.Id}&apos;;
+var fullapplicationround = &apos;{!Application__c.EOI_Clone_Full_Application_Round__c}&apos;;
+var alreadycloned = &apos;{!Application__c.EOI_Clone_Already_Cloned__c}&apos;;
+var decision = &apos;{!Application__c.EOI_Clone_Decision__c}&apos;;
+
+if(fullapplicationround == 0){
+alert(&apos;Error - There is no Full Application Round to add this Application to. Please add a Full Application Round link on the EOI Application Round before cloning.&apos;);
+}
+
+else if(alreadycloned == 1){
+alert(&apos;Error - This EOI Application has already been cloned.&apos;);
+}
+
+else if(decision == 0){
+alert(&apos;Error - Please update the Decision on this Application to Proceed to Full Application before cloning.&apos;);
+}
+
+else {
+   var result = sforce.apex.execute(&apos;cloneApplication&apos;, &apos;clone&apos;, {applicationId:applicationIdStr , recordTypeName:recordTypeNameStr });
+   if(result.length &gt; 0) {
+    alert(&apos;Success - This EOI Application has been cloned into a Full Application. You will now be taken to the Full Application record.&apos;);
+    window.open(&apos;/&apos; + result, &apos;_self&apos;);
+   } else {
+     alert(&apos;Error - This EOI Application has not been cloned. Please contact your System Administrator&apos;);
+   }
+
+}</url>
+</WebLink>

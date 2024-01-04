@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sport_NZ_Payments_overdue_payments</fullName>
+    <booleanFilter>1 AND 2 AND 3 and 4</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Partner__c</columns>
+    <columns>Vendor__c</columns>
+    <columns>Initiative__c</columns>
+    <columns>Amount__c</columns>
+    <columns>Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>Status_Image__c</columns>
+    <columns>Overdue_Requirements__c</columns>
+    <columns>Pending_Requirements__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Date__c</field>
+        <operation>lessThan</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Paid,Processed,Cancelled</value>
+    </filters>
+    <filters>
+        <field>Organisation_Flag__c</field>
+        <operation>equals</operation>
+        <value>Sport NZ</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Draft</value>
+    </filters>
+    <label>Sport NZ Payments overdue payments</label>
+</ListView>

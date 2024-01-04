@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CannotChange_Contract_Fileds</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(OR(ISCHANGED( Document_Link_1__c),ISCHANGED(Document_Link_2__c ), ISCHANGED(External_Signatory__c)  ,ISCHANGED(Date_Signed_By_External_Party__c )),   NOT(ISPICKVAL( Status__c , &apos;Approved&apos;)) )</errorConditionFormula>
+    <errorMessage>The Contract Signed fields can only be recorded or edited when the Investment Schedule status is Approved.</errorMessage>
+</ValidationRule>

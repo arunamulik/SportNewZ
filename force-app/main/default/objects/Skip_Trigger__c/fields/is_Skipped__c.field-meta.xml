@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>is_Skipped__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>This flag is the identifier for to skip any specific trigger execution or not.</description>
+    <externalId>false</externalId>
+    <label>is Skipped?</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,8 @@
+<aura:component controller="Activity_dashboardPageController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:handler name="init" value="{!this}" action="{!c.accesslogo}"/>   
+    
+	<aura:attribute name="Sportlogo" type="string" />
+    <div>
+         <lightning:formattedRichText value="{!v.Sportlogo.Partner_Logo__c}" alt="Sport Logo"/>
+    </div>
+</aura:component>

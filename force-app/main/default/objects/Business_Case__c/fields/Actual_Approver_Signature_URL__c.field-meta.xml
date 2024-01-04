@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Actual_Approver_Signature_URL__c</fullName>
+    <externalId>false</externalId>
+    <formula>Case(Actual_Approver_Name__c, 
+&quot;Amanda Hillock&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000Jz5ss&quot;,
+&quot;Jim Ellis&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000COJrf&quot;, 
+&quot;Fran McEwen&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000EmYx2&quot;,
+&quot;Julie Morrison&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0159000000C4vsW&quot;,
+&quot;Julian Todd&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000L3RyT&quot;,
+&quot;Rebecca Rolls&quot;,&quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000LbLCG&quot;, 
+&quot;Luciana Garcia&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000MqYm7&quot;,
+&quot;Chris Crichton&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000LbMlv&quot;,
+&quot;Chris McCarthy&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000LbN1Z&quot;,
+&quot;Paul Heron&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000LbFGx&quot;,
+&quot;Nick Egerton&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000MKJZJ&quot;,
+&quot;Emma Rae&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000MKK3s&quot;,
+&quot;Brent Robinson&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000MKJuH&quot;,
+&quot;Tanya Wilson&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000MqXXQ&quot;,
+&quot;Bron Hall&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000MqYxP&quot;,
+&quot;Penina Kenworthy&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000Mqaxt&quot;,
+&quot;Glenn McGovern&quot;, &quot;https://sportnzgroup.my.salesforce.com/servlet/servlet.FileDownload?file=0156F00000MKIGQ&quot;, &quot;&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Actual Approver Signature URL</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

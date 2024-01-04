@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Risk</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Risks</value>
+    </caseValues>
+    <layouts>
+        <layout>Partner Risk Layout</layout>
+        <sections>
+            <label></label>
+            <section>Business Capability</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Comments</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Community Sport</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>High Performance</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partner_User</fullName>
+    <active>true</active>
+    <label>Partner User</label>
+    <picklistValues>
+        <picklist>Course_Type__c</picklist>
+        <values>
+            <fullName>Coaching</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Officials</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Delivery_Context__c</picklist>
+        <values>
+            <fullName>Club</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Community</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Online</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Primary School</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Secondary School</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tertiary</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>NSO_Impact__c</picklist>
+        <values>
+            <fullName>Critical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Material</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Significant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Small</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sports_NZ__c</picklist>
+        <values>
+            <fullName>Asian %E2%80%93 Chinese</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asian %E2%80%93 Indian</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asian %E2%80%93 Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pacifica %E2%80%93 Samoan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pacifica - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Young People %285 %E2%80%93 18%29 in lower socio economic areas %28including Maori%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Young girls %2810 %E2%80%93 18%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Sent For Approval</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

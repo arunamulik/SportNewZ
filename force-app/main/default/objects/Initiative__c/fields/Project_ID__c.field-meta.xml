@@ -1,0 +1,1061 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Project_ID__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Only available to populate if the strategic area has the entity &apos;High Performance&apos;</inlineHelpText>
+    <label>Project ID</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>HNSO-1 (Athletics)</fullName>
+                <default>false</default>
+                <label>HNSO-1 (Athletics)</label>
+            </value>
+            <value>
+                <fullName>HNSO-2 (Netball)</fullName>
+                <default>false</default>
+                <label>HNSO-2 (Netball)</label>
+            </value>
+            <value>
+                <fullName>HNSO-3 (Basketball)</fullName>
+                <default>false</default>
+                <label>HNSO-3 (Basketball)</label>
+            </value>
+            <value>
+                <fullName>HNSO-5 (Paralympics)</fullName>
+                <default>false</default>
+                <label>HNSO-5 (Paralympics)</label>
+            </value>
+            <value>
+                <fullName>HNSO-7 (Rowing)</fullName>
+                <default>false</default>
+                <label>HNSO-7 (Rowing)</label>
+            </value>
+            <value>
+                <fullName>HNSO-9 (Yachting)</fullName>
+                <default>false</default>
+                <label>HNSO-9 (Yachting)</label>
+            </value>
+            <value>
+                <fullName>HNSO-12 (Rugby Union)</fullName>
+                <default>false</default>
+                <label>HNSO-12 (Rugby Union)</label>
+            </value>
+            <value>
+                <fullName>HNSO-13 (Football)</fullName>
+                <default>false</default>
+                <label>HNSO-13 (Football)</label>
+            </value>
+            <value>
+                <fullName>HNSO-15 (Equestrian)</fullName>
+                <default>false</default>
+                <label>HNSO-15 (Equestrian)</label>
+            </value>
+            <value>
+                <fullName>HNSO-16 (Hockey - Men)</fullName>
+                <default>false</default>
+                <label>HNSO-16 (Hockey - Men)</label>
+            </value>
+            <value>
+                <fullName>HNSO-18 (Cycling)</fullName>
+                <default>false</default>
+                <label>HNSO-18 (Cycling)</label>
+            </value>
+            <value>
+                <fullName>HNSO-19 (Triathlon)</fullName>
+                <default>false</default>
+                <label>HNSO-19 (Triathlon)</label>
+            </value>
+            <value>
+                <fullName>HNSO-20 (Swimming)</fullName>
+                <default>false</default>
+                <label>HNSO-20 (Swimming)</label>
+            </value>
+            <value>
+                <fullName>HNSO-25 (Softball)</fullName>
+                <default>false</default>
+                <label>HNSO-25 (Softball)</label>
+            </value>
+            <value>
+                <fullName>HNSO-30 (Canoe Racing)</fullName>
+                <default>false</default>
+                <label>HNSO-30 (Canoe Racing)</label>
+            </value>
+            <value>
+                <fullName>HNSO-36 (Surf Lifesaving)</fullName>
+                <default>false</default>
+                <label>HNSO-36 (Surf Lifesaving)</label>
+            </value>
+            <value>
+                <fullName>HNSO-39 (Hockey - Women)</fullName>
+                <default>false</default>
+                <label>HNSO-39 (Hockey - Women)</label>
+            </value>
+            <value>
+                <fullName>HNSO-51 (Karate)</fullName>
+                <default>false</default>
+                <label>HNSO-51 (Karate)</label>
+            </value>
+            <value>
+                <fullName>HNSO-58 (Diving)</fullName>
+                <default>false</default>
+                <label>HNSO-58 (Diving)</label>
+            </value>
+            <value>
+                <fullName>HNSO-60 (Gymsports)</fullName>
+                <default>false</default>
+                <label>HNSO-60 (Gymsports)</label>
+            </value>
+            <value>
+                <fullName>HNSO-61 (International Taekwondo - non Olympic)</fullName>
+                <default>false</default>
+                <label>HNSO-61 (International Taekwondo - non Olympic)</label>
+            </value>
+            <value>
+                <fullName>HNSO-62 (Bowls)</fullName>
+                <default>false</default>
+                <label>HNSO-62 (Bowls)</label>
+            </value>
+            <value>
+                <fullName>HNSO-63 (Boxing)</fullName>
+                <default>false</default>
+                <label>HNSO-63 (Boxing)</label>
+            </value>
+            <value>
+                <fullName>HNSO-65 (Cricket)</fullName>
+                <default>false</default>
+                <label>HNSO-65 (Cricket)</label>
+            </value>
+            <value>
+                <fullName>HNSO-71 (Golf)</fullName>
+                <default>false</default>
+                <label>HNSO-71 (Golf)</label>
+            </value>
+            <value>
+                <fullName>HNSO-76 (NZOC)</fullName>
+                <default>false</default>
+                <label>HNSO-76 (NZOC)</label>
+            </value>
+            <value>
+                <fullName>HNSO-79 (Rugby League)</fullName>
+                <default>false</default>
+                <label>HNSO-79 (Rugby League)</label>
+            </value>
+            <value>
+                <fullName>HNSO-80 (Rugby Sevens - Women)</fullName>
+                <default>false</default>
+                <label>HNSO-80 (Rugby Sevens - Women)</label>
+            </value>
+            <value>
+                <fullName>HNSO-81 (Shooting)</fullName>
+                <default>false</default>
+                <label>HNSO-81 (Shooting)</label>
+            </value>
+            <value>
+                <fullName>HNSO-83 (Rugby Sevens – Men)</fullName>
+                <default>false</default>
+                <label>HNSO-83 (Rugby Sevens – Men)</label>
+            </value>
+            <value>
+                <fullName>HNSO-84 (Squash)</fullName>
+                <default>false</default>
+                <label>HNSO-84 (Squash)</label>
+            </value>
+            <value>
+                <fullName>HNSO-85 (Tennis)</fullName>
+                <default>false</default>
+                <label>HNSO-85 (Tennis)</label>
+            </value>
+            <value>
+                <fullName>HNSO-88 (Olympic Weightlifting)</fullName>
+                <default>false</default>
+                <label>HNSO-88 (Olympic Weightlifting)</label>
+            </value>
+            <value>
+                <fullName>HNSO-93 (Snow Sports)</fullName>
+                <default>false</default>
+                <label>HNSO-93 (Snow Sports)</label>
+            </value>
+            <value>
+                <fullName>HNSO-94 (Surfing New Zealand)</fullName>
+                <default>false</default>
+                <label>HNSO-94 (Surfing New Zealand)</label>
+            </value>
+            <value>
+                <fullName>HNSO-97 (Taekwondo - Olympic)</fullName>
+                <default>false</default>
+                <label>HNSO-97 (Taekwondo - Olympic)</label>
+            </value>
+            <value>
+                <fullName>HNSO-99 (Volleyball New Zealand)</fullName>
+                <default>false</default>
+                <label>HNSO-99 (Volleyball New Zealand)</label>
+            </value>
+            <value>
+                <fullName>HNSO-101 (Judo)</fullName>
+                <default>false</default>
+                <label>HNSO-101 (Judo)</label>
+            </value>
+            <value>
+                <fullName>HNSO-250 (Ice Speed Skating)</fullName>
+                <default>false</default>
+                <label>HNSO-250 (Ice Speed Skating)</label>
+            </value>
+            <value>
+                <fullName>HNSO-1180 (Canoe Slalom)</fullName>
+                <default>false</default>
+                <label>HNSO-1180 (Canoe Slalom)</label>
+            </value>
+            <value>
+                <fullName>HNSO-1181 (Wrestling)</fullName>
+                <default>false</default>
+                <label>HNSO-1181 (Wrestling)</label>
+            </value>
+            <value>
+                <fullName>PEGS-1 (Athletics)</fullName>
+                <default>false</default>
+                <label>PEGS-1 (Athletics)</label>
+            </value>
+            <value>
+                <fullName>PEGS-2 (Netball)</fullName>
+                <default>false</default>
+                <label>PEGS-2 (Netball)</label>
+            </value>
+            <value>
+                <fullName>PEGS-3 (Basketball)</fullName>
+                <default>false</default>
+                <label>PEGS-3 (Basketball)</label>
+            </value>
+            <value>
+                <fullName>PEGS-5 (Paralympics)</fullName>
+                <default>false</default>
+                <label>PEGS-5 (Paralympics)</label>
+            </value>
+            <value>
+                <fullName>PEGS-7 (Rowing)</fullName>
+                <default>false</default>
+                <label>PEGS-7 (Rowing)</label>
+            </value>
+            <value>
+                <fullName>PEGS-9 (Yachting)</fullName>
+                <default>false</default>
+                <label>PEGS-9 (Yachting)</label>
+            </value>
+            <value>
+                <fullName>PEGS-12 (Rugby Union)</fullName>
+                <default>false</default>
+                <label>PEGS-12 (Rugby Union)</label>
+            </value>
+            <value>
+                <fullName>PEGS-13 (Football)</fullName>
+                <default>false</default>
+                <label>PEGS-13 (Football)</label>
+            </value>
+            <value>
+                <fullName>PEGS-15 (Equestrian)</fullName>
+                <default>false</default>
+                <label>PEGS-15 (Equestrian)</label>
+            </value>
+            <value>
+                <fullName>PEGS-16 (Hockey - Men)</fullName>
+                <default>false</default>
+                <label>PEGS-16 (Hockey - Men)</label>
+            </value>
+            <value>
+                <fullName>PEGS-18 (Cycling)</fullName>
+                <default>false</default>
+                <label>PEGS-18 (Cycling)</label>
+            </value>
+            <value>
+                <fullName>PEGS-19 (Triathlon)</fullName>
+                <default>false</default>
+                <label>PEGS-19 (Triathlon)</label>
+            </value>
+            <value>
+                <fullName>PEGS-20 (Swimming)</fullName>
+                <default>false</default>
+                <label>PEGS-20 (Swimming)</label>
+            </value>
+            <value>
+                <fullName>PEGS-25 (Softball)</fullName>
+                <default>false</default>
+                <label>PEGS-25 (Softball)</label>
+            </value>
+            <value>
+                <fullName>PEGS-30 (Canoe Racing)</fullName>
+                <default>false</default>
+                <label>PEGS-30 (Canoe Racing)</label>
+            </value>
+            <value>
+                <fullName>PEGS-36 (Surf Lifesaving)</fullName>
+                <default>false</default>
+                <label>PEGS-36 (Surf Lifesaving)</label>
+            </value>
+            <value>
+                <fullName>PEGS-39 (Hockey - Women)</fullName>
+                <default>false</default>
+                <label>PEGS-39 (Hockey - Women)</label>
+            </value>
+            <value>
+                <fullName>PEGS-49 (Bobsleigh &amp; Skeleton)</fullName>
+                <default>false</default>
+                <label>PEGS-49 (Bobsleigh &amp; Skeleton)</label>
+            </value>
+            <value>
+                <fullName>PEGS-51 (Karate)</fullName>
+                <default>false</default>
+                <label>PEGS-51 (Karate)</label>
+            </value>
+            <value>
+                <fullName>PEGS-58 (Diving)</fullName>
+                <default>false</default>
+                <label>PEGS-58 (Diving)</label>
+            </value>
+            <value>
+                <fullName>PEGS-60 (Gymsports)</fullName>
+                <default>false</default>
+                <label>PEGS-60 (Gymsports)</label>
+            </value>
+            <value>
+                <fullName>PEGS-61 (International Taekwondo - non Olympic)</fullName>
+                <default>false</default>
+                <label>PEGS-61 (International Taekwondo - non Olympic)</label>
+            </value>
+            <value>
+                <fullName>PEGS-62 (Bowls)</fullName>
+                <default>false</default>
+                <label>PEGS-62 (Bowls)</label>
+            </value>
+            <value>
+                <fullName>PEGS-65 (Cricket)</fullName>
+                <default>false</default>
+                <label>PEGS-65 (Cricket)</label>
+            </value>
+            <value>
+                <fullName>PEGS-63 (Boxing)</fullName>
+                <default>false</default>
+                <label>PEGS-63 (Boxing)</label>
+            </value>
+            <value>
+                <fullName>PEGS-71 (Golf)</fullName>
+                <default>false</default>
+                <label>PEGS-71 (Golf)</label>
+            </value>
+            <value>
+                <fullName>PEGS-76 (NZOC)</fullName>
+                <default>false</default>
+                <label>PEGS-76 (NZOC)</label>
+            </value>
+            <value>
+                <fullName>PEGS-79 (Rugby League)</fullName>
+                <default>false</default>
+                <label>PEGS-79 (Rugby League)</label>
+            </value>
+            <value>
+                <fullName>PEGS-80 (Rugby Sevens - Women)</fullName>
+                <default>false</default>
+                <label>PEGS-80 (Rugby Sevens - Women)</label>
+            </value>
+            <value>
+                <fullName>PEGS-81 (Shooting)</fullName>
+                <default>false</default>
+                <label>PEGS-81 (Shooting)</label>
+            </value>
+            <value>
+                <fullName>PEGS-83 (Rugby Sevens – Men)</fullName>
+                <default>false</default>
+                <label>PEGS-83 (Rugby Sevens – Men)</label>
+            </value>
+            <value>
+                <fullName>PEGS-84 (Squash)</fullName>
+                <default>false</default>
+                <label>PEGS-84 (Squash)</label>
+            </value>
+            <value>
+                <fullName>PEGS-85 (Tennis)</fullName>
+                <default>false</default>
+                <label>PEGS-85 (Tennis)</label>
+            </value>
+            <value>
+                <fullName>PEGS-88 (Olympic Weightlifting)</fullName>
+                <default>false</default>
+                <label>PEGS-88 (Olympic Weightlifting)</label>
+            </value>
+            <value>
+                <fullName>PEGS-93 (Snow Sports)</fullName>
+                <default>false</default>
+                <label>PEGS-93 (Snow Sports)</label>
+            </value>
+            <value>
+                <fullName>PEGS-94 (Surfing)</fullName>
+                <default>false</default>
+                <label>PEGS-94 (Surfing)</label>
+            </value>
+            <value>
+                <fullName>PEGS-97 (Taekwondo - Olympic)</fullName>
+                <default>false</default>
+                <label>PEGS-97 (Taekwondo - Olympic)</label>
+            </value>
+            <value>
+                <fullName>PEGS-101 (Judo)</fullName>
+                <default>false</default>
+                <label>PEGS-101 (Judo)</label>
+            </value>
+            <value>
+                <fullName>PEGS-250 (Ice Speed Skating)</fullName>
+                <default>false</default>
+                <label>PEGS-250 (Ice Speed Skating)</label>
+            </value>
+            <value>
+                <fullName>PEGS-1180 (Canoe Slalom)</fullName>
+                <default>false</default>
+                <label>PEGS-1180 (Canoe Slalom)</label>
+            </value>
+            <value>
+                <fullName>PMSC-1 (Athletics)</fullName>
+                <default>false</default>
+                <label>PMSC-1 (Athletics)</label>
+            </value>
+            <value>
+                <fullName>PMSC-02 (Netball)</fullName>
+                <default>false</default>
+                <label>PMSC-02 (Netball)</label>
+            </value>
+            <value>
+                <fullName>PMSC-3 (Basketball)</fullName>
+                <default>false</default>
+                <label>PMSC-3 (Basketball)</label>
+            </value>
+            <value>
+                <fullName>PMSC-5 (Paralympics)</fullName>
+                <default>false</default>
+                <label>PMSC-5 (Paralympics)</label>
+            </value>
+            <value>
+                <fullName>PMSC-7 (Rowing)</fullName>
+                <default>false</default>
+                <label>PMSC-7 (Rowing)</label>
+            </value>
+            <value>
+                <fullName>PMSC-9 (Yachting)</fullName>
+                <default>false</default>
+                <label>PMSC-9 (Yachting)</label>
+            </value>
+            <value>
+                <fullName>PMSC-12 (Rugby Union)</fullName>
+                <default>false</default>
+                <label>PMSC-12 (Rugby Union)</label>
+            </value>
+            <value>
+                <fullName>PMSC-13 (Football)</fullName>
+                <default>false</default>
+                <label>PMSC-13 (Football)</label>
+            </value>
+            <value>
+                <fullName>PMSC-15 (Equestrian)</fullName>
+                <default>false</default>
+                <label>PMSC-15 (Equestrian)</label>
+            </value>
+            <value>
+                <fullName>PMSC-16 (Hockey - Men)</fullName>
+                <default>false</default>
+                <label>PMSC-16 (Hockey - Men)</label>
+            </value>
+            <value>
+                <fullName>PMSC-18 (Cycling)</fullName>
+                <default>false</default>
+                <label>PMSC-18 (Cycling)</label>
+            </value>
+            <value>
+                <fullName>PMSC-19 (Triathlon)</fullName>
+                <default>false</default>
+                <label>PMSC-19 (Triathlon)</label>
+            </value>
+            <value>
+                <fullName>PMSC-20 (Swimming)</fullName>
+                <default>false</default>
+                <label>PMSC-20 (Swimming)</label>
+            </value>
+            <value>
+                <fullName>PMSC-25 (Softball)</fullName>
+                <default>false</default>
+                <label>PMSC-25 (Softball)</label>
+            </value>
+            <value>
+                <fullName>PMSC-30 (Canoe)</fullName>
+                <default>false</default>
+                <label>PMSC-30 (Canoe)</label>
+            </value>
+            <value>
+                <fullName>PMSC-36 (Surf Lifesaving)</fullName>
+                <default>false</default>
+                <label>PMSC-36 (Surf Lifesaving)</label>
+            </value>
+            <value>
+                <fullName>PMSC-39 (Hockey - Women)</fullName>
+                <default>false</default>
+                <label>PMSC-39 (Hockey - Women)</label>
+            </value>
+            <value>
+                <fullName>PMSC-58 (Diving)</fullName>
+                <default>false</default>
+                <label>PMSC-58 (Diving)</label>
+            </value>
+            <value>
+                <fullName>PMSC-60 (Gymsports)</fullName>
+                <default>false</default>
+                <label>PMSC-60 (Gymsports)</label>
+            </value>
+            <value>
+                <fullName>PMSC-61 (International Taekwondo - non Olympic)</fullName>
+                <default>false</default>
+                <label>PMSC-61 (International Taekwondo - non Olympic)</label>
+            </value>
+            <value>
+                <fullName>PMSC-62 (Bowls)</fullName>
+                <default>false</default>
+                <label>PMSC-62 (Bowls)</label>
+            </value>
+            <value>
+                <fullName>PMSC-63 (Boxing)</fullName>
+                <default>false</default>
+                <label>PMSC-63 (Boxing)</label>
+            </value>
+            <value>
+                <fullName>PMSC-65 (Cricket)</fullName>
+                <default>false</default>
+                <label>PMSC-65 (Cricket)</label>
+            </value>
+            <value>
+                <fullName>PMSC-71 (Golf)</fullName>
+                <default>false</default>
+                <label>PMSC-71 (Golf)</label>
+            </value>
+            <value>
+                <fullName>PMSC-76 (NZOC)</fullName>
+                <default>false</default>
+                <label>PMSC-76 (NZOC)</label>
+            </value>
+            <value>
+                <fullName>PMSC-79 (Rugby League)</fullName>
+                <default>false</default>
+                <label>PMSC-79 (Rugby League)</label>
+            </value>
+            <value>
+                <fullName>PMSC-80 (Rugby Sevens - Women)</fullName>
+                <default>false</default>
+                <label>PMSC-80 (Rugby Sevens - Women)</label>
+            </value>
+            <value>
+                <fullName>PMSC-81 (Shooting)</fullName>
+                <default>false</default>
+                <label>PMSC-81 (Shooting)</label>
+            </value>
+            <value>
+                <fullName>PMSC-83 (Rugby Sevens – Men)</fullName>
+                <default>false</default>
+                <label>PMSC-83 (Rugby Sevens – Men)</label>
+            </value>
+            <value>
+                <fullName>PMSC-84 (Squash)</fullName>
+                <default>false</default>
+                <label>PMSC-84 (Squash)</label>
+            </value>
+            <value>
+                <fullName>PMSC-85 (Tennis)</fullName>
+                <default>false</default>
+                <label>PMSC-85 (Tennis)</label>
+            </value>
+            <value>
+                <fullName>PMSC-88 (Olympic Weightlifting)</fullName>
+                <default>false</default>
+                <label>PMSC-88 (Olympic Weightlifting)</label>
+            </value>
+            <value>
+                <fullName>PMSC-93 (Snow Sports)</fullName>
+                <default>false</default>
+                <label>PMSC-93 (Snow Sports)</label>
+            </value>
+            <value>
+                <fullName>PMSC-97 (Taekwondo - Olympic)</fullName>
+                <default>false</default>
+                <label>PMSC-97 (Taekwondo - Olympic)</label>
+            </value>
+            <value>
+                <fullName>PMSC-101 (Judo)</fullName>
+                <default>false</default>
+                <label>PMSC-101 (Judo)</label>
+            </value>
+            <value>
+                <fullName>PMSC-250 (Ice Speed Skating)</fullName>
+                <default>false</default>
+                <label>PMSC-250 (Ice Speed Skating)</label>
+            </value>
+            <value>
+                <fullName>PMSC-1180 (Canoe Slalom)</fullName>
+                <default>false</default>
+                <label>PMSC-1180 (Canoe Slalom)</label>
+            </value>
+            <value>
+                <fullName>PMSO-2 (Netball)</fullName>
+                <default>false</default>
+                <label>PMSO-2 (Netball)</label>
+            </value>
+            <value>
+                <fullName>PMSO-1 (Athletics)</fullName>
+                <default>false</default>
+                <label>PMSO-1 (Athletics)</label>
+            </value>
+            <value>
+                <fullName>PMSO-3 (Basketball)</fullName>
+                <default>false</default>
+                <label>PMSO-3 (Basketball)</label>
+            </value>
+            <value>
+                <fullName>PMSO-5 (Paralympics)</fullName>
+                <default>false</default>
+                <label>PMSO-5 (Paralympics)</label>
+            </value>
+            <value>
+                <fullName>PMSO-7 (Rowing)</fullName>
+                <default>false</default>
+                <label>PMSO-7 (Rowing)</label>
+            </value>
+            <value>
+                <fullName>PMSO-9 (Yachting)</fullName>
+                <default>false</default>
+                <label>PMSO-9 (Yachting)</label>
+            </value>
+            <value>
+                <fullName>PMSO-12 (Rugby Union)</fullName>
+                <default>false</default>
+                <label>PMSO-12 (Rugby Union)</label>
+            </value>
+            <value>
+                <fullName>PMSO-13 (Football)</fullName>
+                <default>false</default>
+                <label>PMSO-13 (Football)</label>
+            </value>
+            <value>
+                <fullName>PMSO-15 (Equestrian)</fullName>
+                <default>false</default>
+                <label>PMSO-15 (Equestrian)</label>
+            </value>
+            <value>
+                <fullName>PMSO-16 (Hockey - Men)</fullName>
+                <default>false</default>
+                <label>PMSO-16 (Hockey - Men)</label>
+            </value>
+            <value>
+                <fullName>PMSO-18 (Cycling)</fullName>
+                <default>false</default>
+                <label>PMSO-18 (Cycling)</label>
+            </value>
+            <value>
+                <fullName>PMSO-19 (Triathlon)</fullName>
+                <default>false</default>
+                <label>PMSO-19 (Triathlon)</label>
+            </value>
+            <value>
+                <fullName>PMSO-20 (Swimming)</fullName>
+                <default>false</default>
+                <label>PMSO-20 (Swimming)</label>
+            </value>
+            <value>
+                <fullName>PMSO-25 (Softball)</fullName>
+                <default>false</default>
+                <label>PMSO-25 (Softball)</label>
+            </value>
+            <value>
+                <fullName>PMSO-30 (Canoe)</fullName>
+                <default>false</default>
+                <label>PMSO-30 (Canoe)</label>
+            </value>
+            <value>
+                <fullName>PMSO-39 (Hockey - Women)</fullName>
+                <default>false</default>
+                <label>PMSO-39 (Hockey - Women)</label>
+            </value>
+            <value>
+                <fullName>PMSO-36 (Surf Lifesaving)</fullName>
+                <default>false</default>
+                <label>PMSO-36 (Surf Lifesaving)</label>
+            </value>
+            <value>
+                <fullName>PMSO-58 (Diving)</fullName>
+                <default>false</default>
+                <label>PMSO-58 (Diving)</label>
+            </value>
+            <value>
+                <fullName>PMSO-60 (Gymsports)</fullName>
+                <default>false</default>
+                <label>PMSO-60 (Gymsports)</label>
+            </value>
+            <value>
+                <fullName>PMSO-61 (International Taekwondo - non Olympic)</fullName>
+                <default>false</default>
+                <label>PMSO-61 (International Taekwondo - non Olympic)</label>
+            </value>
+            <value>
+                <fullName>PMSO-62 (Bowls)</fullName>
+                <default>false</default>
+                <label>PMSO-62 (Bowls)</label>
+            </value>
+            <value>
+                <fullName>PMSO-63 (Boxing)</fullName>
+                <default>false</default>
+                <label>PMSO-63 (Boxing)</label>
+            </value>
+            <value>
+                <fullName>PMSO-65 (Cricket)</fullName>
+                <default>false</default>
+                <label>PMSO-65 (Cricket)</label>
+            </value>
+            <value>
+                <fullName>PMSO-71 (Golf)</fullName>
+                <default>false</default>
+                <label>PMSO-71 (Golf)</label>
+            </value>
+            <value>
+                <fullName>PMSO-76 (NZOC)</fullName>
+                <default>false</default>
+                <label>PMSO-76 (NZOC)</label>
+            </value>
+            <value>
+                <fullName>PMSO-79 (Rugby League)</fullName>
+                <default>false</default>
+                <label>PMSO-79 (Rugby League)</label>
+            </value>
+            <value>
+                <fullName>PMSO-80 (Rugby Sevens - Women)</fullName>
+                <default>false</default>
+                <label>PMSO-80 (Rugby Sevens - Women)</label>
+            </value>
+            <value>
+                <fullName>PMSO-81 (Shooting)</fullName>
+                <default>false</default>
+                <label>PMSO-81 (Shooting)</label>
+            </value>
+            <value>
+                <fullName>PMSO-83 (Rugby Sevens – Men)</fullName>
+                <default>false</default>
+                <label>PMSO-83 (Rugby Sevens – Men)</label>
+            </value>
+            <value>
+                <fullName>PMSO-84 (Squash)</fullName>
+                <default>false</default>
+                <label>PMSO-84 (Squash)</label>
+            </value>
+            <value>
+                <fullName>PMSO-85 (Tennis)</fullName>
+                <default>false</default>
+                <label>PMSO-85 (Tennis)</label>
+            </value>
+            <value>
+                <fullName>PMSO-88 (Olympic Weightlifting)</fullName>
+                <default>false</default>
+                <label>PMSO-88 (Olympic Weightlifting)</label>
+            </value>
+            <value>
+                <fullName>PMSO-93 (Snow Sports)</fullName>
+                <default>false</default>
+                <label>PMSO-93 (Snow Sports)</label>
+            </value>
+            <value>
+                <fullName>PMSO-96 (Synchro)</fullName>
+                <default>false</default>
+                <label>PMSO-96 (Synchro)</label>
+            </value>
+            <value>
+                <fullName>PMSO-97 (Taekwondo - Olympic)</fullName>
+                <default>false</default>
+                <label>PMSO-97 (Taekwondo - Olympic)</label>
+            </value>
+            <value>
+                <fullName>PMSO-101 (Judo)</fullName>
+                <default>false</default>
+                <label>PMSO-101 (Judo)</label>
+            </value>
+            <value>
+                <fullName>PMSO-250 (Ice Speed Skating)</fullName>
+                <default>false</default>
+                <label>PMSO-250 (Ice Speed Skating)</label>
+            </value>
+            <value>
+                <fullName>PMSO-1180 (Canoe Slalom)</fullName>
+                <default>false</default>
+                <label>PMSO-1180 (Canoe Slalom)</label>
+            </value>
+            <value>
+                <fullName>PMSS-1 (Athletics)</fullName>
+                <default>false</default>
+                <label>PMSS-1 (Athletics)</label>
+            </value>
+            <value>
+                <fullName>PMSS-2 (Netball)</fullName>
+                <default>false</default>
+                <label>PMSS-2 (Netball)</label>
+            </value>
+            <value>
+                <fullName>PMSS-3 (Basketball)</fullName>
+                <default>false</default>
+                <label>PMSS-3 (Basketball)</label>
+            </value>
+            <value>
+                <fullName>PMSS-5 (Paralympics)</fullName>
+                <default>false</default>
+                <label>PMSS-5 (Paralympics)</label>
+            </value>
+            <value>
+                <fullName>PMSS-7 (Rowing)</fullName>
+                <default>false</default>
+                <label>PMSS-7 (Rowing)</label>
+            </value>
+            <value>
+                <fullName>PMSS-9 (Yachting)</fullName>
+                <default>false</default>
+                <label>PMSS-9 (Yachting)</label>
+            </value>
+            <value>
+                <fullName>PMSS-12 (Rugby Union)</fullName>
+                <default>false</default>
+                <label>PMSS-12 (Rugby Union)</label>
+            </value>
+            <value>
+                <fullName>PMSS-13 (Football)</fullName>
+                <default>false</default>
+                <label>PMSS-13 (Football)</label>
+            </value>
+            <value>
+                <fullName>PMSS-15 (Equestrian)</fullName>
+                <default>false</default>
+                <label>PMSS-15 (Equestrian)</label>
+            </value>
+            <value>
+                <fullName>PMSS-16 (Hockey - Men)</fullName>
+                <default>false</default>
+                <label>PMSS-16 (Hockey - Men)</label>
+            </value>
+            <value>
+                <fullName>PMSS-18 (Cycling)</fullName>
+                <default>false</default>
+                <label>PMSS-18 (Cycling)</label>
+            </value>
+            <value>
+                <fullName>PMSS-19 (Triathlon)</fullName>
+                <default>false</default>
+                <label>PMSS-19 (Triathlon)</label>
+            </value>
+            <value>
+                <fullName>PMSS-20 (Swimming)</fullName>
+                <default>false</default>
+                <label>PMSS-20 (Swimming)</label>
+            </value>
+            <value>
+                <fullName>PMSS-25 (Softball)</fullName>
+                <default>false</default>
+                <label>PMSS-25 (Softball)</label>
+            </value>
+            <value>
+                <fullName>PMSS-30 (Canoe Racing)</fullName>
+                <default>false</default>
+                <label>PMSS-30 (Canoe Racing)</label>
+            </value>
+            <value>
+                <fullName>PMSS-39 (Hockey - Women)</fullName>
+                <default>false</default>
+                <label>PMSS-39 (Hockey - Women)</label>
+            </value>
+            <value>
+                <fullName>PMSS-36 (Surf Lifesaving)</fullName>
+                <default>false</default>
+                <label>PMSS-36 (Surf Lifesaving)</label>
+            </value>
+            <value>
+                <fullName>PMSS-58 (Diving)</fullName>
+                <default>false</default>
+                <label>PMSS-58 (Diving)</label>
+            </value>
+            <value>
+                <fullName>PMSS-60 (Gymsports)</fullName>
+                <default>false</default>
+                <label>PMSS-60 (Gymsports)</label>
+            </value>
+            <value>
+                <fullName>PMSS-61 (International Taekwondo - non Olympic)</fullName>
+                <default>false</default>
+                <label>PMSS-61 (International Taekwondo - non Olympic)</label>
+            </value>
+            <value>
+                <fullName>PMSS-62 (Bowls)</fullName>
+                <default>false</default>
+                <label>PMSS-62 (Bowls)</label>
+            </value>
+            <value>
+                <fullName>PMSS-63 (Boxing)</fullName>
+                <default>false</default>
+                <label>PMSS-63 (Boxing)</label>
+            </value>
+            <value>
+                <fullName>PMSS-65 (Cricket)</fullName>
+                <default>false</default>
+                <label>PMSS-65 (Cricket)</label>
+            </value>
+            <value>
+                <fullName>PMSS-71 (Golf)</fullName>
+                <default>false</default>
+                <label>PMSS-71 (Golf)</label>
+            </value>
+            <value>
+                <fullName>PMSS-76 (NZOC)</fullName>
+                <default>false</default>
+                <label>PMSS-76 (NZOC)</label>
+            </value>
+            <value>
+                <fullName>PMSS-79 (Rugby League)</fullName>
+                <default>false</default>
+                <label>PMSS-79 (Rugby League)</label>
+            </value>
+            <value>
+                <fullName>PMSS-80 (Rugby Sevens - Women)</fullName>
+                <default>false</default>
+                <label>PMSS-80 (Rugby Sevens - Women)</label>
+            </value>
+            <value>
+                <fullName>PMSS-81 (Shooting)</fullName>
+                <default>false</default>
+                <label>PMSS-81 (Shooting)</label>
+            </value>
+            <value>
+                <fullName>PMSS-83 (Rugby Sevens – Men)</fullName>
+                <default>false</default>
+                <label>PMSS-83 (Rugby Sevens – Men)</label>
+            </value>
+            <value>
+                <fullName>PMSS-84 (Squash)</fullName>
+                <default>false</default>
+                <label>PMSS-84 (Squash)</label>
+            </value>
+            <value>
+                <fullName>PMSS-85 (Tennis)</fullName>
+                <default>false</default>
+                <label>PMSS-85 (Tennis)</label>
+            </value>
+            <value>
+                <fullName>PMSS-88 (Olympic Weightlifting)</fullName>
+                <default>false</default>
+                <label>PMSS-88 (Olympic Weightlifting)</label>
+            </value>
+            <value>
+                <fullName>PMSS-93 (Snow Sports)</fullName>
+                <default>false</default>
+                <label>PMSS-93 (Snow Sports)</label>
+            </value>
+            <value>
+                <fullName>PMSS-97 (Taekwondo - Olympic)</fullName>
+                <default>false</default>
+                <label>PMSS-97 (Taekwondo - Olympic)</label>
+            </value>
+            <value>
+                <fullName>PMSS-101 (Judo)</fullName>
+                <default>false</default>
+                <label>PMSS-101 (Judo)</label>
+            </value>
+            <value>
+                <fullName>PMSS-250 (Ice Speed Skating)</fullName>
+                <default>false</default>
+                <label>PMSS-250 (Ice Speed Skating)</label>
+            </value>
+            <value>
+                <fullName>PMSS-1180 (Canoe Slalom)</fullName>
+                <default>false</default>
+                <label>PMSS-1180 (Canoe Slalom)</label>
+            </value>
+            <value>
+                <fullName>PMSS-1346 (UTSNZ)</fullName>
+                <default>false</default>
+                <label>PMSS-1346 (UTSNZ)</label>
+            </value>
+            <value>
+                <fullName>PRM - no code</fullName>
+                <default>false</default>
+                <label>PRM - no code</label>
+            </value>
+            <value>
+                <fullName>PATH-1 (Athletics)</fullName>
+                <default>false</default>
+                <label>PATH-1 (Athletics)</label>
+            </value>
+            <value>
+                <fullName>PATH-2 (Netball)</fullName>
+                <default>false</default>
+                <label>PATH-2 (Netball)</label>
+            </value>
+            <value>
+                <fullName>PATH-5 (Paralympics)</fullName>
+                <default>false</default>
+                <label>PATH-5 (Paralympics)</label>
+            </value>
+            <value>
+                <fullName>PATH-7 (Rowing)</fullName>
+                <default>false</default>
+                <label>PATH-7 (Rowing)</label>
+            </value>
+            <value>
+                <fullName>PATH-9 (Yachting)</fullName>
+                <default>false</default>
+                <label>PATH-9 (Yachting)</label>
+            </value>
+            <value>
+                <fullName>PATH-15 (Equestrian)</fullName>
+                <default>false</default>
+                <label>PATH-15 (Equestrian)</label>
+            </value>
+            <value>
+                <fullName>PATH-16 (Hockey – Men)</fullName>
+                <default>false</default>
+                <label>PATH-16 (Hockey – Men)</label>
+            </value>
+            <value>
+                <fullName>PATH-18 (Cycling)</fullName>
+                <default>false</default>
+                <label>PATH-18 (Cycling)</label>
+            </value>
+            <value>
+                <fullName>PATH-19 (Triathlon)</fullName>
+                <default>false</default>
+                <label>PATH-19 (Triathlon)</label>
+            </value>
+            <value>
+                <fullName>PATH-20 (Swimming)</fullName>
+                <default>false</default>
+                <label>PATH-20 (Swimming)</label>
+            </value>
+            <value>
+                <fullName>PATH-30 (Canoe)</fullName>
+                <default>false</default>
+                <label>PATH-30 (Canoe)</label>
+            </value>
+            <value>
+                <fullName>PATH-39 (Hockey – Women)</fullName>
+                <default>false</default>
+                <label>PATH-39 (Hockey – Women)</label>
+            </value>
+            <value>
+                <fullName>PATH-80 (Rugby Sevens – Women)</fullName>
+                <default>false</default>
+                <label>PATH-80 (Rugby Sevens – Women)</label>
+            </value>
+            <value>
+                <fullName>PATH-93 (Snow Sports)</fullName>
+                <default>false</default>
+                <label>PATH-93 (Snow Sports)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

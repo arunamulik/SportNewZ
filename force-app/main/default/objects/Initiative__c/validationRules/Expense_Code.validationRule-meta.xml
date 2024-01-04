@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expense_Code</fullName>
+    <active>true</active>
+    <errorConditionFormula>(isnew() || ischanged(Expense_Code__c)) &amp;&amp; not(isblank(Expense_Code__c)) &amp;&amp; not(ispickval(Expense_Code__r.Status__c,&quot;Active&quot;))</errorConditionFormula>
+    <errorDisplayField>Expense_Code__c</errorDisplayField>
+    <errorMessage>Please select an Expense Code which has status of Active.</errorMessage>
+</ValidationRule>

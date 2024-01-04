@@ -1,0 +1,29 @@
+<apex:page controller="HistoricInitiativeController" lightningStylesheets="true">
+    
+    <apex:slds />
+    
+    <apex:form >
+        <apex:pageBlock id="pb">
+            <apex:dataTable value="{!Initiatives}" var="init" rendered="{!Initiatives.size!=0}">
+                <apex:column headerValue="Initiative Name" >
+                    <apex:outputLink value="/apex/HistoricInitiativeRequirementMeasure?id={!init.Initiative__r.Id}&reqid={!init.id}">
+                        {!init.Initiative__r.name}
+                    </apex:outputLink>
+                </apex:column>
+                <apex:column headerValue="Requirement Name" value="{!init.name}"/>
+                <apex:column headerValue="Requirement Description" value="{!init.Description__c}" style="width:25%"/>
+                <apex:column headerValue="Due Date" value="{!init.Due_Date__c}"/>
+                <apex:column headerValue="Status" value="{!init.Status__c}"/>
+                <!--apex:column headerValue="End Date" value="{!init.End_Date__c}"/-->
+            </apex:dataTable>
+            
+            <apex:pageBlockButtons rendered="{!Initiatives.size!=0}" location="bottom">
+                <apex:commandButton reRender="pb" value="First" action="{!first}" disabled="{!!hasPrevious}" title="First Page"/>
+                <apex:commandButton reRender="pb" value="Previous" action="{!previous}" disabled="{!!hasPrevious}" title="Previous Page"/>
+                <apex:commandButton reRender="pb" value="Next" disabled="{!!hasNext}" action="{!next}" title="Next Page"/>
+                <apex:commandButton reRender="pb" value="Last" action="{!last}" disabled="{!!hasNext}" title="Last Page"/>
+            </apex:pageBlockButtons>
+            <apex:outputText rendered="{!Initiatives.size=0}">No records to display</apex:outputText>
+        </apex:pageBlock>    
+    </apex:form>
+</apex:page>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contestable_Investment</fullName>
+    <active>true</active>
+    <description>For investment areas that determine spend based on a selection process. As such, this investment area type allows you to view all the application rounds associated with it.</description>
+    <label>Contestable Investment</label>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Active</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

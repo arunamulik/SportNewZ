@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Investment Area</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Investment Areas</value>
+    </caseValues>
+    <layouts>
+        <layout>Contestable Investment Area Layout</layout>
+        <sections>
+            <label></label>
+            <section>Actioned Payments</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Criteria</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Graphs</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Initiatives and Payments</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Planned Investment</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reports</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Standard Investment Area Layout</layout>
+        <sections>
+            <label></label>
+            <section>Actioned Payments</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Criteria</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Graphs</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Initiatives and Payments</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Planned Investment</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reports</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Contestable_Investment</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Standard_Investment</name>
+    </recordTypes>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Start_and_End_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Strategic_area_status_closed</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Board_Approval_Paper</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Source_of_Funding</name>
+    </webLinks>
+</CustomObjectTranslation>

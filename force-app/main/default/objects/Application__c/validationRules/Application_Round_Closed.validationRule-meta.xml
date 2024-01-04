@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Application_Round_Closed</fullName>
+    <active>true</active>
+    <description>No new application can be created when the Application Round is closed.</description>
+    <errorConditionFormula>ISNEW() &amp;&amp;ISPICKVAL( Application_Round__r.Status__c,&quot;closed&quot;)</errorConditionFormula>
+    <errorDisplayField>Application_Round__c</errorDisplayField>
+    <errorMessage>Application Round has been Closed. Select a valid Application Round.</errorMessage>
+</ValidationRule>

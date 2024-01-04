@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Investment Schedule</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Investment Schedules</value>
+    </caseValues>
+    <layouts>
+        <layout>Investment Schedule Layout</layout>
+        <sections>
+            <label></label>
+            <section>Approval Type</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Executive Summary</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>External Party Detail</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Old External Party Details</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label></label>
+        <name>AgreementGeneration</name>
+    </quickActions>
+    <quickActions>
+        <label></label>
+        <name>DocumentGeneration</name>
+    </quickActions>
+    <recordTypes>
+        <label></label>
+        <name>Investment_Schedule</name>
+    </recordTypes>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>CannotChange_Contract_Fileds</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cannot_Edit_during_active_variation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cannot_Signed_Contract_on_create</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>DateSigned_field_cannot_be_a_future_date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Non_Admin_Cannot_Change_Name_Field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>StrategicArea_closed_Investment_Schedule</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Associate_Initiatives</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Board_Approval_Paper</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Contract_Signed</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Create_Business_Case_Addendum</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>DONOTCLICK</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>DrawLoop_Investment_Schedule_Report</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Initiate_Variation</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Investment_Agreement_Report</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Investment_Schedule_Report</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Investment_Schedule_Report_Single_Year</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Investment_Schedule_Report_old</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>New_Addendum</name>
+    </webLinks>
+</CustomObjectTranslation>

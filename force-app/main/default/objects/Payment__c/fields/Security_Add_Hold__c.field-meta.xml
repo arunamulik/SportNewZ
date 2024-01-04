@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Security_Add_Hold__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(Case(  $UserRole.Name ,
+&quot;CEO&quot;,1,
+&quot;General Manager&quot;,1,
+&quot;HP General Manager&quot;,1,
+&quot;Finance Manager&quot;,1,
+&quot;Investment Area Manager&quot;,1,
+&quot;HP Manager&quot;,1,
+&quot;Relationship Manager&quot;,1,
+&quot;HP Lead&quot;,1,
+&quot;HP Specialist&quot;,1,
+&quot;HP Planner&quot;,1,
+&quot;Senior Adviser&quot;,1,
+&quot;Finance Admin&quot;,1,0
+
+) = 1,true,false)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Security - Add Hold</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

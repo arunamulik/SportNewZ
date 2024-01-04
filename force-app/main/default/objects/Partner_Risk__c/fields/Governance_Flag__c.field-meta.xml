@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Governance_Flag__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(TEXT(Governance__c)),null, 
+IMAGE( 
+case(text(Governance__c), 
+&quot;Red&quot;,$Setup.Icons__c.Red__c, 
+&quot;Amber&quot;,$Setup.Icons__c.Yellow__c, 
+&quot;Green&quot;,$Setup.Icons__c.Green__c, 
+&quot;N/A&quot;, $Setup.Icons__c.Grey__c, 
+&quot;&quot;),&quot;&quot;) 
+)</formula>
+    <label>Governance</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

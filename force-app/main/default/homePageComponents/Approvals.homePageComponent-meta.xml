@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <links>Funding_Allocations</links>
+    <links>Business_Cases_CEO</links>
+    <links>Business_Cases_Board</links>
+    <links>Board_Approval_Paper</links>
+    <pageComponentType>links</pageComponentType>
+</HomePageComponent>

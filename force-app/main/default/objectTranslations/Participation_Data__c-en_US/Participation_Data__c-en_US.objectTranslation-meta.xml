@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Participation Data</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Participation Data</value>
+    </caseValues>
+    <layouts>
+        <layout>Participation Data Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Participation</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Participation Data Layout Partner</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Participation - Complete Where Applicable</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

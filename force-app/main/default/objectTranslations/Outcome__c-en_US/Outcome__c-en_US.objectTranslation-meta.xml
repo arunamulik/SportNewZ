@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Outcome</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Outcomes</value>
+    </caseValues>
+    <layouts>
+        <layout>Outcome Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label></label>
+        <name>Intermediate</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Investment_Type</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Outcome</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Plan_Outcome</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Strategic</name>
+    </recordTypes>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

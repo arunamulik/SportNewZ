@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Investment_Area</fullName>
+    <active>true</active>
+    <errorConditionFormula>Investment_Area__r.Strategic_Area__c &lt;&gt; Funding_Allocation__r.Strategic_Area__c</errorConditionFormula>
+    <errorDisplayField>Investment_Area__c</errorDisplayField>
+    <errorMessage>The Investment Area must be within the same Strategic Area as the Funding Allocation.</errorMessage>
+</ValidationRule>

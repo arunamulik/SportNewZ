@@ -1,0 +1,5 @@
+<apex:page standardController="Initiative_Development_Template__c" extensions="CloneIDTController" action="{!cloneIDT}">
+   
+    
+    
+</apex:page>

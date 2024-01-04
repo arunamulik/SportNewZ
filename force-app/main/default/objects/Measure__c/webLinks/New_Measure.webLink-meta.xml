@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Measure</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>New Measure</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>/setup/ui/recordtypeselect.jsp?ent=01I90000001Kl31&amp;save_new_url={!$Setup.LookupFields__c.Measure_Tab__c}/e?{!$Setup.LookupFields__c.Measure_Initiative__c}={!Initiative__c.Name}&amp;{!$Setup.LookupFields__c.Measure_Initiative__c}_lkid={!Initiative__c.Id}&amp;{!$Setup.LookupFields__c.Measure_Organisation__c}={!Initiative__c.Partner__c}&amp;{!$Setup.LookupFields__c.Measure_Organisation__c}_lkid={!Initiative__c.PartnerId__c}&amp;retURL={!Initiative__c.Id}</url>
+</WebLink>

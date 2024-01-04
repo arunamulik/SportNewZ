@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_Mark_Completed</fullName>
+    <active>false</active>
+    <description>This validation rule will prevent the internal user to update the Requirement Reporting detail status to completed is comment field is null</description>
+    <errorConditionFormula>AND( 
+$Profile.Name &lt;&gt; &apos;System Administrator&apos;, 
+ISPICKVAL(Status__c , &apos;Completed&apos;),
+ISBLANK(Comments__c)
+)</errorConditionFormula>
+    <errorDisplayField>Comments__c</errorDisplayField>
+    <errorMessage>Please enter comments before marking the Reporting Details to be completed</errorMessage>
+</ValidationRule>

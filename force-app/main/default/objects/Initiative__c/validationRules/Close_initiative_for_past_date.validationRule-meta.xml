@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Close_initiative_for_past_date</fullName>
+    <active>false</active>
+    <description>Initiative can be closed only when all payments and requirements got closed as well as initiative end date is past date.</description>
+    <errorConditionFormula>IF(Is_Initiative_Closed__c = true &amp;&amp; End_Date__c &gt;= TODAY(),true,false)</errorConditionFormula>
+    <errorMessage>This initiative cannot be closed because its end date is not a past date.</errorMessage>
+</ValidationRule>

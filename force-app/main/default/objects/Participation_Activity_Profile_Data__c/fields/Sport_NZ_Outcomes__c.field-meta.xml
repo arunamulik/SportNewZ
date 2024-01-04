@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sport_NZ_Outcomes__c</fullName>
+    <externalId>false</externalId>
+    <label>Sport NZ Outcomes</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Young girls (10 – 18)</fullName>
+                <default>false</default>
+                <label>Young girls (10 – 18)</label>
+            </value>
+            <value>
+                <fullName>Young People (5 – 18) in lower socio economic areas (including Maori)</fullName>
+                <default>false</default>
+                <label>Young People (5 – 18) in lower socio economic areas (including Maori)</label>
+            </value>
+            <value>
+                <fullName>Asian – Indian</fullName>
+                <default>false</default>
+                <label>Asian – Indian</label>
+            </value>
+            <value>
+                <fullName>Asian – Chinese</fullName>
+                <default>false</default>
+                <label>Asian – Chinese</label>
+            </value>
+            <value>
+                <fullName>Asian – Other</fullName>
+                <default>false</default>
+                <label>Asian – Other</label>
+            </value>
+            <value>
+                <fullName>Pacifica – Samoan</fullName>
+                <default>false</default>
+                <label>Pacifica – Samoan</label>
+            </value>
+            <value>
+                <fullName>Pacifica - Other</fullName>
+                <default>false</default>
+                <label>Pacifica - Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

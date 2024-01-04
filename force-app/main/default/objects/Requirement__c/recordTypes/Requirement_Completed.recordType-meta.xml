@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Requirement_Completed</fullName>
+    <active>true</active>
+    <label>Initiative Requirement Completed</label>
+    <picklistValues>
+        <picklist>Reporting_Type__c</picklist>
+        <values>
+            <fullName>Sport NZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Verbal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Verbal with Documentation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Written</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Requirement_Reporting_Record_Type__c</picklist>
+        <values>
+            <fullName>CS Board Diversity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CS Case Study</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PI National</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PI National %2B 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PI National %2B 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PI National %2B 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PI National %2B 4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PI National 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PI National 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PI National 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PI National 4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PI Regional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PI Regional %2B 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PI Regional %2B 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PI Regional %2B 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PI Regional %2B 4</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Overdue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Variation</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

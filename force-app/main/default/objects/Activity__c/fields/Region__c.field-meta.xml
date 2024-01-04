@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Region__c</fullName>
+    <externalId>false</externalId>
+    <label>Region</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Bay of Plenty</fullName>
+                <default>false</default>
+                <label>Bay of Plenty</label>
+            </value>
+            <value>
+                <fullName>Coromandel</fullName>
+                <default>false</default>
+                <label>Coromandel</label>
+            </value>
+            <value>
+                <fullName>East Coast</fullName>
+                <default>false</default>
+                <label>East Coast</label>
+            </value>
+            <value>
+                <fullName>Hawke&apos;s Bay/Wairarapa</fullName>
+                <default>false</default>
+                <label>Hawke&apos;s Bay/Wairarapa</label>
+            </value>
+            <value>
+                <fullName>Manawatū/Horowhenua/Wellington</fullName>
+                <default>false</default>
+                <label>Manawatū/Horowhenua/Wellington</label>
+            </value>
+            <value>
+                <fullName>Northland/Auckland Region</fullName>
+                <default>false</default>
+                <label>Northland/Auckland Region</label>
+            </value>
+            <value>
+                <fullName>Rotorua/Taupō</fullName>
+                <default>false</default>
+                <label>Rotorua/Taupō</label>
+            </value>
+            <value>
+                <fullName>South Island/Chatham Islands</fullName>
+                <default>false</default>
+                <label>South Island/Chatham Islands</label>
+            </value>
+            <value>
+                <fullName>Taranaki Region</fullName>
+                <default>false</default>
+                <label>Taranaki Region</label>
+            </value>
+            <value>
+                <fullName>Waikato/King Country</fullName>
+                <default>false</default>
+                <label>Waikato/King Country</label>
+            </value>
+            <value>
+                <fullName>Whanganui/Rangitīkei</fullName>
+                <default>false</default>
+                <label>Whanganui/Rangitīkei</label>
+            </value>
+            <value>
+                <fullName>Auckland</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Auckland</label>
+            </value>
+            <value>
+                <fullName>Canterbury/West Coast</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Canterbury/West Coast</label>
+            </value>
+            <value>
+                <fullName>Counties Manakau</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Counties Manakau</label>
+            </value>
+            <value>
+                <fullName>Gisborne</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Gisborne</label>
+            </value>
+            <value>
+                <fullName>Hawkes Bay</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Hawkes Bay</label>
+            </value>
+            <value>
+                <fullName>Manawatu</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Manawatu</label>
+            </value>
+            <value>
+                <fullName>North Harbour</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>North Harbour</label>
+            </value>
+            <value>
+                <fullName>Northland</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Northland</label>
+            </value>
+            <value>
+                <fullName>Otago</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Otago</label>
+            </value>
+            <value>
+                <fullName>Southland</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Southland</label>
+            </value>
+            <value>
+                <fullName>Taranaki</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Taranaki</label>
+            </value>
+            <value>
+                <fullName>Tasman</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Tasman</label>
+            </value>
+            <value>
+                <fullName>Waikato</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Waikato</label>
+            </value>
+            <value>
+                <fullName>Waitakere</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Waitakere</label>
+            </value>
+            <value>
+                <fullName>Wellington</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Wellington</label>
+            </value>
+            <value>
+                <fullName>Whanganui</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Whanganui</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

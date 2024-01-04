@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Paid_Third_Party_Vendor</fullName>
+    <active>true</active>
+    <description>Paid to Third Party initiatives provide functionality to pay different vendors from one initiative. The vendor must be specified on every payment.</description>
+    <errorConditionFormula>ispickval( Initiative__r.Type__c, &quot;Paid to Third Party&quot;) &amp;&amp; isblank(Vendor__c)</errorConditionFormula>
+    <errorDisplayField>Vendor__c</errorDisplayField>
+    <errorMessage>Please select the vendor who will be paid this amount (because the initiative type is ‘Paid to Third Party’)</errorMessage>
+</ValidationRule>

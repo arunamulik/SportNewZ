@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Investment_Schedule_Workflow__c</fullName>
+    <externalId>false</externalId>
+    <formula>&quot;&amp;Id=&quot; + Id +
+&quot;&amp;TemplateId=a0k9000000NkdS8&quot; +
+&quot;&amp;QueryID=[Initiative]a0i90000006e1FZ,[Payments]a0i90000006e1Fe,[Investment]a0i90000006e1Fj,[BI]a0i90000006e1FP,[RTF]a0i6F00000FW4yf,[SF]a0i6F00000FW4yk,[LF]a0i6F00000FW4yu&quot; +
+&quot;&amp;EmailAdditionalTo=&quot; +   LastModifiedBy.Email +
+&quot;&amp;EmailtoID=0039000001fu7Sk,&quot; +  $User.Email +
+&quot;&amp;DefaultPDF=1&quot; +
+&quot;&amp;CETID=a0g9000000KKcyJ&quot; + 
+&quot;&amp;QMode=SendEmail&quot; +
+&quot;&amp;OFN=&quot; + &quot;Investment Schedule Report - &quot; +  Name +
+&quot;&amp;EmailSubject=Investment Schedule for &quot; + Name</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Investment Schedule Workflow</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

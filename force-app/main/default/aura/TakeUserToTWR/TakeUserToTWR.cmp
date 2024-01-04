@@ -1,0 +1,11 @@
+<aura:component controller="communityaccess" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    <aura:attribute name="Error" type="string"/>
+    <aura:attribute name="isError" type="Boolean" default="false"/>
+    <aura:if isTrue="{!v.isError}">
+        <div class="errorMessage" style=" text-align: center;font-size:26px;color:red;margin-top:5%">
+           <strong>{!v.Error}</strong> 
+        </div>
+    </aura:if>
+    
+</aura:component>

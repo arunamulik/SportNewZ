@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EOI_Clone_Decision__c</fullName>
+    <externalId>false</externalId>
+    <formula>ispickval( Decision__c ,&quot;Proceed to Full Application&quot;)</formula>
+    <label>EOI Clone - Decision</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

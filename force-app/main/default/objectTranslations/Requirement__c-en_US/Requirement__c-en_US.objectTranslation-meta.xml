@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Requirement</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Requirements</value>
+    </caseValues>
+    <layouts>
+        <layout>Initiative Requirement Layout</layout>
+        <sections>
+            <label></label>
+            <section>Cancellation Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Completion Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reports</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Requirement Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Initiative Requirement ReadOnly</layout>
+        <sections>
+            <label></label>
+            <section>Cancellation Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Completion Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reports</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Requirement Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Requirement Partners Layout</layout>
+        <sections>
+            <label></label>
+            <section>Cancellation Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Completion Details (Max 250 words)</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reports</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Requirement Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Requirement Partners Layout V1</layout>
+        <sections>
+            <label></label>
+            <section>Completion Details (Max 250 words)</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reports</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Requirement Details</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Initiative_Requirement</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Initiative_Requirement_Completed_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>RUL_Initiative_Requirement_ReadOnly</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Requirement_Completed</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cancellation_Reason_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>CannotEditDuringVariation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>CannotEditRecordsOfApprovedIS</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cannot_change_Reporting_Rec_Type</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Closing_Requirement</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Closing_Requirement_V1</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Completion_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>DueDate_prior_to_Initiative_End_Data</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Due_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Partner_Edit_Validation</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>New_Initiative_Requirement</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>New_Organisation_Requirement</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>New_Requirement</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Related_Payments</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Related_Requirements</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,2700 @@
+<apex:page docType="html-5.0" Controller="VfForSwiperCntroller" showheader="false" >
+    
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"/>        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <apex:stylesheet value="{!URLFOR($Resource.bundleCSSVf)}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.snow)}"/>    
+    <apex:includeScript value="{!URLFOR($Resource.NewJquery)}"/>    
+    <apex:stylesheet value="{!URLFOR($Resource.newone)}"/>
+    <apex:form >
+        <style>
+            .main{
+            background:#ececec;
+            }
+            .ql-snow .ql-tooltip {
+            display: none;}
+            
+            .btn--borders {
+            border: solid #7a7a7a!important;
+            background-color: transparent !important;
+            background: transparent  !important;
+            padding: 10px  !important;
+            margin-top: 40px !important;
+            font-size: 12px !important;
+            color: #7a7a7a !important; 
+            }
+            .btn--borders:Hover {
+            border: solid #333333!important;
+            background-color: transparent !important;
+            background: transparent  !important;
+            padding: 10px  !important;
+            margin-top: 40px !important;
+            font-size: 12px !important;
+            color: #333333 !important; 
+            }
+            .swal2-popup{
+            width: 500px;
+            /*height: 490px;*/
+            }
+            .section-edit .section__head p {
+            margin-top: 15px;
+            }
+            .btn--border: hover {
+            border: solid 3px #222  !important;
+            background: #222 !important;
+            border-radius: 3px !important;
+            color: #fff  !important;
+            font-size: 13px !important;
+            padding: 9px 9px !important;
+            
+            }
+            .btn--border {
+            border: solid 0px !important;
+            background: Transparent !important;
+            border-radius: 3px !important;
+            color: #000000   !important;
+            font-size: 13px !important;
+            padding: 9px 9px !important;
+            }
+            .editor .editor__inner .editor__buttons .btn {
+            text-transform: uppercase;
+            font-size: 10px !important;
+            padding: 9px 50px !important;
+            font-weight: bold;
+            }
+            .section-questions .btnSave {
+            text-transform: uppercase;
+            font-size: 10px !important;
+            padding: 9px 9px !important;
+            font-weight: bold;
+            float:right;
+            margin-right: 6%;
+            margin-top: 1%;
+            }
+            .section-questions .btnChangeRequest{
+            text-transform: uppercase;
+            font-size: 10px !important;
+            padding: 9px 9px !important;
+            font-weight: bold;
+            }
+            .ql-snow .ql-stroke {
+            stroke:#cc0000;
+            }    
+            .ql-container.ql-snow {
+            border:none; 
+            }
+            .ql-editor {
+            box-sizing: border-box;
+            line-height: 1.42;
+            height: 100%;
+            outline: none;
+            overflow-y: auto;
+            padding: 12px 15px;
+            tab-size: 4;
+            -moz-tab-size: 4;
+            text-align: left;
+            white-space: pre-wrap;
+            display: block;
+            background-color: rgb(255, 255, 255);
+            border-collapse: separate;
+            border-color: rgb(221, 221, 221) rgb(221, 221, 221) rgb(102, 102, 102);
+            border-style: solid solid none;
+            border-width: 1px 1px 0px;
+            clear: none;
+            float: none;
+            margin: 0px;
+            outline: rgb(102, 102, 102) none 0px;
+            outline-offset: 0px;
+            padding: 30px;
+            position: static;
+            top: auto;
+            left: auto;
+            right: auto;
+            bottom: auto;
+            z-index: 99999;
+            vertical-align: baseline;
+            text-align: start;
+            box-sizing: border-box;
+            box-shadow: none;
+            border-radius: 0px;
+            width: 100% !important;
+            max-width:1024px;
+            height: 250px;
+            word-wrap: break-word;
+            }
+            /*.ql-toolbar {
+            position: absolute;
+            bottom:60px !important;
+            width: 98% !important;
+            transform: translateY(100%);
+            }*/
+            .ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            float: left;
+            height: 24px;
+            padding: 3px 5px;
+            width: 28px;
+            position: relative;
+            width: 58px;
+            }
+            .ql-toolbar.ql-snow .ql-formats {
+            /* margin-right: 15px; */
+            }
+            .ql-toolbar.ql-snow .ql-formats {
+            margin-right: 0px;
+            }
+            .ql-toolbar.ql-snow {
+            /*border: 1px solid #ccc;*/
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            /* padding: 8px; 
+            }*/
+            }
+            .ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            float: left;
+            height: 50px;
+            padding: 15px;
+            width: 45px;
+            border: 1px solid #ccc;
+            width: 58px;
+            height: 52px;
+            }
+            
+            .ql-toolbar.ql-snow {
+            /*border: 1px solid #ccc;*/
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            padding: 0;
+            background: #f0f0f0;
+            }
+            .ql-editor .ql-bg-blue {
+            background-color: #cc0000 !important;
+            }
+            .ql-editor .ql-color-blue {
+            color: #cc0000 !important;
+            }
+            .ql-snow.ql-toolbar button:hover,
+            .ql-snow .ql-toolbar button:hover,
+            .ql-snow.ql-toolbar button:focus,
+            .ql-snow .ql-toolbar button:focus,
+            .ql-snow.ql-toolbar button.ql-active,
+            .ql-snow .ql-toolbar button.ql-active,
+            .ql-snow.ql-toolbar .ql-picker-label:hover,
+            .ql-snow .ql-toolbar .ql-picker-label:hover,
+            .ql-snow.ql-toolbar .ql-picker-label.ql-active,
+            .ql-snow .ql-toolbar .ql-picker-label.ql-active,
+            .ql-snow.ql-toolbar .ql-picker-item:hover,
+            .ql-snow .ql-toolbar .ql-picker-item:hover,
+            .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
+            .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
+            color: #cc0000 !important;
+            }
+            .slds-scope .slds-p-around_medium, .slds-scope .slds-p-around--medium {
+            /* padding: 1rem; */
+            }
+            
+            .slds-scope .slds-modal__header, .slds-scope .slds-modal__content {
+            /* background: rgb(255, 255, 255); */
+            }
+            .slds-scope .slds-modal__content {
+            overflow: hidden;
+            text-align: center;
+            margin-top: 20%;
+            overflow-y: auto;
+            }
+            .editors .editors__item {
+            padding: 20px;
+            font-size: 1.4225rem;
+            }  
+            .ql-snow.ql-toolbar button:hover, .ql-snow .ql-toolbar button:hover, .ql-snow.ql-toolbar button:focus, .ql-snow .ql-toolbar button:focus, 
+            .ql-snow.ql-toolbar button.ql-active, .ql-snow .ql-toolbar button.ql-active, .ql-snow.ql-toolbar .ql-picker-label:hover, 
+            .ql-snow .ql-toolbar .ql-picker-label:hover, .ql-snow.ql-toolbar .ql-picker-label.ql-active, .ql-snow .ql-toolbar .ql-picker-label.ql-active, 
+            .ql-snow.ql-toolbar .ql-picker-item:hover, .ql-snow .ql-toolbar .ql-picker-item:hover, .ql-snow.ql-toolbar .ql-picker-item.ql-selected, .ql-snow .ql-toolbar 
+            .ql-picker-item.ql-selected {
+            color: #cc0000;
+            background-image: none;
+            -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+            background-color: #D9D9D9;
+            outline: 0;
+            }
+            .ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+            background: none;
+            border-right: 1px solid #ccc;
+            cursor: pointer;
+            display: inline-block;
+            float: left;
+            height: 24px;
+            padding: 17px;
+            /* width: 28px; */
+            position: relative;
+            width: 103px;
+            height: 52px;
+            /* background: #ececec; */
+            /* color: #cc0000; */
+            /* border: 0; */
+            /* border-radius: 0; */
+            /* font-size: 0; */
+            /* border-bottom: 0; */
+            width: 58px;
+            height: 52px;
+            }
+            .ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
+            fill: #cc0000;
+            }
+            .slds-scope .slds-p-around_medium, .slds-scope .slds-p-around--medium {
+            padding: 0; 
+            }
+            .modal-open .modal {
+            overflow-x: hidden; 
+            overflow-y: hidden;
+            }
+            .slds-scope optgroup, .slds-scope select, .slds-scope textarea {
+            width: 59px;
+            height: 31px !important;
+            padding-left: 10px;
+            font-weight: bold;
+            color: #CC0000;
+            }
+            .btnClass{
+            display: block;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            width: 35%;
+            height: 50px;
+            background: transparent;
+            border: 3px solid #cc0000;
+            color: #cc0000 !important;
+            font-weight: bolder !important;
+            font-size: medium !important;
+            border-radius: 5px;
+            }
+            .btnClass:hover{
+            background: #cc0000;
+            color: white  !important;
+            border: 3px solid #cc0000;
+            }
+            
+            .div3 .editorContainer .ql-toolbar{
+            top: 49.7% !important;
+            }
+            .div4 .editorContainer .ql-toolbar{
+            top: 49.7% !important;
+            }
+            .div5 .editorContainer .ql-toolbar{
+            top: 77.8% !important;
+            }
+            
+            .ql-toolbar.ql-snow {
+            /*border: 1px solid #ccc;*/
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            padding: 0;
+            background: #f0f0f0;
+            }
+            .ql-toolbar.ql-snow {
+            /*border: 1px solid #ccc;*/
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            /* padding: 8px; */
+            }
+            .ql-toolbar.ql-snow {
+            /*border: 1px solid #ccc;*/
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            padding: 8px;
+            }
+            .ql-toolbar.ql-snow {
+            /*border: 1px solid #ccc;*/
+            border: none !important;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            padding: 0px;
+            }
+            
+            .editor .editor__inner .editor__buttons .btn--orange {
+            display: inline-block  !important;
+            }
+            
+            .section-questions .section__body .section__content {
+            max-width:72.5% !important;
+            
+            }
+            .classButton{
+            float:right;
+            padding:8px !important;
+            background:#4793df !important;
+            }
+            .editorContainer{
+            width: 100%;
+            height: 345px;
+            padding: 15px;
+            position:relative;
+            }
+            .editor .editor__inner .editor__buttons{
+            position: absolute;           
+            width: 50%;
+            bottom:0;
+            right:15px;
+            z-index:909;
+            border-bottom:0;
+            }
+            .ql-toolbar {
+            position: absolute;           
+            width: 50%;
+            bottom:0;
+            left:15px;
+            top:auto;
+            z-index:909;
+            }
+            .ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+            background: none;
+            border-right: 1px solid #ccc;
+            cursor: pointer;
+            display: inline-block;
+            float: left;
+            height: 24px;
+            padding: 17px;
+            position: relative;
+            width: 103px;
+            height: 52px;
+            width: 40px !important;
+            height: 52px;
+            }
+            .ql-snow.ql-toolbar button svg{
+            margin-left:-5px;
+            }
+            .sendEmailButton{
+            display: flow-root;
+            }
+            .box {
+            /*padding:1%;
+            padding-top: 3%;
+            overflow-y: auto;*/
+            width: 100% !important;
+            max-width: 1024px;
+            height: 250px;
+            display: block;
+            margin:1% 1% 0 0;
+            float:left;
+            height: 250px; 
+            background:#fff;
+            border:1px solid #ccc;
+            pointer-events: none;
+            }
+        </style>
+        <apex:outputPanel rendered="{!IF($CurrentPage.parameters.fromSfOrg == 'true',true,false)}">
+            <style>
+                .editor__buttons_forTab .container{padding: 0 15px;width: 100%;}
+                .editor__buttons_forTab .editor .editor__inner .editor__buttons .btn{font-size: 9px !important;padding: 5px 5px !important;}
+                .editor__buttons_forTab .ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button{width: 30px !important;height: 42px;   padding: 10px;}
+                .editor__buttons_forTab .editor .editor__inner .editor__buttons{width: 59%; right:0;}
+                .editor__buttons_forTab .section-questions .section__body .section__aside{max-width: 26.5%;padding: 40px 0 0 15px;}
+                .editor__buttons_forTab .editorContainer{padding: 0;}
+                .editor__buttons_forTab .editorContainer{height:315px;}
+                .editor__buttons_forTab .ql-toolbar.ql-snow{margin-left: -15px;}
+            </style>
+        </apex:outputPanel>
+        <head>
+            <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <apex:stylesheet value="{!URLFOR($Resource.QualitiveCSS)}"/>        
+            <title>TWR</title>        
+        </head>
+        
+        <body>
+            <!-- <apex:actionFunction name="CallApexMethod1" action="{!saveTextEditorData}" onComplete="reloadPage()">
+<apex:param name="stringEditor1" assignTo="{!selectScoreBy}" value="" />
+<apex:param name="stringEditor2" assignTo="{!EditorText}" value="" />
+<apex:param name="stringEditor3" assignTo="{!selectScoreFor}" value="" />
+<apex:param name="stringEditor4" assignTo="{!Editor1Text}" value="" />
+<apex:param name="stringEditor5" assignTo="{!selectScoreInOn}" value="" />
+<apex:param name="stringEditor6" assignTo="{!Editor2Text}" value="" />
+<apex:param name="stringEditor7" assignTo="{!selectScoreThrough}" value="" />
+<apex:param name="stringEditor8" assignTo="{!Editor3Text}" value="" />
+<apex:param name="stringEditor9" assignTo="{!selectScoreWith}" value="" />
+<apex:param name="stringEditor0" assignTo="{!Editor4Text}" value="" />
+</apex:actionFunction> -->
+            
+            <!--<apex:includeLightning />-->
+            
+            <section class="section-edit">
+                <div class="container">
+                    <div class="section__inner">
+                        <header class="section__head">
+                            <div class="section__head-inner">
+                                <div class="section__date">
+                                    <p>  
+                                        Due date: <strong><apex:outputText value="{0,date,dd/MM/yyyy}"> <apex:param value="{!dueDate}" /> </apex:outputText></strong>
+                                    </p>
+                                </div><!-- /.section__date -->
+                                
+                                <h2 class="section__title">
+                                    Raraunga Kounga
+                                </h2><!-- /.section__title -->
+                                
+                                <p>
+                                    <apex:outputText value="{!$Label.Label_for_Raraunga_Kaunga_content}"/>	
+                                </p>
+                            </div><!-- /.section__head-inner -->
+                            
+                            <div class="section__head-logo">
+                                <apex:outputField style="width='1280', height='720' " value="{!obj.Partner_Logo__c}"/>
+                                <!--   <img src="assets/images/png/sport-northland-logo.png" alt="Sport Logo"/> 
+<div id="UserLogo"></div>
+<script>
+/*$Lightning.use("c:RUL_GetReportApp", function() {
+                                    $Lightning.createComponent("c:UserLogo",
+                                                               {
+                                                                   
+                                                               },
+                                                               "UserLogo",
+                                                               function(cmp) {
+                                                                   console.log('>>>>> App is hosted');
+                                                               });
+                                });*/
+</script>-->
+                                
+                            </div><!-- /.section__head-logo -->
+                        </header><!-- /.section__head -->
+                    </div><!-- /.section__inner isUser == true -->
+                    
+                    <!-- <apex:outputPanel rendered="{!IF($CurrentPage.parameters.fromSfOrg == 'true',IF(isUserValid =true ,true,false),false)}" id="validUser">
+<apex:commandButton reRender="validUser" styleClass="classButton" value="Approve Request" onclick="callApproveMethod()" />
+</apex:outputPanel>-->
+                    
+                </div><!-- /.container -->
+            </section><!-- /.section-edit -->
+            
+            <div class="editor__buttons_forTab">
+                <main class="main clear">  
+                    
+                    <section class="section-questions" >
+                        <div class="container" >
+                            <header class="section__head">
+                                
+                                
+                                <div class="slider-questions">                                    
+                                    <div class="swiper-container" >
+                                        <div class="swiper-wrapper"> 
+                                            <div class="swiper-slide active">
+                                                
+                                                <div class="question">
+                                                    <button  disabled="true" >
+                                                        <apex:outputText value="{!$Label.Qualitative_Question1}"/> 
+                                                    </button>
+                                                </div><!-- /.question -->
+                                                
+                                            </div><!-- /.swiper-slide -->
+                                            
+                                            <div class="swiper-slide">
+                                                <div class="question" >
+                                                    <button disabled="true"> 
+                                                        <apex:outputText value="{!$Label.Qualitative_Question2}"/>
+                                                    </button>
+                                                </div><!-- /.question -->
+                                            </div><!-- /.swiper-slide -->
+                                            
+                                            <div class="swiper-slide">
+                                                <div class="question">
+                                                    <button disabled="true">
+                                                        <apex:outputText value="{!$Label.Qualitative_Question3}"/>
+                                                    </button>
+                                                </div><!-- /.question -->
+                                            </div><!-- /.swiper-slide -->
+                                            
+                                            <div class="swiper-slide">
+                                                <div class="question">
+                                                    <button disabled="true">
+                                                        <apex:outputText value="{!$Label.Qualitative_Question4}"/></button>
+                                                </div><!-- /.question -->
+                                            </div><!-- /.swiper-slide -->
+                                            
+                                            <div class="swiper-slide">
+                                                <div class="question">
+                                                    <button disabled="true"> <apex:outputText value="{!$Label.Qualitative_Question5}"/></button>
+                                                </div><!-- /.question -->
+                                            </div><!-- /.swiper-slide -->
+                                            
+                                            
+                                            
+                                        </div><!-- /.swiper-wrapper -->
+                                    </div><!-- /.swiper-container -->
+                                    
+                                    <div class="slider-actions">
+                                        <span class="swiper-button-prev" style="padding:1%;">
+                                            <svg width="18" height="36" aria-hidden="true" data-prefix="fas" data-icon="angle-left" class="svg-inline--fa fa-angle-left fa-w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                                                <path fill="currentColor" d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"></path>
+                                            </svg>
+                                        </span><!-- swiper-button-prev -->
+                                        
+                                        <span class="swiper-button-next" style="padding:1%;">
+                                            <svg width="18" height="36" aria-hidden="true" data-prefix="fas" data-icon="angle-right" class="svg-inline--fa fa-angle-right fa-w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                                                <path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
+                                            </svg>
+                                        </span><!-- swiper-button-next -->
+                                        
+                                        
+                                    </div><!-- /.slider-actions -->
+                                </div><!-- /.slider-questions -->
+                            </header><!-- /.section__head -->
+                            
+                            <!-- <button type="button" class="btn btn--border btn--border--red js-popup-primary" data-target="#popup-change-request">submit change request</button>-->
+                            
+                            
+                            <div class="section__body" >
+                                <div class="section__content" >
+                                    <div class="slider-questions-primary" >
+                                        <div class="swiper-container" >
+                                            <div class="swiper-wrapper" >
+                                                
+                                                <div class="swiper-slide swiper-no-swiping" >
+                                                    <div class="question-primary" >
+                                                        <div class="question__head">
+                                                            <h3 class="question__title"><apex:outputText value="{!$Label.Qualitative_Question1}"/></h3><!-- /.question__title  <apex:outputText value="{!$Label.Qualitative_Q1}"/>-->
+                                                            <div class="question__next">
+                                                                <span style="font-weight:bold;" class="swiper-button-next">
+                                                                    <svg width="11" height="22" aria-hidden="true" data-prefix="fas" data-icon="angle-right" class="svg-inline--fa fa-angle-right fa-w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                                                                        <path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
+                                                                    </svg>                                                                
+                                                                    Next Question
+                                                                </span><!-- swiper-button-next -->
+                                                            </div><!-- /.question__next -->
+                                                        </div><!-- /.question__head -->
+                                                        
+                                                        
+                                                        <apex:outputPanel rendered="{!isDueDatePassed && actTextArea.Is_Read_Only__c == false}"> 
+                                                            <div class="question__body">
+                                                                <div class="question__content">
+                                                                    <div class="editor">
+                                                                        <div class="editor__body">
+                                                                            <div class="editor__inner js-editor" >
+                                                                                <div class="editorContainer" >
+                                                                                    <!-- Create the editor container -->
+                                                                                    <div id="editor" style="height: 170px;">
+                                                                                        {!Raraunga_Kaunga_Question1}
+                                                                                    </div>
+                                                                                </div>   
+                                                                                
+                                                                                <div class="editor__buttons">
+                                                                                    <button type="button" class="btn btn--border btn--border--red" onclick="return CallcompleteActivity()">
+                                                                                        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                                                            <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                                                            <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                                                        </svg>
+                                                                                        Save
+                                                                                    </button>
+                                                                                    <button type="button"  class="btnSave btn--red js-popup-primary" data-target="#popup-last-chance">
+                                                                                        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                                                            <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                                                            <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                                                        </svg>
+                                                                                        
+                                                                                        Save and Complete
+                                                                                    </button>
+                                                                                    
+                                                                                    <!--    <button type="button" class="btn btn--red js-popup-primary" data-target="#popup-last-chance">
+<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+<path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+<path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+</svg>
+Save and Complete
+</button> -->
+                                                                                    
+                                                                                    <!--  <button type="button" class="btn btn--red js-popup-primary" data-target="#popup-last-chance">
+<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+<path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+<path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+</svg>
+Save and Complete
+</button>-->
+                                                                                    
+                                                                                    <!-- <button type="button" class="btn btn--orange js-popup-primary" data-target="#popup-change-request">submit change request</button>-->                                                                                
+                                                                                </div><!-- /.editor__buttons -->
+                                                                            </div>
+                                                                        </div><!-- /.editor__body -->
+                                                                    </div><!-- /.editor -->
+                                                                </div><!-- /.question__content -->
+                                                            </div><!-- /.question__body -->
+                                                        </apex:outputPanel>
+                                                        
+                                                        <apex:outputPanel rendered="{! ! isDueDatePassed || actTextArea.Is_Read_Only__c == true}" >
+                                                            <style>
+                                                                .ql-toolbar.ql-snow {
+                                                                display: none;
+                                                                }
+                                                            </style>
+                                                            <!--<apex:outputPanel rendered="{! !actTextArea.Is_Read_Only__c == false}">-->
+                                                            <div class="box">
+                                                                
+                                                                <!-- Create the editor container -->
+                                                                <div id="editor" style="height: 170px;">
+                                                                    <apex:outputText value=" {!Raraunga_Kaunga_Question1}" escape="false"></apex:outputText>
+                                                                </div> 
+                                                                
+                                                            </div>
+                                                            
+                                                            <!-- <div class="sendEmailButton">
+<button type="button" class="btn btn--orange js-popup-primary" data-target="#popup-change-request">Submit Change Request</button>
+</div>-->
+                                                            
+                                                            <!-- </apex:outputPanel>-->  
+                                                        </apex:outputPanel>
+                                                    </div><!-- /.question-primary -->
+                                                </div> <!-- /.swiper-slide -->   
+                                                
+                                                
+                                                
+                                                <div class="swiper-slide swiper-no-swiping">
+                                                    <div class="question-primary">
+                                                        <div class="question__head">
+                                                            <h3 class="question__title"> <apex:outputText value="{!$Label.Qualitative_Question2}"/></h3><!-- /.question__title -->
+                                                            
+                                                            <div class="question__next">
+                                                                <span style="font-weight:bold;" class="swiper-button-next">
+                                                                    <svg width="11" height="22" aria-hidden="true" data-prefix="fas" data-icon="angle-right" class="svg-inline--fa fa-angle-right fa-w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                                                                        <path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
+                                                                    </svg>
+                                                                    Next Question
+                                                                </span><!-- swiper-button-next -->
+                                                            </div><!-- /.question__next -->
+                                                        </div><!-- /.question__head -->
+                                                        
+                                                        <apex:outputPanel rendered="{! isDueDatePassed && actTextArea.Is_Read_Only__c == false}">
+                                                            <div class="question__body">
+                                                                <div class="question__content">
+                                                                    <div class="editor">
+                                                                        <div class="editor__body">
+                                                                            <div class="editor__inner js-editor">  
+                                                                                <div class="editorContainer">
+                                                                                    <!-- Create the editor container -->
+                                                                                    <div id="editor1" style="height: 170px;">
+                                                                                        {!Raraunga_Kaunga_Question2}
+                                                                                    </div>  
+                                                                                </div> 
+                                                                                
+                                                                                <div class="editor__buttons">
+                                                                                    
+                                                                                    <button type="button" class="btn btn--border btn--border--red" onclick="return CallcompleteActivity()">
+                                                                                        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                                                            <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                                                            <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                                                        </svg>
+                                                                                        Save
+                                                                                    </button>
+                                                                                    
+                                                                                    <button type="button"  class="btnSave btn--red js-popup-primary" data-target="#popup-last-chance">
+                                                                                        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                                                            <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                                                            <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                                                        </svg>
+                                                                                        
+                                                                                        Save and Complete
+                                                                                    </button>
+                                                                                    
+                                                                                    <!--  <button type="button" class="btn btn--red js-popup-primary" data-target="#popup-last-chance">
+<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+<path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+<path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+</svg>
+Save and Complete
+</button>-->
+                                                                                    
+                                                                                    <!-- <button type="button" class="btn btn--orange js-popup-primary" data-target="#popup-change-request">submit change request</button>--> 
+                                                                                </div><!-- /.editor__buttons -->
+                                                                            </div><!-- /.js-editor -->
+                                                                        </div><!-- /.editor__body -->
+                                                                    </div><!-- /.editor -->
+                                                                </div><!-- /.question__content -->
+                                                            </div><!-- /.question__body -->
+                                                        </apex:outputPanel>
+                                                        <apex:outputPanel rendered="{! !isDueDatePassed || actTextArea.Is_Read_Only__c == true}">
+                                                            <style>
+                                                                .ql-toolbar.ql-snow {
+                                                                display: none;
+                                                                }
+                                                            </style>
+                                                            <div class="box">
+                                                                
+                                                                <!-- Create the editor container -->
+                                                                <div id="editor" style="height: 170px;">
+                                                                    <apex:outputText value="{!Raraunga_Kaunga_Question2}" escape="false"></apex:outputText>
+                                                                </div> 
+                                                                
+                                                            </div>
+                                                            
+                                                            <!-- <div class="sendEmailButton">
+<button type="button" class="btn btn--orange js-popup-primary" data-target="#popup-change-request">Submit Change Request</button>
+</div>-->
+                                                        </apex:outputPanel>
+                                                    </div><!-- /.question-primary -->
+                                                </div><!-- /.swiper-slide -->
+                                                
+                                                <div class="swiper-slide swiper-no-swiping">
+                                                    <div class="question-primary">
+                                                        <div class="question__head">
+                                                            <h3 class="question__title"><apex:outputText value="{!$Label.Qualitative_Question3}"/></h3><!-- /.question__title -->
+                                                            
+                                                            <div class="question__next">
+                                                                <span style="font-weight:bold;" class="swiper-button-next">
+                                                                    <svg width="11" height="22" aria-hidden="true" data-prefix="fas" data-icon="angle-right" class="svg-inline--fa fa-angle-right fa-w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                                                                        <path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
+                                                                    </svg>
+                                                                    
+                                                                    Next Question
+                                                                </span><!-- swiper-button-next -->
+                                                            </div><!-- /.question__next -->
+                                                        </div><!-- /.question__head -->
+                                                        
+                                                        <apex:outputPanel rendered="{! isDueDatePassed && actTextArea.Is_Read_Only__c == false}">
+                                                            <div class="question__body">
+                                                                <div class="question__content">
+                                                                    <div class="editor">
+                                                                        <div class="editor__body">
+                                                                            <div class="editor__inner js-editor">
+                                                                                <div class="editorContainer">
+                                                                                    <!-- Create the editor container -->
+                                                                                    <div id="editor2" style="height: 170px;">
+                                                                                        {!Raraunga_Kaunga_Question3}
+                                                                                    </div>  
+                                                                                </div> 
+                                                                                
+                                                                                <div class="editor__buttons">
+                                                                                    <button type="button" class="btn btn--border btn--border--red" onclick="CallcompleteActivity()">
+                                                                                        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                                                            <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                                                            <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                                                        </svg>                                                                                
+                                                                                        Save
+                                                                                    </button>
+                                                                                    
+                                                                                    <button type="button"  class="btnSave btn--red js-popup-primary" data-target="#popup-last-chance">
+                                                                                        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                                                            <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                                                            <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                                                        </svg>
+                                                                                        
+                                                                                        Save and Complete
+                                                                                    </button>
+                                                                                    <!--  <button type="button" class="btn btn--red js-popup-primary" data-target="#popup-last-chance">
+<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+<path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+<path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+</svg>
+Save and Complete
+</button>-->
+                                                                                    
+                                                                                    <!-- <button type="button" class="btn btn--orange js-popup-primary" data-target="#popup-change-request">submit change request</button>--> 
+                                                                                </div><!-- /.editor__buttons -->
+                                                                            </div><!-- /.js-editor -->
+                                                                        </div><!-- /.editor__body -->
+                                                                    </div><!-- /.editor -->
+                                                                </div><!-- /.question__content -->
+                                                            </div><!-- /.question__body -->
+                                                        </apex:outputPanel>
+                                                        <apex:outputPanel rendered="{! !isDueDatePassed || actTextArea.Is_Read_Only__c == true}">
+                                                            <style>
+                                                                .ql-toolbar.ql-snow {
+                                                                display: none;
+                                                                }
+                                                            </style>
+                                                            <div class="box">
+                                                                
+                                                                <!-- Create the editor container -->
+                                                                <div id="editor" style="height: 170px;">
+                                                                    <apex:outputText value="{!Raraunga_Kaunga_Question3}" escape="false"></apex:outputText>
+                                                                </div> 
+                                                                
+                                                            </div>
+                                                            
+                                                            <!-- <div class="sendEmailButton">
+<button type="button" class="btn btn--orange js-popup-primary" data-target="#popup-change-request">Submit Change Request</button>
+</div>-->
+                                                        </apex:outputPanel>
+                                                    </div><!-- /.question-primary -->
+                                                </div><!-- /.swiper-slide -->
+                                                
+                                                <div class="swiper-slide swiper-no-swiping">
+                                                    <div class="question-primary">
+                                                        <div class="question__head">
+                                                            <h3 class="question__title"><apex:outputText value="{!$Label.Qualitative_Question4}"/></h3><!-- /.question__title -->
+                                                            
+                                                            <div class="question__next">
+                                                                <span style="font-weight:bold;" class="swiper-button-next">
+                                                                    <svg width="11" height="22" aria-hidden="true" data-prefix="fas" data-icon="angle-right" class="svg-inline--fa fa-angle-right fa-w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                                                                        <path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
+                                                                    </svg>                                                                
+                                                                    Next Question
+                                                                </span><!-- swiper-button-next -->
+                                                            </div><!-- /.question__next -->
+                                                        </div><!-- /.question__head -->
+                                                        
+                                                        <apex:outputPanel rendered="{! isDueDatePassed && actTextArea.Is_Read_Only__c == false}">
+                                                            <div class="question__body">
+                                                                <div class="question__content">
+                                                                    <div class="editor">
+                                                                        <div class="editor__body">
+                                                                            <div class="editor__inner js-editor">
+                                                                                <div class="editorContainer">
+                                                                                    <!-- Create the editor container -->
+                                                                                    <div id="editor3" style="height: 170px;">
+                                                                                        {!Raraunga_Kaunga_Question4}
+                                                                                        
+                                                                                    </div>  
+                                                                                </div> 
+                                                                                
+                                                                                <div class="editor__buttons">
+                                                                                    <button type="button" class="btn btn--border btn--border--red" onclick="CallcompleteActivity()">
+                                                                                        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                                                            <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                                                            <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                                                        </svg>                                                                                
+                                                                                        Save
+                                                                                    </button>
+                                                                                    
+                                                                                    <button type="button"  class="btnSave btn--red js-popup-primary" data-target="#popup-last-chance">
+                                                                                        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                                                            <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                                                            <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                                                        </svg>
+                                                                                        
+                                                                                        Save and Complete
+                                                                                    </button>
+                                                                                    <!--  <button type="button" class="btn btn--red js-popup-primary" data-target="#popup-last-chance">
+<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+<path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+<path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+</svg>
+Save and Complete
+</button>-->
+                                                                                    
+                                                                                    <!-- <button type="button" class="btn btn--orange js-popup-primary" data-target="#popup-change-request">submit change request</button>--> 
+                                                                                </div><!-- /.editor__buttons -->
+                                                                            </div>  <!-- /.js-editor -->
+                                                                        </div><!-- /.editor__body -->
+                                                                    </div><!-- /.editor -->
+                                                                </div><!-- /.question__content -->
+                                                            </div><!-- /.question__body -->
+                                                        </apex:outputPanel>
+                                                        <apex:outputPanel rendered="{! !isDueDatePassed || actTextArea.Is_Read_Only__c == true}">
+                                                            <style>
+                                                                .ql-toolbar.ql-snow {
+                                                                display: none;
+                                                                }
+                                                            </style>
+                                                            <div class="box">
+                                                                
+                                                                <!-- Create the editor container -->
+                                                                <div id="editor" style="height: 170px;">
+                                                                    <apex:outputText value="{!Raraunga_Kaunga_Question4}" escape="false"></apex:outputText>
+                                                                </div> 
+                                                                
+                                                            </div>
+                                                            
+                                                            <!-- <div class="sendEmailButton">
+<button type="button" class="btn btn--orange js-popup-primary" data-target="#popup-change-request">Submit Change Request</button>
+</div>-->
+                                                        </apex:outputPanel>
+                                                    </div><!-- /.question-primary -->
+                                                </div><!-- /.swiper-slide -->
+                                                
+                                                <div class="swiper-slide swiper-no-swiping">
+                                                    <div class="question-primary">
+                                                        <div class="question__head">
+                                                            <h3 class="question__title"> <apex:outputText value="{!$Label.Qualitative_Question5}"/></h3><!-- /.question__title -->
+                                                        </div><!-- /.question__head -->
+                                                        
+                                                        <apex:outputPanel rendered="{! isDueDatePassed && actTextArea.Is_Read_Only__c == false}">
+                                                            <div class="question__body">
+                                                                <div class="question__content">
+                                                                    <div class="editor">
+                                                                        <div class="editor__body">
+                                                                            <div class="editor__inner ">
+                                                                                <div class="editorContainer">
+                                                                                    <!-- Create the editor container -->
+                                                                                    <div id="editor4" style="height: 170px;">
+                                                                                        {!Raraunga_Kaunga_Question5}
+                                                                                    </div>
+                                                                                </div> 
+                                                                                
+                                                                                <div class="editor__buttons">
+                                                                                    <button type="button" class="btn btn--border btn--border--red" onclick="CallcompleteActivity()">
+                                                                                        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                                                            <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                                                            <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                                                        </svg>                                                                                
+                                                                                        Save
+                                                                                    </button>
+                                                                                    
+                                                                                    <button type="button"  class="btnSave btn--red js-popup-primary" data-target="#popup-last-chance">
+                                                                                        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                                                            <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                                                            <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                                                        </svg>
+                                                                                        
+                                                                                        Save and Complete
+                                                                                    </button>
+                                                                                    <!--  <button type="button" class="btn btn--red js-popup-primary" data-target="#popup-last-chance">
+<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+<path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+<path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+</svg>
+Save and Complete
+</button>-->
+                                                                                    
+                                                                                    <!-- <button type="button" class="btn btn--orange js-popup-primary" data-target="#popup-change-request">submit change request</button>--> 
+                                                                                </div><!-- /.editor__buttons -->
+                                                                            </div>
+                                                                        </div><!-- /.editor__body -->
+                                                                    </div><!-- /.editor -->
+                                                                </div><!-- /.question__content -->
+                                                            </div><!-- /.question__body -->
+                                                        </apex:outputPanel>
+                                                        <apex:outputPanel rendered="{! !isDueDatePassed || actTextArea.Is_Read_Only__c == true}">
+                                                            <style>
+                                                                .ql-toolbar.ql-snow {
+                                                                display: none;
+                                                                }
+                                                            </style>
+                                                            <div class="box">
+                                                                
+                                                                <!-- Create the editor container -->
+                                                                <div id="editor" style="height: 170px;">
+                                                                    <apex:outputText value="{!Raraunga_Kaunga_Question5}" escape="false"></apex:outputText>
+                                                                </div> 
+                                                                
+                                                            </div>
+                                                            
+                                                            <!-- <div class="sendEmailButton">
+<button type="button" class="btn btn--orange js-popup-primary" data-target="#popup-change-request">Submit Change Request</button>
+</div>-->
+                                                        </apex:outputPanel>
+                                                    </div><!-- /.question-primary -->
+                                                </div><!-- /.swiper-slide -->
+                                                
+                                            </div><!-- /.swiper-wrapper -->
+                                            <apex:outputPanel rendered="{! isDueDatePassed && actTextArea.Is_Read_Only__c == false}">
+                                                <!-- <button type="button" class="btnSave btn--red js-popup-primary" data-target="#popup-last-chance">
+<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+<path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+<path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+</svg>
+Save and Complete
+</button>-->
+                                                <!--button type="button"  class="btnSave btn--red js-popup-primary" data-target="#popup-last-chance">
+                                                    <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                        <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                        <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                    </svg>
+                                                    
+                                                    Save and Complete
+                                                </button-->
+                                            </apex:outputPanel>
+                                            <apex:outputPanel rendered="{!( ! isDueDatePassed || actTextArea.Is_Read_Only__c == true)&& actTextArea.requestForChangeRequest__c == false }" >
+                                                <!--<apex:outputPanel rendered="{! !actTextArea.Is_Read_Only__c == false}">-->
+                                                
+                                                <button type="button" class="btnChangeRequest btn--red js-popup-primary" data-target="#popup-change-request">Submit Change Request</button>
+                                                
+                                                
+                                                <!-- </apex:outputPanel>-->  
+                                            </apex:outputPanel>
+                                        </div><!-- /.swiper-container -->
+                                        
+                                    </div><!-- /.slider-questions-primary -->
+                                    
+                                </div><!-- /.section__content -->
+                                
+                                <div class="section__aside" id="section__aside">
+                                    <apex:outputPanel rendered="{!isSaved}">
+                                        <style>
+                                            /* .block-info {
+                                            border: 2px solid #ececec !important;
+                                            background-color: #ececec !important;
+                                            padding: 4px !important;
+                                            text-align: center !important;
+                                            height: 160px !important;
+                                            background:transparent !important;
+                                            border-bottom: none !important;
+                                            }*/
+                                            .swal2-icon.swal2-success .swal2-success-ring {
+                                            border: .25em solid #5ea81e !important;
+                                            }
+                                            .swal2-icon.swal2-success [class^=swal2-success-line] {
+                                            background-color: #5ea81e !important;
+                                            }
+                                            .swal2-icon.swal2-success [class^=swal2-success-line][class$=long] {
+                                            top: 6px;
+                                            right: 8px;
+                                            width: 2.9375em;
+                                            -webkit-transform: rotate(-45deg);
+                                            -ms-transform: rotate(-45deg);
+                                            transform: rotate(-45deg);
+                                            }
+                                            .swal2-icon.swal2-success [class^=swal2-success-line][class$=tip] {
+                                            top: 14px;
+                                            left: 7px;
+                                            width: 1.5625em;
+                                            -webkit-transform: rotate(45deg);
+                                            -ms-transform: rotate(45deg);
+                                            transform: rotate(45deg);
+                                            }
+                                            .swal2-icon.swal2-success .swal2-success-ring {
+                                            margin-top: 10px;
+                                            position: absolute;
+                                            z-index: 2;
+                                            top: -3em;
+                                            left: -1em;
+                                            -webkit-box-sizing: content-box;
+                                            box-sizing: content-box;
+                                            width: 120%;
+                                            height: 120%;
+                                            border-radius: 50%;
+                                            }
+                                        </style>
+                                        <div class="block-info" style="border: 2px solid #5ea81e;">
+                                            <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;"><div class="swal2-success-circular-line-left" style="background-color: rgb(217, 217, 217);"></div>
+                                                <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span><div class="swal2-success-ring"></div> <div class="swal2-success-fix" style="background-color: rgb(217, 217, 217);"></div>
+                                                <div class="swal2-success-circular-line-right" style="background-color: rgb(217, 217, 217);"></div></div>
+                                            <p  class="block__title"><strong><apex:outputText value="{!$Label.Success_Notification_Content}"/></strong></p>
+                                        </div><!-- /.block-info -->
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!isSubmittedApproval}">
+                                        <style>
+                                            .block-info {
+                                                background-color: #ececec !important;
+                                                padding: 14px !important;
+                                                text-align: center !important;
+                                                height: 160px !important;
+                                                /* background: #ececec !important; */
+                                                border: 2px solid #ff7b00 !important;
+                                                /* border-bottom: 1px solid #dadada!important; */
+                                                max-width: 280px;
+                                            }
+                                            .swal2-icon.swal2-warning {
+                                            border-color: #ff7a00 ;
+                                            color: #ff7a00 ;
+                                            }
+                                        </style>
+                                        <div class="block-info">
+                                            <div class="swal2-icon swal2-warning swal2-animate-warning-icon" style="display: flex;"></div>
+                                            <h5><strong><apex:outputText value="{!$Label.Review_Change_Request_Notification}"/></strong></h5>
+                                        </div><!-- /.block-info --> 
+                                    </apex:outputPanel>
+                                    
+                                    <div class="section__aside-head">
+                                        <h4>Te Whetū Rehua Scores</h4>                                    
+                                        <p>Here are the scores that you provided at the start of the reporting year. These scores can be edited by clicking the icons to your right.</p>
+                                    </div><!-- /.section__aside-head -->
+                                    
+                                    <ul class="stats">
+                                        <li>
+                                            <div class="stats__label">With</div><!-- /.stats__label -->                                        
+                                            <div class="stats__entry disabled">{!DiamensionWithScore}</div><!-- /.stats__entry -->                                        
+                                            <div class="stats__entry with_entry"></div><!-- /.stats__entry -->                                        
+                                            <div class="stats__actions">
+                                                
+                                                <apex:outputlabel rendered="{! !actTextArea.Is_Read_Only__c == true}">
+                                                    <div class="switch">
+                                                        <input type="checkbox" name="switch-1" id="switch-1" data-target="#popup-score-1" />
+                                                        <label for="switch-1"></label>
+                                                    </div><!-- /.switch -->
+                                                </apex:outputlabel>
+                                            </div><!-- /.stats__actions -->
+                                        </li>
+                                        
+                                        <li>
+                                            <div class="stats__label">By</div><!-- /.stats__label -->                                        
+                                            <div class="stats__entry">{!DiamensionByScore}</div><!-- /.stats__entry -->                                        
+                                            <div class="stats__entry"></div><!-- /.stats__entry -->                                        
+                                            <div class="stats__actions">
+                                                
+                                                <apex:outputlabel rendered="{! !actTextArea.Is_Read_Only__c == true}">
+                                                    <div class="switch">
+                                                        <input type="checkbox" name="switch-2" id="switch-2" data-target="#popup-score-2" />
+                                                        <label for="switch-2"></label>
+                                                    </div><!-- /.switch -->
+                                                </apex:outputlabel>
+                                            </div><!-- /.stats__actions -->
+                                        </li>
+                                        
+                                        <li>
+                                            <div class="stats__label">For</div><!-- /.stats__label -->                                        
+                                            <div class="stats__entry">{!DiamensionForScore}</div><!-- /.stats__entry -->                                        
+                                            <div class="stats__entry"></div><!-- /.stats__entry -->                                        
+                                            <div class="stats__actions">
+                                                <apex:outputlabel rendered="{! !actTextArea.Is_Read_Only__c == true}">
+                                                    <div class="switch">
+                                                        <input type="checkbox" name="switch-3" id="switch-3" data-target="#popup-score-3" />
+                                                        <label for="switch-3"></label>
+                                                    </div><!-- /.switch -->
+                                                </apex:outputlabel>
+                                            </div><!-- /.stats__actions -->
+                                        </li>
+                                        
+                                        <li>
+                                            <div class="stats__label">Through</div><!-- /.stats__label -->                                        
+                                            <div class="stats__entry">{!DiamensionThroughScore}</div><!-- /.stats__entry -->                                        
+                                            <div class="stats__entry"></div><!-- /.stats__entry -->                                        
+                                            <div class="stats__actions">
+                                                <apex:outputlabel rendered="{! !actTextArea.Is_Read_Only__c == true}">
+                                                    <div class="switch">
+                                                        <input type="checkbox" name="switch-4" id="switch-4" data-target="#popup-score-4" />
+                                                        <label for="switch-4"></label>
+                                                    </div><!-- /.switch -->
+                                                </apex:outputlabel>
+                                            </div><!-- /.stats__actions -->
+                                        </li>
+                                        
+                                        <li>
+                                            <div class="stats__label">In / On</div><!-- /.stats__label -->                                        
+                                            <div class="stats__entry">{!DiamensionInOnScore}</div><!-- /.stats__entry -->                                        
+                                            <div class="stats__entry"></div><!-- /.stats__entry -->                                        
+                                            <div class="stats__actions">
+                                                <apex:outputlabel rendered="{! !actTextArea.Is_Read_Only__c == true}">
+                                                    <div class="switch">
+                                                        <input type="checkbox" name="switch-5" id="switch-5" data-target="#popup-score-5" />
+                                                        <label for="switch-5"></label>
+                                                    </div><!-- /.switch -->
+                                                </apex:outputlabel>
+                                            </div><!-- /.stats__actions -->
+                                        </li>
+                                    </ul><!-- /.stats -->
+                                </div><!-- /.section__aside -->
+                            </div><!-- /.section__body -->
+                            
+                        </div><!-- /.container -->
+                        
+                    </section><!-- /.section-questions -->
+                    
+                    
+                    
+                    
+                    <div class="popup-score js-popup" id="popup-score-1">
+                        <div class="popup__background"></div><!-- /.popup__background -->
+                        
+                        <div class="popup__inner" id="score-change-container1">
+                            <div class="popup__head">
+                                <a href="#" class="js-popup-close-spec" style="float:right;margin:0 0 20px 0;display: block;width: 100%;text-align: right;">
+                                    <img src="{!$Resource.popupClose}" alt="Close Icon" />
+                                </a> 
+                                
+                                <h3 style="font-size: 14px; color:#7a7a7a;" class="popup__title">Te Whetu Rehua </h3><!-- /.popup__title -->                            
+                                <p style="font-size: 30px;">WITH</p>
+                                
+                                
+                            </div><!-- /.popup__head -->
+                            
+                            <div class="popup__content active">
+                                <div class="score-current">
+                                    <p>{!DiamensionWithScore}</p>
+                                    
+                                    <div class="score__actions">
+                                        <button type="button" class="btn btn--border js-next">
+                                            
+                                            
+                                            <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                            </svg>                                        
+                                            Change score                              
+                                        </button>
+                                    </div><!-- /.score__actions -->
+                                </div><!-- /.score-current -->
+                            </div><!-- /.popup__content -->
+                            
+                            <div class="popup__content">
+                                <p style="text-align: center;">(Enter the new score below) </p>
+                                <div class="score-change">
+                                    
+                                    <input type="text" class="score__input js-numeric" id="withScoreValue" />                                
+                                    <div class="score__actions">
+                                        <button type="button" class="btn disabled js-next">
+                                            <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                            </svg>
+                                            Save and countinue
+                                        </button>
+                                    </div><!-- /.score__actions -->
+                                </div><!-- /.score-current -->
+                            </div><!-- /.popup__content -->
+                            
+                            <div class="popup__content">
+                                <div class="score-last">
+                                    <div class="score__head">
+                                        <div class="score__col">
+                                            <p>{!DiamensionWithScore}</p> 
+                                            <span>Original Score</span>
+                                        </div><!-- /.score__col -->
+                                        
+                                        <div class="score__col">
+                                            <p class="ns">2</p>                                        
+                                            <span>New Score</span>
+                                        </div><!-- /.score__col -->
+                                    </div><!-- /.score__head -->
+                                    
+                                    <div class="score__body">
+                                        <textarea id="withScoreValue_reason" name="why-change-score" placeholder="Please tell us why the score has changed"></textarea>
+                                    </div><!-- /.score__body -->
+                                    
+                                    <div class="score__actions">
+                                        <div class="score__cols">
+                                            <div class="score__col">
+                                                
+                                                <a href="#" class="score__back js-popup-close-spec" >
+                                                    <svg width="7" height="11" aria-hidden="true" data-prefix="fas" data-icon="chevron-left" class="svg-inline--fa fa-chevron-left fa-w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                                        <path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path>
+                                                    </svg> 
+                                                    <span>Back</span>
+                                                </a> 
+                                                
+                                                <!--<button class="score__back js-back">
+<svg width="7" height="11" aria-hidden="true" data-prefix="fas" data-icon="chevron-left" class="svg-inline--fa fa-chevron-left fa-w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+<path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path>
+</svg>
+
+<span>Back</span>
+</button> -->
+                                            </div><!-- /.score__col -->
+                                            
+                                            <div class="score__col">
+                                                <div class="score__buttons">
+                                                    <!--<button class="score__close js-popup-close">
+<img src="{!$Resource.popupClose}" alt="Close Icon" /> Cancel
+</button>-->
+                                                    
+                                                    <button  data-scoretype= 'with' data-buttontype='score' data-element='withScoreValue' type="button" class="btn btn--black js-close-alert js-sweet-alert" data-template="#score-change" data-type="success" data-target="#score-change-container1">
+                                                        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                            <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                            <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                        </svg>
+                                                        Save new score
+                                                    </button>
+                                                </div><!-- /.score__buttons -->
+                                            </div><!-- /.score__col -->
+                                        </div><!-- /.score__cols -->
+                                    </div><!-- /.score__actions -->
+                                </div><!-- /.score-last -->
+                            </div><!-- /.popup__content -->
+                        </div><!-- /.popup__inner -->
+                    </div><!-- /.popup-score -->  
+                    
+                    <div class="popup-score js-popup" id="popup-score-2">
+                        <div class="popup__background"></div><!-- /.popup__background -->
+                        
+                        <div class="popup__inner" id="score-change-container2">
+                            <div class="popup__head">
+                                <a href="#" class="js-popup-close-spec" style="float:right;margin:0 0 20px 0;display: block;width: 100%;text-align: right;">
+                                    <img src="{!$Resource.popupClose}" alt="Close Icon" /> Close
+                                </a>  
+                                <h3 style= "font-size: 14px; color:#7a7a7a;" class="popup__title">Te Whetu Rehua </h3><!-- /.popup__title -->                            
+                                <p style= "font-size: 30px;">By</p>
+                                
+                                
+                            </div><!-- /.popup__head -->
+                            
+                            <div class="popup__content active">
+                                <div class="score-current">
+                                    <p>{!DiamensionByScore}</p>
+                                    
+                                    <div class="score__actions">
+                                        <button type="button" class="btn btn--border js-next">
+                                            <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                            </svg>                                        
+                                            Change score
+                                        </button>
+                                    </div><!-- /.score__actions -->
+                                </div><!-- /.score-current -->
+                            </div><!-- /.popup__content -->
+                            
+                            <div class="popup__content">
+                                <div class="score-change">
+                                    <input type="text" class="score__input js-numeric" id="ByValue" />                                
+                                    <div class="score__actions">
+                                        <button type="button" class="btn disabled js-next">
+                                            <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                            </svg>
+                                            Save and countinue
+                                        </button>
+                                    </div><!-- /.score__actions -->
+                                </div><!-- /.score-current -->
+                            </div><!-- /.popup__content -->
+                            
+                            <div class="popup__content">
+                                <div class="score-last">
+                                    <div class="score__head">
+                                        <div class="score__col">
+                                            <p>{!DiamensionByScore}</p> 
+                                            <span>Original Score</span>
+                                        </div><!-- /.score__col -->
+                                        
+                                        <div class="score__col">
+                                            <p>2</p>                                        
+                                            <span>New Score</span>
+                                        </div><!-- /.score__col -->
+                                    </div><!-- /.score__head -->
+                                    
+                                    <div class="score__body">
+                                        <textarea id="ByValue_reason" name="why-change-score" placeholder="Please tell us why the score has changed"></textarea>
+                                    </div><!-- /.score__body -->
+                                    
+                                    <div class="score__actions">
+                                        <div class="score__cols">
+                                            <div class="score__col">
+                                                <a  class="score__back js-popup-close-spec" >
+                                                    <svg width="7" height="11" aria-hidden="true" data-prefix="fas" data-icon="chevron-left" class="svg-inline--fa fa-chevron-left fa-w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                                        <path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path>
+                                                    </svg> 
+                                                    <span>Back</span>
+                                                </a> 
+                                                
+                                                
+                                                <!--<button class="score__back js-back">
+<svg width="7" height="11" aria-hidden="true" data-prefix="fas" data-icon="chevron-left" class="svg-inline--fa fa-chevron-left fa-w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+<path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path>
+</svg>
+
+<span>Back</span>
+</button> -->
+                                            </div><!-- /.score__col -->
+                                            
+                                            <div class="score__col">
+                                                <div class="score__buttons">
+                                                    <!-- <button class="score__close js-popup-close">
+<img src="{!$Resource.popupClose}" alt="Close Icon" /> Cancel
+</button> -->
+                                                    
+                                                    <button  data-scoretype= 'by' data-buttontype="score" data-element='ByValue' type="button" class="btn btn--black js-close-alert js-sweet-alert" data-template="#score-change" data-type="success" data-target="#score-change-container2">
+                                                        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                            <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                            <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                        </svg>
+                                                        Save new score
+                                                    </button>
+                                                </div><!-- /.score__buttons -->
+                                            </div><!-- /.score__col -->
+                                        </div><!-- /.score__cols -->
+                                    </div><!-- /.score__actions -->
+                                </div><!-- /.score-last -->
+                            </div><!-- /.popup__content -->
+                        </div><!-- /.popup__inner -->
+                    </div><!-- /.popup-score -->
+                    
+                    <div class="popup-score js-popup" id="popup-score-3">
+                        <div class="popup__background"></div><!-- /.popup__background -->
+                        
+                        <div class="popup__inner" id="score-change-container3">
+                            <div class="popup__head">
+                                <a href="#" class="js-popup-close-spec" style="float:right;margin:0 0 20px 0;display: block;width: 100%;text-align: right;">
+                                    <img src="{!$Resource.popupClose}" alt="Close Icon" /> Close
+                                </a>
+                                <h3 style= "font-size: 14px; color:#7a7a7a;" class="popup__title">Te Whetu Rehua </h3><!-- /.popup__title -->                            
+                                <p style= "font-size: 30px;">For</p>
+                            </div><!-- /.popup__head -->
+                            
+                            <div class="popup__content active">
+                                <div class="score-current">
+                                    <p>{!DiamensionForScore}</p>
+                                    
+                                    <div class="score__actions">
+                                        <button type="button" class="btn btn--border js-next">
+                                            <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                            </svg>                                        
+                                            Change score
+                                        </button>
+                                    </div><!-- /.score__actions -->
+                                </div><!-- /.score-current -->
+                            </div><!-- /.popup__content -->
+                            
+                            <div class="popup__content">
+                                <div class="score-change">
+                                    <input type="text" class="score__input js-numeric" id="forValue" />                                
+                                    <div class="score__actions">
+                                        <button type="button" class="btn disabled js-next">
+                                            <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                            </svg>
+                                            Save and countinue
+                                        </button>
+                                    </div><!-- /.score__actions -->
+                                </div><!-- /.score-current -->
+                            </div><!-- /.popup__content -->
+                            
+                            <div class="popup__content">
+                                <div class="score-last">
+                                    <div class="score__head">
+                                        <div class="score__col">
+                                            <p>{!DiamensionForScore}</p> 
+                                            <span>Original Score</span>
+                                        </div><!-- /.score__col -->
+                                        
+                                        <div class="score__col">
+                                            <p>2</p>                                        
+                                            <span>New Score</span>
+                                        </div><!-- /.score__col -->
+                                    </div><!-- /.score__head -->
+                                    
+                                    <div class="score__body">
+                                        <textarea id="forValue_reason" name="why-change-score" placeholder="Please tell us why the score has changed"></textarea>
+                                    </div><!-- /.score__body -->
+                                    
+                                    <div class="score__actions">
+                                        <div class="score__cols">
+                                            <div class="score__col">
+                                                <a href="#" class="score__back js-popup-close-spec" >
+                                                    <svg width="7" height="11" aria-hidden="true" data-prefix="fas" data-icon="chevron-left" class="svg-inline--fa fa-chevron-left fa-w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                                        <path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path>
+                                                    </svg> 
+                                                    <span>Back</span>
+                                                </a> 
+                                                
+                                                <!--<button class="score__back js-back">
+<svg width="7" height="11" aria-hidden="true" data-prefix="fas" data-icon="chevron-left" class="svg-inline--fa fa-chevron-left fa-w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+<path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path>
+</svg> 
+<span>Back</span>
+</button> -->
+                                            </div><!-- /.score__col -->
+                                            
+                                            <div class="score__col">
+                                                <div class="score__buttons">
+                                                    <!--<button class="score__close js-popup-close">
+<img src="{!$Resource.popupClose}" alt="Close Icon" /> Cancel
+</button> -->
+                                                    
+                                                    <button  data-scoretype= 'for' data-buttontype="score" data-element='forValue' type="button" class="btn btn--black js-close-alert js-sweet-alert" data-template="#score-change" data-type="success" data-target="#score-change-container3">
+                                                        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                            <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                            <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                        </svg>
+                                                        Save new score
+                                                    </button>
+                                                </div><!-- /.score__buttons -->
+                                            </div><!-- /.score__col -->
+                                        </div><!-- /.score__cols -->
+                                    </div><!-- /.score__actions -->
+                                </div><!-- /.score-last -->
+                            </div><!-- /.popup__content -->
+                        </div><!-- /.popup__inner -->
+                    </div><!-- /.popup-score -->
+                    
+                    <div class="popup-score js-popup" id="popup-score-4">
+                        <div class="popup__background"></div><!-- /.popup__background -->
+                        
+                        <div class="popup__inner" id="score-change-container4">
+                            <div class="popup__head">
+                                <a href="#" class="js-popup-close-spec" style="float:right;margin:0 0 20px 0;display: block;width: 100%;text-align: right;">
+                                    <img src="{!$Resource.popupClose}" alt="Close Icon" /> Close
+                                </a>
+                                <h3 style= "font-size: 14px; color:#7a7a7a;" class="popup__title">Te Whetu Rehua </h3><!-- /.popup__title -->                            
+                                <p style= "font-size: 30px;">Through</p>
+                            </div><!-- /.popup__head -->
+                            
+                            <div class="popup__content active">
+                                <div class="score-current">
+                                    <p>{!DiamensionThroughScore}</p>
+                                    
+                                    <div class="score__actions">
+                                        <button type="button" class="btn btn--border js-next">
+                                            <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                            </svg>                                        
+                                            Change score
+                                        </button>
+                                    </div><!-- /.score__actions -->
+                                </div><!-- /.score-current -->
+                            </div><!-- /.popup__content -->
+                            
+                            <div class="popup__content">
+                                <div class="score-change">
+                                    <input type="text" class="score__input js-numeric" id="throughValue" />                                
+                                    <div class="score__actions">
+                                        <button type="button" class="btn disabled js-next">
+                                            <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                            </svg>
+                                            Save and countinue
+                                        </button>
+                                    </div><!-- /.score__actions -->
+                                </div><!-- /.score-current -->
+                            </div><!-- /.popup__content -->
+                            
+                            <div class="popup__content">
+                                <div class="score-last">
+                                    <div class="score__head">
+                                        <div class="score__col">
+                                            <p>{!DiamensionThroughScore}</p> 
+                                            <span>Original Score</span>
+                                        </div><!-- /.score__col -->
+                                        
+                                        <div class="score__col">
+                                            <p>2</p>                                        
+                                            <span>New Score</span>
+                                        </div><!-- /.score__col -->
+                                    </div><!-- /.score__head -->
+                                    
+                                    <div class="score__body">
+                                        <textarea id="throughValue_reason" name="why-change-score" placeholder="Please tell us why the score has changed"></textarea>
+                                    </div><!-- /.score__body -->
+                                    
+                                    <div class="score__actions">
+                                        <div class="score__cols">
+                                            <div class="score__col">
+                                                <a href="#" class="score__back js-popup-close-spec" >
+                                                    <svg width="7" height="11" aria-hidden="true" data-prefix="fas" data-icon="chevron-left" class="svg-inline--fa fa-chevron-left fa-w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                                        <path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path>
+                                                    </svg> 
+                                                    <span>Back</span>
+                                                </a> 
+                                                
+                                                <!--<button class="score__back js-back">
+<svg width="7" height="11" aria-hidden="true" data-prefix="fas" data-icon="chevron-left" class="svg-inline--fa fa-chevron-left fa-w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+<path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path>
+</svg> 
+<span>Back</span>
+</button>-->
+                                            </div><!-- /.score__col -->
+                                            
+                                            <div class="score__col">
+                                                <div class="score__buttons">
+                                                    <!-- <button class="score__close js-popup-close">
+<img src="{!$Resource.popupClose}" alt="Close Icon" /> Cancel
+</button> -->
+                                                    
+                                                    <button  data-scoretype= 'through' data-buttontype="score" data-element='throughValue' type="button" class="btn btn--black js-close-alert js-sweet-alert" data-template="#score-change" data-type="success" data-target="#score-change-container4">
+                                                        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                            <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                            <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                        </svg>
+                                                        Save new score
+                                                    </button>
+                                                </div><!-- /.score__buttons -->
+                                            </div><!-- /.score__col -->
+                                        </div><!-- /.score__cols -->
+                                    </div><!-- /.score__actions -->
+                                </div><!-- /.score-last -->
+                            </div><!-- /.popup__content -->
+                        </div><!-- /.popup__inner -->
+                    </div><!-- /.popup-score -->
+                    
+                    
+                    <div class="popup-score js-popup" id="popup-score-5">
+                        <div class="popup__background"></div><!-- /.popup__background -->
+                        
+                        <div class="popup__inner" id="score-change-container5">
+                            <div class="popup__head">
+                                <a href="#" class="js-popup-close-spec" style="float:right;margin:0 0 20px 0;display: block;width: 100%;text-align: right;">
+                                    <img src="{!$Resource.popupClose}" alt="Close Icon" />
+                                </a>
+                                <h3 style= "font-size: 14px; color:#7a7a7a;" class="popup__title">Te Whetu Rehua </h3><!-- /.popup__title -->                            
+                                <p style= "font-size: 30px;">In/On</p>
+                            </div><!-- /.popup__head -->
+                            
+                            <div class="popup__content active">
+                                <div class="score-current">
+                                    <p>{!DiamensionInOnScore}</p>
+                                    
+                                    <div class="score__actions">
+                                        <button type="button" class="btn btn--border js-next">
+                                            <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                            </svg>                                        
+                                            Change score
+                                        </button>
+                                    </div><!-- /.score__actions -->
+                                </div><!-- /.score-current -->
+                            </div><!-- /.popup__content -->
+                            
+                            <div class="popup__content">
+                                <div class="score-change">
+                                    <input type="text" class="score__input js-numeric" id="inonValue" />                                
+                                    <div class="score__actions">
+                                        <button type="button" class="btn disabled js-next">
+                                            <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                            </svg>
+                                            Save and countinue
+                                        </button>
+                                    </div><!-- /.score__actions -->
+                                </div><!-- /.score-current -->
+                            </div><!-- /.popup__content -->
+                            
+                            <div class="popup__content">
+                                <div class="score-last">
+                                    <div class="score__head">
+                                        <div class="score__col">
+                                            <p>{!DiamensionInOnScore}</p> 
+                                            <span>Original Score</span>
+                                        </div><!-- /.score__col -->
+                                        
+                                        <div class="score__col">
+                                            <p>2</p>                                        
+                                            <span>New Score</span>
+                                        </div><!-- /.score__col -->
+                                    </div><!-- /.score__head -->
+                                    
+                                    <div class="score__body">
+                                        <textarea id="inonValue_reason" name="why-change-score" placeholder="Please tell us why the score has changed"></textarea>
+                                    </div><!-- /.score__body -->
+                                    
+                                    <div class="score__actions">
+                                        <div class="score__cols">
+                                            <div class="score__col">
+                                                <a href="#" class="score__back js-popup-close-spec" >
+                                                    <svg width="7" height="11" aria-hidden="true" data-prefix="fas" data-icon="chevron-left" class="svg-inline--fa fa-chevron-left fa-w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                                        <path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path>
+                                                    </svg> 
+                                                    <span>Back</span>
+                                                </a> 
+                                                
+                                                <!-- <button class="score__back js-back">
+<svg width="7" height="11" aria-hidden="true" data-prefix="fas" data-icon="chevron-left" class="svg-inline--fa fa-chevron-left fa-w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+<path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path>
+</svg> 
+<span>Back</span>
+</button> -->
+                                            </div><!-- /.score__col -->
+                                            
+                                            <div class="score__col">
+                                                <div class="score__buttons">
+                                                    <!-- <button class="score__close js-popup-close">
+<img src="{!$Resource.popupClose}" alt="Close Icon" /> Cancel
+</button>  -->
+                                                    
+                                                    <button  data-scoretype= 'inon' data-buttontype="score"  data-element='inonValue' type="button" class="btn btn--black js-close-alert js-sweet-alert" data-template="#score-change" data-type="success" data-target="#score-change-container5">
+                                                        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">
+                                                            <path d="M39.914 0H.5v49h48V8.586L39.914 0zM35.5 2v14h-24V2h24zm-26 45V28h29v19h-29zm37 0h-6V26h-33v21h-5V2h7v16h28V2h1.586L46.5 9.414V47z"></path>
+                                                            <path d="M13.5 33h7a1 1 0 1 0 0-2h-7a1 1 0 1 0 0 2zM23.5 35h-10a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2zM25.79 35.29c-.181.189-.29.45-.29.71s.109.52.29.71c.189.18.439.29.71.29.26 0 .52-.11.71-.29.18-.19.29-.45.29-.71s-.11-.521-.29-.71c-.37-.37-1.05-.37-1.42 0zM33.5 4h-6v10h6V4zm-2 8h-2V6h2v6z"></path>
+                                                        </svg>
+                                                        Save new score
+                                                    </button>
+                                                </div><!-- /.score__buttons -->
+                                            </div><!-- /.score__col -->
+                                        </div><!-- /.score__cols -->
+                                    </div><!-- /.score__actions -->
+                                </div><!-- /.score-last -->
+                            </div><!-- /.popup__content -->
+                        </div><!-- /.popup__inner -->
+                    </div><!-- /.popup-score -->
+                    
+                    
+                    <div class="popup js-popup popup-login" id="popup-add-activity">
+                        <div class="popup__background js-popup-close"></div><!-- /.popup__background -->
+                        
+                        <div class="popup__inner">
+                            <button type="button" class="js-popup-close popup__close">
+                                <img src="{!$Resource.popupClose}" alt="Close Icon" />
+                            </button><!-- popup__close -->
+                            
+                            <div class="form form-steps">
+                                <form action="?" method="post">
+                                    <div class="steps" id="steps"> 
+                                        <!-- STEP ONE --> 
+                                        <div class="step active" data-step-index="0">
+                                            <div class="login">
+                                                <div class="login__head">
+                                                    <h4 class="login__title">
+                                                        Activity details
+                                                    </h4><!-- /.login__title -->
+                                                </div><!-- /.login__head -->
+                                                
+                                                <div class="login__body">
+                                                    <div class="form-group">
+                                                        <label for="activity_name">Activity name</label> 
+                                                        <input type="text" name="activity-name" id="activity_name" class="form-control form-control--big" placeholder="Enter the planned activity name" />
+                                                    </div><!-- /.form-group -->
+                                                    
+                                                    <div class="form-group">
+                                                        <label for="primaryHop">Primary HOP Outcome</label>
+                                                        
+                                                        <div class="select-big">
+                                                            <select name="primary-hop" id="primaryHop">
+                                                                <option data-display="Select a HOP Outcome to assign this activity to"></option>
+                                                                <option value="1">Option 2</option>
+                                                                <option value="1">Option 3</option>
+                                                                <option value="1">Option 4</option>
+                                                            </select>
+                                                        </div><!-- /.select-big -->
+                                                    </div><!-- /.form-group -->
+                                                </div><!-- /.login__body -->
+                                            </div><!-- /.login -->
+                                        </div><!-- /.step -->
+                                        
+                                        
+                                        <!-- STEP Two -->
+                                        
+                                        
+                                        <div class="step" data-step-index="1">
+                                            <div class="login">
+                                                <div class="login__head">
+                                                    <h4 class="login__title">
+                                                        Purpose of activity
+                                                    </h4><!-- /.login__title -->
+                                                </div><!-- /.login__head -->
+                                                
+                                                <div class="login__body">
+                                                    <div class="form-group">
+                                                        <label for="activityPurpose">What is the purpose of this activity?</label>
+                                                        <textarea name="activity-purpose" id="activityPurpose" class="form-control form-textarea" placeholder="A breif description outlining the purpose of this activity"></textarea>
+                                                    </div><!-- /.form-group -->
+                                                </div><!-- /.login__body -->
+                                            </div><!-- /.login -->
+                                        </div><!-- /.step -->
+                                        
+                                        
+                                        <!-- STEP Three -->
+                                        
+                                        
+                                        <div class="step" data-step-index="2">
+                                            <div class="login">
+                                                <div class="login__head">
+                                                    <h4 class="login__title">
+                                                        Expectations of impact
+                                                    </h4><!-- /.login__title -->
+                                                </div><!-- /.login__head -->
+                                                <div class="login__body">
+                                                    <div class="form-group">
+                                                        <label for="impact">What impact will this have on whanau hapu iwi?</label>
+                                                        
+                                                        <textarea name="what-impact" id="impact" class="form-control form-textarea" placeholder="Breifly describe the impact this activity will have on whanau, hapu and iwi."></textarea>
+                                                    </div><!-- /.form-group -->
+                                                </div><!-- /.login__body -->
+                                            </div><!-- /.login -->
+                                        </div><!-- /.step -->
+                                        
+                                        
+                                        <div class="steps__actions">
+                                            <button type="button" class="js-move step__btn step__prev" data-move-to="prev">Go Back</button>
+                                            
+                                            <div class="steps__dots">
+                                                <ul>
+                                                    <li class="active">
+                                                        <button type="button" class="js-move step__dot" data-move-to="0">Dot</button>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <button type="button" class="js-move step__dot" data-move-to="1">Dot</button>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <button type="button" class="js-move step__dot" data-move-to="2">Dot</button>
+                                                    </li>
+                                                </ul>
+                                                
+                                                
+                                            </div><!-- /.steps__dots -->
+                                            
+                                            <button type="button" class="js-move step__btn step__next" data-move-to="next">Next</button>
+                                            <button type="submit" value="GO" class="js-popup-close step__btn step__submit">SAVE</button>
+                                        </div><!-- /.steps__actions -->
+                                    </div><!-- /.steps -->
+                                </form>
+                            </div><!-- /.form -->
+                        </div><!-- /.popup__inner -->
+                    </div><!-- /.popup-login -->
+                    
+                    <div class="popup-primary popup-last-chance" id="popup-last-chance">
+                        <div class="popup__background js-close"></div><!-- /.popup__background -->
+                        <div class="popup__inner">
+                            <button type="button" class="popup__close js-close"><img src="{!$Resource.popupClose}" alt="Close Icon"/></button>
+                            <div class="change-request" id="last-chance-container">
+                                <div class="change__step change__step--secondary">
+                                    <div class="change__head">
+                                        <h3 class="change__title">Change request</h3><!-- /.change__title -->                                    
+                                        <p>Please describe why you need to change this requirement</p>
+                                    </div><!-- /.change__head -->
+                                    
+                                    <div class="change__body">
+                                        <apex:inputTextarea value="{!changeRequestReason}" />
+                                    </div><!-- /.change__body -->
+                                    
+                                    <div class="change__actions">
+                                        <button type="button" class="change__close js-close"><img src="{!$Resource.popupClose}" alt="Close Icon"/> Cancel</button>
+                                        <button type="button" class="btn change__next" >Submit change request</button>
+                                    </div><!-- /.change__actions -->
+                                </div><!-- /.change__step -->
+                                
+                                <div class="change__step change__step--primary active" >
+                                    <div class="change__head">
+                                        <h3 class="change__title">Last chance!</h3><!-- /.change__title -->
+                                        <br/> <br/>
+                                        <p><strong><apex:outputText value="{!$Label.Last_Chance_Content}"/>
+                                            </strong></p>
+                                    </div><!-- /.change__head -->
+                                    
+                                    <div class="change__actions">
+                                        <button type="button" class="change__close js-close"><img src="{!$Resource.popupClose}" alt="Close Icon"/> Cancel</button>
+                                        <!-- <button type="button" class="btn js-close-step js-sweet-alert" data-template="#last-chance" data-type="success" data-target="#last-chance-container"><img src="{!$Resource.SaveButton}" alt="Save Icon" /> Yes I understand</button>-->
+                                        <button type="button" data-buttontype="yesUnderstand" class="btn js-close-step js-sweet-alert" data-template="#last-chance" data-type="success" data-target="#last-chance-container"> Yes I understand</button>    
+                                    </div><!-- /.change__actions -->
+                                </div><!-- /.change__step -->
+                            </div><!-- /.change-request -->
+                        </div><!-- /.popup__inner -->
+                    </div><!-- /.popup-primary popup-last-chance -->
+                    
+                    <div class="popup-primary popup-last-chance" id="popup-change-request">
+                        <div class="popup__background js-close"></div><!-- /.popup__background -->
+                        <div class="popup__inner">
+                            <button type="button" class="popup__close js-close"><img src="{!$Resource.popupClose}" alt="Close Icon" /></button>
+                            <div class="change-request" id="last-chance-container-alt">
+                                <div class="change__step change__step--secondary active">
+                                    <div class="change__head">
+                                        <h3 class="change__title">Change request</h3><!-- /.change__title -->
+                                        <p>Please describe why you need to change this requirement</p>
+                                    </div><!-- /.change__head -->
+                                    
+                                    <div class="change__body">
+                                        <apex:inputTextarea id="changeRequestReasonElement" value="{!changeRequestReason}" />
+                                    </div><!-- /.change__body -->
+                                    
+                                    <div class="change__actions">
+                                        <button type="button" class="change__close js-close"><img src="{!$Resource.popupClose}" alt="Close Icon"/> Cancel</button>
+                                        <button type="submit" class="btn js-close-step js-sweet-alert" data-buttontype="changeRequest" data-template="#change-request-message" data-type="success" data-target="#last-chance-container-alt" > Submit change request</button> <!-- onClick="submitChangeRequest();sendChangeNotificationPartner();" -->
+                                    </div><!-- /.change__actions -->
+                                </div><!-- /.change__step -->
+                            </div><!-- /.change-request -->
+                        </div><!-- /.popup__inner -->
+                    </div><!-- /.popup-primary popup-last-chance -->
+                    
+                    
+                    
+                    <!-- Your footer goes here -->
+                </main>
+                
+            </div>
+            
+            
+            
+            
+            
+            <!-- <apex:actionFunction name="CallApexApproved" action="{!callApproved}"  onComplete="reloadPage()" />-->
+            <apex:outputPanel id="refrshScore">
+                
+            </apex:outputPanel>
+            <!--<apex:outputPanel id="refreshScore">
+</apex:outputPanel> -->
+            
+            
+            <apex:actionFunction name="SetWithScore" action="{!setScore}" reRender="refrshScore"  > 
+                <apex:param name="scoreType" assignTo="{!scoreType}" value="" />
+                <apex:param name="score" assignTo="{!score}" value="" />
+                <apex:param name="reason" assignTo="{!scoreReason}" value="" />
+            </apex:actionFunction>
+            
+            <apex:actionFunction name="CallApexMethod" action="{!saveTextEditorData}" reRender="refrshScore" >             
+                <apex:param name="stringEditor1" assignTo="{!EditorText}" value="" />             
+                <apex:param name="stringEditor2" assignTo="{!Editor1Text}" value="" />             
+                <apex:param name="stringEditor3" assignTo="{!Editor2Text}" value="" />             
+                <apex:param name="stringEditor4" assignTo="{!Editor3Text}" value="" />             
+                <apex:param name="stringEditor5" assignTo="{!Editor4Text}" value="" />
+            </apex:actionFunction>
+            
+            <apex:actionFunction name="CallcompleteAct" action="{!saveTextEditorData}" onComplete="reloadPage()">             
+                <apex:param name="stringEditor1" assignTo="{!EditorText}" value="" />             
+                <apex:param name="stringEditor2" assignTo="{!Editor1Text}" value="" />             
+                <apex:param name="stringEditor3" assignTo="{!Editor2Text}" value="" />             
+                <apex:param name="stringEditor4" assignTo="{!Editor3Text}" value="" />             
+                <apex:param name="stringEditor5" assignTo="{!Editor4Text}" value="" />
+            </apex:actionFunction>            
+            <apex:actionFunction name="SetActivityToCompleteActivity" action="{!completeActivity}" reRender="refrshScore" > 
+                <!--<apex:param name="stringEditor1" assignTo="{!EditorText}" value="" />             
+<apex:param name="stringEditor2" assignTo="{!Editor1Text}" value="" />             
+<apex:param name="stringEditor3" assignTo="{!Editor2Text}" value="" />             
+<apex:param name="stringEditor4" assignTo="{!Editor3Text}" value="" />             
+<apex:param name="stringEditor5" assignTo="{!Editor4Text}" value="" />-->
+            </apex:actionFunction>
+            
+            <apex:actionFunction name="sendChangeNotificationToPartner" action="{!sendChangeNotificationToPartner}" reRender="refrshScore" > 
+            </apex:actionFunction>
+            <apex:actionFunction name="setChangeRequest" action="{!setChangeRequest}" reRender="refrshScore" > <!--  onComplete="reloadPage()"-->
+                <apex:param name="changeRequestReason" assignTo="{!changeRequestReason}" value="" />                  
+            </apex:actionFunction>
+            <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+            <script>
+                
+                
+                function callApproveMethod()
+            {
+                CallApexApproved() ;
+            }
+            function reloadPage() {
+                window.location.reload();      
+            }
+            
+            
+            function submitChangeRequest() {
+                //alert('submitChangeRequest');
+                //alert('submitChangeRequest->'+document.getElementById('{!$Component.changeRequestReasonElement}').value);
+                setChangeRequest(document.getElementById('{!$Component.changeRequestReasonElement}').value);
+                // alert('submitChangeRequest->'+document.getElementById('{!$Component.changeRequestReasonElement}').value);
+            }
+            function sendChangeNotificationPartner(){
+                //alert('sendChangeNotificationPartner');
+                sendChangeNotificationToPartner(document.getElementById('{!$Component.changeRequestReasonElement}').value);
+            }
+            
+            function completeActivity() {
+                SetActivityToCompleteActivity();  
+                // $('.popup-primary').removeClass('active');
+                //$('.change__step--primary').addClass('active');
+            }                   
+            
+            var toolbarOptions = [
+                ['bold', 'italic', 'underline'],        // toggled buttons
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                //['link'],
+                ['image']
+            ];
+            const editor = new Quill('#editor', {
+                modules: {
+                    toolbar: toolbarOptions
+                },
+                placeholder: 'Free Write...',
+                theme: 'snow'
+            });
+            
+            //if(document.getElementById("editor")) {
+            editor.root.innerHTML = '{!Raraunga_Kaunga_Question1}';
+            // }
+            
+            
+            const editor1 = new Quill('#editor1', {
+                modules: {
+                    toolbar: toolbarOptions
+                },
+                placeholder: 'Free Write...',
+                theme: 'snow'
+            });
+            
+            //if(document.getElementById("editor1")) {
+            editor1.root.innerHTML = '{!Raraunga_Kaunga_Question2}';
+            
+            
+            //}
+            
+            const editor2 = new Quill('#editor2', {
+                modules: {
+                    toolbar: toolbarOptions
+                },
+                placeholder: 'Free Write...',
+                theme: 'snow'
+            });
+            
+            //if(document.getElementById("editor2")) {
+            editor2.root.innerHTML = '{!Raraunga_Kaunga_Question3}';
+            //}
+            
+            const editor3 = new Quill('#editor3', {
+                modules: {
+                    toolbar: toolbarOptions
+                },
+                placeholder: 'Free Write...',
+                theme: 'snow'
+            });
+            //if(document.getElementById("editor3")) {
+            editor3.root.innerHTML = '{!Raraunga_Kaunga_Question4}';
+            //}
+            
+            const editor4 = new Quill('#editor4', {
+                modules: {
+                    toolbar: toolbarOptions
+                },
+                placeholder: 'Free Write...',
+                theme: 'snow'
+            });
+            
+            //if(document.getElementById("editor4")) {
+            editor4.root.innerHTML = '{!Raraunga_Kaunga_Question5}';
+            //}
+            
+            function CallcompleteActivity() {        
+                //var selectedScoreValue_By = $("#SelectScoreBy").find(":selected").text();
+                var strEditor = document.getElementById("editor").getElementsByClassName("ql-editor")[0];
+                //var editorData = strEditor.textContent;
+                
+                var editorData = strEditor.innerHTML;
+                
+                console.log('1173==>'+strEditor);
+                console.log('1557==>'+editorData);
+                
+                var strEditor1 = '';
+                var editor1Data = '';
+                var strEditor2 = '';
+                var editor2Data = '';
+                var strEditor3 = '';
+                var editor3Data = '';
+                var strEditor4 = '';
+                var editor4Data = '';
+                
+                // var selectedScoreValue_For = $("#SelectScoreFor").find(":selected").text();
+                if(document.getElementById("editor1")) {
+                    strEditor1 = document.getElementById("editor1").getElementsByClassName("ql-editor")[0];
+                    //var editor1Data = strEditor1.textContent;
+                    editor1Data = strEditor1.innerHTML;
+                }
+                console.log('546==>'+editor1Data);
+                console.log('1946==>'+editor1Data);
+                
+                
+                //var selectedScoreValue_InOn = $("#SelectScoreInOn").find(":selected").text();
+                
+                if(document.getElementById("editor2")) {
+                    strEditor2 = document.getElementById("editor2").getElementsByClassName("ql-editor")[0];
+                    //var editor2Data = strEditor2.textContent;
+                    editor2Data = strEditor2.innerHTML;
+                }
+                //console.log('550==>'+selectedScoreValue_InOn);
+                
+                //var selectedScoreValue_Through = $("#SelectScoreThrough").find(":selected").text();
+                
+                if(document.getElementById("editor3")) {
+                    strEditor3 = document.getElementById("editor3").getElementsByClassName("ql-editor")[0];
+                    //var editor3Data = strEditor3.textContent;
+                    editor3Data = strEditor3.innerHTML;
+                    //console.log('554==>'+selectedScoreValue_Through);
+                }
+                
+                //var selectedScoreValue_With = $("#SelectScoreWith").find(":selected").text();
+                if(document.getElementById("editor4")) {
+                    strEditor4 = document.getElementById("editor4").getElementsByClassName("ql-editor")[0];
+                    //var editor4Data = strEditor4.textContent;
+                    editor4Data = strEditor4.innerHTML;
+                }
+                //console.log('558==>'+selectedScoreValue_With);
+                
+                console.log('1568-->'+editorData+'-->'+editor1Data+'-->'+editor2Data+'-->'+editor3Data+'-->'+editor4Data);
+                
+                CallcompleteAct(editorData,editor1Data,editor2Data,editor3Data,editor4Data);
+                //console.log('56==>'+copystr);
+                return false;
+            }
+            
+            function myFunction() {        
+                //var selectedScoreValue_By = $("#SelectScoreBy").find(":selected").text();
+                var strEditor = document.getElementById("editor").getElementsByClassName("ql-editor")[0];
+                var editorData = strEditor.innerHTML;
+                console.log('1173==>'+strEditor);
+                console.log('1557==>'+editorData);
+                
+                // var selectedScoreValue_For = $("#SelectScoreFor").find(":selected").text();
+                var strEditor1 = document.getElementById("editor1").getElementsByClassName("ql-editor")[0];
+                var editor1Data = strEditor1.innerHTML;
+                console.log('546==>'+editor1Data);
+                
+                //var selectedScoreValue_InOn = $("#SelectScoreInOn").find(":selected").text();
+                var strEditor2 = document.getElementById("editor2").getElementsByClassName("ql-editor")[0];
+                var editor2Data = strEditor2.innerHTML;
+                //console.log('550==>'+selectedScoreValue_InOn);
+                
+                //var selectedScoreValue_Through = $("#SelectScoreThrough").find(":selected").text();
+                var strEditor3 = document.getElementById("editor3").getElementsByClassName("ql-editor")[0];
+                var editor3Data = strEditor3.innerHTML;
+                //console.log('554==>'+selectedScoreValue_Through);
+                
+                //var selectedScoreValue_With = $("#SelectScoreWith").find(":selected").text();
+                var strEditor4 = document.getElementById("editor4").getElementsByClassName("ql-editor")[0];
+                var editor4Data = strEditor4.innerHTML;
+                //console.log('558==>'+selectedScoreValue_With);
+                
+                console.log('1568-->'+editorData+'-->'+editor1Data+'-->'+editor2Data+'-->'+editor3Data+'-->'+editor4Data);
+                
+                CallApexMethod(editorData,editor1Data,editor2Data,editor3Data,editor4Data);
+                //console.log('56==>'+copystr);
+                return false;
+            }
+            
+            
+            
+            
+            
+            
+            function myFunctionBkup() {        
+                var selectedScoreValue_By = $("#SelectScoreBy").find(":selected").text();
+                var strEditor = document.getElementById("editor").getElementsByClassName("ql-editor")[0];
+                var editorData = strEditor.textContent;
+                console.log('1173==>'+strEditor);
+                console.log('117vv3==>'+editorData);
+                
+                var selectedScoreValue_For = $("#SelectScoreFor").find(":selected").text();
+                var strEditor1 = document.getElementById("editor1").getElementsByClassName("ql-editor")[0];
+                var editor1Data = strEditor1.textContent;
+                console.log('546==>'+editor1Data);
+                
+                var selectedScoreValue_InOn = $("#SelectScoreInOn").find(":selected").text();
+                var strEditor2 = document.getElementById("editor2").getElementsByClassName("ql-editor")[0];
+                var editor2Data = strEditor2.textContent;
+                console.log('550==>'+selectedScoreValue_InOn);
+                
+                var selectedScoreValue_Through = $("#SelectScoreThrough").find(":selected").text();
+                var strEditor3 = document.getElementById("editor3").getElementsByClassName("ql-editor")[0];
+                var editor3Data = strEditor3.textContent;
+                console.log('554==>'+selectedScoreValue_Through);
+                
+                var selectedScoreValue_With = $("#SelectScoreWith").find(":selected").text();
+                var strEditor4 = document.getElementById("editor4").getElementsByClassName("ql-editor")[0];
+                var editor4Data = strEditor4.textContent;
+                console.log('558==>'+selectedScoreValue_With);
+                CallApexMethod(selectedScoreValue_By,editorData,selectedScoreValue_For,editor1Data,selectedScoreValue_InOn,editor2Data,selectedScoreValue_Through,editor3Data,
+                               selectedScoreValue_With,editor4Data);
+                //console.log('56==>'+copystr);
+            }
+            
+            /**
+                   * Step1. select local image
+                   *
+                */
+            function selectLocalImage(idEditor, editor) {
+                
+                const input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.click();
+                // Listen upload local image and save to server
+                input.onchange = () => {
+                    const file = input.files[0];
+                    // file type is only image.
+                    if (/^image\//.test(file.type)) {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = function () {
+                    //console.log(reader.result);
+                    var selection = editor.getSelection(true);
+                    var imgname = "<a href='http://"+reader.result+"' target='1' onclick='test();'>"+file.name+"</a>";
+                    //editor.insertText(selection.index, file.name);
+                    editor.clipboard.dangerouslyPasteHTML(selection.index, imgname,'silent');
+                    $('#'+idEditor).find( "a[href^='data:image']").unbind('hover');
+                    $('#'+idEditor).find("a[href^='data:image']").hover(function (evt){
+                    showImage($(this).attr('href'));
+                    
+                });
+            };
+            } else {
+                console.warn('You could only upload images.');
+            }
+            };
+            }
+            // quill editor add image handler
+            editor.getModule('toolbar').addHandler('image', () => {
+                selectLocalImage('editor',editor);
+            });
+                
+                editor1.getModule('toolbar').addHandler('image', () => {
+                selectLocalImage('editor1',editor1);
+            });
+                
+                editor2.getModule('toolbar').addHandler('image', () => {
+                selectLocalImage('editor2',editor2);
+            });
+                
+                editor3.getModule('toolbar').addHandler('image', () => {
+                selectLocalImage('editor3',editor3);
+            });
+                
+                editor4.getModule('toolbar').addHandler('image', () => {
+                selectLocalImage('editor4',editor4);
+            });
+                
+                function getPosition(ele) {
+                if(ele.hasClass('editorContainer')) {
+                return ele.offset();
+            } else {
+                return getPosition(ele.parent());
+            }
+            } 
+                function ClosePopup(){
+                // $("#myModal").remove();
+                //   $("#myModal").css({ 'position': 'relative'});
+                // $('#myModal').removeAttr('style'); 
+                
+                var $j = jQuery.noConflict();
+                $j("#myModal").modal("hide");
+                
+            }
+                $("a[href^='http://data:image']").popover({
+                html: true,
+                trigger: 'click',
+                content: function () {
+                    var img = $(this).attr('href').replace("http://", "");
+                    var image = new Image();
+                    image.src = img ;
+                    
+                    var w = window.open("");
+                    w.document.write(image.outerHTML);
+                    
+                }
+            });
+            
+            </script>       
+            
+            <apex:includeScript value="{!URLFOR($Resource.NewJquery)}"/>
+            <apex:includeScript value="{!URLFOR($Resource.swiper)}"/>
+            
+            <apex:includeScript value="{!URLFOR($Resource.sweetAlert)}"/>
+            
+            <!--<script src="https://unpkg.com/swiper/js/swiper.js"></script>
+<script src="https://unpkg.com/swiper/js/swiper.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.18.4/dist/sweetalert2.all.js"></script>-->
+
+<script>
+    const i = Swiper.prototype.init;
+Swiper.prototype.init = function () {
+    this.touchEventsData.formElements = '*';
+    i.call(this);
+};
+
+var clickedStatsObject;
+
+$('.popup-score .js-next').on('click', function () {
+    var score = $(this).parent().prev().val();
+    var nextEle =  $(this).closest('.popup__content').next();
+    if(typeof score != 'undefined') {               
+        nextEle.children( ".score-last" ).children( ".score__head" ).children('div').last().children('p').html(score);
+    }
+    //$(this).closest('.popup__content').next().addClass('active').siblings().removeClass('active');
+    nextEle.addClass('active').siblings().removeClass('active');				
+});
+
+$('.popup-score .js-back').on('click', function () {           
+    var prevEle =  $(this).closest('.popup__content').prev();
+    prevEle.addClass('active').siblings().removeClass('active');				
+});
+
+$('.switch input').on('click', function () {
+    var $this = $(this);
+    var target = $this.data('target');
+    clickedStatsObject = $(this);
+    
+    if ($this.prop('checked') == true) {
+        $(target).addClass('active');
+        $(target).children('.popup__inner').children('.popup__content').removeClass('active');
+        $(target).children('.popup__inner').children('.popup__content').first().addClass('active');
+    } else {
+        $(target).removeClass('active');
+    }
+});
+
+$('.js-numeric').on('keyup', function (e) {
+    var $this = $(this);
+    console.log('hi'+JSON.stringify($this.val()));
+    //$(".stats__entry").text($this.val());
+    if ($this.val() != '') {
+        $this.addClass('has-text');
+        $this.next().find('.btn').removeClass('disabled');
+        clickedStatsObject.parent().parent().parent().prev().html($this.val());
+        
+        clickedStatsObject.parent().parent().parent().prev().prev().addClass('disabled');
+    } else {
+        $this.removeClass('has-text');
+        $this.next().find('.btn').addClass('disabled');
+    } 
+    
+    
+    
+});
+
+$('.js-numeric').on('keydown', function (e) {
+    var $this = $(this);
+    if (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true) || e.keyCode >= 35 && e.keyCode <= 40 || $.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1) {
+        return;
+    }
+    
+    if ((e.shiftKey || e.keyCode < 48 || e.keyCode > 57) && (e.keyCode < 96 || e.keyCode > 105)) {
+        e.preventDefault();
+    }
+});
+
+var initSliderQuestions = function initSliderQuestions() {
+    var $sliderContainerQuestions = $('.slider-questions');
+    var $sliderQuestions = $sliderContainerQuestions.find('.swiper-container');
+    var $btnNext = $sliderContainerQuestions.closest('.section-questions').find('.swiper-button-next');
+    var $btnPrev = $sliderContainerQuestions.find('.swiper-button-prev');
+    var sliderQuestions = new Swiper ($sliderQuestions, {
+        slidesPerView: 'auto',
+        loop: false,
+        slideToClickedSlide: true,
+        draggable: true,
+        autoHeight : true,
+        simulateTouch: false 
+    });
+    var $sliderContainerQuestionsPrimary = $('.slider-questions-primary');
+    var $sliderQuestionsPrimary = $sliderContainerQuestionsPrimary.find('.swiper-container');
+    var sliderQuestionsPrimary = new Swiper ($sliderQuestionsPrimary, {
+        loop: false,
+        effect: 'fade',
+        draggable: true,
+        autoHeight : true
+    });
+    $btnNext.on('click', function () { 
+        var index = sliderQuestionsPrimary.activeIndex;
+        sliderQuestions.slideTo(index + 1);
+        sliderQuestionsPrimary.slideTo(index + 1);
+        $sliderQuestions.find('.swiper-slide').eq(sliderQuestionsPrimary.activeIndex).addClass('active').siblings().removeClass('active');
+    });
+    $btnPrev.on('click', function () {
+        var index = sliderQuestionsPrimary.activeIndex;
+        sliderQuestions.slideTo(index - 1);
+        sliderQuestionsPrimary.slideTo(index - 1);
+        $sliderQuestions.find('.swiper-slide').eq(sliderQuestionsPrimary.activeIndex).addClass('active').siblings().removeClass('active');
+    });
+};
+
+initSliderQuestions();
+var $win = $(window);
+
+const initSweetAlert = () => {
+    console.log('test');
+    $(document).on('click', '.js-sweet-alert', function(event) {
+    event.preventDefault();
+    const $this = $(this);
+    const type = $this.data('type');
+    const html = $($this.data('template')).html();
+    const scoreType  = $this.data('scoretype');
+    const element  = $this.data('element');
+    const buttonType = $this.data('buttontype');
+    if($('.sidebar').length) {
+    if( $win.width() > 1024 ) {
+    sidebar.updateSticky();
+}
+}
+    
+    if( $win.width() < 768 ) {
+    $('.section-login').addClass('modal-active');
+}
+    
+    Swal.fire({ type,
+    html,
+    onBeforeOpen: () => { 
+        if(buttonType == 'yesUnderstand') {
+        myFunction();
+        completeActivity();
+    }
+    
+    if(buttonType == 'score') {
+    if(document.getElementById(element)) {
+    SetWithScore(scoreType,document.getElementById(element).value,document.getElementById(element+'_reason').value); 
+    //console.log(document.getElementById(element+'_reason').value);
+}
+
+}
+
+if(buttonType == 'changeRequest') {
+    submitChangeRequest();
+    sendChangeNotificationPartner();
+}
+
+if ($this.hasClass('btn--js-disable')) {
+    $this.addClass('btn--disable');
+}
+if ($this.data('target')) {
+    Swal.fire({ type,
+               html,
+               target: $this.data('target'),
+               backdrop: false,
+               allowOutsideClick: false,
+               customClass: {
+                   container: $this.data('type')
+               }
+              })
+}
+}
+}); 
+
+function onClose() {
+    $('.section-login').removeClass('modal-active');
+}
+});
+}
+initSweetAlert();
+
+var initPopup = function initPopup() {
+    //console.log('Pratiksha');
+    $(document).on('click', '.js-popup-trigger', function (event) {
+        event.preventDefault();
+        var target = $(this).data('target');
+        $(target).addClass('active');
+        Swal.a.close();
+    });
+    
+    $('.js-popup-close').on('click', function (event) { 
+        event.preventDefault();
+        $(this).closest('.js-popup').removeClass('active'); 
+    });
+    
+    $(document).on('click', '.js-popup-close-spec', function (event) {
+        event.preventDefault();
+        $('.switch input').attr('checked',false);
+        var $this = $(this);
+        $this.closest('.js-popup').removeClass('active');
+        Swal.a.close();
+    });
+    
+    $('.js-close-alert').on('click', function () {
+        var $this = $(this);
+        //$this.closest('.popup__content').removeClass('active');
+        //$this.closest('.popup__inner').addClass('is-closing');
+    }); 
+};
+
+var initPopupPrimary = function initPopupPrimary() {
+    $('.js-popup-primary').on('click', function () {
+        event.preventDefault();
+        var target = $(this).data('target');
+        $(target).addClass('active');
+    });
+    
+    $('.popup-primary').each(function () {
+        var $container = $(this);
+        $(document).on('click', '.js-close', function (event) {
+            event.preventDefault();
+            $('.popup-primary').removeClass('active');
+            $('.change__step--primary').addClass('active');
+        });
+    });
+};
+initPopup();
+initPopupPrimary();  
+</script> 
+
+<!--<script type="text/template" id="sweet-alert-success">  
+<style>
+    .swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{
+        //top: 2.875em;
+        //left: .875em;
+        width: 1.5625em;
+        top: 20px;
+        left: -3px;        
+    }
+.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{
+    //top: 2.375em;
+    //right: .5em;
+    width: 2.9375em;
+    top: 27px;
+    right: 10px;
+    
+}
+.swal2-icon.swal2-success .swal2-success-ring{
+    position: absolute;
+    z-index: 2;
+    top: -.25em;
+    left: -.25em;
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    border: .25em solid rgba(165,220,134,.3);
+    border-radius: 50%;
+}
+</style>
+
+<div class="block-info">
+    <p  class="block__title"><strong><apex:outputText value="{!$Label.Success_Notification_Content}"/></strong></p>
+        </div>
+    </script>-->
+            
+            <script type="text/template" id="score-change">
+            <style>.swal2-popup{
+                width: 500px;
+                height: 490px;
+            }</style>
+            <div class="block-info block-info--big">
+                <h2 style="color: #747474 ;" class="block__title">Ka pai rā tēnei mahi!</h2><!-- /.block__title --> 
+                    <div class="block__entry">
+                        
+                        </div> <!-- /.block__entry -->
+                        
+                        <div class="block__actions">
+                            <a href="#" class="btn btn--borders js-popup-close-spec"> CLOSE WINDOW
+                            
+                            </a>
+                            </div><!-- /.block__actions -->
+                                </div><!-- /.block-info -->
+                                </script>
+            
+            <script type="text/template" id="last-chance">
+            <style>
+            .swal2-popup{
+                width: 600px;
+                height: 490px;
+                background: #fff !important;
+            }
+            .swal2-popup .block-info {
+                    background: #fff !important;
+                    text-align: center;
+                    max-width: inherit !important;
+                }
+            .swal2-icon.swal2-success .swal2-success-ring {
+                /* border: .25em solid #fbb93d !important; */
+                /* border: .25em solid #febc2c !important; */
+                border: 0 !important;
+                background-color: #febc2c !important;
+                top: -41px;
+                left: -31px !important;
+                height: 100px !important;
+                width: 100px !important;
+            }
+            .swal2-icon.swal2-success [class^=swal2-success-line][class$=long] {
+                top: 30px;
+                right: 0.8em;
+                width: 4.9375em;
+                -webkit-transform: rotate(-45deg);
+                -ms-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+                background-color: #000000 !important;
+                z-index: 10;
+            }
+            .swal2-icon.swal2-success [class^=swal2-success-line][class$=tip] {
+                top: 39px;
+                left: -16px;
+                width: 2.1em;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+                background-color: #000000 !important;
+                z-index: 10;
+            }
+            .block-info--big .block__actions a.btn {
+                text-transform: uppercase;
+                /* top: 120%; */
+                margin-top: 60px;
+                /* margin-left: 38px; */
+            }
+
+            .block-info--big .block__actions .btn--border {
+                border: 1px solid 
+                /* top: 120%; */
+                /* margin-left: 38px; */
+            }
+
+            .change-request .swal2-icon.swal2-success .swal2-success-ring {
+                border: .25em solid #febc2c !important;
+            }
+
+            </style>
+            <div class="block-info block-info--big">
+                <h2 class="block__title">Ka pai rā tēnei mahi</h2><!-- /.block__title --> 
+                    <div class="block__entry">
+                        
+                        </div><!-- /.block__entry -->
+                        <div class="block__actions">
+                            <a class="btn btn--border js-button-change js-close" onclick="reloadPage()" >
+                                Close Window
+                            </a>
+                            </div><!-- /.block__actions -->
+                                </div><!-- /.block-info -->
+                                </script>
+            
+            <script type="text/template" id="change-request-message">
+            <style>
+                .swal2-popup{
+                width: 600px;
+                height: 490px;
+                background: #fff !important;
+            }
+            .swal2-popup .block-info {
+                    background: #fff !important;
+                    text-align: center;
+                    max-width: inherit !important;
+                }
+            .swal2-icon.swal2-success .swal2-success-ring {
+                /* border: .25em solid #fbb93d !important; */
+                /* border: .25em solid #febc2c !important; */
+                border: 0 !important;
+                background-color: #febc2c !important;
+                top: -41px;
+                left: -31px !important;
+                height: 100px !important;
+                width: 100px !important;
+            }
+            .swal2-icon.swal2-success [class^=swal2-success-line][class$=long] {
+                top: 30px;
+                right: 0.8em;
+                width: 4.9375em;
+                -webkit-transform: rotate(-45deg);
+                -ms-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+                background-color: #000000 !important;
+                z-index: 10;
+            }
+            .swal2-icon.swal2-success [class^=swal2-success-line][class$=tip] {
+                top: 39px;
+                left: -16px;
+                width: 2.1em;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+                background-color: #000000 !important;
+                z-index: 10;
+            }
+            .block-info--big .block__actions a.btn {
+                text-transform: uppercase;
+                /* top: 120%; */
+                margin-top: 60px;
+                /* margin-left: 38px; */
+            }
+
+            .block-info--big .block__actions .btn--border {
+                border: 1px solid 
+                /* top: 120%; */
+                /* margin-left: 38px; */
+            }
+
+            .change-request .swal2-icon.swal2-success .swal2-success-ring {
+                border: .25em solid #febc2c !important;
+            }
+            
+            </style>
+            <div class="block-info block-info--big">
+                <h2 class="block__title">Ka pai rā tēnei mahi!</h2><!-- /.block__title -->
+                    <div class="block__entry">
+                        
+                        </div><!-- /.block__entry -->
+                        <div class="block__actions">
+                            <a href="#" class="btn btn--border js-button-change-end js-close" onclick="reloadPage()" data-template="#sweet-alert-success-review" data-type="warning" data-target="#section__aside" >
+                                Close
+                            </a>
+                            </div><!-- /.block__actions -->
+                                </div><!-- /.block-info -->
+                                </script>
+            
+            <!--<script type="text/template" id="sweet-alert-success-review">
+<div class="block-info">
+    <h5><strong><apex:outputText value="{!$Label.Review_Change_Request_Notification}"/></strong></h5>
+        </div>
+    </script>-->
+            
+            
+            
+            <!--<div class="modal fade" id="myModal" style="width:200px;height:200pxwidth: 200px;
+height: 200px;
+display: block;
+margin-left: 139px;
+margin-top: 55px;
+">
+<button class="btn" Style="margin-left: 93%;" onclick="ClosePopup();"><i class="fa fa-close" ></i></button>
+<div  id="modal-content-id-1" style="width:200px;height:200px;background:white;border: 1px solid #cecece;border-radius: 5px;" >
+<img style="width:200px;height:200px;display: block;padding: 12%;border: 1px solid #cecece;border-radius: 5px;overflow-x: auto;overflow-y:auto;" id="popImg" src=''/>
+</div> 
+</div> -->
+            
+        </body>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Likelihood_Rating__c</fullName>
+    <externalId>false</externalId>
+    <label>Likelihood Rating</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Unlikely</fullName>
+                <default>false</default>
+                <label>Unlikely</label>
+            </value>
+            <value>
+                <fullName>Possible/Occasional</fullName>
+                <default>false</default>
+                <label>Possible/Occasional</label>
+            </value>
+            <value>
+                <fullName>Likely</fullName>
+                <default>false</default>
+                <label>Likely</label>
+            </value>
+            <value>
+                <fullName>Highly Likely</fullName>
+                <default>false</default>
+                <label>Highly Likely</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

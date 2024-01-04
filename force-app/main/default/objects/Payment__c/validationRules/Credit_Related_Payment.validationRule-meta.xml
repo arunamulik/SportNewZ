@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Credit_Related_Payment</fullName>
+    <active>false</active>
+    <errorConditionFormula>(isnew() || ischanged(Related_Payment__c)) &amp;&amp;  OR(RecordType.Name = &quot;Credit&quot;, RecordType.Name = &quot;Credit Read Only&quot;) &amp;&amp;  not(ispickval(Related_Payment__r.Status__c,&quot;Sent for Payment&quot;))</errorConditionFormula>
+    <errorDisplayField>Related_Payment__c</errorDisplayField>
+    <errorMessage>Credits can only be related to Payments with a Status of &apos;Sent for Payment&apos;</errorMessage>
+</ValidationRule>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Planned_Amount_cannot_less_than_Payments</fullName>
+    <active>true</active>
+    <description>This rule will restrict the user to edit planned amount less than total payments</description>
+    <errorConditionFormula>IF(AND(ISCHANGED(Planned__c), 
+Planned__c &lt; SUM_Payments__c, 
+$Profile.Name = &apos;Kahiwi&apos;) 
+,true,false)</errorConditionFormula>
+    <errorMessage>The Planned Amount cannot be less than the sum of existing Payments</errorMessage>
+</ValidationRule>

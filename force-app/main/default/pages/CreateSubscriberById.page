@@ -1,0 +1,499 @@
+<!--------------------------------------------------------------
+Company:        Eternus Solutions
+Description:    VF page to change subscription preferences by subscriber id 
+Extension Class: CreateSubscriberByIdController   
+
+History
+04-10-2022      Aruna Mulik  Modified for HPNZBIB-57
+-------------------------------------------------------------->
+<apex:page cache="false" standardController="Subscriber__c" extensions="CreateSubscriberByIdController" standardStylesheets="false" showHeader="false" sidebar="false" action="{!onLoad}">
+    <style>
+        .divider{
+        width:10px;
+        height:auto;
+        display:inline-block;
+        }
+        .custPopup{
+            border-width: 2px;
+            border-style: solid;
+            background:#FFEA00;
+            text-align: center;
+            font-size:16px;
+            font-family:Barlow, Arial; 
+            font-weight: bold;
+            border:#FFEA00;
+            border-radius: 8px;
+            
+            z-index: 9999;
+            left: 50%;
+            padding:10px;
+            position: absolute;
+            /* These are the 3 css properties you will need to change so the popup
+            displays in the center of the screen. First set the width. Then set
+            margin-left to negative half of what the width is. You can add
+            the height property for a fixed size pop up if you want.*/
+            width: 500px;
+            margin-left: -250px;
+            top:100px;
+        }
+        .custErrorPopup{
+            border-width: 2px;
+            border-style: solid;
+            background:#FF0000;
+            text-align: center;
+            font-size:16px;
+            font-family:Barlow, Arial; 
+            font-weight: bold;
+            border:#FFEA00;
+            border-radius: 8px;
+            
+            z-index: 9999;
+            left: 50%;
+            padding:10px;
+            position: absolute;
+            /* These are the 3 css properties you will need to change so the popup
+            displays in the center of the screen. First set the width. Then set
+            margin-left to negative half of what the width is. You can add
+            the height property for a fixed size pop up if you want.*/
+            width: 500px;
+            margin-left: -250px;
+            top:100px;
+        }
+        .popupBackground{
+            background-color:black;
+            opacity: 0.20;
+            filter: alpha(opacity = 20);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9998;
+        }
+        .center {
+        margin-left: auto;
+        margin-right: auto;
+        }
+        .centertext {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        }
+        .checkbox{
+        height: 16px; 
+        width: 16px;
+        }
+        .inputboxSize{
+        height:20px; 
+        width:250px;
+        font-size:16px;
+        font-family:Barlow, Arial;
+        }
+        * {
+        box-sizing: border-box;
+        }
+       
+        .fontproperties {
+        font-size:16px;
+        font-family:Barlow, Arial; 
+        
+        }
+        .required
+        {
+        color: red;
+        }
+    </style>
+    
+    <apex:form id="frm">
+        
+        <apex:pageBlock id="pBlock">
+            <br/>
+            <div class="centertext">
+                <label class="fontproperties">
+                    Please uncheck from the following Sport NZ newsletters options to unsubscribe
+                </label>
+            </div>
+            
+            <apex:pageBlockSection columns="1" > 
+                
+                <!--Balance Is Better Newsletter-->
+                <apex:outputLabel styleclass="fontproperties">
+                    <br/>
+                    <apex:inputfield ignoreEditPermissionForRendering="true"
+                                     styleclass="checkbox" value="{!Subscriber__c.Balance_is_Better__c}">
+                        <apex:actionSupport event="onchange" action="{!balanceisbetterChecked}" immediate="true" />
+                    </apex:inputfield>
+                    
+                    <b>
+                    Balance is Better
+                    </b>
+                    <br/>
+                    <br/>
+                    Offer a fresh way of thinking for those involved in delivering
+                    youth sport in New Zealand. With teen participation declining,
+                    it's about creating quality experiences for all young people
+                    to keep them active and in the game.
+                 </apex:outputLabel>
+                <hr style="width:100%;"/>
+                
+                 <apex:outputLabel styleclass="fontproperties">
+                    <br/>
+                    <apex:inputfield ignoreEditPermissionForRendering="true"
+                                     styleclass="checkbox" value="{!Subscriber__c.Active_Recreation__c}">
+                        <apex:actionSupport event="onchange" action="{!activerecreationChecked}" immediate="true" />
+                    </apex:inputfield>
+                    
+                    <b>
+                    Active Recreation
+                    </b>
+                    <br/>
+                    <br/>
+                    Connecting Aotearoa with Active Recreation news, stories and providers.
+                     Includes updates and profiles on providers and partners. This newsletter is sent quarterly.
+                 </apex:outputLabel>
+                <hr style="width:100%;"/>
+                
+                <!--Commented this section for implementation of HPNZBIB-57-->
+                <!--NZ Coach Newsletter
+                <apex:outputLabel styleclass="fontproperties">
+                    <br/>
+                    <apex:inputfield ignoreEditPermissionForRendering="true"
+                                     styleclass="checkbox" value="{!Subscriber__c.NZ_Coach__c}"/>
+                    <b>
+                        NZ Coach
+                    </b>
+                    <br/>
+                    <br/>
+                    A selection of recent coaching an athlete development 
+                    stories from around the world. Sent monthly.
+                    <br/>
+                    </apex:outputLabel>
+                <hr style="width:100%;"/>-->
+                <!--Healthy Active Learning-->
+                <apex:outputLabel styleclass="fontproperties">
+                    <br/>
+                    <apex:inputfield ignoreEditPermissionForRendering="true" styleclass="checkbox" value="{!Subscriber__c.Healthy_Active_Learning__c}"/>
+                    <b>
+                        Healthy Active Learning
+                    </b>
+                    <br/>
+                    <br/>
+                    For the workforce and staff involved in this joint government initiative between Sport New Zealand and the Ministries of Health and Education, to keep informed on latest happenings. 
+                    <br/>
+                </apex:outputLabel>
+                <hr style="width:100%;"/>
+                <!--Sector Update-->
+                <apex:outputLabel styleclass="fontproperties">
+                    <br/>
+                    <apex:inputfield ignoreEditPermissionForRendering="true" styleclass="checkbox" value="{!Subscriber__c.Sector_Update__c}">
+                        <apex:actionSupport event="onchange" action="{!sectorUpdateChecked}" immediate="true" />
+                    </apex:inputfield>
+                    <b>
+                        Sector Update
+                    </b>
+                    <br/>
+                    <br/>
+                    Key development and News within Sport NZ and across 
+                    the play, active recreation and sport sector. Sent monthly.
+                    </apex:outputLabel>
+                <hr/>
+                
+                <!--<apex:outputLabel styleclass="fontproperties">
+                    <br/>
+                    <apex:inputfield ignoreEditPermissionForRendering="true" styleclass="checkbox" value="{!Subscriber__c.Disability_Sector_News__c}">
+                        <apex:actionSupport event="onchange" action="{!disabilityChecked}" immediate="true" />
+                    </apex:inputfield>
+ 0056F000006Q2yDQAS                   <b>
+                        Disability Sector News
+                    </b>
+                    <br/>
+                    <br/>
+                    For anyone interested in disability news, 
+                    including initiatives and programmes, 
+                    from the play, active recreation and sport sector. 
+                    New quarterly newsletter coming soon.
+                    </apex:outputLabel>
+                <hr/>-->
+                
+                <apex:outputLabel styleclass="fontproperties">
+                    <br/>
+                    <apex:inputfield ignoreEditPermissionForRendering="true" styleclass="checkbox" value="{!Subscriber__c.Kaupapa_Maori_News__c}">
+                        <apex:actionSupport event="onchange" action="{!kaupapaMaoriNewsChecked}" immediate="true" />
+                    </apex:inputfield>
+                    <b>
+                        Kūkū te Kererū
+                    </b>
+                    <br/>
+                    <br/>
+                    For anyone interested in kaupapa Māori news within Sport NZ and across the play, active recreation and sport sector.
+                    Sent every six weeks.
+                    </apex:outputLabel>
+                <hr/>
+                
+               <!-- <apex:outputLabel styleclass="fontproperties">
+                    <br/>
+                    <apex:inputfield ignoreEditPermissionForRendering="true" styleclass="checkbox" value="{!Subscriber__c.High_Performance_Sport_New_Zealand__c}">
+                        <apex:actionSupport event="onchange" action="{!HighPerformanceSportNewZealandChecked}" immediate="true" />
+                    </apex:inputfield>
+                    <b>
+                        High Performance Sport New Zealand
+                    </b>
+                    <br/>
+                    <br/>
+                    Latest news and updates from High Performance Sport New Zealand. Sent monthly.
+                    </apex:outputLabel>
+                <hr/>-->
+                
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection id="pbSection1" columns="2">
+                <br/>
+                <!--FirstName-->
+                <label class="fontproperties">
+                        {!$ObjectType.Subscriber__c.fields.First_Name__c.label}
+                </label>
+                <span class="required">*</span>
+                <apex:outputPanel >
+                    <br/>
+                <apex:inputfield value="{!Subscriber__c.First_Name__c}" ignoreEditPermissionForRendering="true" styleclass="inputboxSize"/>
+                </apex:outputPanel>
+                <apex:outputLabel styleClass="fontproperties" rendered="{!firstNameEmpty}" style="color:red">
+                    First Name required
+                </apex:outputLabel>
+                <apex:outputPanel rendered="{!firstNameEmpty}">
+                </apex:outputPanel>
+                
+                <!--LastName-->
+                <br/>
+                <label class="fontproperties">
+                        {!$ObjectType.Subscriber__c.fields.Last_Name__c.label}
+                </label>
+                <span class="required">*</span>
+                <apex:outputPanel >
+                    <br/>
+                <apex:inputfield value="{!Subscriber__c.Last_Name__c}" ignoreEditPermissionForRendering="true" styleclass="inputboxSize"/>
+                </apex:outputPanel>
+                <apex:outputLabel styleClass="fontproperties" rendered="{!lastNameEmpty}" style="color:red">
+                    Last Name required
+                </apex:outputLabel>
+                <apex:outputPanel rendered="{!lastNameEmpty}">
+                </apex:outputPanel>
+                
+                <!--EmailAddress-->
+                <br/>
+                <label class="fontproperties">
+                        {!$ObjectType.Subscriber__c.fields.Email_Address__c.label}
+                </label>
+                <span class="required">*</span>
+                <apex:outputPanel >
+                    <br/>
+                <apex:inputfield value="{!Subscriber__c.Email_Address__c}" ignoreEditPermissionForRendering="true" styleclass="inputboxSize"  />
+                <apex:actionSupport event="onchange" rerender="populateData"/>    
+            </apex:outputPanel>
+                <apex:outputLabel styleClass="fontproperties" rendered="{!emailEmpty}" style="color:red">
+                    Email required
+                </apex:outputLabel>
+                <apex:outputPanel rendered="{!emailEmpty}">
+                </apex:outputPanel>
+                
+                <!--Location-->
+                <br/>
+                <label class="fontproperties">
+                        {!$ObjectType.Subscriber__c.fields.Location__c.label}
+                </label>
+                <span class="required">*</span>
+                <apex:outputPanel >
+                    <br/>
+                <apex:inputfield value="{!Subscriber__c.Location__c}" ignoreEditPermissionForRendering="true" styleclass="inputboxSize"/>
+                </apex:outputPanel>
+                <apex:outputLabel styleClass="fontproperties" rendered="{!locationEmpty}" style="color:red">
+                    Location required
+                </apex:outputLabel>
+                <apex:outputPanel rendered="{!locationEmpty}">
+                </apex:outputPanel>
+                
+                <!--Role-->
+                <apex:outputLabel styleclass="fontproperties">
+                <br/>
+                        {!$ObjectType.Subscriber__c.fields.Role__c.label}
+                <apex:outputPanel rendered="{!OR(AND(NOT(kaupapaMaoriNews),NOT(balanceisbetter)),activerecreation)}">
+                <span class="required">*</span>
+                </apex:outputPanel>
+                </apex:outputLabel>
+                <apex:outputPanel >
+                    <br/>
+                <apex:inputfield value="{!Subscriber__c.Role__c}" ignoreEditPermissionForRendering="true" styleclass="inputboxSize"  />
+                </apex:outputPanel>
+                <apex:outputLabel styleClass="fontproperties" rendered="{!AND(activerecreation,roleEmpty)}" style="color:red">
+                    Role required
+                </apex:outputLabel>
+                <apex:outputPanel rendered="{!AND(activerecreation,roleEmpty)}">
+                </apex:outputPanel>
+                
+                
+                <!--Organisation-->
+                
+                <apex:outputLabel rendered="{!OR(sectorUpdate, disabilitySectorNews, kaupapaMaoriNews,activerecreation)}" styleclass="fontproperties">
+                    <br/>
+                        {!$ObjectType.Subscriber__c.fields.Organisation__c.label}
+                    <apex:outputPanel rendered="{!sectorUpdate}">
+                    <span class="required">*</span>
+                    </apex:outputPanel>
+                </apex:outputLabel>
+                <apex:outputPanel >
+                    <br/>
+                <apex:inputfield rendered="{!OR(sectorUpdate, disabilitySectorNews, kaupapaMaoriNews,activerecreation)}" ignoreEditPermissionForRendering="true" value="{!Subscriber__c.Organisation__c}" styleclass="inputboxSize" />
+                </apex:outputPanel>
+                <apex:outputLabel rendered="{!AND(sectorUpdate, orgEmpty)}" style="color:red">
+                    Organisation required
+                </apex:outputLabel>
+                <apex:outputPanel rendered="{!orgEmpty}">
+                </apex:outputPanel>
+                
+                <!--Partner Type-->
+                <apex:outputLabel rendered="{!OR(sectorUpdate, kaupapaMaoriNews,activerecreation)}" styleclass="fontproperties">
+                    <br/>
+                        {!$ObjectType.Subscriber__c.fields.Partner_Type__c.label}
+                    <apex:outputPanel rendered="{!sectorUpdate}">
+                    <span class="required">*</span>
+                    </apex:outputPanel>
+                </apex:outputLabel>
+                <apex:outputPanel >
+                <br/>
+                <apex:inputfield rendered="{!OR(sectorUpdate, kaupapaMaoriNews,activerecreation)}" ignoreEditPermissionForRendering="true" value="{!Subscriber__c.Partner_Type__c}" styleclass="inputboxSize" />
+                </apex:outputPanel>
+                <apex:outputLabel rendered="{!AND(sectorUpdate, partnerEmpty)}" style="color:red">
+                    Partner Type required
+                </apex:outputLabel>
+                <apex:outputPanel rendered="{!partnerEmpty}">
+                </apex:outputPanel>
+                
+                <!--Ko Wai Koe-->
+                <apex:outputLabel rendered="{!kaupapaMaoriNews}" styleclass="fontproperties">
+                    <br/>
+                        {!$ObjectType.Subscriber__c.fields.Ko_wai_koe__c.label}
+                    <apex:outputPanel rendered="{!kaupapaMaoriNews}">
+                    <span class="required">*</span>
+                    </apex:outputPanel>
+                </apex:outputLabel>
+                <apex:outputPanel >
+                    <br/>
+                <apex:inputfield rendered="{!kaupapaMaoriNews}" ignoreEditPermissionForRendering="true" value="{!Subscriber__c.Ko_wai_koe__c}" styleclass="inputboxSize" />
+                </apex:outputPanel>
+                <apex:outputLabel rendered="{!AND(kaupapaMaoriNews, koWaiKoeEmpty)}" style="color:red" styleclass="fontproperties">
+                    This is required field
+                </apex:outputLabel>
+                <apex:outputPanel rendered="{!koWaiKoeEmpty}">
+                </apex:outputPanel>
+                
+                <!--Do you identify as Maori?-->
+                <apex:outputLabel rendered="{!kaupapaMaoriNews}" styleclass="fontproperties">
+                    <br/>
+                        {!$ObjectType.Subscriber__c.fields.Do_you_identify_as_Maori__c.label}
+                </apex:outputLabel>
+                <apex:outputPanel >
+                    <br/>
+                <apex:inputfield rendered="{!kaupapaMaoriNews}" ignoreEditPermissionForRendering="true" value="{!Subscriber__c.Do_you_identify_as_Maori__c}" styleclass="checkbox" />
+                </apex:outputPanel>
+                
+                <!-- Youth_Sport_Option-->
+                
+               <apex:outputLabel rendered="{!balanceisbetter}" styleclass="fontproperties">
+                    <br/>
+                        <!--{!$ObjectType.Subscriber__c.fields.Youth_sport_options__c.label}-->
+                   Check all that apply
+                   		<apex:outputPanel rendered="{!balanceisbetter}">
+                    <span class="required" style="Padding : 7px;">*</span>
+                            <br/>
+                            <!--Check all that apply-->
+                    </apex:outputPanel>
+                </apex:outputLabel>
+                <apex:outputPanel >
+                    <br/>
+                <apex:inputfield rendered="{!balanceisbetter}" ignoreEditPermissionForRendering="true" value="{!Subscriber__c.Youth_sport_options__c}" style="height:auto !important;" />
+                </apex:outputPanel>
+                <apex:outputLabel rendered="{!AND(balanceisbetter,youthEmpty)}" style="color:red">
+                    Youth Sport Option required
+                </apex:outputLabel>
+                <apex:outputPanel rendered="{!youthEmpty}">
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+            
+            <!--apex:pageBlockButtons-->
+            <br/>
+            <br/>
+            <center>
+            <apex:commandButton style="background:#FFD400; 
+                                       text-align:center; 
+                                       font-size:16px;
+                                       font-family:Barlow, Arial; 
+                                       font-weight: bold;
+                                       border:#FFD400;
+                                       height:30px;
+                                       border-radius: 8px;
+                                       width:300px;
+                                       cursor: pointer;" 
+                                value="UPDATE PREFERENCES" 
+                                action="{!saveRecord}"/>  
+            <!--/apex:pageBlockButtons--> 
+            <br/>
+            <br/>
+           <!-- <apex:outputText style="font-size:16px;font-family:Barlow, Arial;" value="You can unsubscribe at any time by clicking the link in the footer of our emails."/>
+			
+            <br/>
+            <br/>-->
+                <p style="font-size:16px;font-family:Barlow, Arial;">
+                    For information about our
+                <apex:outputLink value="https://sportnz.org.nz/resources/privacy-and-copyright/"> 
+                    privacy practices
+                </apex:outputLink>
+                    , please visit our website to subscribe again.
+                </p>
+                
+            <!--apex:outputText style="font-size:16px;font-family:Barlow, Arial;"
+                             value="For information about our privacy practices, please visit our website."/-->
+                </center>
+            
+        </apex:pageBlock>
+        <!--{!displayPopUp}-->
+       <apex:outputPanel id="tstpopup">
+        <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+            <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}">
+                
+                Your subscription preferences have been updated. You can now close this window.<br/><br/><br/>
+                <center>
+                <apex:commandButton style="background:white;
+                                           font-size:16px;
+                                           font-family:Barlow, Arial;
+                                           border-radius: 8px;
+                                           cursor: pointer;
+                                           border:white;" value="Ok" action="{!closePopup}"/>
+                </center>
+            </apex:outputPanel>
+        </apex:outputPanel>
+        
+        <apex:outputPanel id="errorpopup">
+        <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayErrorPopUp}"/>
+            <apex:outputPanel styleClass="custErrorPopup" layout="block" rendered="{!displayErrorPopUp}">
+                
+                You have already subscribed. Would you like to change the existing details?<br/> If yes, check your registered email<br/><br/><br/>
+                
+                   <!-- <apex:commandButton style="background:white;
+                                               font-size:16px;
+                                               font-family:Barlow, Arial;
+                                               border-radius: 8px;
+                                               cursor: pointer;
+                                               border:white;" value="Ok" action="{!sendmailtoowner}"/>-->
+                <div class="divider"/>
+                    <apex:commandButton style="background:white;
+                                               font-size:16px;
+                                               font-family:Barlow, Arial;
+                                               border-radius: 8px;
+                                               cursor: pointer;
+                                               border:white;" value="OK" action="{!closePopup}"/>
+                
+            </apex:outputPanel>
+        </apex:outputPanel>
+        
+    </apex:form>
+</apex:page>

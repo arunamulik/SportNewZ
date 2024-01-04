@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TAPS_DTG_Investment_2022_24</fullName>
+    <columns>NAME</columns>
+    <columns>Partner__c</columns>
+    <columns>Plan__c</columns>
+    <columns>Description__c</columns>
+    <columns>Start_Date__c</columns>
+    <columns>End_Date__c</columns>
+    <columns>Planned__c</columns>
+    <columns>Requested__c</columns>
+    <columns>Paid__c</columns>
+    <columns>Scheduled__c</columns>
+    <columns>Draft__c</columns>
+    <columns>Remaining__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Investment_Area__c</field>
+        <operation>equals</operation>
+        <value>TAPS Investment 2024</value>
+    </filters>
+    <filters>
+        <field>End_Date__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>1/1/2022</value>
+    </filters>
+    <filters>
+        <field>ActivityID__c</field>
+        <operation>equals</operation>
+        <value>TAPS36 (TAPS Development Training Grant)</value>
+    </filters>
+    <label>TAPS/DTG Investment / 2022-24</label>
+</ListView>

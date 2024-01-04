@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approved_Funding_Allocation</fullName>
+    <active>true</active>
+    <errorConditionFormula>ispickval(Status__c,&quot;Confirmed&quot;) &amp;&amp; not(ispickval(Funding_Allocation__r.Status__c,&quot;Confirmed&quot;))</errorConditionFormula>
+    <errorDisplayField>Status__c</errorDisplayField>
+    <errorMessage>Investment Area Allocations can only be set to &apos;Confirmed&apos; when the Funding Allocation is &apos;Confirmed&apos;</errorMessage>
+</ValidationRule>

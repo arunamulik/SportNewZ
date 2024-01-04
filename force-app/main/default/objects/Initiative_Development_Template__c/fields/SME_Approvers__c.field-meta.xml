@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SME_Approvers__c</fullName>
+    <description>SME&apos;s who have approved this initiative</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter your name if you have approved the initiative or a component of the initiative</inlineHelpText>
+    <label>SME Approvers</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

@@ -1,0 +1,557 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,forceCommunity:profileMenuInterface,lightning:isUrlAddressable" access="global" 
+                controller="ActivityOnboardingLandingPageController">
+    
+    
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TWR</title>
+    
+    <ltng:require styles="/resource/newone,/resource/NiceSelectCSS,/resource/bundleMK"
+                  scripts="/resource/jquery_imp,/resource/NewJquery,/resource/imp1234,/resource/JLoadJsQuant"  
+                  afterScriptsLoaded="{!c.scriptsLoaded}" />
+    
+    <!-- <ltng:require styles="/resource/newone_dashboardcss"
+                  scripts="/resource/jquery_imp"  afterScriptsLoaded="{!c.scriptsLoaded}" />  -->
+    
+    <ltng:require styles="{!$Resource.bundlepp}" />
+    <ltng:require styles="{!$Resource.bundlepp2css}" />
+    
+    
+    <!--ltng:require scripts="{!$Resource.Chartjs+ '/Chart.min.js'}"/>
+                 <ltng:require scripts="{!$Resource.chartjslabelplugin+ '/src/chartjs-plugin-labels.js'}"   afterScriptsLoaded="{!c.scriptsLoaded1}"  /-->
+    <!--ltng:require   scripts="{!join(',',$Resource.Chartjs + '/Chart.min.js', 
+                                     
+                                     $Resource.plugin)}"    afterScriptsLoaded="{!c.scriptsLoaded1}"  /-->
+    <!--ltng:require scripts="/resource/jquery_imp,/resource/canvas12"  afterScriptsLoaded="{!c.generateChart}" /-->
+    <ltng:require styles="{!$Resource.QualitiveCSS}" />
+    <!--<ltng:require styles="{!$Resource.dashboard_bundlecss}" />-->
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    <aura:attribute name="userInfo" type="user"/> 
+    <aura:attribute name="activitiesRelatedtoUser" type="boolean" default="false"/> 
+    <aura:attribute name="height" type="integer"/> 
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="newActivity" type="Activity__c" default="{ 'sobjectType': 'Activity__c'}"/>
+    <aura:attribute name="Activityitems" type="LIST"/>
+    <aura:attribute name="DiamensionValues" type="List"/>
+    <aura:attribute name="DiamensionValuesInList" type="List"/>
+    <aura:attribute name="TotalDiamensionValues" type="LIST"/>
+    <aura:attribute name="FemaleAndMaleValues" type="List"/>
+    <aura:attribute name="picklistValuesHOPoutcome" type="Object" />
+    <aura:attribute name="VideoURL" type="String"/> 
+    <aura:attribute name="imageRichText" type="String"/> 
+    <aura:attribute name="activitiesRelatedtoHOP" type="List" />
+    <aura:attribute name="HOPoutcomeVal1" type="String"/> 
+    <aura:attribute name="HOPoutcomeVal2" type="String"/> 
+    <aura:attribute name="HOPoutcomeVal3" type="String"/> 
+    <aura:attribute name="activitiySelected" type="Activity__c" />
+    <aura:attribute name="disablebuttonid" type="Boolean" default="false" />
+    <aura:attribute name="PicklistValuesActivity" type="Activity__c" />
+    <aura:attribute name="ByOrgGoverned" type="list"/>
+    <aura:attribute name="ActivityGMD" type="list"/>
+    <aura:attribute name="selectedGovernedBy" type="string"/>
+    <aura:attribute name="total_part" type="Integer" />
+    <aura:attribute name="filteryear" type="String" />
+    <aura:attribute name="currentyear" type="String" />    
+    <aura:attribute name="ThroughTypeOfActivityPicklistValues" type="list"/>
+    <aura:attribute name="InOnActivitiesPicklistValues" type="list"/>
+    <aura:attribute name="SignificanceLoactionPicklistValues" type="list"/>
+    <aura:attribute name="UseOfTeReoPickilistValues" type="list"/>
+    <aura:attribute name="PurposeOfTeReoPickilistValues" type="list"/>
+    <aura:attribute name="DiamensionScorePicklistValues" type="list"/>
+    <aura:attribute name="tabId" type="String" default="tab1" />
+    <aura:attribute name="DisablePre" type="Boolean" default="false" />
+    <aura:attribute name="DisableNext" type="Boolean" default="false" />
+    <aura:handler event="force:refreshView" action="{!c.doInit}" />
+    <aura:attribute name="refreshCount" type="Integer" default="0"/>    
+    <aura:attribute name="refreshFlag" type="boolean" default="true"/> 
+    <aura:attribute name="DisableRichTextFields" type="boolean" default="false"/>
+    <aura:attribute name="disableAnswersOnSaveComplete1" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete2" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete3" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete4" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete5" type="boolean" default=""/>
+    <aura:attribute name="PartnerLogoImage" type="String"/> 
+    <aura:attribute name="submitChangeRequest" type="boolean" default="true"/>
+    <aura:attribute name="ShowChangeReqModal" type="boolean" default="false"/>
+    <aura:method name="viewActivity" action="{!c.viewActivity}" />
+    <aura:method name="closeModel" action="{!c.closeModel}" />
+    <aura:attribute name="MalePercentValues" type="string"/>
+    <aura:attribute name="feMalePercentValues" type="string"/>
+    <aura:registerEvent name="activitiyEventSelectedID" type="c:getRecordId"/>
+    <aura:attribute name="isDeletePopup" type="boolean" default="false"/>
+    <aura:attribute name="IdToDelete" type="String"/> 
+    <aura:attribute name="isClonePopup" type="boolean" default="false"/>
+    <aura:attribute name="IdToClone" type="String"/> 
+    <aura:attribute name="ActivityNameToClone" type="String"/> 
+
+    <aura:attribute name="CurrentYear1" type="String"/> 
+    <aura:attribute name="previousYear" type="String"/> 
+    <aura:attribute name="contactName" type="String"/> 
+    <aura:attribute name="userId" type="String" />
+
+    <aura:attribute name="backgroundImageURL" type="String" default=""/> 
+    <aura:registerEvent name="getSelectedActivity" type="c:SelectedActivityEvent"/>
+    <aura:attribute name="checked" type="boolean" default="false"/>
+    <aura:attribute name="options" type="String[]"/>  <!--default="logout" -->
+    <aura:attribute name="isDashboardPage" type="boolean" default="false"/>
+    <aura:attribute name="isLandingPage" type="boolean" default="false"/>
+    <aura:attribute name="isQuantitativePage" type="boolean" default="false"/>
+    <aura:attribute name="isQualitativePage" type="boolean" default="false"/>
+    <aura:handler event="force:refreshView" action="{!c.doInit}"/>
+    <aura:attribute name="showLoading" type="Boolean" default="false" />
+    <aura:attribute name="ActivityName" type="list" />
+    <aura:attribute name="isDeleteActivity" type="boolean" default="true"/>
+    <aura:attribute name="currentTabClass" type="string" default ="landing"/>
+    <aura:attribute name="userProfilePhoto" type="string" default ="landing"/>
+    <aura:handler event="c:CreateActivityEvent" action="{!c.doInit}"/>
+    <!--  <aura:method name="callChild" action="{!c.sechand}"/>-->
+    <aura:attribute name="filteryearfield" type="string"/>
+    <aura:handler name="change" value="{!v.filteryearfield}" action="{!c.handleChange}" />
+    
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__inner">
+                <div class="header__back">
+                    <a><span>
+                        <c:takeToKahiwi />
+                        </span>
+                    </a>
+                    
+                </div><!-- /.header__back -->
+                
+                <nav class="nav">
+                    <ul>
+                        <li class="navbar" aura:id="dashboard">
+                            <a class="tooltip-custom" onclick="{!c.navigateToDashboardPage}">
+                                <span class="tooltip__text">
+                                    Dashboard
+                                </span><!-- tooltip__text -->
+                                
+                                <span class="livicon-evo" data-options="name: pie-chart.svg; size: 20px; style: filled; fillColor: #000000; strokeColor: #000000; tryToSharpen: true"></span>
+                                
+                                <strong>Papatohu</strong>
+                            </a>
+                        </li>
+                        
+                        <li class="navbar active" aura:id="landing">
+                            <a class="tooltip-custom" onclick="{!c.navigateToLandingPage}">
+                                <span class="tooltip__text">
+                                    Planned activities
+                                </span><!-- tooltip__text -->
+                                
+                                <span class="livicon-evo" data-options="name: heart.svg; size: 20px; style: filled; strokeColor: #000000; fillColor: #000000; tryToSharpen: true"></span>
+                                
+                                <strong>Ngohe</strong>
+                            </a>
+                        </li>
+                        
+                        <li class="navbar" aura:id="Quantitative">
+                            <a class="tooltip-custom" onclick="{!c.navigateToQuantativePage}">
+                                <span class="tooltip__text">
+                                    Quantitive reporting
+                                </span><!-- tooltip__text -->
+                                
+                                <span class="livicon-evo" data-options="name: calculator.svg; fillColor: #ffffff; strokeColor: #000000; size: 20px; style: filled; tryToSharpen: true"></span>
+                                
+                                <strong>Raraunga Tatau</strong>
+                            </a>
+                        </li>
+                        
+                        <li class="navbar" aura:id="Qualitative">
+                            <a class="tooltip-custom" onclick="{!c.navigateToQualitativePage}">
+                                <span class="tooltip__text">
+                                    Qualitative reporting
+                                </span><!-- tooltip__text -->
+                                
+                                <span class="livicon-evo" data-options="name: notebook.svg; size: 20px; style: filled; strokeColor: #000000; fillColor: #ffffff; tryToSharpen: true"></span>
+                                
+                                <strong>Raraunga Kounga</strong>
+                            </a>
+                        </li>
+                    </ul>
+                </nav><!-- /.nav -->
+                
+                <div class="header__profile"> 
+                    <div class="profile-icon">
+                        <a href="#">
+                            <!--img src="assets/images/temp/profile-icon.jpg" alt="Profile Icon"/-->
+                        </a>
+                    </div> <!-- /.profile-icon -->
+                    
+                    <a href="#">
+                        
+                    </a>
+                </div><!-- /.header__profile -->
+                
+                <div class="header__profile">
+                    <div class="profile-icon" style="overflow: visible;">
+                        
+                        <ui:menu >
+                            <ui:menuTriggerLink aura:id="trigger" >
+                                <img src="{!v.userProfilePhoto}"/>
+                            </ui:menuTriggerLink>
+                            
+                            <ui:menuList class="actionMenu" aura:id="actionMenu">
+                                <p> <a href="https://sportnz.force.com/SportNZ/secur/logout.jsp?retUrl=/SportNZ/s/" class="logout">&nbsp;&nbsp;Logout</a> </p>
+                                <aura:iteration items="{!v.options}" var="itemLabel" >
+                                    
+                                    <ui:actionMenuItem label="{!itemLabel}" click="{!c.handleClick}"/>
+                                </aura:iteration>
+                            </ui:menuList>
+                        </ui:menu>   
+                        
+                        
+                        
+                        <!-- <a href="/secur/logout.jsp?retUrl=/SportNZ/s/" class="logout"><img src="assets/images/temp/profile-icon.jpg" alt="Profile Icon" /></a>  -->
+                        
+                        
+                    </div><!-- /.profile-icon -->
+                    
+                    <a href="#">
+                        <!--   <img src="assets/images/png/plus-menu.png" alt="Icon">  -->
+                    </a>
+                </div><!-- /.header__profile -->     
+            </div><!-- /.header__inner -->
+        </header><!-- /.header -->
+        <div class="main clear">
+            <div class="sidebar-mobile-menu">
+                <div class="sidebar__logo">
+                    <a href="#">
+                        <!--img src="assets/images/png/logo-login.png" alt="Logo"/-->
+                    </a>
+                </div><!-- /.sibebar__logo -->
+                
+                <div class="sidebar__menu-trigger">
+                    <button type="button">
+                        <!--<img src="{!$Resource.logoutButton}" style="height: 100%;width: 100%;"/>-->
+                        <!--img src="assets/images/png/hamb-menu.png" alt="Menu Icon"/-->
+                    </button>
+                </div><!-- /.sidebar__menu-trigger -->
+                
+                
+            </div><!-- /.sidebar-mobile-menu -->
+            
+            <div class="sidebar">
+                <div class="sidebar__close">
+                    <button type="button">
+                        <img src="{!$Resource.logoutButton}" style="height: 100%;width: 100%;"/>
+                        <!--img src="assets/images/png/sidebar-close.png" alt="Close"/-->
+                    </button>
+                </div><!-- /.sidebar__close -->
+                
+                <div class="sidebar__inner" >
+                    <a href="#" class="logo">
+                        <img src="{!$Resource.Logologin}"/>
+                    </a>
+                    
+                    <div class="activities">
+                        <div class="activities__add">
+                            <p>
+                                Kaupapa  
+                            </p>
+                            
+                            <button type="button" class="js-popup-trigger tooltip-custom tooltip-custom--left" data-target="#popup-add-activity">
+                                <span class="tooltip__text">
+                                    Add a new planned activity
+                                </span><!-- tooltip__text -->
+                                <lightning:icon iconName="utility:add" class="icn" size="small" alternativeText="sss"/>
+                                <a onclick="{! c.openModel }">
+                                    <span class="livicon-evo" data-options="name: plus-alt.svg; size: 20px; style: original; tryToSharpen: true">
+                                    </span>
+                                </a>
+                            </button>
+                        
+                              </div><!-- /.activities__add --> 
+                        
+                        
+                        <div class="slds-m-around_xx-large,activities">
+        					<lightning:recordEditForm objectApiName="Activity__c"
+                                  aura:id="accForm">
+            				<lightning:messages />
+                                
+                                    <div class="f1-class">
+                                        <div Style="padding-bottom:15px;" data-aura-rendered-by="497:0">
+                                    View previous year reporting
+                                    </div>
+                                <div class="f-class">
+                					<lightning:inputField aura:id="yearid" variant = "label-hidden" fieldName="FilterByYear__c" value="{!v.filteryearfield}" onchange="{!c.handleonchange}"/>
+             					</div>
+                                </div>
+                                
+        					</lightning:recordEditForm>
+    					</div>
+     
+                    </div><!-- /.activities -->
+                    
+                     
+                    <div class="features js-accordions">
+                        <!-- add switch to Kahiwi Community -->
+                        <!--<div class="feature">
+                         <div class="feature__head">
+                                <h6 class="feature__subtitle">
+                                    <c:takeToKahiwi />
+                                </h6>
+                            </div>
+                        </div>-->
+                        <!-- eof add swithc to kahiwi community -->
+                        
+                        <aura:iteration items="{!v.activitiesRelatedtoHOP}" var="cus" indexVar="key">
+                            <div class="feature">
+                                <div class="feature__head">
+                                    <h6 class="feature__subtitle">
+                                        HOP OUTCOME
+                                    </h6><!-- /.feature__subtitle -->
+                                    
+                                    <h5 class="feature__title">
+                                        {!cus.key}
+                                    </h5><!-- /.feature__title -->
+                                </div><!-- /.feature__head -->
+                                
+                                <aura:if isTrue="false">
+                                    <aura:iteration items="{!cus.value}" var="HOPvalue" >
+                                        <div class="feature__actions">
+                                            <p>{! v.activeSectionsMessage }</p>
+                                            <!-- <lightning:accordion 
+                                                                 allowMultipleSectionsOpen="true"
+                                                                 onsectiontoggle="{!c.handleSectionToggle }" 
+                                                                 >
+                                                <div  aura:id="changeIt" >
+                                                    
+                                                    <lightning:accordionSection name="A"  label="{!HOPvalue.Name}" title="{!HOPvalue.Name}" class="twoarrow">  
+                                                        
+                                                      
+                                                        
+                                                        <ol class="sectionitem">
+                                                            <li class="test">
+                                                                <a onclick="{!c.navigateDashboardPage}">Papatohu</a> 
+                                                            </li>
+                                                            <li class="sample">
+                                                                <a onclick="{!c.navigateLandingPage}">Tatauira</a> 
+                                                            </li>
+                                                            <li class="sample">
+                                                                <a onclick="{!c.navigateQuantativePage}">Raraunga Tatou</a> 
+                                                            </li>
+                                                            <li class="sample">
+                                                                <a onclick="{!c.navigateQualitativePage}">Raraunga Kaunga</a> 
+                                                            </li>
+                                                        </ol>
+                                                        
+                                                        
+                                                        
+                                                    </lightning:accordionSection>
+                                                </div>
+                                            </lightning:accordion>-->
+                                            
+                                            
+                                        </div><!-- /.feature__actions -->
+                                    </aura:iteration>
+                                    
+                                </aura:if>
+                                
+                                
+                                <aura:iteration items="{!cus.value}" var="HOPvalue" >
+                                    <div class="feature__actions">
+                                        <div class="toggleSecClass">
+                                            <span name="{!HOPvalue.Id}" aura:id="{!'toggleDiv'+HOPvalue.Id}" id="{!'toggleDiv'+HOPvalue.Id}" class="slds-page-header nameAct " style="cursor: pointer;" onclick="{!c.onsectiontoggle}">
+                                                <span class="ActivityName">
+                                                     <span class="slds-m-left--large">
+                                                        <img src="{!$Resource.twoarrows}"/>
+                                                    </span>
+                                                    <span title="{!HOPvalue.Name}" class="slds-m-left--small"  maxlength="10" >{!HOPvalue.Name}</span>
+                                                </span>
+                                               <!-- <aura:if isTrue="{!AND(Year(!HOPvalue.Due_Date__c)> previousYear,Year(!HOPvalue.Due_Date__c)<= CurrentYear1)  }">
+                                                     Show the clone icon when the report is overdue -->
+                                                    
+                                                <!--</aura:if>-->
+                                                <span name="{!HOPvalue.Id}" onclick="{!c.openCreateActivityWizard}">
+                                                    <lightning:icon  iconName="utility:edit"  size="x-small" class="icnEdit" alternativeText="edit" />
+                                                </span >
+                                                <span name="{!HOPvalue.Id}" onclick="{!c.callClone}">
+                                                    <lightning:icon iconName="utility:copy" size="x-small" class="icnClone" alternativeText="Clone" />
+                                                </span>
+                                                <span name="{!HOPvalue.Id}" onclick="{!c.callDelete}">
+                                                    <lightning:icon iconName="utility:delete" size="x-small" class="icnDelete" alternativeText="delete" />
+                                                </span>
+                                            </span>
+                                            <div id="{!HOPvalue.Id}" class="slds-hide slds-p-around--medium cls" aura:id="articleOne">
+                                                <ol class="sectionitem">
+                                                    <li class="test">
+                                                        <a name="{!HOPvalue.Id}" onclick="{!c.navigateDashboardPage}">Papatohu</a> 
+                                                    </li>
+                                                    <li class="sample">
+                                                        <a name="{!HOPvalue.Id}" onclick="{!c.navigateLandingPage}">Ngohe</a> 
+                                                    </li>
+                                                    <li class="sample">
+                                                        <a name="{!HOPvalue.Id}" onclick="{!c.navigateQuantativePage}">Raraunga Tatau</a> 
+                                                    </li>
+                                                    <li class="sample">
+                                                        <a name="{!HOPvalue.Id}" onclick="{!c.navigateQualitativePage}">Raraunga Kounga</a> 
+                                                    </li>
+                                                </ol>
+                                            </div>    
+                                        </div>
+                                    </div><!-- /.feature__actions -->
+                                </aura:iteration>
+                                
+                            </div><!-- /.feature -->
+                        </aura:iteration>
+                        
+                    </div><!-- /.features -->
+                </div><!-- /.sidebar__inner -->
+                <div class="sidebar__bottom">
+                    <p>
+                        <strong>Korero mai.</strong> <br>
+                        
+                        <a href="tel:+048957412">04 895 7412</a>
+                        </br>
+                    </p>
+                    
+                    <img src="{!$Resource.Ladyavatar}"/>
+                </div><!-- /.sidebar__bottom -->
+                
+            </div><!-- /.sidebar -->
+            
+            <div class="content" id="testdiv1">
+                
+                <div class="intro " style="{!'background-image: URL(\''+'..'+ v.backgroundImageURL.Landing_Hero_Image__c +'\') !important'}"> <!-- intro -->
+                    
+                    <div class="intro__fader js-fader" style="background-image:none !important;"></div><!-- /.intro__fader  linear-gradient(rgb(236, 236, 236) 20%, rgba(236, 236, 236, 0) 100%);-->
+                    
+                    <div class="intro__fader intro__fader--adaptive js-fader-adaptive" style="background-image:none !important;"></div><!-- /.intro__fader -->
+                    
+                    <div class="container">
+                        <div class="covid">
+                            <span class="covid19">COVID-19 Alert Level:</span><span class="covid19number">{!v.activitiySelected.COVID_19_ALERT_LEVEL__c}</span>
+                        </div>
+                        <div class="intro__inner">
+                            <h1 class="intro__title" style="    width: 100%;">
+                                {!v.activitiySelected.Name}
+                            </h1><!-- /.intro__title -->
+                            
+                            <p style="    width: 100%;">
+                                {!v.activitiySelected.HOP_Outcome__c}
+                            </p>
+                            
+                            <button  class="js-scroll-next-section scroll-to-next" ><lightning:icon iconName="utility:back" size="medium" /></button>
+                        </div><!-- /.intro__inner -->
+                    </div><!-- /.container -->
+                </div><!-- /.intro -->
+                
+                <section class="section-edit section-edit--alt ">
+                    <aura:if isTrue="{!v.showLoading}">	
+                        <div class="demo-only demo-only demo-only_viewport demo--inverse" style="height:6rem" >                    
+                            <div class="slds-spinner_container slds-is-fixed">                       
+                                <div role="status" class="slds-spinner slds-spinner_medium">                         
+                                    <span class="slds-assistive-text">Loading</span>                           
+                                    <div class="slds-spinner__dot-a"></div>                            
+                                    <div class="slds-spinner__dot-b"></div>                     
+                                </div>                  
+                            </div>               
+                        </div>    
+                        {!v.isDashboardPage}
+                        {!v.isLandingPage}
+                        {!v.isQuantitativePage}
+                        {!v.isQualitativePage}
+                      	
+                        <aura:set attribute="else">
+                            <div onscroll="{!c.scroll}">
+                            <aura:if isTrue="{!v.isDashboardPage}" >
+                                <c:RUL_DashboardComponent filteryear="{!v.filteryearfield}"/>
+                            </aura:if>
+                            <aura:if isTrue="{!v.isLandingPage}">
+                                <c:RUL_LandingComponent filteryear="{!v.filteryearfield}"/>
+                            </aura:if>
+                            <aura:if isTrue="{!v.isQuantitativePage}">
+                               <div id="Quantitative">
+                                <c:RUL_QuantitativeComponent filteryear="{!v.filteryearfield}"/>
+                                   </div>
+                            </aura:if>
+                            <aura:if isTrue="{!v.isQualitativePage}">
+                                <c:RUL_QualitativeComponent filteryear="{!v.filteryearfield}"/>
+                            </aura:if>	
+                                </div>
+                        </aura:set>
+                        
+                    </aura:if>
+                </section>
+            </div>
+        </div>
+    </div>
+    <aura:if isTrue="{!v.isModalOpen}">             
+        <c:createActivitiy parent="{! this}"/>
+    </aura:if>
+    <aura:if isTrue="{!v.isDeletePopup}">
+        
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{!c.closeDeleteModal }"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Are you sure?</h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p style="text-align:center">If you delete this activity you won't be able to restore this activity.
+                        
+                    </p>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral"
+                                      label="No"
+                                      title="No"
+                                      onclick="{! c.closeDeleteModal }"/>
+                    <lightning:button variant="brand"
+                                      label="Yes,I want to delete"
+                                      title="Yes"
+                                      onclick="{!c.deleteDetails}"
+                                      />
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if> 
+    <aura:if isTrue="{!v.isClonePopup}">
+        
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{!c.closeCloneModal }"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Taruatia tenei kaupapa</h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here
+				Kia ora, {!v.contactName}<br/>-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p style="text-align:center">Click <b>Ae</b> to confirm the duplication of <b>{!v.ActivityNameToClone}</b> or <b>Kao</b> to cancel this action.
+                        
+                    </p>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral"
+                                      label="Kao"
+                                      title="Kao"
+                                      onclick="{! c.closeCloneModal }"/>
+                    <lightning:button variant="neutral"
+                                      label="Ae"
+                                      title="Ae"
+                                       class="custom-button"
+                                      onclick="{!c.cloneDetails}"
+                                      />
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if> 
+</aura:component>

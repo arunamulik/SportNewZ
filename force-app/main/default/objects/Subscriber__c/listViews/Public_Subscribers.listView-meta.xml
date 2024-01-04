@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Public_Subscribers</fullName>
+    <columns>NAME</columns>
+    <columns>First_Name__c</columns>
+    <columns>Last_Name__c</columns>
+    <columns>Email_Address__c</columns>
+    <columns>Location__c</columns>
+    <columns>Role__c</columns>
+    <columns>NZ_Coach__c</columns>
+    <columns>Sector_Update__c</columns>
+    <columns>Kaupapa_Maori_News__c</columns>
+    <columns>Balance_is_Better__c</columns>
+    <columns>Healthy_Active_Learning__c</columns>
+    <columns>Healthy_Active_Quarterly__c</columns>
+    <columns>Active_Recreation__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Subscriber__c.Public</value>
+    </filters>
+    <label>Public Subscribers</label>
+</ListView>

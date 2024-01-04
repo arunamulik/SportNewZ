@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EOI_Clone__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(not(EOI_Clone_Already_Cloned__c) &amp;&amp; EOI_Clone_Decision__c &amp;&amp; EOI_Clone_Full_Application_Round__c,true,false)</formula>
+    <label>EOI Clone</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CannotEditDuringVariation</fullName>
+    <active>true</active>
+    <description>This rule will prevent to edit during variation.</description>
+    <errorConditionFormula>If(  AND(  OR(ISPICKVAL(Initiative__r.Business_Case__r.Status__c, 
+ &apos;Being Varied&apos;),
+ ISPICKVAL(Initiative__r.Business_Case__r.Status__c, &apos;Pending Approval&apos;)), 
+ $Profile.Name = &apos;Kahiwi&apos;),
+	If(
+		AND(ISCHANGED(Status__c), 
+		    ISPICKVAL(Status__c , &apos;Variation&apos;)
+		),false,
+		If(AND(ISPICKVAL(Status__c , &apos;Variation&apos;),
+			OR(ISCHANGED(Status__c),
+			   ISCHANGED(Plan__c),
+			   ISCHANGED(Initiative__c),
+			   ISCHANGED(Partner__c ))
+			), true,
+			If(AND(ISCHANGED(Status__c), 
+				ISPICKVAL(PRIORVALUE(Status__c) , &apos;Variation&apos;)
+				), true,
+				false
+			)
+		)
+	)
+ ,false)</errorConditionFormula>
+    <errorMessage>Woops! Current business rules will correctly prevent you from editing these fields during Variation.</errorMessage>
+</ValidationRule>

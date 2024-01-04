@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Investment_Area</fullName>
+    <active>true</active>
+    <errorConditionFormula>(isnew() || ischanged(Investment_Area__c)) &amp;&amp; not(ispickval(Investment_Area__r.Status__c,&quot;Active&quot;))</errorConditionFormula>
+    <errorDisplayField>Investment_Area__c</errorDisplayField>
+    <errorMessage>Allocations can only be made to &apos;Active&apos; Investment Areas</errorMessage>
+</ValidationRule>

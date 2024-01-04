@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_Date</fullName>
+    <active>true</active>
+    <errorConditionFormula>Date__c &lt;  Initiative__r.Start_Date__c</errorConditionFormula>
+    <errorDisplayField>Date__c</errorDisplayField>
+    <errorMessage>The Payment Date cannot be before the start date of the Initiative</errorMessage>
+</ValidationRule>

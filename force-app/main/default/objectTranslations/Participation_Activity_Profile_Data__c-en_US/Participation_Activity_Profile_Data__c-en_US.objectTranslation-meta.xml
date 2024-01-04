@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Participation Activity Profile Data</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Participation Activity Profile Data</value>
+    </caseValues>
+    <layouts>
+        <layout>Participation Activity Profile Data Admin Layout</layout>
+        <sections>
+            <label></label>
+            <section>Activity Category Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Participation Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Participation Activity Profile Data Admin Read Only Layout</layout>
+        <sections>
+            <label></label>
+            <section>Activity Category Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Participation Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Participation Activity Profile Data Layout</layout>
+        <sections>
+            <label></label>
+            <section>Activity Category Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Participation Information</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label></label>
+        <name>Administrator</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>Partner_User</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Valid_End_Date</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Add_a_New_Participation_Profile</name>
+    </webLinks>
+</CustomObjectTranslation>

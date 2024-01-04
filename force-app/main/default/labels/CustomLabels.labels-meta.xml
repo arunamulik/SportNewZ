@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Cpu_Time_Limit</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cpu Time Limit</shortDescription>
+        <value>8000</value>
+    </labels>
+    <labels>
+        <fullName>ISVWarning</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ISVWarning</shortDescription>
+        <value>Woops! Looks like you are attempting to make changes to fields where statuses are incompatible with an Investment Schedule Variation.</value>
+    </labels>
+    <labels>
+        <fullName>Label_for_Papatohu_content</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Label for Papatohu content</shortDescription>
+        <value>The dashboard is a visual snapshot of your quantitative data across all of your activities for the current financial year.</value>
+    </labels>
+    <labels>
+        <fullName>Label_for_Raraunga_Kaunga_content</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Label for Raraunga Kaunga content</shortDescription>
+        <value>Use this page to submit your end of year report for the selected planned activity. All questions must be completed before clicking the save and complete button.</value>
+    </labels>
+    <labels>
+        <fullName>Label_for_Raraunga_Tatou_content</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Label for Raraunga Tatou content</shortDescription>
+        <value>Please complete this quantitative report. Your input will be visualised in the dashboard.</value>
+    </labels>
+    <labels>
+        <fullName>Label_for_T_tauira_content</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Label for Tātauira content</shortDescription>
+        <value>Please complete all 5 of the Te Whetū Rehua dimensions for this activity, indicting the reason behind each score.</value>
+    </labels>
+    <labels>
+        <fullName>Last_Chance_Content</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Last Chance Content</shortDescription>
+        <value>Please ensure that you have completed all questions before continuing. If you are not ready to submit your report, click cancel otherwise click &apos;yes I understand&apos;.</value>
+    </labels>
+    <labels>
+        <fullName>Login_page_paragraph1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Login page paragraph1</shortDescription>
+        <value>Welcome back!</value>
+    </labels>
+    <labels>
+        <fullName>Login_page_paragraph2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Login page paragraph2</shortDescription>
+        <value>Let’s set up your first planned activity for the 2021-2022 reporting year.</value>
+    </labels>
+    <labels>
+        <fullName>Login_page_title</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Login page title</shortDescription>
+        <value>Ka pai tāu mahi</value>
+    </labels>
+    <labels>
+        <fullName>Qualitative_Question1</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Qualitative Question1</shortDescription>
+        <value>1. Did you achieve the purpose of your planned activity?</value>
+    </labels>
+    <labels>
+        <fullName>Qualitative_Question2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Qualitative Question2</shortDescription>
+        <value>2. Describe the haerenga of this activity, how it was initiated and developed throughout the year?</value>
+    </labels>
+    <labels>
+        <fullName>Qualitative_Question3</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Qualitative Question3</shortDescription>
+        <value>3. Did you meet the expectations of impact you listed in your activities plan at the start of the year?</value>
+    </labels>
+    <labels>
+        <fullName>Qualitative_Question4</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Qualitative Question4</shortDescription>
+        <value>4. Share with us, any unexpected outcomes</value>
+    </labels>
+    <labels>
+        <fullName>Qualitative_Question5</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Qualitative Question5</shortDescription>
+        <value>5. Tell us more about any magic moments that contributed to the success of the kaupapa - ahakoa he iti he pounamu</value>
+    </labels>
+    <labels>
+        <fullName>ReportName</fullName>
+        <categories>RUL</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ReportName</shortDescription>
+        <value>Investment Schedule for</value>
+    </labels>
+    <labels>
+        <fullName>Requirement_Reporting_Submit_Success</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Requirement Reporting Submit Success</shortDescription>
+        <value>Your reporting has been submitted for review. If you need to make changes to your reporting please contact your Partnership Manager</value>
+    </labels>
+    <labels>
+        <fullName>Requirement_Reporting_Success</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Requirement Reporting Success</shortDescription>
+        <value>Your details are saved successfully. You can also add attachments for more details</value>
+    </labels>
+    <labels>
+        <fullName>Review_Change_Request_Notification</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Review Change Request Notification</shortDescription>
+        <value>We&apos;re reviewing your change request</value>
+    </labels>
+    <labels>
+        <fullName>Success_Notification_Content</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Success Notification Content</shortDescription>
+        <value>Ka pai ra tenei mahi!</value>
+    </labels>
+    <labels>
+        <fullName>TWR_ScoreChart_Description</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TWR_ScoreChart_Description</shortDescription>
+        <value>Here are the scores that you provided at the start of the reporting year. These scores can be edited by clicking the icons to your right.</value>
+    </labels>
+    <labels>
+        <fullName>TWR_ScoreChart_Title</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TWR_ScoreChart_Title</shortDescription>
+        <value>Te Whetū Rehua</value>
+    </labels>
+    <labels>
+        <fullName>Variation</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Variation</shortDescription>
+        <value>Variation</value>
+    </labels>
+    <labels>
+        <fullName>VariationCannotBeCreated</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>VariationCannotBeCreated</shortDescription>
+        <value>Woops! You cannot initiate a variation when the status of the investment schedule is Draft, Pending Approval, or Being Varied</value>
+    </labels>
+    <labels>
+        <fullName>VariationWarning</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>VariationWarning</shortDescription>
+        <value>Are you sure?&lt;br/&gt;&lt;br/&gt;
+A variation cannot be cancelled. &lt;br/&gt;&lt;br/&gt;
+If you proceed, you will need to complete a Variation on this Investment Schedule, obtain re-approval internally, and have the Schedule re-signed by the external party.&lt;br/&gt;&lt;br/&gt;
+While a variation is in progress, no Payments will be made (associated with this investment schedule).&lt;br/&gt;&lt;br/&gt;
+If you are unsure, choose ‘Cancel’ now and seek advice.</value>
+    </labels>
+</CustomLabels>

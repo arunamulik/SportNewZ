@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( (Is_Initiative_Closed__c = true &amp;&amp; End_Date__c &lt; TODAY()) || ($User.Id = Investment_Area__r.Investment_Area_Owner__r.Id &amp;&amp; Close_the_Initiative__c = true &amp;&amp; Total_Completed_Requirements__c = Total_Requirements__c &amp;&amp; Total_Payments__c = Total_Completed_Payments__c &amp;&amp; Pending_Measures__c = 0), 
+&quot;Closed&quot;, 
+IF(OR(isblank(Business_Case__c),text(Business_Case__r.Status__c) = &quot;Draft&quot;,text(Business_Case__r.Status__c) = &quot;Rejected&quot;), 
+
+&quot;Draft&quot;, 
+
+IF(text(Business_Case__r.Status__c) = &quot;Pending Approval&quot;, 
+
+&quot;Pending Investment Schedule Approval&quot;, 
+
+IF(AND(OR(text(Business_Case__r.Status__c) = &quot;Approved&quot;,text(Business_Case__r.Status__c) = &quot;Signed&quot;),Scheduled__c = 0), 
+
+&quot;Approved&quot;, 
+
+IF(AND(OR(text(Business_Case__r.Status__c) = &quot;Approved&quot;,text(Business_Case__r.Status__c) = &quot;Signed&quot;),Scheduled__c &gt; 0), 
+
+&quot;Scheduled&quot;, 
+
+IF(AND(OR(text(Business_Case__r.Status__c) = &quot;Approved&quot;,text(Business_Case__r.Status__c) = &quot;Signed&quot;),Planned__c = Paid__c), 
+
+&quot;Paid&quot;,
+
+IF(text(Business_Case__r.Status__c) = &quot;Being Varied&quot;,&quot;Variation&quot; ,
+
+&quot;Error&quot; 
+
+)))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

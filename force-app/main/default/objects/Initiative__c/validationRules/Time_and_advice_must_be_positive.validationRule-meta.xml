@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Time_and_advice_must_be_positive</fullName>
+    <active>true</active>
+    <description>Time and advice must be positive</description>
+    <errorConditionFormula>OR(
+Time_and_Advice_Actual_Hours__c   &lt;=  0,
+Time_and_Advice_Planned_Hours__c    &lt;=  0
+)</errorConditionFormula>
+    <errorMessage>Time &amp; Advice planned and actual hours must be a positive number</errorMessage>
+</ValidationRule>

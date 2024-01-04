@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Initiative_Final_Rating__c</fullName>
+    <externalId>false</externalId>
+    <label>Initiative Final Rating</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not Established</fullName>
+                <default>false</default>
+                <label>Not Established</label>
+            </value>
+            <value>
+                <fullName>Emerging</fullName>
+                <default>false</default>
+                <label>Emerging</label>
+            </value>
+            <value>
+                <fullName>Consolidating</fullName>
+                <default>false</default>
+                <label>Consolidating</label>
+            </value>
+            <value>
+                <fullName>Highly Developed</fullName>
+                <default>false</default>
+                <label>Highly Developed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

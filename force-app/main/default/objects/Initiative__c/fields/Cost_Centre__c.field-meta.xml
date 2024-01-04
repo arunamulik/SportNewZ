@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cost_Centre__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>The Cost Centre must be selected before Payments can be made.  It is best to add it when creating an Initiative.</inlineHelpText>
+    <label>Cost Centre</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Cost_Centre__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>Cost_Centre__c</referenceTo>
+    <relationshipLabel>Initiatives</relationshipLabel>
+    <relationshipName>Initiatives</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

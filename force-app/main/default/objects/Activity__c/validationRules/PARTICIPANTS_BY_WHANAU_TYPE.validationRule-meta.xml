@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PARTICIPANTS_BY_WHANAU_TYPE</fullName>
+    <active>false</active>
+    <description>TOTAL PARTICIPANTS MATCHING WITH &apos;PARTICIPANTS_BY_WHANAU_TYPE&apos;</description>
+    <errorConditionFormula>IF(( Particaipation_WhanauType_Marae__c  +  Particaipation_WhanauType_Hapu__c  +  Particaipation_WhanauType_lwi__c  +  Particaipation_WhanauType_Wh_nau__c  +  Particaipation_WhanauType_KohangaPunaReo__c  +  Particaipation_WhanauType_Kura_Kaupapa__c  +  Particaipation_WhanauType_Whare_Kura__c  +  Particaipation_WhanauType_Whare_Wananga__c  +  Particaipation_WhanauType_Kaupapa_H_kina__c  +  Particaipation_WhanauType_Other__c )  &lt;&gt;  ( Participation_NoOfParticipants__c ), True, False)</errorConditionFormula>
+    <errorMessage>TOTAL PARTICIPANTS NOT MATCHING WITH &apos;PARTICIPANTS BY WHĀNAU TYPE&apos;</errorMessage>
+</ValidationRule>

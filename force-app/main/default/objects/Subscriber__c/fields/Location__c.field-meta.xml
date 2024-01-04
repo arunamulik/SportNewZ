@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Location__c</fullName>
+    <externalId>false</externalId>
+    <label>Location</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Northland</fullName>
+                <default>false</default>
+                <label>Northland</label>
+            </value>
+            <value>
+                <fullName>North Harbour</fullName>
+                <default>false</default>
+                <label>North Harbour</label>
+            </value>
+            <value>
+                <fullName>Auckland</fullName>
+                <default>false</default>
+                <label>Auckland</label>
+            </value>
+            <value>
+                <fullName>Waitakere</fullName>
+                <default>false</default>
+                <label>Waitakere</label>
+            </value>
+            <value>
+                <fullName>Counties Manakau</fullName>
+                <default>false</default>
+                <label>Counties Manukau</label>
+            </value>
+            <value>
+                <fullName>Waikato</fullName>
+                <default>false</default>
+                <label>Waikato</label>
+            </value>
+            <value>
+                <fullName>Bay of Plenty</fullName>
+                <default>false</default>
+                <label>Bay of Plenty</label>
+            </value>
+            <value>
+                <fullName>Gisborne</fullName>
+                <default>false</default>
+                <label>Gisborne</label>
+            </value>
+            <value>
+                <fullName>Hawkes Bay</fullName>
+                <default>false</default>
+                <label>Hawkes Bay</label>
+            </value>
+            <value>
+                <fullName>Taranaki</fullName>
+                <default>false</default>
+                <label>Taranaki</label>
+            </value>
+            <value>
+                <fullName>Whanganui</fullName>
+                <default>false</default>
+                <label>Whanganui</label>
+            </value>
+            <value>
+                <fullName>Manawatu</fullName>
+                <default>false</default>
+                <label>Manawatu</label>
+            </value>
+            <value>
+                <fullName>Wellington</fullName>
+                <default>false</default>
+                <label>Wellington</label>
+            </value>
+            <value>
+                <fullName>Tasman</fullName>
+                <default>false</default>
+                <label>Tasman</label>
+            </value>
+            <value>
+                <fullName>Canterbury/West Coast</fullName>
+                <default>false</default>
+                <label>Canterbury/West Coast</label>
+            </value>
+            <value>
+                <fullName>Otago</fullName>
+                <default>false</default>
+                <label>Otago</label>
+            </value>
+            <value>
+                <fullName>Southland</fullName>
+                <default>false</default>
+                <label>Southland</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

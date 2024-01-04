@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Case__c</fullName>
+    <description>This is used to store associated Investment Schedule.</description>
+    <externalId>false</externalId>
+    <label>Investment Schedule</label>
+    <referenceTo>Business_Case__c</referenceTo>
+    <relationshipName>Sign_Off_Historys</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

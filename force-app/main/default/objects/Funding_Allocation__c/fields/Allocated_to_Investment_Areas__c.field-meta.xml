@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allocated_to_Investment_Areas__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Funding allocated from this Funding Allocation allocated to Investment Areas</inlineHelpText>
+    <label>Allocated to Investment Areas</label>
+    <summarizedField>Investment_Area_Allocation__c.Amount__c</summarizedField>
+    <summaryForeignKey>Investment_Area_Allocation__c.Funding_Allocation__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

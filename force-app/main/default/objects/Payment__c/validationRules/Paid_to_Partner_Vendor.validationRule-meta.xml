@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Paid_to_Partner_Vendor</fullName>
+    <active>true</active>
+    <errorConditionFormula>ispickval( Initiative__r.Type__c, &quot;Paid to Partner&quot;) &amp;&amp; not(isblank(Vendor__c))</errorConditionFormula>
+    <errorDisplayField>Vendor__c</errorDisplayField>
+    <errorMessage>Specifying the Vendor is not allowed for Initiatives that are &apos;Paid to Partner&apos;. Please remove this value.</errorMessage>
+</ValidationRule>

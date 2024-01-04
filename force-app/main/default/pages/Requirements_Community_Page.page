@@ -1,0 +1,82 @@
+<apex:page standardController="Requirement__c" tabStyle="Requirement__c">      
+    <apex:form >
+    <apex:sectionHeader title="Requirement" subtitle="{!Requirement__c.name}"/>
+    <apex:outputLink value="{!$Page.Initiative_Page}">Back to list</apex:outputLink>    
+    <apex:pageBlock title="Requirement Detail">
+            <apex:pageBlockSection title="Information">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Organisation</apex:outputLabel>                       
+                    <apex:outputField value="{!Requirement__c.Partner__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Status</apex:outputLabel>                       
+                    <apex:outputField value="{!Requirement__c.Status_Image__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Requirement ID</apex:outputLabel>                       
+                    <apex:outputField value="{!Requirement__c.Requirement_ID__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Status</apex:outputLabel>                       
+                    <apex:outputField value="{!Requirement__c.Status__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Plan</apex:outputLabel>                       
+                    <apex:outputField value="{!Requirement__c.Plan_Name__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Reporting Type</apex:outputLabel>                       
+                    <apex:outputField value="{!Requirement__c.Reporting_Type__c}" label="Name"/>
+                </apex:pageBlockSectionItem>     
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Requirement Details">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Name</apex:outputLabel>                       
+                    <apex:outputField value="{!Requirement__c.Name}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Hold Payments</apex:outputLabel>                       
+                    <apex:outputField value="{!Requirement__c.Hold_Payments__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Due Date</apex:outputLabel>                       
+                    <apex:outputField value="{!Requirement__c.Due_Date__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Description</apex:outputLabel>                       
+                    <apex:outputField value="{!Requirement__c.Description__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Instructions</apex:outputLabel>                
+                    <apex:outputField value="{!Requirement__c.Instructions__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Completion Details ">
+                    <font color="#ff0000"><apex:facet name="header">
+                    <span style="font-size: 12px;">Completion Details</span>
+                 <span style="color:red">(Max 250 Words)</span>
+             </apex:facet>     </font>   
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Completed Date</apex:outputLabel>                       
+                    <apex:outputField value="{!Requirement__c.Completed_Date__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Notes</apex:outputLabel>   
+                    <apex:outputField value="{!Requirement__c.Notes__c}" label="Name"/>
+                </apex:pageBlockSectionItem>                    
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!edit}" value="Edit" reRender="op1"/>
+            </apex:pageBlockButtons>
+         </apex:pageBlock>
+     </apex:form>
+     <apex:relatedList subject="{!Requirement__c}" list="CombinedAttachments" />
+</apex:page>

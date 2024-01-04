@@ -1,0 +1,71 @@
+<apex:page Controller="Programme_Event_ParticipationController">
+    <apex:form >
+    <apex:pageMessages id="errorMsg"/>
+        <apex:pageBlock title="Programme and Event Participation Edit">
+            <apex:pageBlockSection title="Information">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Programme or Event Name</apex:outputLabel>                       
+                    <apex:outputField value="{!newProg.Programme_or_Event_Name__c}" label="Programme or Event_Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Financial Year</apex:outputLabel>                       
+                    <apex:inputField value="{!newProg.Financial_Year__c}"/>
+                </apex:pageBlockSectionItem>
+            <!--    <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Organization Delivered To</apex:outputLabel>
+                    <apex:inputField value="{!newProg.Organization_Delivered_To__c}"/>
+                </apex:pageBlockSectionItem> -->
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Programme and Event Data">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Number of Programmes Delivered</apex:outputLabel>
+                    <apex:inputField value="{!newProg.Number_of_Programmes_Delivered__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >       
+                    <apex:outputLabel >Average Length of Each Session (in mins)</apex:outputLabel>
+                    <apex:inputField value="{!newProg.Average_Length_of_Each_Session__c}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Number of Sessions Delivered</apex:outputLabel>
+                    <apex:inputField value="{!newProg.Number_of_Sessions_Delivered__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >       
+                    <apex:outputLabel >Avg. No. of Participants at Each Session</apex:outputLabel>
+                    <apex:inputField value="{!newProg.Avg_No_of_Participants_at_Each_Session__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Location</apex:outputLabel>
+                    <apex:inputField value="{!newProg.Location__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >       
+                    <apex:outputLabel >Postcode(If Location is Local)</apex:outputLabel>
+                    <apex:inputField value="{!newProg.Postcode_If_Location_is_Local__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Participation Data">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Lower Age</apex:outputLabel>                       
+                    <apex:inputField value="{!newProg.Lower_Age__c}" label="Course Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Upper Age</apex:outputLabel>
+                    <apex:inputField value="{!newProg.Upper_Age__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Average Age</apex:outputLabel>                       
+                    <apex:inputField value="{!newProg.Average_Age__c}" label="Course Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >                   
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Notes</apex:outputLabel>                       
+                    <apex:inputField value="{!newProg.Notes__c}" label="Course Name"/>
+                </apex:pageBlockSectionItem>               
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="top">
+                 <apex:commandButton action="{!save}" value="Save" rerender="errorMsg"/>
+                 <apex:commandButton action="{!cancel}" value="Cancel" immediate="true"/>
+             </apex:pageBlockButtons>
+         </apex:pageBlock>
+    </apex:form>
+</apex:page>

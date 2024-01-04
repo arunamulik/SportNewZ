@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Status_Met1</fullName>
+        <field>Status__c</field>
+        <literalValue>Met</literalValue>
+        <name>Status Met</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Result_Date</fullName>
+        <description>Update Result Date with current date</description>
+        <field>Result_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Update Result Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Auto-populate Result Date</fullName>
+        <actions>
+            <name>Update_Result_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>User.UserType</field>
+            <operation>contains</operation>
+            <value>Partner</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Profile_Name__c</field>
+            <operation>contains</operation>
+            <value>Partner</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Change Measure Status Met</fullName>
+        <actions>
+            <name>Status_Met1</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(OR( ISCHANGED(Result_Currency__c), ISCHANGED( Result_Number__c ), ISCHANGED( Result_Percent__c ), ISCHANGED( Result_Rich_Text__c )),OR(ISPICKVAL( Status__c , &apos;Mostly Met&apos;),ISPICKVAL( Status__c , &apos;Partially Met&apos;),ISPICKVAL( Status__c , &apos;Pending&apos;)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

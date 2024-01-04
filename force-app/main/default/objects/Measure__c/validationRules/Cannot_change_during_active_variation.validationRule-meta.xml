@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_change_during_active_variation</fullName>
+    <active>false</active>
+    <description>This rule will prevent user to change initiative during variation process.</description>
+    <errorConditionFormula>AND($Profile.Name = &apos;Kahiwi&apos;,
+NOT(ISNULL( Initiative__r.Investment_Schedule_Variation__r.Id )),
+Initiative__r.Investment_Schedule_Variation__r.Is_Active__c = true,
+ISNULL(Initiative__r.Investment_Schedule_Variation__r.Variation_Completed_Date__c),
+ 
+OR( ISPICKVAL(Status__c, &apos;Met&apos;),
+ISPICKVAL(Status__c, &apos;Partially Met&apos;),
+ISPICKVAL(Status__c,&apos;Not Met&apos;))
+
+)</errorConditionFormula>
+    <errorMessage>Woops! Looks like you are attempting to make changes to fields where statuses are incompatible with an Investment Schedule Variation.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Draft</fullName>
+                <default>false</default>
+                <label>Draft</label>
+            </value>
+            <value>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+                <label>Submitted</label>
+            </value>
+            <value>
+                <fullName>Being Reviewed</fullName>
+                <default>false</default>
+                <label>Being Reviewed</label>
+            </value>
+            <value>
+                <fullName>Need More Information</fullName>
+                <default>false</default>
+                <label>Need More Information</label>
+            </value>
+            <value>
+                <fullName>Completed</fullName>
+                <default>false</default>
+                <label>Completed</label>
+            </value>
+            <value>
+                <fullName>SME review underway</fullName>
+                <default>false</default>
+                <label>SME review underway</label>
+            </value>
+            <value>
+                <fullName>SME review complete</fullName>
+                <default>false</default>
+                <label>SME review complete</label>
+            </value>
+            <value>
+                <fullName>Review being finalised</fullName>
+                <default>false</default>
+                <label>Review being finalised</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activity_ID_Project_ID_required_for_HP</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+ISPICKVAL( Investment_Area__r.Strategic_Area__r.Entity__c  , &quot;High Performance&quot;), 
+OR( 
+( ISBLANK(ActivityID__c)), 
+( ISBLANK( ProjectID__c) ) 
+) 
+)</errorConditionFormula>
+    <errorDisplayField>ActivityID__c</errorDisplayField>
+    <errorMessage>Please enter an Activity ID and Project ID</errorMessage>
+</ValidationRule>

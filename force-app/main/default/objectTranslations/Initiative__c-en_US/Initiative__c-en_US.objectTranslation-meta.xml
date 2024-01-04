@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Initiative</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Initiatives</value>
+    </caseValues>
+    <layouts>
+        <layout>Bundled Plan Initiative Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Initiative Classification</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Initiative Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Initiative Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Initiative Classification</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Initiative Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Initiative Layout - Partners</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Partner Plan Initiative Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Initiative Classification</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Investment Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payments Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Partner Plan Initiative Read Only</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Initiative Classification</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Investment Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payments Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Project Plan Initiative Layout</layout>
+        <sections>
+            <label></label>
+            <section>Available Budget</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Link</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Initiative Classification</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Investment Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Payment Details</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Bundled_Plan</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Partner_Plan</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>RUL_Read_Only_Initiative</name>
+    </recordTypes>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Active_Cost_Centre</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Active_Investment_Area</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Activity_ID_AND_Project_ID_only_on_HP</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Activity_ID_Project_ID_required_for_HP</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>CannotEditRecordsOfApprovedIS</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cannot_Edit_Planned</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>CheckIfPlanIsNonCompliant</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Close_initiative_for_past_date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Closed_strategic_area_Initiative</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Expense_Code</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Initiative_Closure</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Initiative_End_Date_Within_Plan</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Initiative_Start_Date_Within_Plan</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Investment_Area_Can_not_Changed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Planned_Amount_cannot_less_than_Payments</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Start_and_End_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Sum_Of_CS_and_HP_should_not_exceed_100</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Time_and_advice_must_be_positive</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Time_and_advice_validation_rule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Valid_End_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Work_Brief_Is_Required_For_SportNZ</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Work_Brief_Only_For_SportNZ</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Cost_Centre_Full_List</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Expense_Code_Full_List</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>New_Initiative_Bundled_Plan</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>New_Initiative_Partner_Plan</name>
+    </webLinks>
+</CustomObjectTranslation>

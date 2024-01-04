@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Initiative_Bundled_Plan</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>New Initiative</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>/{!$Setup.LookupFields__c.Initiative_Tab__c}/e?{!$Setup.LookupFields__c.Initiative_Plan__c}={!Plan__c.Name}&amp;{!$Setup.LookupFields__c.Initiative_Plan__c}_lkid={!Plan__c.Id}&amp;{!$Setup.LookupFields__c.Initiative_Investment_Area__c}={!Plan__c.Investment_Area__c}&amp;{!$Setup.LookupFields__c.Initiative_Investment_Area__c}_lkid={!Plan__c.Investment_AreaId__c }&amp;RecordType={!$Setup.RecordTypes__c.Initiative_Bundled_Plan__c}</url>
+</WebLink>

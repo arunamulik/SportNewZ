@@ -1,0 +1,80 @@
+<apex:page docType="html-5.0" Controller="VfForApprovalController" showheader="false" ><!--Controller="VfForApprovalController" -->
+    <apex:stylesheet value="{!URLFOR($Resource.bundleCSSVf)}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.snow)}"/>    
+    <apex:includeScript value="{!URLFOR($Resource.NewJquery)}"/>    
+    <apex:stylesheet value="{!URLFOR($Resource.newone)}"/>
+    <style>
+        .section-edit {
+        height: 500px;
+        }
+    </style>
+    <section class="section-edit">
+        <div class="container">
+            <apex:form >
+               <apex:outputPanel rendered="{!IF(isUserValid =true ,true,false)}" id="validUser">
+                    <h3>
+                      Request For Approval of End year Report
+                </h3>
+                <br/><br/>
+                    <p>
+                        Click on below button to approve request.
+                    </p>
+                   <br/>
+               Reason:{!changeRequestReason}
+                <br/><br/>
+                    <apex:commandButton reRender="validUser" onclick="callApproveMethod()" styleClass="classButton" value="Approve Request" />
+              </apex:outputPanel> 
+                
+                
+                <apex:outputPanel rendered="{!IF(isUserApprover =true ,true,false)}" >
+                <h3>
+                      There is no pending approval request for End year Report.
+                </h3>
+                <br/><br/>
+
+                </apex:outputPanel> 
+
+            <br/><br/> <br/><br/> <br/><br/> 
+               <apex:outputPanel rendered="{!IF(isUserPlannedActApprover =true ,true,false)}" id="PlannedActvalidUser">
+                    <h3>
+                      Request For Approval of planned activity
+                </h3>
+                <br/><br/>
+                    <p>
+                        Click on below button to approve request.
+                    </p>
+                   <br/>
+               Reason:{!PlannedActchangeRequestReason}
+                <br/><br/>
+                    <apex:commandButton reRender="PlannedActvalidUser" onclick="callApproveMethodAct()" styleClass="classButton" value="Approve Request" />
+              </apex:outputPanel> 
+                
+                
+                <apex:outputPanel rendered="{!IF(isPlannedActApprover =true ,true,false)}" >
+                <h3>
+                      There is no pending approval request for planned activity. 
+                </h3>
+                <br/><br/>
+
+                </apex:outputPanel> 
+                 <apex:actionFunction name="CallApexApproved" action="{!callApproved}" onComplete="reloadPage()" />
+			 <apex:actionFunction name="CallApexMethod" action="{!callApprovedPlannedAct}" onComplete="reloadPage()" />
+            </apex:form>
+             
+        </div>
+    </section>
+   
+    <script>
+    function callApproveMethodAct(){
+        //alert('callApproveMethodAct');
+    CallApexMethod();
+    }
+    function callApproveMethod()
+    {
+        CallApexApproved() ;
+    }
+    function reloadPage() {
+        window.location.reload();     
+    }
+    </script>
+</apex:page>

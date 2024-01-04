@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Summary_Partner_Plan_Workflow__c</fullName>
+    <description>Previous code: &quot;&amp;id=&quot; + Id + 
+&quot;&amp;templateid=a0k9000000KwcLR&quot; + 
+&quot;&amp;fp0=0&quot; + 
+&quot;&amp;queryid=[OrgProfile]a0i90000005bDfC,[PlanInitiatives]a0i90000005bDfq,[PlanPayments]a0i90000005bDfR,[PlanChallenges]a0i90000005bDf2,[PlanOpportunities]a0i90000005bDes,[PlanRequirements]a0i90000005bDgK,[PlanEvents]a0i90000005bDfv,[PlanTasks]a0i90000005bDfW,[PartnerTeam]a0i90000005bDgA&quot; +
+&quot;&amp;EmailAdditionalTo=&quot; + LastModifiedBy.Email + 
+&quot;&amp;EmailtoID=0039000001fu7Sk&quot; + 
+&quot;&amp;DefaultPDF=0&quot; + 
+&quot;&amp;CETID=a0g9000000MkBlD&quot; + 
+&quot;&amp;QMode=SendEmail&quot; + 
+&quot;&amp;OFN=&quot; + &quot;Summary Report - &quot; + Name + &quot; - &quot; + P_Name__c +
+&quot;&amp;EmailSubject=Summary Report for &quot; + Name + &quot; - &quot; +  P_Name__c</description>
+    <externalId>false</externalId>
+    <formula>&quot;&amp;id=&quot; + Id + 
+&quot;&amp;templateid=a0k9000000KwcLR&quot; + 
+&quot;&amp;fp0=0&quot; + 
+&quot;&amp;queryid=[OrgProfile]a0i90000005bDfC?pv0=&quot; + Id + 
+&quot;,[PlanInitiatives]a0i90000005bDfq?pv0=&quot; + Id + 
+&quot;,[PlanPayments]a0i90000005bDfR?pv0=&quot; + Id + 
+&quot;,[PlanChallenges]a0i90000005bDf2?pv0=&quot; + Id + 
+&quot;,[PlanOpportunities]a0i90000005bDes?pv0=&quot; + Id + 
+&quot;,[PlanRequirements]a0i90000005bDgK?pv0=&quot; + Id + 
+&quot;,[PlanEvents]a0i90000005bDfv?pv0=&quot; + Id + 
+&quot;,[PlanTasks]a0i90000005bDfW?pv0=&quot; + Id + 
+&quot;,[PartnerTeam]a0i90000005bDgA?pv0=&quot; + Partner__r.Id + 
+&quot;&amp;EmailAdditionalTo=&quot; + LastModifiedBy.Email + 
+&quot;&amp;EmailtoID=0039000001fu7Sk&quot; + 
+&quot;&amp;DefaultPDF=0&quot; + 
+&quot;&amp;CETID=a0g9000000MkBlD&quot; + 
+&quot;&amp;QMode=SendEmail&quot; + 
+&quot;&amp;OFN=Summary Report for &quot; + Name + &quot; - &quot; +  P_Name__c +
+&quot;&amp;EmailSubject=Summary Report for &quot; + Name + &quot; - &quot; +  P_Name__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Summary Partner Plan Workflow</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

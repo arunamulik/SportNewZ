@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>standard-home</defaultLandingTab>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>Community</label>
+    <tabs>standard-Chatter</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <tabs>Initiative__c</tabs>
+    <tabs>Programme_and_Event_Participation</tabs>
+    <tabs>KiwiSport_Data__c</tabs>
+    <tabs>Added_Value_Report__c</tabs>
+    <tabs>Participation_and_Membership_Data</tabs>
+    <tabs>standard-UserProfile</tabs>
+    <tabs>Activity_ID__c</tabs>
+    <tabs>Project_ID__c</tabs>
+    <tabs>Subscriber__c</tabs>
+</CustomApplication>

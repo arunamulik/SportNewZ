@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GL_Code__c</fullName>
+    <description>Combined Expense Code and Cost Centre codes. For all Payment record types, the Expense Code is set at the Initiative. For Payment, Refund and Credit, the Cost Centre is also set at the Initiative, but for Services it is specified on the Payment.</description>
+    <externalId>false</externalId>
+    <formula>IF( OR(RecordType.DeveloperName = &apos;Service_Credit&apos;, RecordType.DeveloperName = &apos;Buy_Back_Read_Only&apos;),
+&apos;1250-62-02&apos; ,
+IF( ISPICKVAL(Initiative__r.Investment_Area__r.Strategic_Area__r.Entity__c, &quot;Sport NZ&quot;) ,
+Initiative__r.Expense_Code__r.Name &amp; &quot;-&quot; &amp; Initiative__r.Cost_Centre__r.Name &amp; &quot;-&quot; &amp; Initiative__r.Work_Brief__r.Name,
+Initiative__r.Expense_Code__r.Name &amp; &quot;-&quot; &amp; Initiative__r.Cost_Centre__r.Name))</formula>
+    <label>GL Code</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

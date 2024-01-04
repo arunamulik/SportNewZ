@@ -1,0 +1,1878 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partner_Plan</fullName>
+    <active>true</active>
+    <description>For initiatives that are included in the Partner Planning process. Each Initiative in a Partner Plan will belong to only one Partner.</description>
+    <label>Partner Plan</label>
+    <picklistValues>
+        <picklist>Activity_ID__c</picklist>
+        <values>
+            <fullName>HNSO35 %28Funding for HP Investment%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO36 %28NSO Capability Funding%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS35 %28Grants to Individuals%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC1 %28PM Scholarships - Coach%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO1 %28PM Scholarships - Officials%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS9 %28PM Scholarships - Support%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRM - no code</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TDEV78 %28P2P Coach Development%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TDEV79 %28P2P Camps Athlete Subsidy%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TDEV88 %28P2P Individual Sport Tailoring%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>BI_Service_Area__c</picklist>
+        <values>
+            <fullName>Business Solutions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance and Corporate Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Governance and Planning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Operational Funding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>People and Culture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Philanthropy and Commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technology</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CS_Focus_Area__c</picklist>
+        <values>
+            <fullName>Asian %E2%80%93 Chinese</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asian %E2%80%93 Indian</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asian %E2%80%93 Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pacifica %E2%80%93 Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pacifica %E2%80%93 Samoan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Young Girls %2810 %E2%80%93 18%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Young People %285 %E2%80%93 18%29 in lower socio economic urban areas %28including Maori%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CS_Strategic_Priority__c</picklist>
+        <values>
+            <fullName>Insights %E2%80%93 Demographics and trends</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insights - Customer insight</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners and Providers - Business Capability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners and Providers - Organisational Role %26 Purpose</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners and Providers - Partnering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners%2FProviders - Provider Network</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pathways - Competition Structure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pathways - Physical Literacy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pathways - Talent Identification %26 Development</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>People - Coaching</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>People - Workforce</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spaces and Places - Collaboration %26 Partnerships</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spaces and Places - Facility Development</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Outcome_Area__c</picklist>
+        <values>
+            <fullName>Active Recreation%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BC TEAM OUTCOMES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commercial Outcomes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance and Corporate Services Outcomes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GOVERNANCE %26 PLANNING OUTCOMES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insights and Evaluation%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leadership and Connectivity%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>People and Culture Outcomes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Physical Education</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Play</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spaces and Places%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sport</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technology Outcomes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Outcome__c</picklist>
+        <values>
+            <fullName>A wide range of quality PE opportunities are%C2%A0available to meet the needs of%C2%A0tamariki%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Access to Active Recreation opportunities is%C2%A0improved for%C2%A0rangatahi%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Access to sport opportunities is improved for%C2%A0rangatahi%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Active Recreation opportunities are well%C2%A0promoted%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Agencies who influence schools and the%C2%A0education system are%C2%A0connected and work%C2%A0collaboratively%C2%A0%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Barriers to participate in Sport are identified and%C2%A0addressed%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Better decision-making to inform%C2%A0strategies for%C2%A0tamariki%C2%A0and%C2%A0rangatahi%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Better informed and regionally%2Fnationally%C2%A0connected network of%C2%A0organisations%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Better quality PE is delivered%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coaches engage in their own development and%C2%A0adopt a participant-focused approach%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coaches provide better quality support to%C2%A0rangatahi%C2%A0in sport%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Communities work in collaboration for the%C2%A0delivery of quality opportunities for%C2%A0tamariki%C2%A0and%C2%A0rangatahi%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competition structures and pathways are developed%C2%A0through a participant-centred%C2%A0approach%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cultural understanding is embedded within%C2%A0an organisation%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Development of networks of like Partners to collaborate and share best practice experiences and methods%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Diversity and inclusion is embedded within%C2%A0an organisation%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Education agencies and providers are%C2%A0leading and advocating for PE within%C2%A0strategy and decision making%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Education agencies and providers%C2%A0understand the value of PE%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enablers demonstrate their knowledge and%C2%A0understanding of the value of Play through%C2%A0messaging%2C actions and social or physical%C2%A0infrastructure%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enablers have effective systems in place at%C2%A0national%2C regional and local levels to%C2%A0engage%2C educate and support parents and%C2%A0peers%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enablers identify and address barriers to%C2%A0access%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enablers provide%C2%A0tamariki%C2%A0with the time%2C%C2%A0permission%2C and place to Play%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved access to external%C2%A0support%C2%A0%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved access to tools and%C2%A0resources%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved advocacy through use%C2%A0of evidence %28i%2Ee%2E%C2%A0influencing%C2%A0others%29%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved allocation of time and%C2%A0resource to intelligence%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved communication with%C2%A0internal%2C local%2C regional and%C2%A0national stakeholders%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved competency of%C2%A0organisation%C2%A0in intelligence %28i%2Ee%2E%C2%A0research%2C evaluation%2C insights%29%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved definition of information%C2%A0needs %28e%2Eg%C2%A0research questions%29%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved demonstration of the%C2%A0principles of Te%C2%A0Tiriti%C2%A0o Waitangi%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved evidence-based%C2%A0decision making%C2%A0%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved identification of key%C2%A0stakeholders requiring evidence%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved information collection%C2%A0and analytical skills%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved information%C2%A0interpretation and translational%C2%A0skills%C2%A0%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved infrastructure to collect%C2%A0and%C2%A0analyse%C2%A0information %28e%2Eg%2E%C2%A0tools%2C storage%2C linking to other%C2%A0data sources%29%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved intelligence climate%C2%A0provided by leadership%C2%A0%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved leadership and internal%C2%A0advocacy for intelligence%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved organisational performance is evident %28achieving outcomes %2F impact%29%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved organisational performance is evident %28achieving outcomes%2F impact%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved organisational performance is evident %28achieving outcomes%2F impact%29%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved protocols to collect and%C2%A0analyse%C2%A0information %28e%2Eg%2E%C2%A0consent%2C confidentiality%29%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved quality of training and%C2%A0development opportunities%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved systems to support use%C2%A0of evidence%C2%A0%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved tailoring for and sharing%C2%A0of information with key%C2%A0stakeholders %28e%2Eg%2E%C2%A0through%C2%A0presentation%2C meetings%2C%C2%A0resources%29%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improved understanding of the%C2%A0benefits of intelligence%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Influencers participate with%2C encourage and%C2%A0provide support to%C2%A0rangatahi%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Influencers provide%C2%A0tamariki%C2%A0with the time%2C%C2%A0permission%2C and place to Play%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Influencers understand and value the%C2%A0benefits of Active Recreation%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Influencers understand and value the%C2%A0benefits of Play%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key funders direct their financial%C2%A0support towards regional Spaces%C2%A0%26 Places priority projects%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key funders support National and%C2%A0Regional Planning Approaches and%C2%A0priority projects%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key stakeholders action key Play actions in%C2%A0relation to the National PA and Play Plan *%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key stakeholders and enablers advocate%C2%A0effectively for the cross government play%C2%A0approach%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key stakeholders and enablers are well%C2%A0connected to and knowledgeable about Play%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key stakeholders and enablers are%C2%A0respected and credible%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key stakeholders and enablers%C2%A0have the%C2%A0understanding of%C2%A0the value of Play%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key stakeholders and organisations are well%C2%A0connected to and knowledgeable about the%C2%A0Active Recreation sector%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key stakeholders and organisations are%C2%A0respected and credible%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key stakeholders and organisations have%C2%A0the knowledge and understanding of the%C2%A0value of Active Recreation%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key stakeholders and organisations%C2%A0advocate effectively for Active Recreation%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key stakeholders are connected and%C2%A0collaborate via a cross government%C2%A0collaborative play approach</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key stakeholders are respected and credible and%C2%A0promote the%C2%A0Balance is Better%C2%A0principles%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key stakeholders have the knowledge and understanding%C2%A0of sport and the%C2%A0Balance is Better%C2%A0principles%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key stakeholders work together%C2%A0to identify national%2C regional and%C2%A0local spaces and places%C2%A0principles%2C processes and%C2%A0priorities%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key%C2%A0organisations%C2%A0work together%C2%A0to identify settings and%C2%A0connections for the Spaces %26%C2%A0Places network</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key%C2%A0stakeholders%C2%A0partner to respond%C2%A0to %E2%80%98whole of community%E2%80%99 Spaces %26%C2%A0Places needs%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leaders enable the use of%C2%A0intelligence throughout the%C2%A0organisation%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Minimum quality standards for%C2%A0the setting and environment for%C2%A0play and physical activity settings%C2%A0in schools are developed%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners are aware of People and Culture %28HR%29 Risks and take proactive steps to manage these%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners are aware of%2C access%2C use and champion Sport NZ provided commercial resources %28both internal%2Fexternal resources%29%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners are aware of%2C access%2C use and champion Sport NZ provided financial resources %28both internal%2Fexternal resources%29%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners are aware of%2C access%2C use and champion Sport NZ provided resources %28both internal%2Fexternal resources%29%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners are in the Governance Mark Programme%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners are receiving dedicated professional consultancy via the Pilot programme%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners have access to the resources they need to improve business capability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners have achieved a measurable lift in capability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners have active People and Culture %28HR%29 business development plans%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners have active governance development plans to close%2C and or deepen knowledge and skills gaps%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners have built the capability suitable for their size and complexity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners have diverse boards reflecting the make-up of the community they serve%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners have information about support available to build capability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners have successfully completed the Governance Mark programme%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners identify skill%2C knowledge and resource gaps and undertake training and %2For implement other strategies to remedy these</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners state the Sport NZ information%2C resources and support lift their governance capability%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners understand what a good commercial strategy is%2C and where their capability is relative to others of similar size%2Fcomplexity%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Partners use self-help resources to improve business capability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More Qualifying Partner boards meet the Sport NZ gender target%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More organisations in the wider system are using the tools and resources available to improve business capability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More organisations in the wider system have access to the tools and resources that are available to improve capability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More partner%E2%80%99s information is secure and easily accessible%2E Security access rights in place to secure certain documents%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More partners are utilising cloud services for core services%2C increasing effectiveness%2C delivering efficiencies and supporting innovation%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More partners can effectively and  securely work from anywhere without any major risk and barriers%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More partners have a single source of truth where their data integrity to maximised</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More partners have clear processes to guide their users to use technology effectively and securely%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More partners have successfully renewed the Governance Mark%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More partners understand what good Finance and Corporate Services business practice is%2C and where their capability is relative to others of similar size%2Fcomplexity%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More partners understand what good People and Culture %28HR%29 business practice is%2C and where their capability is relative to others of similar size%2Fcomplexity%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>More partners understand what good governance is%2C and where their capability is at relative to others of a similar size and complexity and a pathway forward%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NSOs and NDOs have in place an effective Coach%C2%A0Developer Training %28CDT%29 plan%2C coach development%C2%A0framework and annual delivery plan that align with the%C2%A0NZ%C2%A0Coaching Strategy%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NSOs and NROs lead development%C2%A0of planning approach for%C2%A0International%2C National and Regional%C2%A0Spaces %26 Places provision%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NSOs%2C NDOs and RSTs provide quality Sport%C2%A0Development Leader training and wider support for%C2%A0providers across the sector%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NSOs%2C NDOs%2C RSTs have effective coach%C2%A0development leadership personnel in place%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NSOs%2C RSOs%2C NDOs and RSTs have a network of%C2%A0skilled coach developers working with their%C2%A0coaches%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>National Spaces %26 Places%C2%A0database and planning tool are%C2%A0delivered and enhanced to%C2%A0support improved planning%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>National%2C regional and local enablers are%C2%A0connected and work collaboratively for a%C2%A0Play approach%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>National%2C regional and local enablers have%C2%A0improved%C2%A0alignment for a Play approach%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>National%2C regional and local systems and%C2%A0structures for youth sport are improved and%C2%A0aligned%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Newly appointed CE%E2%80%99s and leaders are set up for success with an onboarding programme%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organisations are connected and working collaboratively%C2%A0around%C2%A0Balance is Better%C2%A0principles%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organisations have staff development%C2%A0programmes%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organisations understand the value of%C2%A0physical activity for%C2%A0tamariki%C2%A0and%C2%A0rangatahi%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organisations%C2%A0allocate time and resource to coach%C2%A0development%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organisations%C2%A0have effective systems in place at national%2C%C2%A0regional and local levels to engage%2C educate and support%C2%A0parents%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organisations%C2%A0have effective systems in%C2%A0place to engage%2C educate and support%C2%A0rangatahi%2C influencers%2C other%C2%A0organisations%C2%A0and key stakeholders%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organisations%C2%A0identify and address%C2%A0psychosocial barriers to participate in Active%C2%A0Recreation%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organisations%C2%A0provide quality development opportunities%C2%A0for coaches at all levels%C2%A0%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organisations%C2%A0provide quality training and%C2%A0support for providers across sector%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organisations%C2%A0understand the value of%C2%A0Active Recreation%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Organisations%C2%A0understand%2C connect and collaborate%C2%A0around%C2%A0Balance is Better%C2%A0principles%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parents have improved awareness and%C2%A0understanding of%C2%A0Balance is Better%C2%A0principles and%C2%A0the Value of Sport%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parents provide better quality support to%C2%A0rangatahi%C2%A0in sport%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner organisations demonstrate the principles of Te Tiriti O Waitangi - Partnership%2C Protection and Participation%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners are provided with new ways to connect%2C share%2C and collaborate on People and Culture %28HR%29 matters%2Ftopics of interest%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners are provided with ways to connect%2C share and collaborate on effective financial management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners are provided with ways to connect%2C share%2C and collaborate on effective commercial management%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners contribute to the development of other%C2%A0regional%2Fnational%2Fhapu%2Fiwi strategies and plans%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners embedding the three approaches %28internally%C2%A0and externally%29%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners facilitate and host networking %2F hosting %2F hui%C2%A0opportunities%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners lead workforce%2Fpeople planning and%C2%A0development%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners leading and advocating for diversity and%C2%A0inclusion%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners leading and advocating for%C2%A0the inclusion of%C2%A0%28kaupapa%29%C2%A0Maori%C2%A0approaches to Play%2C Active Recreation%C2%A0and sport%2E%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners regularly use the self-help resources to improve business capability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners understand%2C lead and advocate for quality%C2%A0%C2%A0opportunities for%C2%A0tamariki%C2%A0and%C2%A0rangatahi%2C%C2%A0 targeting less%C2%A0active and teenage drop off%2C through Play%2C Active%C2%A0Recreation%2C Sport and PE%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partners understanding that irrespective of the size of their commercial programme%2C a Commercial Strategy and a Plan are essential elements of their annual operation%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Physical and logistical barriers to participate%C2%A0in Active Recreation are identified and%C2%A0addressed%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Provision of Sport NZ resource is matched to identified areas of greatest benefit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Provision of Sport NZ resource is matched to identified areas of greatest benefit%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RSTs and TAs advocate for the%C2%A0protection and enhancement of built%C2%A0and natural environments that%C2%A0promote play%2C active recreation and%C2%A0sport%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RSTs have an aligned and integrated approach to%C2%A0supporting quality opportunities for%C2%A0tamariki%C2%A0and%C2%A0rangatahi%C2%A0%28using healthy active learning as a%C2%A0foundation%29%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RSTs have appropriate capacity and sufficient%C2%A0capability%2C to influence quality opportunities for%C2%A0tamariki%C2%A0in their region aligned with healthy active learning%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RSTs have in place coach developer training%C2%A0programmes%C2%A0that aligns with the%C2%A0Sport NZ CDT%C2%A0programme%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RSTs support%C2%A0organisations%C2%A0and%C2%A0clubs to navigate through the%C2%A0Spaces %26 Places planning%C2%A0process%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RSTs understand the networks and organisations in%C2%A0their region who deliver opportunities to%C2%A0tamariki%C2%A0and%C2%A0rangatahi%C2%A0%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RSTs%C2%A0lead%C2%A0communities to work%C2%A0in partnership for the planning%2C%C2%A0development%2C provision and%C2%A0operation of Spaces %26 Places%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RSTs%C2%A0lead%C2%A0development%2C review%2C and%C2%A0implementation of regional plans%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RSTs%C2%A0prioritise%C2%A0quality opportunities for%C2%A0tamariki%C2%A0in their%C2%A0region through healthy active learning%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rangatahi%C2%A0have input into the design and%C2%A0delivery of opportunities%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rangatahi%C2%A0have the motivation%2C knowledge%2C%C2%A0skills%2C confidence%2C and competence to%C2%A0participate in Active Recreation opportunities%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rangatahi%C2%A0understand and value the%C2%A0benefits of Active Recreation%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regional agencies adopt aligned%C2%A0approaches for the delivery of quality%C2%A0opportunities for%C2%A0tamariki%C2%A0and%C2%A0rangatahi%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regional agencies understand the value of%C2%A0Healthy Active Learning and its importance%C2%A0in the delivery of Play%2C Active Recreation%2C%C2%A0Sport and PE for%C2%A0tamariki%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School leaders%C2%A0recognise%C2%A0the value of PE%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Schools%C2%A0prioritise%C2%A0and support regular%C2%A0provision of PE%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Society advocates for sport and the%C2%A0Balance is%C2%A0Better principles%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spaces %26 Places are fully%C2%A0accessible%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spaces %26 Places are managed%C2%A0and operated efficiently and%C2%A0effectively to enable resources to%C2%A0focus on delivering physical%C2%A0activity%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spaces %26 Places are multi-use%2C%C2%A0flexible and sustainable%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spaces %26 Places are%C2%A0utilised%C2%A0to%C2%A0their full potential%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spaces %26 Places meet the needs%C2%A0of the communities they serve%2C%C2%A0%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Strong regional and national leadership%C2%A0and advocacy for physical activity%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sufficient resources are available to deliver%C2%A0quality PE %28human%2C financial%2C time%29%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Teachers have the confidence%2C skills and%C2%A0knowledge to teach PE well%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Territorial Authorities%E2%80%99 Annual and%C2%A0Long-Term Plans reflect regional%C2%A0Spaces %26 Places priority projects%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>The Business Capability team expands its suite of services where needed to support the Sport NZ group</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>The Governance Mark programme is recognised as good %28best%29 practice within the sector%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>The right type and location of%C2%A0Spaces %26 Places are identified%C2%A0and developed%C2%A0%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>There are a diverse range of capable%C2%A0providers of Active Recreation%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>There is a diverse range of capable providers of%C2%A0sport%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>There is a wide range of quality Active%C2%A0Recreation opportunities that meet the%C2%A0needs of%C2%A0rangatahi%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>There is a wide range of quality sport%C2%A0opportunities that meets the needs of%C2%A0rangatahi%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>There is improved quality of support for%C2%A0teachers%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tools%2C resources and guidelines are%C2%A0developed in collaboration with the%C2%A0sector to meet their needs and build%C2%A0capability%E2%80%8B</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Partner_Planning_Priority__c</picklist>
+        <values>
+            <fullName>False</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>True</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Partnership_Investment_Area__c</picklist>
+        <values>
+            <fullName>Active Recreation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insights and Evaluation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Integrity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leadership and Connectivity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Play</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spaces and Places</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sport</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority__c</picklist>
+        <values>
+            <fullName>Could</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Must</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Should</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Won%27t</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Project_ID__c</picklist>
+        <values>
+            <fullName>HNSO-1 %28Athletics%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-101 %28Judo%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-1180 %28Canoe Slalom%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-1181 %28Wrestling%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-12 %28Rugby Union%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-13 %28Football%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-15 %28Equestrian%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-16 %28Hockey - Men%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-18 %28Cycling%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-19 %28Triathlon%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-2 %28Netball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-20 %28Swimming%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-25 %28Softball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-250 %28Ice Speed Skating%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-3 %28Basketball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-30 %28Canoe Racing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-36 %28Surf Lifesaving%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-39 %28Hockey - Women%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-5 %28Paralympics%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-51 %28Karate%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-58 %28Diving%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-60 %28Gymsports%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-61 %28International Taekwondo - non Olympic%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-62 %28Bowls%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-63 %28Boxing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-65 %28Cricket%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-7 %28Rowing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-71 %28Golf%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-76 %28NZOC%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-79 %28Rugby League%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-80 %28Rugby Sevens - Women%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-81 %28Shooting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-83 %28Rugby Sevens %E2%80%93 Men%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-84 %28Squash%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-85 %28Tennis%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-88 %28Olympic Weightlifting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-9 %28Yachting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-93 %28Snow Sports%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-94 %28Surfing New Zealand%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-97 %28Taekwondo - Olympic%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HNSO-99 %28Volleyball New Zealand%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATH-1 %28Athletics%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATH-15 %28Equestrian%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATH-16 %28Hockey %E2%80%93 Men%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATH-18 %28Cycling%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATH-19 %28Triathlon%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATH-2 %28Netball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATH-20 %28Swimming%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATH-30 %28Canoe%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATH-39 %28Hockey %E2%80%93 Women%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATH-5 %28Paralympics%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATH-7 %28Rowing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATH-80 %28Rugby Sevens %E2%80%93 Women%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATH-9 %28Yachting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATH-93 %28Snow Sports%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-1 %28Athletics%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-101 %28Judo%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-1180 %28Canoe Slalom%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-12 %28Rugby Union%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-13 %28Football%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-15 %28Equestrian%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-16 %28Hockey - Men%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-18 %28Cycling%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-19 %28Triathlon%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-2 %28Netball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-20 %28Swimming%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-25 %28Softball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-250 %28Ice Speed Skating%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-3 %28Basketball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-30 %28Canoe Racing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-36 %28Surf Lifesaving%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-39 %28Hockey - Women%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-49 %28Bobsleigh %26 Skeleton%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-5 %28Paralympics%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-51 %28Karate%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-58 %28Diving%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-60 %28Gymsports%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-61 %28International Taekwondo - non Olympic%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-62 %28Bowls%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-63 %28Boxing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-65 %28Cricket%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-7 %28Rowing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-71 %28Golf%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-76 %28NZOC%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-79 %28Rugby League%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-80 %28Rugby Sevens - Women%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-81 %28Shooting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-83 %28Rugby Sevens %E2%80%93 Men%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-84 %28Squash%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-85 %28Tennis%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-88 %28Olympic Weightlifting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-9 %28Yachting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-93 %28Snow Sports%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-94 %28Surfing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEGS-97 %28Taekwondo - Olympic%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-02 %28Netball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-1 %28Athletics%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-101 %28Judo%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-1180 %28Canoe Slalom%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-12 %28Rugby Union%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-13 %28Football%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-15 %28Equestrian%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-16 %28Hockey - Men%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-18 %28Cycling%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-19 %28Triathlon%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-20 %28Swimming%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-25 %28Softball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-250 %28Ice Speed Skating%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-3 %28Basketball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-30 %28Canoe%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-36 %28Surf Lifesaving%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-39 %28Hockey - Women%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-5 %28Paralympics%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-58 %28Diving%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-60 %28Gymsports%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-61 %28International Taekwondo - non Olympic%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-62 %28Bowls%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-63 %28Boxing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-65 %28Cricket%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-7 %28Rowing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-71 %28Golf%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-76 %28NZOC%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-79 %28Rugby League%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-80 %28Rugby Sevens - Women%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-81 %28Shooting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-83 %28Rugby Sevens %E2%80%93 Men%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-84 %28Squash%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-85 %28Tennis%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-88 %28Olympic Weightlifting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-9 %28Yachting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-93 %28Snow Sports%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSC-97 %28Taekwondo - Olympic%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-1 %28Athletics%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-101 %28Judo%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-1180 %28Canoe Slalom%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-12 %28Rugby Union%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-13 %28Football%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-15 %28Equestrian%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-16 %28Hockey - Men%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-18 %28Cycling%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-19 %28Triathlon%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-2 %28Netball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-20 %28Swimming%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-25 %28Softball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-250 %28Ice Speed Skating%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-3 %28Basketball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-30 %28Canoe%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-36 %28Surf Lifesaving%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-39 %28Hockey - Women%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-5 %28Paralympics%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-58 %28Diving%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-60 %28Gymsports%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-61 %28International Taekwondo - non Olympic%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-62 %28Bowls%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-63 %28Boxing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-65 %28Cricket%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-7 %28Rowing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-71 %28Golf%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-76 %28NZOC%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-79 %28Rugby League%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-80 %28Rugby Sevens - Women%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-81 %28Shooting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-83 %28Rugby Sevens %E2%80%93 Men%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-84 %28Squash%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-85 %28Tennis%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-88 %28Olympic Weightlifting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-9 %28Yachting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-93 %28Snow Sports%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-96 %28Synchro%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSO-97 %28Taekwondo - Olympic%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-1 %28Athletics%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-101 %28Judo%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-1180 %28Canoe Slalom%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-12 %28Rugby Union%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-13 %28Football%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-1346 %28UTSNZ%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-15 %28Equestrian%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-16 %28Hockey - Men%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-18 %28Cycling%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-19 %28Triathlon%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-2 %28Netball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-20 %28Swimming%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-25 %28Softball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-250 %28Ice Speed Skating%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-3 %28Basketball%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-30 %28Canoe Racing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-36 %28Surf Lifesaving%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-39 %28Hockey - Women%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-5 %28Paralympics%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-58 %28Diving%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-60 %28Gymsports%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-61 %28International Taekwondo - non Olympic%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-62 %28Bowls%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-63 %28Boxing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-65 %28Cricket%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-7 %28Rowing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-71 %28Golf%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-76 %28NZOC%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-79 %28Rugby League%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-80 %28Rugby Sevens - Women%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-81 %28Shooting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-83 %28Rugby Sevens %E2%80%93 Men%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-84 %28Squash%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-85 %28Tennis%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-88 %28Olympic Weightlifting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-9 %28Yachting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-93 %28Snow Sports%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PMSS-97 %28Taekwondo - Olympic%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRM - no code</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Service_Area__c</picklist>
+        <values>
+            <fullName>Commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Governance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Human Resources</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leadership</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Planning and Performance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technology</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Timeframe__c</picklist>
+        <values>
+            <fullName>One Off</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ongoing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Time Limited</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Paid Direct</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid to Third Party</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Time %26 Advice</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

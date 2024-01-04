@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Investment_Schedule_Report_Single_Year</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Investment Schedule Report - Single Year</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/29.0/connection.js&quot;)}
+var bc = new sforce.SObject(&apos;Business_Case__c&apos;);
+bc.id = &quot;{!Business_Case__c.Id}&quot;;
+bc.Generate_Investment_Schedule_Report__c = &apos;true&apos;;
+result = sforce.connection.update([bc]);
+location.reload(true);</url>
+</WebLink>

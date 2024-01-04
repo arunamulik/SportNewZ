@@ -1,0 +1,138 @@
+<apex:page controller="FinalAssessorScoringController" tabStyle="Application_Round__c">
+	<style>
+		.bPageBlock .detailList tr th, .hoverDetail .bPageBlock .detailList tr td, .hoverDetail .bPageBlock .detailList tr th {
+		border-bottom: 1px solid #e3deb8;
+		}	
+		.singleTextAreaOverrideLong {
+            width: 99%; 
+            height: 50px;
+            max-width: none;
+        }	
+	</style> 
+	<apex:form >
+	<apex:pageBlock title="Final Assessment Scores">
+		<apex:pageBlockSection columns="1" rendered="{!finalscoringWrapperList.size = 0}">
+			No records to display.
+		</apex:pageBlockSection> 
+		<apex:pageBlockSection columns="1" rendered="{!finalScoringWrapperList.size > 0}">
+			<apex:outputpanel id="initiativeForm" layout="block" >
+			<table class="list" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<th width="20%">
+						</th>
+						<apex:repeat value="{!assessmentScoringHeaderList}" var="header">
+						<th>
+							<apex:outputField value="{!header.Assessment_Criteria__r.Name}" /> &nbsp;(<apex:outputField value="{!header.Assessment_Criteria__r.Weighting__c}" />)
+						</th>
+						</apex:repeat>
+						<th>
+							Overall Weighted Score
+						</th>
+					</tr>
+					<apex:repeat value="{!finalScoringWrapperList}" var="final">
+						<tr>
+						<th>
+							<apex:outputlink value="/{!final.application.Id}" ><apex:outputText value="{!final.application.Name}" /></apex:outputlink> -&nbsp;<apex:outputField value="{!final.application.Applicant__c}" />
+							&nbsp;<apex:outputLink value="{!final.application.Sharepoint_URL__c}" rendered="{!IF(final.application.Sharepoint_URL__c != null, true, false)}" target="_blank">(View Application Form)</apex:outputLink>
+						</th>
+						<th colspan="{!assessmentScoringHeaderList.size + 1}">						
+						</th>
+						</tr>
+						<!-- list of assessor rows -->
+						<apex:repeat value="{!final.assessmentList}" var="assessment">
+						<tr>
+							<th>
+								<apex:outputText value="{!assessment.Assessor__r.Name}" />
+							</th>
+							<apex:repeat value="{!assessmentScoreMap[assessment.id]}" var="criteria">
+							<td>
+								<apex:outputField value="{!criteria.Score__c}" />
+							</td>
+							</apex:repeat>
+							<td>
+								<apex:outputField value="{!assessment.Real_Total_Weighted_Score__c}" />
+							</td>
+						</tr>
+						<tr>
+							<td align="right">Comments</td>
+							<td colspan="{!assessmentScoringHeaderList.size + 1}">
+								<apex:outputText value="{!assessment.Comments__c}" />
+							</td>
+							
+						</tr>
+						</apex:repeat>
+						<!--end assessor rows -->
+						<tr>
+							<th>
+							Average Weighted Score
+							</th>
+							<apex:repeat value="{!final.averageAssessmentScoreList}" var="averageAssessmentScore">
+							<td>
+								<apex:outputText value="{!averageAssessmentScore}" />
+							</td>
+							</apex:repeat>
+							<td>
+								<apex:outputText value="{!final.averageWeightedScore}" />
+							</td>
+						</tr>
+						<tr>
+							<th>
+							Moderated Score
+							</th>
+							<apex:repeat value="{!final.moderatedScoreList}" var="moderatedScoreWrapper">
+							<td>
+								<apex:inputText value="{!moderatedScoreWrapper.moderatedScore}" />
+							</td>
+							</apex:repeat>
+							<td>
+								<apex:outputText value="" />
+							</td>
+						</tr>
+						<tr>
+							<th>
+							Weighted Moderated Score
+							</th>
+							<apex:repeat value="{!final.moderatedScoreList}" var="moderatedScoreWrapper">
+							<td>
+								<apex:outputText value="{!moderatedScoreWrapper.weightedModeratedScore}" />
+							</td>
+							</apex:repeat>
+							<td>
+								<apex:outputText value="{!final.averageWeightedModeratedScore}" />
+							</td>
+						</tr>
+						<tr>
+							<th>
+							Final Decision 
+							</th>
+							<td  colspan="{!assessmentScoringHeaderList.size + 1}">
+							<apex:inputField value="{!final.application.Decision__c}" />
+							</td>
+						</tr>
+						<tr>	
+							<th>
+								Investment Amount
+							</th>
+							<td  colspan="{!assessmentScoringHeaderList.size + 1}">
+								 <apex:inputField value="{!final.application.Investment__c}" />
+							</td>
+						</tr>
+						<tr>
+							<th>Final Comments
+							</th>
+							<td colspan="{!assessmentScoringHeaderList.size + 1}">
+								<apex:inputField value="{!final.application.Final_Comments__c}" styleClass="singleTextAreaOverrideLong"/> 
+							</td>
+						</tr>						
+					</apex:repeat>
+					</table>
+			</apex:outputPanel>		
+		</apex:pageBlockSection>
+
+		<div align="right">
+			<apex:commandButton value="Save" action="{!saveBtn}" />
+			<apex:commandButton value="Close" action="{!cancelBtn}" />
+		</div>
+	</apex:pageBlock>
+	</apex:form>
+</apex:page>

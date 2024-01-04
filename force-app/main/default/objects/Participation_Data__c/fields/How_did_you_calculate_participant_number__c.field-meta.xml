@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>How_did_you_calculate_participant_number__c</fullName>
+    <externalId>false</externalId>
+    <label>How did you calculate participant number</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Actual numbers from a database</fullName>
+                <default>false</default>
+                <label>Actual numbers from a database</label>
+            </value>
+            <value>
+                <fullName>Actual numbers from a list</fullName>
+                <default>false</default>
+                <label>Actual numbers from a list</label>
+            </value>
+            <value>
+                <fullName>Calculated by number of teams</fullName>
+                <default>false</default>
+                <label>Calculated by number of teams</label>
+            </value>
+            <value>
+                <fullName>Estimated Numbers</fullName>
+                <default>false</default>
+                <label>Estimated Numbers</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

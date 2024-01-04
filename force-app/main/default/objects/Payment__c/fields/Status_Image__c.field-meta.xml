@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_Image__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(TEXT( Status__c )),null, 
+
+IMAGE(CASE(TEXT( Status__c), 
+&quot;Draft&quot;,$Setup.Icons__c.Grey__c,
+&quot;Scheduled&quot;,$Setup.Icons__c.Green__c,
+&quot;Sent For Payment&quot;,$Setup.Icons__c.Green__c,
+&quot;Paid&quot;,$Setup.Icons__c.Green__c,
+&quot;Processed&quot;,$Setup.Icons__c.Green__c,
+&quot;Cancelled&quot;,$Setup.Icons__c.Grey__c,
+&quot;Error&quot;,$Setup.Icons__c.Red__c,
+&quot;On Hold&quot;,$Setup.Icons__c.Red__c,
+&quot;Variation&quot;,$Setup.Icons__c.Orange__c
+,&quot;&quot;),&quot;&quot;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

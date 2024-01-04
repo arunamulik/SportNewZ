@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Credits_Buy_Backs_and_Refunds</fullName>
+    <columns>NAME</columns>
+    <columns>Invoice_Number_Link__c</columns>
+    <columns>Amount__c</columns>
+    <columns>Date__c</columns>
+    <columns>Actual_Payment_Date__c</columns>
+    <columns>Status__c</columns>
+    <columns>Partner__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>Description__c</columns>
+    <columns>Initiative__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Payment__c.Credit,Payment__c.Refund,Payment__c.Service_Credit</value>
+    </filters>
+    <label>Credits, Buy Backs, and Refunds</label>
+</ListView>

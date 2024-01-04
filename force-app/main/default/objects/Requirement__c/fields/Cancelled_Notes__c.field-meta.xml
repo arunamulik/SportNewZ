@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cancelled_Notes__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>You must enter an explanation in this field when a Requirement is Cancelled.  After you&apos;ve entered a Cancelled Date and the explanation in this field, then saved the changes, the status of the Requirement will change to Cancelled.</inlineHelpText>
+    <label>Notes</label>
+    <length>32768</length>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Html</type>
+    <visibleLines>25</visibleLines>
+</CustomField>

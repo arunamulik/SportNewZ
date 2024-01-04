@@ -1,0 +1,11 @@
+<apex:page controller="communityaccess" action="{!checkUserHasTWRAccess}">
+  <apex:outputPanel rendered="{!hasCommunityAccess}">
+      <script type="text/javascript" language="javascript">
+          window.location.href='https://preprod-sportnz.cs114.force.com/SportNZ/s/checkuserhastwraccess';
+      </script>
+  </apex:outputPanel>
+  
+  <apex:outputPanel rendered="{! !hasCommunityAccess}">
+      You do not have access to TWR Community.
+  </apex:outputPanel>
+</apex:page>

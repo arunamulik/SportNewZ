@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TAPS_from_01_01_22</fullName>
+    <columns>NAME</columns>
+    <columns>Organisation__c</columns>
+    <columns>Status__c</columns>
+    <columns>Total_Payments__c</columns>
+    <columns>Total_Amount__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Investment_Area__c</field>
+        <operation>equals</operation>
+        <value>TAPS Investment 2024</value>
+    </filters>
+    <label>TAPS from 01.01.22</label>
+</ListView>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Initiative_Closure</fullName>
+    <active>true</active>
+    <description>Initiative Closure by Investment Area Manager</description>
+    <errorConditionFormula>Close_the_Initiative__c = true &amp;&amp; (Total_Completed_Requirements__c != Total_Requirements__c || Total_Payments__c != Total_Completed_Payments__c || Pending_Measures__c != 0)</errorConditionFormula>
+    <errorMessage>To close the Initiative all Payments should be Paid, all Requirements should be Completed &amp; no Measures should be Pending</errorMessage>
+</ValidationRule>

@@ -1,0 +1,65 @@
+<apex:page Controller="PerformanceRepEventDataController">
+    <apex:form >
+    <apex:pageMessages id="errorMsg"/>
+        <apex:pageBlock title="Performance/Representative Event Data Edit">
+            <apex:pageBlockSection title="Information">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Performance/Representative Event Name</apex:outputLabel>                       
+                    <apex:outputField value="{!perRepEventData.Performance_Representative__c}" label="Programme"/>
+                </apex:pageBlockSectionItem>  
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Financial Year</apex:outputLabel>
+                    <apex:inputField value="{!perRepEventData .Financial_Year__c}"/>
+                </apex:pageBlockSectionItem>             
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Event/Tournament Information" columns="2">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Event/Tournaments</apex:outputLabel>
+                    <apex:inputField value="{!perRepEventData .Event_Tournaments__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Total Teams</apex:outputLabel>
+                    <apex:inputField value="{!perRepEventData .Total_Teams__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Percentage Event Full</apex:outputLabel>
+                    <apex:inputField value="{!perRepEventData .Percentage_Event_Full__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Participation Data">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Total Participants</apex:outputLabel>
+                    <apex:inputField value="{!perRepEventData .Total_Participants__c}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Female Participants</apex:outputLabel>
+                    <apex:inputField value="{!perRepEventData .Female_Participants__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Young People Participants (0 – 18)</apex:outputLabel>
+                    <apex:inputField value="{!perRepEventData .Young_People_Participants_0_18__c}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Male Participants</apex:outputLabel>
+                    <apex:inputField value="{!perRepEventData .Male_Participants__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Adult Participants   </apex:outputLabel>
+                    <apex:inputField value="{!perRepEventData .Adult_Participants__c}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Gender Diverse Participants   </apex:outputLabel>
+                    <apex:inputField value="{!perRepEventData.Gender_Diverse_Participants__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Are Participation Numbers Estimated?</apex:outputLabel>
+                    <apex:inputField value="{!perRepEventData .Are_Participation_Numbers_Estimated__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="top">
+                 <apex:commandButton action="{!save}" value="Save" rerender="errorMsg"/>
+                 <apex:commandButton action="{!cancel}" value="Cancel" immediate="true"/>
+             </apex:pageBlockButtons>
+         </apex:pageBlock>
+    </apex:form>
+</apex:page>

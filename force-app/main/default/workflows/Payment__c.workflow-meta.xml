@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Investment_schedule</fullName>
+        <description>Investment_schedule</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <recipient>hamish.armstrong@sportnz.org.nz</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>Sport_NZ_Email_Templates/Investment_schedule_approved</template>
+    </alerts>
+    <alerts>
+        <fullName>Payment_Error</fullName>
+        <ccEmails>finance@sportnz.org.nz</ccEmails>
+        <description>Payment Error</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>adam.sutton@sportnz.org.nz</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>hamish.armstrong@sportnz.org.nz</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>Sport_NZ_Email_Templates/Payment_Error_Email_Alert</template>
+    </alerts>
+    <alerts>
+        <fullName>Payment_Error_HPSNZ</fullName>
+        <description>Payment Error HPSNZ</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>.williamson2@hpsnz.org.nz</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>chris.mccarthyhpkw2@hpsnz.org.nz</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>hamish.armstrong@sportnz.org.nz</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>hazel.douglas@hpsnz.org.nz</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>richard.jones@hpsnz.org.nz</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>Sport_NZ_Email_Templates/Payment_Error_Email_Alert</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>GST_NonRegistered_Payment</fullName>
+        <field>GST_Applicable__c</field>
+        <literalValue>0</literalValue>
+        <name>GST NonRegistered Payment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>GST_Registered_Update</fullName>
+        <field>GST_Applicable__c</field>
+        <literalValue>1</literalValue>
+        <name>GST Registered Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Hold_Reason_Null</fullName>
+        <field>Hold_Reason__c</field>
+        <name>Hold Reason &gt; Null</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Hold_Reason_Overdue_Requirement</fullName>
+        <field>Hold_Reason__c</field>
+        <literalValue>Overdue Requirement</literalValue>
+        <name>Hold Reason &gt; Overdue Requirement</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Increment_Payment_Count_on_Initiative</fullName>
+        <field>Payment_Count__c</field>
+        <formula>Initiative__r.Payment_Count__c + 1</formula>
+        <name>Increment Payment Count on Initiative</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+        <targetObject>Initiative__c</targetObject>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Description_to_Initiative_Name</fullName>
+        <field>Description__c</field>
+        <formula>Initiative__r.Name</formula>
+        <name>Set Description to Initiative Name</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Invoice_Number_Credit</fullName>
+        <field>Invoice_Number__c</field>
+        <formula>Related_Payment__r.Invoice_Number__c &amp; &quot;CN&quot;</formula>
+        <name>Set Invoice Number (Credit)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Invoice_Number_Payment_Or_Service</fullName>
+        <field>Invoice_Number__c</field>
+        <formula>Initiative__r.Initiative_Number__c &amp; &quot;-&quot; &amp;  
+
+case(len(text((Initiative__r.Payment_Count__c))),
+1,&quot;000000&quot;,
+2,&quot;0000&quot;,
+3,&quot;000&quot;,
+4,&quot;00&quot;,
+5,&quot;0&quot;,
+6,&quot;&quot;,&quot;&quot;)
+
+&amp; text(Initiative__r.Payment_Count__c + 1)</formula>
+        <name>Set Invoice Number (Payment or Service)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Invoice_Number_Refund</fullName>
+        <field>Invoice_Number__c</field>
+        <formula>Initiative__r.Initiative_Number__c &amp; &quot;-&quot; &amp; 
+
+case(len(text((Initiative__r.Payment_Count__c))), 
+1,&quot;000000&quot;, 
+2,&quot;0000&quot;, 
+3,&quot;000&quot;, 
+4,&quot;00&quot;, 
+5,&quot;0&quot;, 
+6,&quot;&quot;,&quot;&quot;) 
+
+&amp; text(Initiative__r.Payment_Count__c + 1)
+
+&amp; &apos;RF&apos;</formula>
+        <name>Set Invoice Number (Refund)</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_On_Hold</fullName>
+        <field>Status__c</field>
+        <literalValue>On Hold</literalValue>
+        <name>Status &gt; On Hold</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Paid</fullName>
+        <field>Status__c</field>
+        <literalValue>Paid</literalValue>
+        <name>Status &gt; Paid</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Processed</fullName>
+        <field>Status__c</field>
+        <literalValue>Processed</literalValue>
+        <name>Status &gt; Processed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Scheduled</fullName>
+        <field>Status__c</field>
+        <literalValue>Scheduled</literalValue>
+        <name>Status &gt; Scheduled</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Sent_to_Sage</fullName>
+        <field>Status__c</field>
+        <literalValue>Sent to Sage</literalValue>
+        <name>Status &gt; Sent to Sage</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Credit or Refund Processed</fullName>
+        <actions>
+            <name>Status_Processed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Payment__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Paid</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Payment__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Credit,Refund,Service Credit</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>GST Registered Partner Payment Update - FALSE</fullName>
+        <actions>
+            <name>GST_NonRegistered_Payment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISBLANK(Vendor_Name__c)&amp;&amp;  ( Partner__r.GST_Registered__c=FALSE)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>GST Registered Partner Payment Update - TRUE</fullName>
+        <actions>
+            <name>GST_Registered_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISBLANK(Vendor_Name__c)&amp;&amp;  ( Partner__r.GST_Registered__c=TRUE)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>GST Registered Vendor Payment Update - FALSE</fullName>
+        <actions>
+            <name>GST_NonRegistered_Payment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>NOT(ISBLANK(Vendor_Name__c))&amp;&amp;  (Vendor__r.GST_Registered__c=FALSE)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>GST Registered Vendor Payment Update - TRUE</fullName>
+        <actions>
+            <name>GST_Registered_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>NOT(ISBLANK(Vendor_Name__c))&amp;&amp;  (Vendor__r.GST_Registered__c=TRUE)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New Credit Created</fullName>
+        <actions>
+            <name>Set_Invoice_Number_Credit</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Payment__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Credit</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>New Payment or Service Credit Created</fullName>
+        <actions>
+            <name>Increment_Payment_Count_on_Initiative</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_Invoice_Number_Payment_Or_Service</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Payment__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Payment,Service Credit</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>New Refund Created</fullName>
+        <actions>
+            <name>Increment_Payment_Count_on_Initiative</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Set_Invoice_Number_Refund</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Payment__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Refund</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>No Overdue Requirements</fullName>
+        <actions>
+            <name>Hold_Reason_Null</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_Scheduled</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Payment__c.Status__c</field>
+            <operation>equals</operation>
+            <value>On Hold</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Payment__c.Hold_Reason__c</field>
+            <operation>equals</operation>
+            <value>Overdue Requirement</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Payment__c.Overdue_Requirements__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Overdue Requirement</fullName>
+        <actions>
+            <name>Hold_Reason_Overdue_Requirement</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Status_On_Hold</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Payment__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Scheduled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Payment__c.Overdue_Requirements__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Payment Error</fullName>
+        <actions>
+            <name>Payment_Error</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Payment__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Error</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Payment__c.Organisation_Flag__c</field>
+            <operation>notEqual</operation>
+            <value>HPSNZ</value>
+        </criteriaItems>
+        <description>If payment status is &quot;Error&quot; - An email is sent to the finance team to investigate</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Payment Error HPSNZ</fullName>
+        <actions>
+            <name>Payment_Error_HPSNZ</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Payment__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Error</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Payment__c.Organisation_Flag__c</field>
+            <operation>equals</operation>
+            <value>HPSNZ</value>
+        </criteriaItems>
+        <description>If payment status is &quot;Error&quot; - An email is sent to the finance team to investigate</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set Description</fullName>
+        <actions>
+            <name>Set_Description_to_Initiative_Name</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>isblank(Description__c)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

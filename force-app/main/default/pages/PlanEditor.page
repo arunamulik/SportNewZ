@@ -1,0 +1,234 @@
+<apex:page StandardController="Plan__c" extensions="PlanEditExtension">
+<apex:includeScript value="{!URLFOR($Resource.jquery)}"  />
+<script type="text/javascript">    
+    var __sfdcSessionId = '{!GETSESSIONID()}';
+
+	$(document).ready(function() {
+		requiredFields();
+	});
+	function requiredFields() {
+		//related list
+    	$('[id$=challName]').wrap('<div class="requiredInput"></div>').before('<div class="requiredBlock"></div>');
+    	$('[id$=challSport]').wrap('<div class="requiredInput"></div>').before('<div class="requiredBlock"></div>');
+	    $('[id$=challDescription]').wrap('<div class="requiredInput"></div>').before('<div class="requiredBlock"></div>');
+    	$('[id$=oppName]').wrap('<div class="requiredInput"></div>').before('<div class="requiredBlock"></div>');
+    	$('[id$=oppSport]').wrap('<div class="requiredInput"></div>').before('<div class="requiredBlock"></div>');
+	    $('[id$=oppDescription]').wrap('<div class="requiredInput"></div>').before('<div class="requiredBlock"></div>');
+    	$('[id$=initName]').wrap('<div class="requiredInput"></div>').before('<div class="requiredBlock"></div>');
+	    $('.lookupInput').wrap('<div class="requiredInput"></div>').before('<div class="requiredBlock"></div>');
+	}
+	function setFocusOnLoad() {}
+</script> 
+<script src="../../soap/ajax/23.0/connection.js" type="text/javascript"></script>
+    <style>
+		.initContainer {
+			margin-top:2px;
+			padding-bottom:10px;
+			border-bottom:5px solid #ccc;
+		}
+		.bPageBlock .detailList tr th, .hoverDetail .bPageBlock .detailList tr td, .hoverDetail .bPageBlock .detailList tr th {
+		border-bottom: 1px solid #e3deb8;
+		}
+        .singleLineOverrideLong {
+            width: 98%;
+            max-width: none;
+        }
+        .singleTextAreaOverrideLong {
+            width: 99%;
+            height: 50px;
+            max-width: none;
+        }
+        textArea {
+            width:98%;
+            height:50px;
+
+        }
+        .dateFormat {
+			display: none;
+		}
+    </style>
+    <apex:form id="frmid">
+        <apex:outputPanel id="holder" rendered="{!sectionsWrapperList.size > 0}">
+        	<apex:pageMessages />
+	        <apex:pageBlock title="Plan Details {!planData.Name}" > 
+		        <apex:repeat id="mainSection" var="sect" value="{!sectionsWrapperList}"> 
+		            <apex:pageBlockSection title="{!sect.sectionName}" columns="{!sect.sectionColumns}" rendered="{!NOT(sect.sectionName = 'System Information')}">
+		                <apex:repeat id="innerfields" var="fld" value="{!sect.sectionFields}">      
+		                    
+		                    <apex:inputField value="{!plan[fld]}" />
+		                </apex:repeat>
+		            </apex:pageBlockSection>
+		        </apex:repeat>  
+				<!-- RELATED LIST -->
+	        	<apex:pageBlockSection title="Challenges" columns="1" >
+	                <apex:outputpanel id="challengeForm">
+		                <apex:actionRegion >
+			                <apex:variable value="1" var="challRowNum"/>
+			                <apex:variable value="0" var="rowNum"/>
+			                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list">
+			                    <tr class="headerRow">
+			                        <th width="50" class="headerRow"></th>
+			                        <th width="250" class="headerRow">Name</th>
+			                        <th class="headerRow">Description</th>
+			                        <th class="headerRow">Sport NZ Support</th>
+			                    </tr>
+			               		<apex:repeat value="{!challengeWrapList}" var="chall">
+			                        <tr>
+			                            <td>
+				                            <apex:outputPanel layout="block" style="float:left;width:1%;">
+				                                <div style="background:url('{!URLFOR($Resource.HoursEntryStatic, 'icon_delete.png')}') no-repeat;width:15px;height:15px;">
+				                                    <apex:commandLink style="text-decoration:none;" reRender="challengeForm" action="{!deleteChallengeRow}" status="delRowStatus" immediate="false" >
+				                                        &nbsp;&nbsp;&nbsp;&nbsp;
+				                                        <apex:param name="rowNum" value="{!rowNum}" assignTo="{!rowChallDelete}"/>
+				                                  <apex:variable var="challRowNum" value="{!VALUE(challRowNum) + 1}" />
+				                                  <apex:variable var="rowNum" value="{!VALUE(rowNum) + 1}" />
+				                                    </apex:commandLink>
+				                                    <apex:actionStatus id="delRowStatus">
+				                                         <apex:facet name="start">
+				                                            <apex:image value="/img/loading.gif" />
+				                                        </apex:facet>
+				                                    </apex:actionStatus>
+				                                </div> 
+				                            </apex:outputPanel>                                 
+			                            </td>
+			                            <td><apex:inputField value="{!chall.challenge.Name}" id="challName"/></td>
+			                            <td><apex:inputField value="{!chall.challenge.Description__c}" id="challDescription" /></td>
+			                            <td><apex:inputField value="{!chall.challenge.Sport_NZ_Support__c}" id="challSport" /></td>
+			                            
+			                        </tr>
+		                        </apex:repeat>
+			               	</table>
+		                    <apex:commandButton value="Add Challenge" status="addChallengeStatus" id="challengeBtn" reRender="challengeForm" action="{!addChallengeRow}"  immediate="false" oncomplete="requiredFields();" />
+		                    <apex:actionStatus id="addChallengeStatus">
+		                                    <apex:facet name="start">
+		                                        <apex:image value="/img/loading.gif" />
+		                                    </apex:facet>
+		                    </apex:actionStatus>
+		                 </apex:actionRegion>
+	                </apex:outputpanel>
+	            </apex:pageBlockSection>
+	           	<!-- Opportunities -->
+	          	<apex:pageBlockSection title="Opportunties" columns="1" >
+	                <apex:outputpanel id="opportunityForm">
+	                <apex:actionRegion >
+		                <apex:variable value="1" var="oppRowNum"/>
+		                <apex:variable value="0" var="rowNum"/>
+		                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list">
+		                    <tr class="headerRow">
+		                        <th width="50" class="headerRow"></th>
+		                        <th width="250" class="headerRow">Name</th>
+		                        <th class="headerRow">Description</th>
+		                        <th class="headerRow">Sport NZ Support</th>
+		                    </tr>
+			                <apex:repeat value="{!oppWrapList}" var="opp">
+		                        <tr>
+		                            <td>
+			                            <apex:outputPanel layout="block" style="float:left;width:1%;">
+			                                <div style="background:url('{!URLFOR($Resource.HoursEntryStatic, 'icon_delete.png')}') no-repeat;width:15px;height:15px;">
+			                                    <apex:commandLink style="text-decoration:none;" reRender="opportunityForm" action="{!deleteOpportunityRow}" status="delOppRowStatus" immediate="false">
+			                                        &nbsp;&nbsp;&nbsp;&nbsp;
+			                                        <apex:param name="rowNum" value="{!rowNum}" assignTo="{!rowOppDelete}"/>
+			                                  <apex:variable var="oppRowNum" value="{!VALUE(oppRowNum) + 1}" />
+			                                  <apex:variable var="rowNum" value="{!VALUE(rowNum) + 1}" />
+			                                    </apex:commandLink>
+			                                    <apex:actionStatus id="delOppRowStatus">
+			                                         <apex:facet name="start">
+			                                            <apex:image value="/img/loading.gif" />
+			                                        </apex:facet>
+			                                    </apex:actionStatus>
+			                                </div> 
+			                            </apex:outputPanel>                                 
+		                            </td>
+		                            <td><apex:inputField value="{!opp.opportunity.Name}" id="oppName" /></td>
+		                            <td><apex:inputField value="{!opp.opportunity.Description__c}" id="oppDescription" /></td>
+		                            <td><apex:inputField value="{!opp.opportunity.Sport_NZ_Support__c}" id="oppSport"/></td>
+		                            
+		                        </tr>
+	                        </apex:repeat>
+		             	</table>
+	                       <apex:commandButton value="Add Opportunity" status="addOpportunityStatus" id="opportunityBtn" reRender="opportunityForm" action="{!addOpportunityRow}"  immediate="false" oncomplete="requiredFields();"/>
+	                       <apex:actionStatus id="addOpportunityStatus">
+	                                       <apex:facet name="start">
+	                                           <apex:image value="/img/loading.gif" />
+	                                       </apex:facet>
+	                       </apex:actionStatus>
+	                    </apex:actionRegion>
+	             	</apex:outputpanel>
+	     		</apex:pageBlockSection>
+				<apex:pageBlockSection title="Initiatives" columns="1">
+				  	<apex:outputpanel id="initiativeForm" layout="block">
+				  		<apex:actionRegion >
+							<apex:variable value="1" var="initRowNum"/>
+			                <apex:variable value="0" var="rowNum"/>		  		
+					  		<apex:repeat value="{!initWrapList}" var="init">
+						  		<div class="initContainer">
+							  		<table class="detailList" border="0" cellpadding="0" cellspacing="0">
+										<tr rowspan="6">
+					                    	<td>
+											<apex:outputPanel layout="block" style="float:left;width:1%;">
+					                        <div style="background:url('{!URLFOR($Resource.HoursEntryStatic, 'icon_delete.png')}') no-repeat;width:15px;height:15px;">
+					                            <apex:commandLink style="text-decoration:none;" reRender="initiativeForm" action="{!deleteInitiativeRow}" status="delRowStatus" immediate="false" >
+					                                 &nbsp;&nbsp;&nbsp;&nbsp;
+					                                 <apex:param name="rowNum" value="{!rowNum}" assignTo="{!rowInitDelete}"/>
+					                          <apex:variable var="initRowNum" value="{!VALUE(initRowNum) + 1}" />
+					                          <apex:variable var="rowNum" value="{!VALUE(rowNum) + 1}" />
+					                           </apex:commandLink>
+					                            <apex:actionStatus id="delRowStatus">
+					                                  <apex:facet name="start">
+					                                       <apex:image value="/img/loading.gif" />
+					                                   </apex:facet>
+					                               </apex:actionStatus>
+					                           </div> 
+					                        </apex:outputPanel>       
+					                      	</td>
+					                   	</tr>
+							  			<tr >
+							  				<th class="labelCol vfLabelColTextWrap first" scope="row">Name</th>
+							  				<td colspan="3" class="data2Col  last  "><apex:inputField value="{!init.initiative.Name}" id="initName" styleClass="singleLineOverrideLong"/></td>
+							  			</tr>
+							  			<tr>
+							  				<th class="labelCol vfLabelColTextWrap first" scope="row">Description</th>
+							  				<td  colspan="3" class="data2Col  last  "><apex:inputField value="{!init.initiative.Description__c}" styleClass="singleTextAreaOverrideLong" /></td>
+							  			</tr>
+							  			<tr>
+							  				<th class="labelCol vfLabelColTextWrap" scope="row">Start Date</th>
+							  				<td class="dataCol "><apex:inputField value="{!init.initiative.Start_Date__c}" /></td>
+							  				<th class="labelCol vfLabelColTextWrap" scope="row">End Date</th>
+							  				<td class="dataCol "><apex:inputField value="{!init.initiative.End_Date__c}" /></td>
+							  			</tr>
+							  			<tr>
+							  				<th class="labelCol vfLabelColTextWrap" scope="row">Investment Area</th>
+							  				<td  colspan="3" class="dataCol "><apex:inputField value="{!init.initiative.Investment_Area__c}" required="false" id="initInvest" styleClass="singleLineOverrideLong" /></td>
+							  			</tr>
+							  			<tr>
+							  				<th class="labelCol vfLabelColTextWrap" scope="row">Cost</th>
+							  				<td class="dataCol "><apex:inputField value="{!init.initiative.Requested__c}" /></td>
+							  				<th class="labelCol vfLabelColTextWrap" scope="row">Investment</th>
+							  				<td class="dataCol "><apex:inputField value="{!init.initiative.Planned__c}"/></td>
+							  			</tr>
+							  			<tr>
+							  				<th class="labelCol vfLabelColTextWrap" scope="row">Priority</th>
+							  				<td class="dataCol "><apex:inputField value="{!init.initiative.Priority__c}" /></td>
+							  				<th class="labelCol vfLabelColTextWrap" scope="row">Type</th>
+							  				<td class="dataCol "><apex:inputField value="{!init.initiative.Timeframe__c}"/></td>
+							  			</tr>
+							  		</table>
+						  		</div>
+					  		</apex:repeat>
+			                <apex:commandButton value="Add Initiave" status="addInitStatus" id="initativeBtn" reRender="initiativeForm" action="{!addInitiativeRow}"  immediate="false" oncomplete="requiredFields();" />
+			                	<apex:actionStatus id="addInitStatus">
+			                    	<apex:facet name="start">
+			                        	<apex:image value="/img/loading.gif" />
+			                        </apex:facet>
+			            	</apex:actionStatus>
+						</apex:actionRegion>
+					</apex:outputpanel>
+			   	</apex:pageBlockSection>
+	            <div align="center"><br/>
+		            <apex:commandButton value="Save Details" id="saveBtn" action="{!saveDetails}"/>
+		            <apex:commandButton value="Cancel" id="cancelBtn" action="{!cancelDetails}"/>
+	            </div> 
+	        </apex:pageBlock>    
+   		</apex:outputPanel>
+	</apex:form>
+</apex:page>

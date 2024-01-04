@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Old_Partner_Plan_Report</fullName>
+    <availability>online</availability>
+    <description>Full Partner Plan and Profile for internal Partner Team members</description>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <hasMenubar>false</hasMenubar>
+    <hasScrollbars>true</hasScrollbars>
+    <hasToolbar>false</hasToolbar>
+    <height>600</height>
+    <isResizable>true</isResizable>
+    <linkType>url</linkType>
+    <masterLabel>Old Partner Plan Report</masterLabel>
+    <openType>newWindow</openType>
+    <position>none</position>
+    <protected>false</protected>
+    <showsLocation>false</showsLocation>
+    <showsStatus>false</showsStatus>
+    <url>https://composer.congamerge.com
+?sessionId={!API.Session_ID}
+&amp;serverUrl={!API.Partner_Server_URL_290}
+&amp;id={!Plan__c.Id}
+&amp;TemplateId=[PartnerPlanReport]a0k9000000KwcLM
+&amp;FP0=0
+&amp;Queryid=[OrgProfile]a0i90000005bDfC?pv0={!Plan__c.Id},
+[PlanInitiatives]a0i90000005bDfq?pv0={!Plan__c.Id},
+[PlanPayments]a0i90000005bDfR?pv0={!Plan__c.Id},
+[PlanChallenges]a0i90000005bDf2?pv0={!Plan__c.Id},
+[PlanOpportunities]a0i90000005bDes?pv0={!Plan__c.Id},
+[PlanRequirements]a0i90000005bDgK?pv0={!Plan__c.Id},
+[PlanEvents]a0i90000005bDfv?pv0={!Plan__c.Id},
+[PlanTasks]a0i90000005bDfW?pv0={!Plan__c.Id},
+[PartnerTeam]a0i90000005bDgA?pv0={!Plan__c.PartnerId__c}
+&amp;OFN={!Plan__c.P_Name__c}+-+Report
+&amp;DS7=3</url>
+</WebLink>

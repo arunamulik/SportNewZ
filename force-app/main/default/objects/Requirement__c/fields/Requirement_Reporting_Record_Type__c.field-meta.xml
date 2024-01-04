@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Requirement_Reporting_Record_Type__c</fullName>
+    <description>This field will be used to determine whether Reporting is enabled for Partner users or not</description>
+    <externalId>false</externalId>
+    <label>Requirement Reporting Record Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CS Case Study</fullName>
+                <default>false</default>
+                <label>CS Case Study</label>
+            </value>
+            <value>
+                <fullName>CS Board Diversity</fullName>
+                <default>false</default>
+                <label>CS Board Diversity</label>
+            </value>
+            <value>
+                <fullName>PI National</fullName>
+                <default>false</default>
+                <label>PI National</label>
+            </value>
+            <value>
+                <fullName>PI Regional</fullName>
+                <default>false</default>
+                <label>PI Regional</label>
+            </value>
+            <value>
+                <fullName>PI National + 1</fullName>
+                <default>false</default>
+                <label>PI National + 1</label>
+            </value>
+            <value>
+                <fullName>PI National + 2</fullName>
+                <default>false</default>
+                <label>PI National + 2</label>
+            </value>
+            <value>
+                <fullName>PI National + 3</fullName>
+                <default>false</default>
+                <label>PI National + 3</label>
+            </value>
+            <value>
+                <fullName>PI National + 4</fullName>
+                <default>false</default>
+                <label>PI National + 4</label>
+            </value>
+            <value>
+                <fullName>PI Regional + 1</fullName>
+                <default>false</default>
+                <label>PI Regional + 1</label>
+            </value>
+            <value>
+                <fullName>PI Regional + 2</fullName>
+                <default>false</default>
+                <label>PI Regional + 2</label>
+            </value>
+            <value>
+                <fullName>PI Regional + 3</fullName>
+                <default>false</default>
+                <label>PI Regional + 3</label>
+            </value>
+            <value>
+                <fullName>PI Regional + 4</fullName>
+                <default>false</default>
+                <label>PI Regional + 4</label>
+            </value>
+            <value>
+                <fullName>PI National 1</fullName>
+                <default>false</default>
+                <label>PI National 1</label>
+            </value>
+            <value>
+                <fullName>PI National 2</fullName>
+                <default>false</default>
+                <label>PI National 2</label>
+            </value>
+            <value>
+                <fullName>PI National 3</fullName>
+                <default>false</default>
+                <label>PI National 3</label>
+            </value>
+            <value>
+                <fullName>PI National 4</fullName>
+                <default>false</default>
+                <label>PI National 4</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

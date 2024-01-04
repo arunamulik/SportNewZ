@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Create_Business_Case_Addendum</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Create Business Case Addendum</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/14.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/14.0/apex.js&quot;)} 
+
+var result = sforce.apex.execute(&quot;BusinessCase&quot;,&quot;createBusinessCaseAddendum&quot;,{BusinessCaseId: &quot;{!Business_Case__c.Id}&quot;}); 
+
+document.location.reload(true);</url>
+</WebLink>

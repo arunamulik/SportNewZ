@@ -1,0 +1,97 @@
+<apex:page controller="AssessorScoringController" tabStyle="Application_Round__c">
+	<apex:includeScript value="{!URLFOR($Resource.jquery)}" />
+	<script>
+	$(document).ready(function() {
+	});
+		//function get the values on the row
+		function computeRowsData(className) {
+			//var rowClassName = className;
+			var IdrowClassName = '.Id' + className;
+			var rowClassName = '.' + className;
+
+			var totalWeightScore = 0;
+			$(rowClassName).each(function(index){ 
+				$(this).css("border", "3px solid red");
+				var rowAssessmentWeight = $('#' + index + className).html();
+				//alert(rowAssessmentWeight);
+				var tempVal = parseInt($(this).val());
+				//alert(tempVal);
+				if($.isNumeric(tempVal)) {
+					//formula for weighted score here
+					tempVal = rowAssessmentWeight * tempVal * 10;
+					totalWeightScore += tempVal;
+				}
+				
+
+			});
+			totalWeightScore = totalWeightScore/100;
+			$(IdrowClassName).html(totalWeightScore).css({"font-weight": "bold", "color" : "red", "font-size" : "18px"});	
+		}
+
+	</script>
+	<style>
+		.bPageBlock .detailList tr th, .hoverDetail .bPageBlock .detailList tr td, .hoverDetail .bPageBlock .detailList tr th {
+		border-bottom: 1px solid #e3deb8;
+		}	
+		.singleTextAreaOverrideLong {
+            width: 99%;
+            height: 50px;
+            max-width: none;
+        }	
+	</style>
+	<apex:form >
+	<apex:pageBlock title="My Assessment Scores">
+		<apex:pageBlockSection columns="1" rendered="{!scoringWrapperList.size = 0}">
+			No records to display.
+		</apex:pageBlockSection>
+		<apex:pageBlockSection columns="1" rendered="{!scoringWrapperList.size > 0}">
+			<apex:outputpanel id="initiativeForm" layout="block" >
+				<table class="list" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<th></th>
+						<apex:repeat value="{!scoringWrapperList[0].assessmentScoreList}" var="head">
+							<th class="headerRow">
+								<apex:outputField value="{!head.Assessment_Criteria__r.Name}" /> (<apex:outputField value="{!head.Assessment_Criteria__r.Weighting__c}" />)
+							</th>
+						</apex:repeat>	
+						<th class="headerRow">
+							<apex:outputText value="Weighted Score" />
+						</th>
+					</tr>
+					<apex:repeat value="{!scoringWrapperList}" var="wrap">
+						<!--application details -->
+						<tr>
+							<th>
+								<apex:outputField value="{!wrap.assessment.Application__c}" /> - &nbsp;<apex:outputField value="{!wrap.assessment.Application__r.Applicant__c}" /> 
+								&nbsp; <apex:outputLink value="{!wrap.assessment.Application__r.Sharepoint_URL__c}" target="_blank" rendered="{!IF(wrap.assessment.Application__r.Sharepoint_URL__c != null, true, false)}">( View Application Form )</apex:outputLink>
+
+							</th>
+							<apex:variable value="0" var="rowNum"/>
+							<apex:repeat value="{!wrap.assessmentScoreList}" var="score">
+								<td> 
+									<apex:inputField value="{!score.Score__c}" styleClass="{!wrap.assessment.Id}" onchange="computeRowsData('{!wrap.assessment.Id}');"/>				
+									<div style="display:none" id="{!rowNum}{!wrap.assessment.Id}">{!score.Assessment_Criteria__r.Weighting__c}</div>
+								</td>					
+								<apex:variable var="rowNum" value="{!VALUE(rowNum) + 1}"/>
+							</apex:repeat>
+							<td>
+								<apex:outputText value="{!wrap.assessment.Total_Weighted_Score__c}" styleClass="Id{!wrap.assessment.Id}" />
+							</td>
+						</tr> 
+						<tr>
+							<td><div align="right">Comments</div></td>
+							<td colspan="{!wrap.assessmentScoreList.size + 1}"> 
+								<apex:inputField value="{!wrap.assessment.Comments__c}" styleClass="singleTextAreaOverrideLong"/>
+							</td>	
+						</tr>
+					</apex:repeat>	
+				</table>
+		</apex:outputPanel>
+		</apex:pageBlockSection>
+		<div align="right">
+			<apex:commandButton value="Save" action="{!saveBtn}" rendered="{!scoringWrapperList.size > 0}"/>
+			<apex:commandButton value="Close" action="{!cancelBtn}" />
+		</div>
+	</apex:pageBlock>
+	</apex:form>
+</apex:page>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Membership_Numbers_Category_Name__c</fullName>
+    <externalId>false</externalId>
+    <formula>If(CONTAINS($User.Profile_Name__c,&apos;Partner&apos;),
+HYPERLINK(&quot;/partners2/apex/Membership_Numbers?id=&quot;+Id,Name,&quot;_self&quot;),HYPERLINK(&quot;/apex/Membership_Numbers?id=&quot; +Id,Name,&quot;_self&quot;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Membership Numbers Category Name</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

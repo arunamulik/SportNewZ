@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NoOfGroups_Total__c</fullName>
+    <externalId>false</externalId>
+    <formula>NoOfGroups_Hapu__c  +  NoOfGroups_Iwi__c  +  NoOfGroups_Kaupapa_H_kinakina__c  +  NoOfGroups_KohangaPuna__c  +  NoOfGroups_Kura_Kaupapa__c  +  NoOfGroups_Marae__c  +  NoOfGroups_Other__c  +  NoOfGroups_Waka__c  +  NoOfGroups_Wh_nau__c  +  NoOfGroups_Whare_Kura__c  +  NoOfGroups_Whare_Wananga__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>No Of Groups Total</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

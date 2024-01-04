@@ -1,0 +1,40 @@
+<apex:page Controller="Workforce_NumbersController">
+    <apex:form >
+    <apex:pageMessages id="errorMsg"/>
+        <apex:pageBlock title="Workforce Numbers Edit">
+            <apex:pageBlockSection title="Information">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Name</apex:outputLabel>                       
+                    <apex:outputField value="{!newWorkforceNo.Workforce_Category__c}" label="Programme"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Financial Year</apex:outputLabel>                       
+                    <apex:inputField value="{!newWorkforceNo.Financial_Year__c}"/>
+                </apex:pageBlockSectionItem>               
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Workforce Information">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Total Number</apex:outputLabel>
+                    <apex:inputField value="{!newWorkforceNo.Total_Number__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Workforce_Numbers__c.Fields.Female_Participants__c.inlineHelpText}">
+                    <apex:outputLabel >Female Participants</apex:outputLabel>
+                    <apex:inputField value="{!newWorkforceNo.Female_Participants__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Workforce_Numbers__c.Fields.Gender_Diverse_Participants__c.inlineHelpText}">
+                    <apex:outputLabel >Gender Diverse Participants</apex:outputLabel>
+                    <apex:inputField value="{!newWorkforceNo.Gender_Diverse_Participants__c}"/>
+                    
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Workforce_Numbers__c.Fields.Male_Participants__c.inlineHelpText}">
+                    <apex:outputLabel >Male Participants</apex:outputLabel>
+                    <apex:inputField value="{!newWorkforceNo.Male_Participants__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="top">
+                 <apex:commandButton action="{!save}" value="Save" rerender="errorMsg"/>
+                 <apex:commandButton action="{!cancel}" value="Cancel" immediate="true"/>
+            </apex:pageBlockButtons>
+         </apex:pageBlock>
+    </apex:form>
+</apex:page>

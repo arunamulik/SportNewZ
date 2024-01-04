@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Risk_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Risk Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Strategic</fullName>
+                <default>false</default>
+                <label>Strategic</label>
+            </value>
+            <value>
+                <fullName>Financial</fullName>
+                <default>false</default>
+                <label>Financial</label>
+            </value>
+            <value>
+                <fullName>Partner Investment</fullName>
+                <default>false</default>
+                <label>Partner Investment</label>
+            </value>
+            <value>
+                <fullName>Operations and Process</fullName>
+                <default>false</default>
+                <label>Operations and Process</label>
+            </value>
+            <value>
+                <fullName>People</fullName>
+                <default>false</default>
+                <label>People</label>
+            </value>
+            <value>
+                <fullName>Government</fullName>
+                <default>false</default>
+                <label>Government</label>
+            </value>
+            <value>
+                <fullName>Innovation</fullName>
+                <default>false</default>
+                <label>Innovation</label>
+            </value>
+            <value>
+                <fullName>Reputation</fullName>
+                <default>false</default>
+                <label>Reputation</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

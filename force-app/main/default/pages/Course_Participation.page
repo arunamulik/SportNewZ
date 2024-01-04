@@ -1,0 +1,60 @@
+<apex:page Controller="Course_ParticipationController">
+    <apex:form >
+    <script type='text/javascript'>
+    function noenter(ev)  {
+        if (window.event && window.event.keyCode == 13 || ev.which == 13) {
+            save1();
+            return false;
+         } else {
+              return true;
+         }
+     }
+    </script> 
+    <apex:actionFunction name="save1" action="{!save}" rerender="errorMsg" />
+    <apex:pageMessages id="errorMsg"/>
+        <apex:pageBlock title="Course Participation Data Edit">
+            <apex:pageBlockSection title="Information">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Course Name</apex:outputLabel>                       
+                    <apex:outputField value="{!newCoursePart.Course__c}" label="Course Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Financial Year</apex:outputLabel>                       
+                    <apex:inputField value="{!newCoursePart.Financial_Year__c}" label="Financial Year"/>
+                </apex:pageBlockSectionItem>             
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Participation">
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Male Participation</apex:outputLabel>
+                    <apex:inputField value="{!newCoursePart.Male_Participation__c}"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >       
+                    <apex:outputLabel >Total Participants</apex:outputLabel>
+                    <apex:inputField value="{!newCoursePart.Total_Participants__c}"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Female Participation</apex:outputLabel>
+                    <apex:inputField value="{!newCoursePart.Female_Participation__c}"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Gender Diverse Participation</apex:outputLabel>
+                    <apex:inputField value="{!newCoursePart.Gender_Diverse_Participation__c}"/>
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Number Delivered</apex:outputLabel>
+                    <apex:inputField value="{!newCoursePart.Number_Delivered__c}"/>
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="top">
+                 <apex:commandButton id="saveBtn" action="{!save}" value="Save" onkeypress="return noenter(event)"  />
+                 <apex:commandButton action="{!cancel}" value="Cancel" immediate="true"/>
+             </apex:pageBlockButtons>
+         </apex:pageBlock>
+    </apex:form>
+</apex:page>

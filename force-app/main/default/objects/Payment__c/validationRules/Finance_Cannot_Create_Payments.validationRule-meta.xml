@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Finance_Cannot_Create_Payments</fullName>
+    <active>true</active>
+    <errorConditionFormula>isnew() &amp;&amp;  OR(RecordType.Name = &quot;Payment&quot;, RecordType.Name =&quot;Payment Read Only&quot;) &amp;&amp;($UserRole.Name = &quot;Finance Manager&quot; || $UserRole.Name = &quot;Finance Administrator&quot;)</errorConditionFormula>
+    <errorMessage>Finance Manager and Finance Administrator roles are not allowed to create Payments of this record type.</errorMessage>
+</ValidationRule>

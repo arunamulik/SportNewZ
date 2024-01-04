@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>Partner__c</columns>
+    <columns>Initiative__c</columns>
+    <columns>NAME</columns>
+    <columns>Description__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Hold_Payments__c</columns>
+    <columns>Plan__c</columns>
+    <columns>Comments__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Initiatives_Owner_Email__c</field>
+        <operation>contains</operation>
+        <value>karin</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Overdue</value>
+    </filters>
+    <label>All</label>
+</ListView>

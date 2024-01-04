@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SynonymDictionary xmlns="http://soap.sforce.com/2006/04/metadata">
+    <groups>
+        <languages>en_US</languages>
+        <terms>Bike</terms>
+        <terms>Cycling</terms>
+    </groups>
+    <groups>
+        <languages>en_US</languages>
+        <terms>HPSNZ</terms>
+        <terms>High Performance</terms>
+    </groups>
+    <groups>
+        <languages>en_US</languages>
+        <terms>New Zealand</terms>
+        <terms>NZ</terms>
+    </groups>
+    <label>_Default</label>
+</SynonymDictionary>

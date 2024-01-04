@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Incomplete_Initiatives__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Initiatives related to this Investment Area, with status other than Closed or Cancelled.</inlineHelpText>
+    <label>Incomplete Initiatives</label>
+    <summaryFilterItems>
+        <field>Initiative__c.Status_Text__c</field>
+        <operation>notEqual</operation>
+        <value>Closed, Cancelled</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Initiative__c.Investment_Area__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

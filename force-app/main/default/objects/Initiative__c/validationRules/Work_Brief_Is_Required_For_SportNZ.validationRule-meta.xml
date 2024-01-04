@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Work_Brief_Is_Required_For_SportNZ</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISPICKVAL( Investment_Area__r.Strategic_Area__r.Entity__c , &quot;Sport NZ&quot;)  
+  &amp;&amp; ISBLANK( Work_Brief__c )
+    &amp;&amp;   NOT( ISPICKVAL( Work_Brief__r.Stage__c , &quot;Active&quot;) )
+       &amp;&amp;  End_Date__c &gt; DATE(2020,06,30)</errorConditionFormula>
+    <errorDisplayField>Work_Brief__c</errorDisplayField>
+    <errorMessage>Please select a currently &quot;ACTIVE&quot; stage Work Brief</errorMessage>
+</ValidationRule>

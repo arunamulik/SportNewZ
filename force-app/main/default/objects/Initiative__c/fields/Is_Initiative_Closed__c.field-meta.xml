@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Initiative_Closed__c</fullName>
+    <externalId>false</externalId>
+    <formula>OR( 
+AND( 
+NOT(ISPICKVAL(Type__c, &quot;Time &amp; Advice&quot;)), 
+Total_Completed_Requirements__c = Total_Requirements__c, 
+Pending_Measures__c = 0, 
+Total_Payments__c = Total_Completed_Payments__c, 
+Planned__c = Total_Amt_Payment__c 
+), 
+AND( 
+ISPICKVAL(Type__c, &quot;Time &amp; Advice&quot;), 
+Total_Completed_Requirements__c = Total_Requirements__c, 
+Pending_Measures__c = 0 
+) 
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is Initiative Closed?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

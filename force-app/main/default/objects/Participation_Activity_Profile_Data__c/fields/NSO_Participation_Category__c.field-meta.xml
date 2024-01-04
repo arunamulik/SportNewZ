@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NSO_Participation_Category__c</fullName>
+    <externalId>false</externalId>
+    <formula>If(CONTAINS($User.Profile_Name__c,&apos;Partner&apos;),
+HYPERLINK(&quot;/partners2/apex/Participation_Data?id=&quot;+Id,Name,&quot;_self&quot;),HYPERLINK(&quot;/apex/Participation_Data?id=&quot; +Id,Name,&quot;_self&quot;))</formula>
+    <label>NSO Participation Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

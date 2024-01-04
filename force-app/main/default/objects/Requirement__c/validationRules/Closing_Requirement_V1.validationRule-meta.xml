@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Closing_Requirement_V1</fullName>
+    <active>false</active>
+    <description>Validation rule: When the status is completed or cancelled only description, completion notes or cancellation notes can be changed. 
+Applies to all users</description>
+    <errorConditionFormula>AND( 
+OR(
+ISPICKVAL(Status__c,&quot;Completed&quot;),  
+ISPICKVAL(Status__c,&quot;Cancelled&quot;)),
+OR( 
+ISCHANGED( Name ), 
+ISCHANGED(  Hold_Payments__c ), 
+ISCHANGED(   Due_Date__c  ),
+AND(NOT(OR(ISPICKVAL($User.UserType , &apos;Partner&apos;),
+CONTAINS( $Profile.Name , &apos;Partner&apos;))),ISCHANGED(   Completed_Date__c )) , 
+ISCHANGED(   Cancelled_Date__c  ))
+)</errorConditionFormula>
+    <errorMessage>Only the description, cancellation and completed notes can be modified when the status is complete or cancelled</errorMessage>
+</ValidationRule>

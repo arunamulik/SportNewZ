@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expense_Code__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>The Expense code must be selected before Payments can be made.  It is best to add it when creating an Initiative.</inlineHelpText>
+    <label>Expense Code</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Expense_Code__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>Expense_Code__c</referenceTo>
+    <relationshipLabel>Initiatives</relationshipLabel>
+    <relationshipName>Initiatives_del</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

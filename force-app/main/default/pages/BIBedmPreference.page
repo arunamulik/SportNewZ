@@ -1,0 +1,354 @@
+<apex:page standardController="Subscriber__c" extensions="BIBedmPreferenceCtrl" standardStylesheets="false" showHeader="false" sidebar="false" action="{!onLoad}">
+<style>
+        .divider{
+        width:10px;
+        height:auto;
+        display:inline-block;
+        }
+        .custPopup{
+            border-width: 2px;
+            border-style: solid;
+            background:#FFEA00;
+            text-align: center;
+            font-size:16px;
+            font-family:Barlow, Arial; 
+            font-weight: bold;
+            border:#FFEA00;
+            border-radius: 8px;
+            
+            z-index: 9999;
+            left: 90%;
+            padding:10px;
+            position: absolute;
+            /* These are the 3 css properties you will need to change so the popup
+            displays in the center of the screen. First set the width. Then set
+            margin-left to negative half of what the width is. You can add
+            the height property for a fixed size pop up if you want.*/
+            width: 270px;
+            margin-left: -250px;
+            top:100px;
+        }
+        .custErrorPopup{
+            border-width: 2px;
+            border-style: solid;
+            background:#FF0000;
+            text-align: center;
+            font-size:16px;
+            font-family:Barlow, Arial; 
+            font-weight: bold;
+            border:#FFEA00;
+            border-radius: 8px;
+            
+            z-index: 9999;
+            left: 90%;
+            padding:10px;
+            position: absolute;
+            /* These are the 3 css properties you will need to change so the popup
+            displays in the center of the screen. First set the width. Then set
+            margin-left to negative half of what the width is. You can add
+            the height property for a fixed size pop up if you want.*/
+            width: 270px;
+            margin-left: -250px;
+            top:100px;
+        }
+        .popupBackground{
+            background-color:black;
+            opacity: 0.20;
+            filter: alpha(opacity = 20);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9998;
+        }
+        .center {
+        margin-left: auto;
+        margin-right: auto;
+        }
+        .centertext {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        }
+        .checkbox{
+        height: 16px; 
+        width: 16px;
+        }
+        .inputboxSize{
+        height:20px; 
+        width:250px;
+        font-size:16px;
+        font-family:Barlow, Arial;
+        }
+        * {
+        box-sizing: border-box;
+        }
+       
+        .fontproperties {
+        font-size:20px;
+        font-family:Barlow, Arial; 
+        
+        }
+        .required
+        {
+        color: red;
+        }
+    
+    @media (min-width: 320px) {
+  .styleiframe { height: 480px; padding: 0px; }
+  .custPopup{
+    		
+    		border-width: 2px;
+            border-style: solid;
+            background:#FFEA00;
+            text-align: center;
+            font-size:16px;
+            font-family:Barlow, Arial; 
+            font-weight: bold;
+            border:#FFEA00;
+            border-radius: 8px;
+            
+            z-index: 9999;
+    		left: 70%;
+    		padding:10px;
+            position: absolute;
+            /* These are the 3 css properties you will need to change so the popup
+            displays in the center of the screen. First set the width. Then set
+            margin-left to negative half of what the width is. You can add
+            the height property for a fixed size pop up if you want.*/
+    		width: 280px;
+            margin-left: -200px;
+            top:100px;
+    }
+}
+    
+@media (min-width: 480px) {
+  .styleiframe { height: 480px; padding: 0px; }
+    .custPopup{
+    		
+    		
+    	    border-width: 2px;
+            border-style: solid;
+            background:#FFEA00;
+            text-align: center;
+            font-size:16px;
+            font-family:Barlow, Arial; 
+            font-weight: bold;
+            border:#FFEA00;
+            border-radius: 8px;
+            
+            z-index: 9999;
+    	 left: 60%;
+    		padding:10px;
+            position: absolute;
+            /* These are the 3 css properties you will need to change so the popup
+            displays in the center of the screen. First set the width. Then set
+            margin-left to negative half of what the width is. You can add
+            the height property for a fixed size pop up if you want.*/
+    	 width: 325px;
+            margin-left: -200px;
+            top:100px;
+    }
+}
+@media (min-width: 600px) {
+  .styleiframe { height: 480px; padding: 0px; }
+    .custPopup{
+    		
+    		padding: 0px;
+    	    border-width: 2px;
+            border-style: solid;
+            background:#FFEA00;
+            text-align: center;
+            font-size:16px;
+            font-family:Barlow, Arial; 
+            font-weight: bold;
+            border:#FFEA00;
+            border-radius: 8px;
+            
+    	left: 60%;
+    		padding:10px;
+            position: absolute;
+            /* These are the 3 css properties you will need to change so the popup
+            displays in the center of the screen. First set the width. Then set
+            margin-left to negative half of what the width is. You can add
+            the height property for a fixed size pop up if you want.*/
+    	width: 325px;
+            margin-left: -200px;
+            top:100px;
+    }
+}
+@media (min-width: 801px) {
+  .styleiframe { height: 600px; }
+    .custPopup{
+    		
+    		border-width: 2px;
+            border-style: solid;
+            background:#FFEA00;
+            text-align: center;
+            font-size:16px;
+            font-family:Barlow, Arial; 
+            font-weight: bold;
+            border:#FFEA00;
+            border-radius: 8px;
+            
+    	left: 60%;
+   		padding:10px;
+            position: absolute;
+            /* These are the 3 css properties you will need to change so the popup
+            displays in the center of the screen. First set the width. Then set
+            margin-left to negative half of what the width is. You can add
+            the height property for a fixed size pop up if you want.*/
+    	width: 325px;
+            margin-left: -200px;
+            top:100px;
+    }
+}
+@media (min-width: 1025px) {
+  .styleiframe { height: 600px; }
+    .custPopup{
+    		
+    		border-width: 2px;
+            border-style: solid;
+            background:#FFEA00;
+            text-align: center;
+            font-size:16px;
+            font-family:Barlow, Arial; 
+            font-weight: bold;
+            border:#FFEA00;
+            border-radius: 8px;
+            
+    		left: 60%;
+    		padding:10px;
+            position: absolute;
+            /* These are the 3 css properties you will need to change so the popup
+            displays in the center of the screen. First set the width. Then set
+            margin-left to negative half of what the width is. You can add
+            the height property for a fixed size pop up if you want.*/
+    		width: 325px;
+            margin-left: -200px;
+            top:100px;
+    }
+}
+@media (min-width: 1281px) {
+  .styleiframe { height: 600px; }
+    .custPopup{
+    
+    		border-width: 2px;
+            border-style: solid;
+            background:#FFEA00;
+            text-align: center;
+            font-size:16px;
+            font-family:Barlow, Arial; 
+            font-weight: bold;
+            border:#FFEA00;
+            border-radius: 8px;
+            
+    		left: 50%;
+    		padding:10px;
+            position: absolute;
+            /* These are the 3 css properties you will need to change so the popup
+            displays in the center of the screen. First set the width. Then set
+            margin-left to negative half of what the width is. You can add
+            the height property for a fixed size pop up if you want.*/
+    		width: 325px;
+            margin-left: -200px;
+            top:100px;
+    }
+}
+
+    </style>
+    <div class="styleiframe">
+        
+    
+    
+    <apex:form id="frm" >
+        
+        <apex:pageBlock id="pBlock">
+            <br/>
+            <div class="centertext">
+                <label class="fontproperties">
+                    <b>Please select from the following Preference</b>
+                    <br/><br/>
+                </label>
+            </div>
+            
+            <apex:pageBlockSection columns="1" > 
+                
+                <!--Balance Is Better Newsletter-->
+                <apex:outputLabel styleclass="fontproperties">
+                    <br/>
+                    <apex:inputfield styleclass="checkbox" value="{!Subscriber__c.Weekly__c}">
+                        <apex:actionSupport event="onclick" action="{!makeUnsubscribe}" />
+                    </apex:inputfield>
+                                      
+                    Weekly Balance is Better updates
+                   
+                 </apex:outputLabel>
+                
+                
+                <apex:outputLabel styleclass="fontproperties">
+                    <br/>
+                    <apex:inputfield styleclass="checkbox" value="{!Subscriber__c.Monthly__c}">
+                        <apex:actionSupport event="onclick" action="{!makeUnsubscribe}"  />
+                    </apex:inputfield>
+                    
+                   
+                    Monthly updates with the latest stories published on balanceisbetter.org.nz
+                   
+                 </apex:outputLabel>
+                
+                <apex:outputLabel styleclass="fontproperties">
+                    <br/>
+                    <apex:inputCheckbox id="checkboxShowP" value="{!unsubscribe}">
+                        <apex:actionSupport event="onchange" action="{!balanceisbetterChecked}"/></apex:inputCheckbox>
+                    
+                    Unsubscribe from all Balance is Better communications
+                    
+                 </apex:outputLabel>
+                
+                <center>
+            <apex:commandButton style="background:#FFD400; 
+                                       text-align:center; 
+                                       font-size:16px;
+                                       font-family:Barlow, Arial; 
+                                       font-weight: bold;
+                                       border:#FFD400;
+                                       height:30px;
+                                       border-radius: 8px;
+                                       width:220px;
+                                       margin-top:51px;
+                                       margin-left:50px;
+                                       cursor: pointer;" 
+                                value="UPDATE PREFERENCES" 
+                                action="{!saveRecord}"/>  
+            <!--/apex:pageBlockButtons--> 
+            <br/>
+            <br/>
+
+                </center>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+         <apex:outputPanel id="tstpopup" styleClass="styleiframe">
+        <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+            <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}">
+                
+                Thank you! Your preference has been updated.<br/><br/><br/>
+                <center>
+                <apex:commandButton style="background:white;
+                                           font-size:14px;
+                                           padding:7px 14px !important;
+                                           font-family:Barlow, Arial;
+                                           font-weight: bold;
+                                           color: black !important;
+                                           border-radius: 8px;
+                                           cursor: pointer;
+                                           border:white;" value="Close" action="{!closePopup}"/>
+                </center>
+            </apex:outputPanel>
+        </apex:outputPanel>
+        
+    </apex:form>
+        </div>
+</apex:page>

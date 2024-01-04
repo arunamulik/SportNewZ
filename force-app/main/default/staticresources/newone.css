@@ -1,0 +1,72 @@
+
+.intro{
+	
+   
+    background-image:linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.34)); /*,url("image_main");*/
+            
+      text-align: center;
+    
+      font-weight: bold;
+      position: fixed;
+      top: 0;
+    height:915px;
+      width: 100%;
+      background-color:white;
+     background-repeat: no-repeat;
+      background-size:106%;
+        background-position: 50% 50%;
+        z-index:10;
+        
+        
+    }
+	
+	.dashboardBanner{
+		background-image:url("image_main");
+    }
+	
+	.quantBanner{
+		background-image:url("image_main");
+    }
+	
+	.landingBanner{
+		background-image:url("image_main");
+    }
+	
+	.qualitativeBanner{
+		background-image:url("image_main");
+    }
+	
+	
+    .section-simple
+    {
+    
+    margin-top:915px;
+    background-image:url("knitting");
+    background-color:white;
+    }
+    .overlay
+    {
+    background-attachment:fixed;
+    }
+    .intro__title{
+    font-size: 72px;
+    margin-top:400px;
+    font-family:Roboto, sans-serif;
+    text-align:left;
+    }
+    
+    .selecteds
+    {
+    position: fixed;
+        transform: translate3d(0px, 0px, 0px);
+        top: 0px;
+        width: 256px;
+        left: 0px;
+    
+    }
+    .intro .container .intro__inner 
+    {
+    
+    height:inherit;
+    
+    }

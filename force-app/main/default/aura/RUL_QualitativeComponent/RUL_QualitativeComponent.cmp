@@ -1,0 +1,71 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+                access="global" controller="Activity_dashboardPageController">
+
+  
+    <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>TWR</title>
+
+    <aura:handler name="init" value="this" action="{!c.doInit}" />
+    <aura:attribute name="userInfo" type="user"/> 
+    <aura:attribute name="activitiesRelatedtoUser" type="boolean" default="false"/> 
+    <aura:attribute name="height" type="integer"/> 
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="newActivity" type="Activity__c" default="{ 'sobjectType': 'Activity__c'}"/>
+    <aura:attribute name="Activityitems" type="LIST"/>
+    <aura:attribute name="FemaleAndMaleValues" type="List"/>
+    <aura:attribute name="picklistValuesHOPoutcome" type="Object" />
+    <aura:attribute name="firstStepActivityWizard" type="boolean" default="true"/>
+    <aura:attribute name="secondStepActivityWizard" type="boolean" default="false"/>
+    <aura:attribute name="thirdStepActivityWizard" type="boolean" default="false"/>
+    <aura:attribute name="VideoURL" type="String"/> 
+    <aura:attribute name="imageRichText" type="String"/> 
+    <aura:attribute name="activitiesRelatedtoHOP" type="List" />
+    <aura:attribute name="HOPoutcomeVal1" type="String"/> 
+    <aura:attribute name="HOPoutcomeVal2" type="String"/> 
+    <aura:attribute name="HOPoutcomeVal3" type="String"/> 
+    <aura:attribute name="activitiySelected" type="Activity__c" />
+    <aura:attribute name="disablebuttonid" type="Boolean" default="false" />
+    <aura:attribute name="PicklistValuesActivity" type="Activity__c" />
+    <aura:attribute name="ByOrgGoverned" type="list"/>
+    <aura:attribute name="ActivityGMD" type="list"/>
+    <aura:attribute name="selectedGovernedBy" type="string"/>
+    <aura:attribute name="total_part" type="Integer" />
+   
+    <aura:attribute name="ThroughTypeOfActivityPicklistValues" type="list"/>
+    <aura:attribute name="InOnActivitiesPicklistValues" type="list"/>
+    <aura:attribute name="SignificanceLoactionPicklistValues" type="list"/>
+    <aura:attribute name="UseOfTeReoPickilistValues" type="list"/>
+    <aura:attribute name="PurposeOfTeReoPickilistValues" type="list"/>
+    <aura:attribute name="DiamensionScorePicklistValues" type="list"/>
+    <aura:attribute name="tabId" type="String" default="tab1" />
+    <aura:attribute name="DisablePre" type="Boolean" default="false" />
+    <aura:attribute name="DisableNext" type="Boolean" default="false" />
+    <aura:handler event="force:refreshView" action="{!c.doInit}" />
+    <aura:attribute name="refreshCount" type="Integer" default="0"/>    
+    <aura:attribute name="refreshFlag" type="boolean" default="true"/> 
+    <aura:attribute name="DisableRichTextFields" type="boolean" default="false"/>
+    <aura:attribute name="disableAnswersOnSaveComplete1" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete2" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete3" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete4" type="boolean" default=""/>
+    <aura:attribute name="disableAnswersOnSaveComplete5" type="boolean" default=""/>
+    <aura:attribute name="PartnerLogoImage" type="String"/> 
+    <aura:attribute name="submitChangeRequest" type="boolean" default="true"/>
+    <aura:attribute name="ShowChangeReqModal" type="boolean" default="false"/>
+    <aura:method name="viewActivity" action="{!c.viewActivity}" />
+    <aura:method name="closeModel" action="{!c.closeModel}" />
+    <aura:handler event="c:SelectedActivityEvent" action="{!c.onsectiontoggle}"/>
+    <aura:handler event="c:SelectedActivityEvent" action="{!c.doInit}"/>
+    <aura:attribute name="approvedRequest" type="boolean" default="true"/>
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="activitiySelectedRecord" type="Activity__c" />
+	<aura:method name="callChild" action="{!c.doInit}" />
+    
+    <aura:attribute name="filteryear" type="String"/>
+    
+    <iframe src="{!'/SportNZ/apex/VfForSwiper?Id=' + v.activitiySelected.Id}" width="100%" height="1313px;" 
+            Scrolling="no"></iframe>
+
+   
+</aura:component>

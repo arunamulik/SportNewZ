@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_Edit_Planned</fullName>
+    <active>true</active>
+    <errorConditionFormula>((Status__c &lt;&gt; &quot;Draft&quot; &amp;&amp; Status__c &lt;&gt; &quot;Variation&quot; &amp;&amp; Status__c &lt;&gt; &quot;Pending Investment Schedule Submission&quot;) &amp;&amp; not(( $Profile.Name =&apos;Kahiwi&apos; )) &amp;&amp; ischanged( Planned__c ))</errorConditionFormula>
+    <errorDisplayField>Planned__c</errorDisplayField>
+    <errorMessage>The &apos;Planned&apos; amount on an Initiative cannot be changed once it has been included in a submitted Investment Schedule.</errorMessage>
+</ValidationRule>

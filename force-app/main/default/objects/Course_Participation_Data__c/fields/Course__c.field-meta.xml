@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Course__c</fullName>
+    <externalId>false</externalId>
+    <label>Course Name</label>
+    <referenceTo>Course_Activity_Profile_Data__c</referenceTo>
+    <relationshipLabel>Course Participation Data</relationshipLabel>
+    <relationshipName>Course_Participation_Data</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

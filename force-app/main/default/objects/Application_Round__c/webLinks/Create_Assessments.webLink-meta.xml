@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Create_Assessments</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Create Assessments</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/28.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/28.0/apex.js&quot;)} 
+
+if(&apos;{!Application_Round__c.Status__c}&apos; != &quot;Pending Assessment&quot;){ 
+
+alert(&quot;Assessment records can only be created when the Application Round has a status of &apos;Pending Assessment&apos;&quot;); 
+
+} 
+
+else{ 
+
+var a = new sforce.SObject(&quot;Application_Round__c&quot;); 
+a.Id = &apos;{!Application_Round__c.Id}&apos;; 
+a.Create_Assessments__c = 1; 
+var result = sforce.connection.update([a]); 
+window.location.href = window.location.href; 
+
+}</url>
+</WebLink>

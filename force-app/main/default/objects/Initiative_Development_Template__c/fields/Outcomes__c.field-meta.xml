@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outcomes__c</fullName>
+    <description>Outcomes from the Sport NZ intervention logics</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select the outcomes you are working towards from the Sport NZ intervention logics</inlineHelpText>
+    <label>Outcomes</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <controllingField>Investment_Area__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Outcomes</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Partners understand, lead and advocate for quality  opportunities for tamariki and rangatahi,  targeting less active and teenage drop off, through Play, Active Recreation, Sport and PE​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Partners contribute to the development of other regional/national/hapu/iwi strategies and plans​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Partners leading and advocating for the inclusion of (kaupapa) Maori approaches to Play, Active Recreation and sport.​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Partners leading and advocating for diversity and inclusion​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Partners embedding the three approaches (internally and externally)​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Partners lead workforce/people planning and development​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Partners facilitate and host networking / hosting / hui opportunities​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>RSTs prioritise quality opportunities for tamariki in their region through healthy active learning​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>RSTs have an aligned and integrated approach to supporting quality opportunities for tamariki and rangatahi (using healthy active learning as a foundation)​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>RSTs understand the networks and organisations in their region who deliver opportunities to tamariki and rangatahi ​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>RSTs have appropriate capacity and sufficient capability, to influence quality opportunities for tamariki in their region aligned with healthy active learning​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Organisations understand the value of physical activity for tamariki and rangatahi​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Cultural understanding is embedded within an organisation​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Diversity and inclusion is embedded within an organisation​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Better informed and regionally/nationally connected network of organisations​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Regional agencies understand the value of Healthy Active Learning and its importance in the delivery of Play, Active Recreation, Sport and PE for tamariki​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Communities work in collaboration for the delivery of quality opportunities for tamariki and rangatahi​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Improved demonstration of the principles of Te Tiriti o Waitangi​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Strong regional and national leadership and advocacy for physical activity​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Better decision-making to inform strategies for tamariki and rangatahi​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leadership and Connectivity</controllingFieldValue>
+            <valueName>Regional agencies adopt aligned approaches for the delivery of quality opportunities for tamariki and rangatahi​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved access to external support ​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved access to tools and resources​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved quality of training and development opportunities​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved understanding of the benefits of intelligence​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved identification of key stakeholders requiring evidence​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved definition of information needs (e.g research questions)​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved information collection and analytical skills​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved information interpretation and translational skills ​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved infrastructure to collect and analyse information (e.g. tools, storage, linking to other data sources)​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved protocols to collect and analyse information (e.g. consent, confidentiality)​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved leadership and internal advocacy for intelligence​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Leaders enable the use of intelligence throughout the organisation​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved allocation of time and resource to intelligence​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved tailoring for and sharing of information with key stakeholders (e.g. through presentation, meetings, resources)​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved competency of organisation in intelligence (i.e. research, evaluation, insights)​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved systems to support use of evidence ​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved intelligence climate provided by leadership ​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved communication with internal, local, regional and national stakeholders​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved evidence-based decision making ​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Insights and Evaluation</controllingFieldValue>
+            <valueName>Improved advocacy through use of evidence (i.e. influencing others)​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>Tools, resources and guidelines are developed in collaboration with the sector to meet their needs and build capability​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>RSTs and TAs advocate for the protection and enhancement of built and natural environments that promote play, active recreation and sport​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>Key funders support National and Regional Planning Approaches and priority projects​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>RSTs lead development, review, and implementation of regional plans​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>NSOs and NROs lead development of planning approach for International, National and Regional Spaces &amp; Places provision​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>Key stakeholders partner to respond to ‘whole of community’ Spaces &amp; Places needs​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>National Spaces &amp; Places database and planning tool are delivered and enhanced to support improved planning​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>Key organisations work together to identify settings and connections for the Spaces &amp; Places network</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>Minimum quality standards for the setting and environment for play and physical activity settings in schools are developed​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>Territorial Authorities’ Annual and Long-Term Plans reflect regional Spaces &amp; Places priority projects​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>Key funders direct their financial support towards regional Spaces &amp; Places priority projects​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>Key stakeholders work together to identify national, regional and local spaces and places principles, processes and priorities​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>RSTs support organisations and clubs to navigate through the Spaces &amp; Places planning process​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>The right type and location of Spaces &amp; Places are identified and developed ​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>Spaces &amp; Places are managed and operated efficiently and effectively to enable resources to focus on delivering physical activity​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>RSTs lead communities to work in partnership for the planning, development, provision and operation of Spaces &amp; Places​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>Spaces &amp; Places meet the needs of the communities they serve, ​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>Spaces &amp; Places are utilised to their full potential​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>Spaces &amp; Places are fully accessible​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Spaces and Places</controllingFieldValue>
+            <valueName>Spaces &amp; Places are multi-use, flexible and sustainable​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Play</controllingFieldValue>
+            <valueName>Enablers have effective systems in place at national, regional and local levels to engage, educate and support parents and peers​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Play</controllingFieldValue>
+            <valueName>Enablers demonstrate their knowledge and understanding of the value of Play through messaging, actions and social or physical infrastructure​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Play</controllingFieldValue>
+            <valueName>National, regional and local enablers are connected and work collaboratively for a Play approach​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Play</controllingFieldValue>
+            <valueName>Key stakeholders and enablers have the understanding of the value of Play​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Play</controllingFieldValue>
+            <valueName>Key stakeholders and enablers are well connected to and knowledgeable about Play​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Play</controllingFieldValue>
+            <valueName>Influencers understand and value the benefits of Play​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Play</controllingFieldValue>
+            <valueName>National, regional and local enablers have improved alignment for a Play approach​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Play</controllingFieldValue>
+            <valueName>Enablers identify and address barriers to access​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Play</controllingFieldValue>
+            <valueName>Key stakeholders and enablers are respected and credible​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Play</controllingFieldValue>
+            <valueName>Key stakeholders are connected and collaborate via a cross government collaborative play approach</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Play</controllingFieldValue>
+            <valueName>Influencers provide tamariki with the time, permission, and place to Play​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Play</controllingFieldValue>
+            <valueName>Enablers provide tamariki with the time, permission, and place to Play​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Play</controllingFieldValue>
+            <valueName>Key stakeholders and enablers advocate effectively for the cross government play approach​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Play</controllingFieldValue>
+            <valueName>Key stakeholders action key Play actions in relation to the National PA and Play Plan *​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>Organisations have effective systems in place to engage, educate and support rangatahi, influencers, other organisations and key stakeholders​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>Organisations understand the value of Active Recreation​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Organisations have staff development programmes​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>Organisations provide quality training and support for providers across sector​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Rangatahi have input into the design and delivery of opportunities​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>Key stakeholders and organisations are well connected to and knowledgeable about the Active Recreation sector​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>Key stakeholders and organisations have the knowledge and understanding of the value of Active Recreation​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>Rangatahi understand and value the benefits of Active Recreation​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>Organisations identify and address psychosocial barriers to participate in Active Recreation​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>Influencers understand and value the benefits of Active Recreation​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>There are a diverse range of capable providers of Active Recreation​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>Physical and logistical barriers to participate in Active Recreation are identified and addressed​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>Active Recreation opportunities are well promoted​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>Key stakeholders and organisations are respected and credible​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>Rangatahi have the motivation, knowledge, skills, confidence, and competence to participate in Active Recreation opportunities​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>Influencers participate with, encourage and provide support to rangatahi​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>There is a wide range of quality Active Recreation opportunities that meet the needs of rangatahi​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>Access to Active Recreation opportunities is improved for rangatahi​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Active Recreation</controllingFieldValue>
+            <valueName>Key stakeholders and organisations advocate effectively for Active Recreation​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>NSOs, NDOs, RSTs have effective coach development leadership personnel in place​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>NSOs, RSOs, NDOs and RSTs have a network of skilled coach developers working with their coaches​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Coaches engage in their own development and adopt a participant-focused approach​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Parents have improved awareness and understanding of Balance is Better principles and the Value of Sport​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>National, regional and local systems and structures for youth sport are improved and aligned​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>There is a diverse range of capable providers of sport​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Barriers to participate in Sport are identified and addressed​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Key stakeholders are respected and credible and promote the Balance is Better principles​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Coaches provide better quality support to rangatahi in sport​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Parents provide better quality support to rangatahi in sport​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>There is a wide range of quality sport opportunities that meets the needs of rangatahi​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Access to sport opportunities is improved for rangatahi​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Society advocates for sport and the Balance is Better principles​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Organisations allocate time and resource to coach development​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>NSOs and NDOs have in place an effective Coach Developer Training (CDT) plan, coach development framework and annual delivery plan that align with the NZ Coaching Strategy​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>RSTs have in place coach developer training programmes that aligns with the Sport NZ CDT programme​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Organisations provide quality development opportunities for coaches at all levels ​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Organisations have effective systems in place at national, regional and local levels to engage, educate and support parents​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Organisations understand, connect and collaborate around Balance is Better principles​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Competition structures and pathways are developed through a participant-centred approach​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>NSOs, NDOs and RSTs provide quality Sport Development Leader training and wider support for providers across the sector​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Organisations are connected and working collaboratively around Balance is Better principles​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sport</controllingFieldValue>
+            <valueName>Key stakeholders have the knowledge and understanding of sport and the Balance is Better principles​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Physical Education</controllingFieldValue>
+            <valueName>There is improved quality of support for teachers​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Physical Education</controllingFieldValue>
+            <valueName>School leaders recognise the value of PE​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Physical Education</controllingFieldValue>
+            <valueName>Sufficient resources are available to deliver quality PE (human, financial, time)​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Physical Education</controllingFieldValue>
+            <valueName>Agencies who influence schools and the education system are connected and work collaboratively ​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Physical Education</controllingFieldValue>
+            <valueName>Teachers have the confidence, skills and knowledge to teach PE well​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Physical Education</controllingFieldValue>
+            <valueName>Schools prioritise and support regular provision of PE​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Physical Education</controllingFieldValue>
+            <valueName>Education agencies and providers understand the value of PE​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Physical Education</controllingFieldValue>
+            <valueName>Better quality PE is delivered​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Physical Education</controllingFieldValue>
+            <valueName>A wide range of quality PE opportunities are available to meet the needs of tamariki​</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Physical Education</controllingFieldValue>
+            <valueName>Education agencies and providers are leading and advocating for PE within strategy and decision making​</valueName>
+        </valueSettings>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

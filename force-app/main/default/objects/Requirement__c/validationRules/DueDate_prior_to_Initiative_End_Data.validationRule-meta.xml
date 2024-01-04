@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DueDate_prior_to_Initiative_End_Data</fullName>
+    <active>true</active>
+    <description>Due Date should be prior to Initiative End Data</description>
+    <errorConditionFormula>AND(NOT(OR(ISPICKVAL(Status__c , &apos;Cancelled&apos;),ISPICKVAL(Status__c , &apos;Completed&apos;))), Due_Date__c &gt; Initiative__r.End_Date__c)</errorConditionFormula>
+    <errorDisplayField>Due_Date__c</errorDisplayField>
+    <errorMessage>Due Date should be prior to Initiative End Data</errorMessage>
+</ValidationRule>

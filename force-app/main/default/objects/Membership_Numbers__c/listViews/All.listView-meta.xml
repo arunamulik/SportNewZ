@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Membership_Numbers_Category__c</columns>
+    <columns>Financial_Year__c</columns>
+    <columns>Organisation__c</columns>
+    <columns>Male_Members__c</columns>
+    <columns>Female_Members__c</columns>
+    <columns>Total_Members__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>UPDATEDBY_USER</field>
+        <operation>notEqual</operation>
+        <value>Relationship Unlimited</value>
+    </filters>
+    <label>All</label>
+</ListView>

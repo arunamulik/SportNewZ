@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Credit</fullName>
+    <active>true</active>
+    <description>Typically used where a payment was sent to the FMIS in error (cancelled before being paid) and needs to be balanced in Salesforce</description>
+    <label>Credit</label>
+    <picklistValues>
+        <picklist>Hold_Reason__c</picklist>
+        <values>
+            <fullName>Manual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Overdue Requirement %28Initiative%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Overdue Requirement %28Organisation%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Processed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduled</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Sent for Payment</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

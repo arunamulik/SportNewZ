@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Requirements_next_month</fullName>
+    <booleanFilter>1 AND 2</booleanFilter>
+    <columns>Partner__c</columns>
+    <columns>Initiative__c</columns>
+    <columns>NAME</columns>
+    <columns>Description__c</columns>
+    <columns>Status__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Hold_Payments__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>Plan__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Initiatives_Owner_Email__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Overdue,Pending</value>
+    </filters>
+    <filters>
+        <field>Due_Date__c</field>
+        <operation>equals</operation>
+        <value>NEXT_N_DAYS:31</value>
+    </filters>
+    <label>Requirements due in the next month</label>
+</ListView>

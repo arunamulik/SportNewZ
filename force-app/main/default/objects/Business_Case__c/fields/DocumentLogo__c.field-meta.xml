@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DocumentLogo__c</fullName>
+    <description>Identifies the image that will be used on the Investment Schedule report (Sports NZ or HPSNZ logo)</description>
+    <externalId>false</externalId>
+    <formula>IF(TEXT(Strategic_Area__r.Entity__c) = &quot;High Performance&quot;,  &quot;https://sportnzgroup--c.ap1.content.force.com/servlet/servlet.ImageServer?id=01590000008arNw&amp;oid=00D0T0000000qRi&amp;lastMod=1435119897000&quot;, &quot;https://sportnzgroup--c.ap1.content.force.com/servlet/servlet.ImageServer?id=01590000008arND&amp;oid=00D0T0000000qRi&amp;lastMod=1435119579000&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Document Logo</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

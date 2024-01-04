@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outcome_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Outcome Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Clubs Adults</fullName>
+                <default>false</default>
+                <label>Clubs Adults</label>
+            </value>
+            <value>
+                <fullName>Clubs Young People</fullName>
+                <default>false</default>
+                <label>Clubs Young People</label>
+            </value>
+            <value>
+                <fullName>Coaching</fullName>
+                <default>false</default>
+                <label>Coaching</label>
+            </value>
+            <value>
+                <fullName>Events Adults</fullName>
+                <default>false</default>
+                <label>Events Adults</label>
+            </value>
+            <value>
+                <fullName>Events Young People</fullName>
+                <default>false</default>
+                <label>Events Young People</label>
+            </value>
+            <value>
+                <fullName>FMS &amp; BSS</fullName>
+                <default>false</default>
+                <label>FMS &amp; BSS</label>
+            </value>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+                <label>Not Applicable</label>
+            </value>
+            <value>
+                <fullName>Primary Schools</fullName>
+                <default>false</default>
+                <label>Primary Schools</label>
+            </value>
+            <value>
+                <fullName>Regional Organisations</fullName>
+                <default>false</default>
+                <label>Regional Organisations</label>
+            </value>
+            <value>
+                <fullName>Secondary Schools</fullName>
+                <default>false</default>
+                <label>Secondary Schools</label>
+            </value>
+            <value>
+                <fullName>Stakeholders</fullName>
+                <default>false</default>
+                <label>Stakeholders</label>
+            </value>
+            <value>
+                <fullName>Volunteers</fullName>
+                <default>false</default>
+                <label>Volunteers</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

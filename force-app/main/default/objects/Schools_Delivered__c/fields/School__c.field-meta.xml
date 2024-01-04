@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>School__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>Select Organisation first</inlineHelpText>
+    <label>School</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>School__c.Organisation__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Organization__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>School__c</referenceTo>
+    <relationshipLabel>Schools Delivered</relationshipLabel>
+    <relationshipName>Schools_Delivered</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

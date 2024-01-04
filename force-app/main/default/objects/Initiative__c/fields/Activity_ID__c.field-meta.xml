@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activity_ID__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Only available to populate if the strategic area has the entity &apos;High Performance&apos;</inlineHelpText>
+    <label>Activity ID</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>HNSO35 (Funding for HP Investment)</fullName>
+                <default>false</default>
+                <label>HNSO35 (Funding for HP Investment)</label>
+            </value>
+            <value>
+                <fullName>HNSO36 (NSO Capability Funding)</fullName>
+                <default>false</default>
+                <label>HNSO36 (NSO Capability Funding)</label>
+            </value>
+            <value>
+                <fullName>PEGS35 (Grants to Individuals)</fullName>
+                <default>false</default>
+                <label>PEGS35 (Grants to Individuals)</label>
+            </value>
+            <value>
+                <fullName>PMSC1 (PM Scholarships - Coach)</fullName>
+                <default>false</default>
+                <label>PMSC1 (PM Scholarships - Coach)</label>
+            </value>
+            <value>
+                <fullName>PMSO1 (PM Scholarships - Officials)</fullName>
+                <default>false</default>
+                <label>PMSO1 (PM Scholarships - Officials)</label>
+            </value>
+            <value>
+                <fullName>PMSS9 (PM Scholarships - Support)</fullName>
+                <default>false</default>
+                <label>PMSS9 (PM Scholarships - Support)</label>
+            </value>
+            <value>
+                <fullName>PRM - no code</fullName>
+                <default>false</default>
+                <label>PRM - no code</label>
+            </value>
+            <value>
+                <fullName>TDEV78 (P2P Coach Development)</fullName>
+                <default>false</default>
+                <label>TDEV78 (P2P Coach Development)</label>
+            </value>
+            <value>
+                <fullName>TDEV79 (P2P Camps Athlete Subsidy)</fullName>
+                <default>false</default>
+                <label>TDEV79 (P2P Camps Athlete Subsidy)</label>
+            </value>
+            <value>
+                <fullName>TDEV88 (P2P Individual Sport Tailoring)</fullName>
+                <default>false</default>
+                <label>TDEV88 (P2P Individual Sport Tailoring)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

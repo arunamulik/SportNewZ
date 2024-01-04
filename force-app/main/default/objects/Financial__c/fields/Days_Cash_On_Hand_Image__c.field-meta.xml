@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_Cash_On_Hand_Image__c</fullName>
+    <externalId>false</externalId>
+    <formula>IMAGE(
+CASE(1, IF(  Days_Cash_On_Hand__c  &lt; 30,1,0),   $Setup.Icons__c.Red__c ,
+IF(AND( Days_Cash_On_Hand__c  &gt;= 30,  Days_Cash_On_Hand__c  &lt; 90) , 1, 0), $Setup.Icons__c.Orange__c,
+IF( Days_Cash_On_Hand__c  &gt;= 90,1,0),  $Setup.Icons__c.Green__c,
+&quot;None&quot;),&quot;&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Days Cash On Hand</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

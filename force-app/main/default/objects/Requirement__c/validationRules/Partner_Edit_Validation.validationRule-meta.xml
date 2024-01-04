@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partner_Edit_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(AND(CONTAINS($Profile.Name,&apos;Partner&apos;),ISCHANGED(Name) ),true,false)</errorConditionFormula>
+    <errorDisplayField>Name</errorDisplayField>
+    <errorMessage>Partner Users are not permitted to update the Requirement Name</errorMessage>
+</ValidationRule>

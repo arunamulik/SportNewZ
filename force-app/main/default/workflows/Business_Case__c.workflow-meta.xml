@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Investment_Schedule_approval</fullName>
+        <description>Investment Schedule approval</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Sport_NZ_Email_Templates/Investment_schedule_approved</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Add_Approver_Name</fullName>
+        <field>Actual_Approver_Name__c</field>
+        <formula>$User.FirstName + &quot; &quot; + $User.LastName</formula>
+        <name>Add Approver Name</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Add_Approver_Title</fullName>
+        <field>Actual_Approver_Title__c</field>
+        <formula>$User.Title</formula>
+        <name>Add Approver Title</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Baord_Delegation</fullName>
+        <field>Approval_Type__c</field>
+        <literalValue>Board Delegation</literalValue>
+        <name>Baord Delegation</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>CEO_Delegation</fullName>
+        <field>Approval_Type__c</field>
+        <literalValue>CEO Delegation</literalValue>
+        <name>CEO Delegation</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>GM_Delegation</fullName>
+        <field>Approval_Type__c</field>
+        <literalValue>GM Delegation</literalValue>
+        <name>GM Delegation</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Manager_Delegation</fullName>
+        <field>Approval_Type__c</field>
+        <literalValue>Manager Delegation</literalValue>
+        <name>Manager Delegation</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Approved</fullName>
+        <field>Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Status &gt; Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Declined</fullName>
+        <field>Status__c</field>
+        <literalValue>Declined</literalValue>
+        <name>Status &gt; Declined</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Draft</fullName>
+        <field>Status__c</field>
+        <literalValue>Draft</literalValue>
+        <name>Status &gt; Draft</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Pending_Approval</fullName>
+        <field>Status__c</field>
+        <literalValue>Pending Approval</literalValue>
+        <name>Status &gt; Pending Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Rejected</fullName>
+        <field>Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Status &gt; Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Signed</fullName>
+        <field>Status__c</field>
+        <literalValue>Signed</literalValue>
+        <name>Status &gt; Signed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Uncheck_Conga_Workflow_Trigger</fullName>
+        <field>Generate_Investment_Schedule_Report__c</field>
+        <literalValue>0</literalValue>
+        <name>Uncheck Conga Workflow Trigger</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Approval_Date</fullName>
+        <field>Actual_Approval_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Update Approval Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>Send_Investment_Schedule_Report</fullName>
+        <apiVersion>34.0</apiVersion>
+        <endpointUrl>https://workflow.congamerge.com/OBMListener.ashx</endpointUrl>
+        <fields>Id</fields>
+        <fields>Investment_Schedule_Workflow__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>systemadmin@sportnz.org.nz</integrationUser>
+        <name>Send Investment Schedule Report</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>Investment Schedule - Conga Workflow</fullName>
+        <actions>
+            <name>Uncheck_Conga_Workflow_Trigger</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Send_Investment_Schedule_Report</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Business_Case__c.Generate_Investment_Schedule_Report__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Investment schedule approval</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Business_Case__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <description>Notified when investment schedule has been approved</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Investment schedule approved</fullName>
+        <actions>
+            <name>Investment_Schedule_approval</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Business_Case__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Business_Case__c.Strategic_Entity__c</field>
+            <operation>equals</operation>
+            <value>Sport NZ</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Business_Case__c.Actual_Approval_Date__c</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </criteriaItems>
+        <description>Notification when investment schedules are Approved internally</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Status %3E Signed</fullName>
+        <actions>
+            <name>Status_Signed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>OR(ischanged(External_Signatory__c),ischanged(Document_Link_1__c),ischanged(Document_Link_2__c),ischanged(Date_Signed_By_External_Party__c))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Approval Type for High Performance</fullName>
+        <actions>
+            <name>GM_Delegation</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Business_Case__c.Strategic_Entity__c</field>
+            <operation>equals</operation>
+            <value>High Performance</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Approval type to Board delegation</fullName>
+        <actions>
+            <name>Baord_Delegation</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Business_Case__c.Total_Amount__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>500000.01</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Business_Case__c.Strategic_Entity__c</field>
+            <operation>notEqual</operation>
+            <value>High Performance</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Approval type to GM Delegation</fullName>
+        <actions>
+            <name>GM_Delegation</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Business_Case__c.Total_Amount__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>50000.01</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Business_Case__c.Total_Amount__c</field>
+            <operation>lessOrEqual</operation>
+            <value>250000</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update approval type to CEO Delegation</fullName>
+        <actions>
+            <name>CEO_Delegation</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Business_Case__c.Total_Amount__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>250000.01</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Business_Case__c.Total_Amount__c</field>
+            <operation>lessOrEqual</operation>
+            <value>500000</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Business_Case__c.Strategic_Entity__c</field>
+            <operation>notEqual</operation>
+            <value>High Performance</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update approval type to Manager Delegation</fullName>
+        <actions>
+            <name>Manager_Delegation</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Business_Case__c.Total_Amount__c</field>
+            <operation>lessOrEqual</operation>
+            <value>50000</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

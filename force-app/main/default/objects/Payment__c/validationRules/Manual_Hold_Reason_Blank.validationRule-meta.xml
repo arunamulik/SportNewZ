@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Manual_Hold_Reason_Blank</fullName>
+    <active>true</active>
+    <description>Manual hold must be blank to save the record unless the hold reason is &quot;Manual&quot;</description>
+    <errorConditionFormula>AND(
+OR(
+ISPICKVAL(Status__c, &apos;Draft&apos;),
+ISPICKVAL(Status__c, &apos;Sent for Payment&apos;),
+ISPICKVAL(Status__c, &apos;Paid&apos;),
+ISPICKVAL(Status__c, &apos;Cancelled&apos;),
+ISPICKVAL(Status__c, &apos;Error&apos;),
+ISPICKVAL( Hold_Reason__c , &apos;Overdue Requirement (Initiative)&apos;),
+ISPICKVAL( Hold_Reason__c, &apos;Overdue Requirement (Organisation)&apos;)
+),
+
+NOT(ISBLANK( Manual_Hold_Reason__c ))
+)</errorConditionFormula>
+    <errorDisplayField>Manual_Hold_Reason__c</errorDisplayField>
+    <errorMessage>Manual hold reason can only be added when the payment is &apos;Scheduled&apos;</errorMessage>
+</ValidationRule>

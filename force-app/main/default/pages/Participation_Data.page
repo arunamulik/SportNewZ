@@ -1,0 +1,63 @@
+<apex:page Controller="Participation_DataController">
+    <apex:form >
+    <apex:pageMessages id="errorMsg"/>
+        <apex:pageBlock title="Participation Data Edit">
+            <apex:pageBlockSection title="Information">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Programme Name</apex:outputLabel>                       
+                    <apex:outputField value="{!newPart.Programme_Name__c}" label="Programme Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Financial Year</apex:outputLabel>
+                    <apex:inputField value="{!newPart.Financial_Year__c}"/>
+                </apex:pageBlockSectionItem>             
+            </apex:pageBlockSection>
+        <!--<apex:pageBlockSection title="Deliverables" columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Deliverable Indicator</apex:outputLabel>
+                    <apex:inputField value="{!newPart.Deliverable_Indicator__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >       
+                    <apex:outputLabel >Deliverable</apex:outputLabel>
+                    <apex:inputField value="{!newPart.Deliverable__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>-->
+            <apex:pageBlockSection title="Participation – Complete Where Applicable">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Total Teams</apex:outputLabel>
+                    <apex:inputField value="{!newPart.Total_Teams__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Total Participants</apex:outputLabel>
+                    <apex:inputField value="{!newPart.Total_Participants__c}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >       
+                    <apex:outputLabel >Multiplier</apex:outputLabel>
+                    <apex:inputField value="{!newPart.Multiplier__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >       
+                    <apex:outputLabel >How did you calculate participant number</apex:outputLabel>
+                    <apex:inputField value="{!newPart.How_did_you_calculate_participant_number__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Participation_Data__c.Fields.Female_Participants__c.inlineHelpText}">
+                    <apex:outputLabel >Female Participants  </apex:outputLabel>
+                    <apex:inputField value="{!newPart.Female_Participants__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >  
+                </apex:pageBlockSectionItem>  
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Participation_Data__c.Fields.Male_Participants__c.inlineHelpText}">       
+                    <apex:outputLabel >Male Participants</apex:outputLabel>
+                    <apex:inputField value="{!newPart.Male_Participants__c}"/>
+                </apex:pageBlockSectionItem><br/>
+                 <apex:pageBlockSectionItem helpText="{!$ObjectType.Participation_Data__c.Fields.Gender_Diverse__c.inlineHelpText}">       
+                   <apex:outputLabel >Gender Diverse Participants</apex:outputLabel>
+                    <apex:inputField value="{!newPart.Gender_Diverse__c}"/>  
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="top">
+                 <apex:commandButton action="{!save}" value="Save" rerender="errorMsg"/>
+                 <apex:commandButton action="{!cancel}" value="Cancel" immediate="true"/>
+             </apex:pageBlockButtons>
+         </apex:pageBlock>
+    </apex:form>
+</apex:page>

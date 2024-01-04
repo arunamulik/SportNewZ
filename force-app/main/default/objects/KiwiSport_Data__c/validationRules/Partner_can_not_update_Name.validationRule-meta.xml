@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partner_can_not_update_Name</fullName>
+    <active>true</active>
+    <description>Partner Users can not update Kiwisport Project Name</description>
+    <errorConditionFormula>AND(CONTAINS($User.Profile_Name__c,&apos;Partner&apos;), ISCHANGED(Name))</errorConditionFormula>
+    <errorDisplayField>Name</errorDisplayField>
+    <errorMessage>Partner Users are not permitted to change Kiwisport Project Name</errorMessage>
+</ValidationRule>

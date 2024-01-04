@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Time_and_Advice_cannot_have_payments</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISPICKVAL( Initiative__r.Type__c , &apos;Time &amp; Advice&apos;)</errorConditionFormula>
+    <errorMessage>A payment cannot be created on an initiative of type &apos;Time &amp; Advice</errorMessage>
+</ValidationRule>

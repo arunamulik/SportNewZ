@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GENDER_OF_PARTICIPANTS</fullName>
+    <active>true</active>
+    <description>TOTAL PARTICIPANTS MATCHING WITH &apos;GENDER_OF_PARTICIPANTS&apos;</description>
+    <errorConditionFormula>IF(( GenderOfParticipants_Tane__c  +  GenderOfParticipants_Wahine__c  +  GenderOfParticipants_DidNotRespond__c )  !=  ( Participation_NoOfParticipants__c ),True , False)</errorConditionFormula>
+    <errorMessage>TOTAL PARTICIPANTS NOT MATCHING WITH &apos;GENDER_OF_PARTICIPANTS&apos;</errorMessage>
+</ValidationRule>

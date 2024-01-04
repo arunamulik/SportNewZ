@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Other_direct_income_derived_from_tenants__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>This may include the contribution towards reception services, additional admin support, general ledger/bookkeeping, renting space on the server, contribution towards room hire, cleaning etc</inlineHelpText>
+    <label>Other direct income derived from tenants</label>
+    <precision>10</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

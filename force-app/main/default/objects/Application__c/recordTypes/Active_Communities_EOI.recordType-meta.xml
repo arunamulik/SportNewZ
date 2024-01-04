@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Communities_EOI</fullName>
+    <active>true</active>
+    <label>Active Communities - EOI</label>
+    <picklistValues>
+        <picklist>Decision__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Declined</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proceed to Full Application</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shortlisted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Withdrawn</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

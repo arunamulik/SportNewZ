@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>standard-home</defaultLandingTab>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>Kahiwi</label>
+    <logo>SharedDocuments/KAHIWI_logo_transparent_png.png</logo>
+    <tabs>standard-Chatter</tabs>
+    <tabs>Strategic_Area__c</tabs>
+    <tabs>Investment_Area__c</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>Plan__c</tabs>
+    <tabs>Initiative__c</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <tabs>SLCA2__Calendar_Anything</tabs>
+    <tabs>Cost_Centre__c</tabs>
+    <tabs>Expense_Code__c</tabs>
+    <tabs>Application_Round__c</tabs>
+    <tabs>Application__c</tabs>
+    <tabs>Assessment__c</tabs>
+    <tabs>Requirement_Template__c</tabs>
+    <tabs>Partner_Risk__c</tabs>
+    <tabs>KiwiSport_Data__c</tabs>
+    <tabs>Activity_ID__c</tabs>
+    <tabs>Project_ID__c</tabs>
+    <tabs>Landing_Page_Image_Video__c</tabs>
+    <tabs>Activity__c</tabs>
+    <tabs>Activity_Report__c</tabs>
+    <tabs>Work_Brief__c</tabs>
+    <tabs>Subscriber__c</tabs>
+</CustomApplication>

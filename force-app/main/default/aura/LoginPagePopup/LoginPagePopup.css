@@ -1,0 +1,189 @@
+.THIS .slds-p-around_medium, .THIS .slds-p-around--medium {
+    width: 90% !important;
+    padding: 0 !important;
+    position: relative;
+}
+.THIS .slds-text-heading_medium, .THIS .slds-text-heading--medium {
+    font-weight: inherit !important;
+    font-size: 30px !important;
+    color: #e10e34;
+    line-height: 1.25; 
+    font-family: inherit !important;
+    font-weight:900 !important;
+}
+.THIS .slds-form-element {
+    padding: 5% 10% 2% 10% !important;
+    position: relative;
+    min-width: 0;
+}
+
+.THIS .slds-modal__header {
+    background:  #d9d9d9 !important;
+    position: relative;
+    border-top-right-radius: .25rem;
+    border-top-left-radius: .25rem;
+    border-bottom: 2px solid #d9d9d9 !important;
+    padding: 1rem;
+    text-align: center !important;
+    width: 90% !important;
+}
+.THIS .slds-modal__footer {
+    width: 90% !important;
+    border-top: 2px solid #d4d4d4 !important;
+    border-bottom-right-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+    padding: .75rem 1rem !important;
+    background-color: #ffffff;
+    text-align: right;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
+}
+
+.THIS slds-text-heading_medium slds-hyphenate, .THIS .slds-text-heading--medium {
+    font-weight: inherit !important;
+    margin: 25px 0 10px 0 !important;
+    font-size: 30px !important;
+    line-height: 0 !important;
+    color: #e10e34 !important;
+
+}
+
+.THIS .slds-modal__content {
+    overflow: hidden;
+    overflow-y: auto;
+    background: #d9d9d9 !important;
+}
+
+
+.THIS label {
+    display: inline-block !important;
+    margin: 35px -24px 15px 68px !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color:black !important;
+}
+.THIS .icn svg{
+    fill:#e10e34;
+     width: 4rem;
+    height: 4rem;
+}
+.THIS .slds-icon-action-approval {
+    fill:#e10e34  !important;
+    border:#e10e34  solid !important;
+    background-color: #d9d9d9 !important;
+    margin-top: 10% !important;
+   /* margin-left: 43% !important;*/
+}
+.THIS h4 {
+    display: inherit;
+    padding: 0 0 2% 0% !important;
+    font-size: 30px !important;
+    color:#333333 !important;
+    font-family: inherit;
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 900!important;
+}
+.THIS h5{
+    color:#545454 !important;
+    padding: 2px 0px 0% 0% !important;
+    font-size: initial !important;
+    font-family: inherit;
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+}
+.THIS h6{
+    color:#545454 !important;
+    padding: 2px 0px 7% 0% !important;
+    font-size: initial !important;
+    font-family: inherit;
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+}
+.THIS .slds-button_brand, .THIS .slds-button--brand {
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+    border: 1px solid #333333;
+    transition: border .15s linear;
+    background-color: rgb(0, 112, 210);
+    border-color: #333333;
+    color: #ffffff;
+    width: auto !important;
+    margin: 1% 1% 14% 38% !important;
+    border: 3px solid black !important;
+    background: #333333 !important;
+    padding: 1% 4% 1% 4% !important;
+    
+}
+.THIS .slds-button_brand:hover, .THIS .slds-button--brand:hover {
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+    border: 1px solid #e10e34;
+    transition: border .15s linear;
+    background-color: rgb(0, 112, 210);
+    border-color: #e10e34;
+    color: #ffffff;
+    width: auto !important;
+    margin: 1% 1% 14% 38% !important;
+    border: 3px solid #e10e34 !important;
+    background: #e10e34  !important;
+    padding: 1% 4% 1% 4% !important;
+
+}
+
+.THIS .slds-input {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #d4d4d4;
+    border-radius: .25rem;
+    color: gray;
+    width: 100% !important;
+    margin-left: 1% !important;
+    transition: border .1s linear,background-color .1s linear;
+    display: inline-block !important;
+    padding: 6% 1% 6% 1% !important;
+    line-height: 1.875rem;
+    min-height: calc(1.875rem + (1px * 2));
+}
+
+.THIS.slds-modal__container {
+    position: absolute;
+    top : 15%;
+    left: 35%;    
+    z-index:99999;
+    height:70%;
+    width:35%;
+}
+
+.THIS.cCreateActivitiy .slds-textarea {
+    color: gray;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #d4d4d4;
+    border-radius: .25rem;
+    width: 82%!important;
+    margin-left: 9%!important;
+    height: 245px!important;
+    transition: border .1s linear,background-color .1s linear;
+    -webkit-appearance: none;
+    resize: vertical;
+    padding: .5rem .75rem!important;
+    margin-bottom: 50px !important;
+}
+
+.THIS.overlay {
+    background-color:#000;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    top: 0px;
+    left: 0px;
+    opacity: .5; /* in FireFox */ 
+    filter: alpha(opacity=50); /* in IE */
+}

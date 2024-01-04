@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Supplier_Invoice_Date_cannot_be_future</fullName>
+    <active>true</active>
+    <description>Supplier invoice date cannot be future date</description>
+    <errorConditionFormula>IF( Supplier_Invoice_Date__c &gt; TODAY(),true,false)</errorConditionFormula>
+    <errorMessage>Supplier Invoice date cannot be future date.</errorMessage>
+</ValidationRule>

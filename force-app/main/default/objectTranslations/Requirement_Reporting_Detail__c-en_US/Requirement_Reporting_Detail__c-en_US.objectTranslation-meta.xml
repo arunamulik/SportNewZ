@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Requirement Reporting Detail</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Requirement Reporting Details</value>
+    </caseValues>
+    <layouts>
+        <layout>CS Board Diversity</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CS Board Diversity Read Only</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CS Case Study</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CS Case Study Read Only</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CS National</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CS National Read Only</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CS Regional</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CS Regional Read Only</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI National</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI National 1</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI National 2</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI National 3</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI National 4</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI National Read Only</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI National+1</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI National+2</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI National+3</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI National+4</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI Regional</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI Regional Read Only</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI Regional+1</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI Regional+2</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI Regional+3</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PI Regional+4</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Reporting Details</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Review Sections</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>CS_Board_Diversity</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>CS_Board_Diversity_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>CS_Case_Study</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>CS_Case_Study_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Nat_CS_Rubric_1</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Nat_CS_Rubric_1_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>PI_National</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>PI_National_1</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>PI_National_2</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>PI_National_3</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>PI_National_4</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>PI_National_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>PI_National_y1</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>PI_National_y2</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>PI_National_y3</name>
+    </recordTypes>
+    <recordTypes>
+        <label></label>
+        <name>PI_National_y4</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>PI_Regional</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>PI_Regional_1</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>PI_Regional_2</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>PI_Regional_3</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>PI_Regional_4</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>PI_Regional_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Reg_CS_Rubric_2</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Reg_CS_Rubric_Read_Only</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cannot_Mark_Completed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Cannot_edit_name</name>
+    </validationRules>
+</CustomObjectTranslation>

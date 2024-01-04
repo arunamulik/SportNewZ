@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Setting__c</fullName>
+    <externalId>false</externalId>
+    <label>Setting</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Lunchtimes</fullName>
+                <default>false</default>
+                <label>Lunchtimes</label>
+            </value>
+            <value>
+                <fullName>Before School/After School</fullName>
+                <default>false</default>
+                <label>Before School/After School</label>
+            </value>
+            <value>
+                <fullName>Curricular</fullName>
+                <default>false</default>
+                <label>Curricular</label>
+            </value>
+            <value>
+                <fullName>Holidays</fullName>
+                <default>false</default>
+                <label>Holidays</label>
+            </value>
+            <value>
+                <fullName>Weekends</fullName>
+                <default>false</default>
+                <label>Weekends</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

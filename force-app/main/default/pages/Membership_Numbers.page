@@ -1,0 +1,43 @@
+<apex:page Controller="Membership_NumbersController">
+    <apex:form >
+    <apex:pageMessages id="errorMsg"/>
+        <apex:pageBlock title="Membership Numbers Edit">
+            <apex:pageBlockSection title="Information">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Membership Numbers Category</apex:outputLabel>                       
+                    <apex:outputField value="{!newMemberNo.Membership_Numbers_Category__c}" label="Membership Numers Category"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Organisation</apex:outputLabel>                       
+                    <apex:InputField value="{!newMemberNo.Organisation__c}" label="Organisation"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Financial Year</apex:outputLabel>                       
+                    <apex:inputField value="{!newMemberNo.Financial_Year__c}"/>
+                </apex:pageBlockSectionItem>             
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Membership Information" columns="2">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Male Members</apex:outputLabel>
+                    <apex:inputField value="{!newMemberNo.Male_Members__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >       
+                    <apex:outputLabel >Female Members</apex:outputLabel>
+                    <apex:inputField value="{!newMemberNo.Female_Members__c}"/>
+                </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem >       
+                    <apex:outputLabel >Gender Diverse Members</apex:outputLabel>
+                    <apex:inputField value="{!newMemberNo.Gender_Diverse_Members__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >       
+                    <apex:outputLabel >Total Members</apex:outputLabel>
+                    <apex:inputField value="{!newMemberNo.Total_Members__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="top">
+                 <apex:commandButton action="{!save}" value="Save" rerender="errorMsg"/>
+                 <apex:commandButton action="{!cancel}" value="Cancel" immediate="true"/>
+             </apex:pageBlockButtons>
+         </apex:pageBlock>
+    </apex:form>
+</apex:page>

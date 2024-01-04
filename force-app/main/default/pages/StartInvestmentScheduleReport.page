@@ -1,0 +1,10 @@
+<apex:page standardController="Business_Case__c" extensions="StartInvestmentScheduleReportController" showHeader="true" sidebar="true" action="{!startInvestmentScheduleReport}">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageMessages />
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Done" action="{!cancel}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

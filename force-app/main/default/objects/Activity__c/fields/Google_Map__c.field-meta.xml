@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Google_Map__c</fullName>
+    <externalId>false</externalId>
+    <formula>IMAGE(&quot;https://maps.googleapis.com/maps/api/staticmap?center=&quot; +  Street__c  + &quot;,&quot; + City__c + &quot;,&quot; + State__c + &quot;,&quot; + Country__c + &quot;&amp;zoom=13&amp;size=600×300&amp;markers=color:red|&quot; + Street__c + &quot;,&quot; + City__c + &quot;,&quot; + State__c + &quot;,&quot; + Country__c + &quot;&amp;sensor=false&quot;
+, &quot;No map available&quot;, 300, 600)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Google Map</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

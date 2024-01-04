@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Main_Agreement__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>RUL: This is used to highlight main agreement for the Organisation.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Check this box if this is the main agreement</inlineHelpText>
+    <label>Main Relationship Agreement</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

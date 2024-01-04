@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Category</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Accomodation</fullName>
+                <default>false</default>
+                <label>Accomodation</label>
+            </value>
+            <value>
+                <fullName>Clothing</fullName>
+                <default>false</default>
+                <label>Clothing</label>
+            </value>
+            <value>
+                <fullName>Communication</fullName>
+                <default>false</default>
+                <label>Communication</label>
+            </value>
+            <value>
+                <fullName>Deposits</fullName>
+                <default>false</default>
+                <label>Deposits</label>
+            </value>
+            <value>
+                <fullName>Equipment</fullName>
+                <default>false</default>
+                <label>Equipment</label>
+            </value>
+            <value>
+                <fullName>Expedition Fees</fullName>
+                <default>false</default>
+                <label>Expedition Fees</label>
+            </value>
+            <value>
+                <fullName>Insurance</fullName>
+                <default>false</default>
+                <label>Insurance</label>
+            </value>
+            <value>
+                <fullName>Liaison Expenses</fullName>
+                <default>false</default>
+                <label>Liaison Expenses</label>
+            </value>
+            <value>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+                <label>Marketing</label>
+            </value>
+            <value>
+                <fullName>Meals / Food</fullName>
+                <default>false</default>
+                <label>Meals / Food</label>
+            </value>
+            <value>
+                <fullName>Medication</fullName>
+                <default>false</default>
+                <label>Medication</label>
+            </value>
+            <value>
+                <fullName>Permits</fullName>
+                <default>false</default>
+                <label>Permits</label>
+            </value>
+            <value>
+                <fullName>Sundry</fullName>
+                <default>false</default>
+                <label>Sundry</label>
+            </value>
+            <value>
+                <fullName>Travel</fullName>
+                <default>false</default>
+                <label>Travel</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

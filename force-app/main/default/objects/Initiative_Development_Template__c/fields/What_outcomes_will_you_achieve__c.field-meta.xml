@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>What_outcomes_will_you_achieve__c</fullName>
+    <description>Enter the outcomes from the Sport NZ Intervention Logic for this Investment Area</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter the outcomes from the Sport NZ Intervention Logic for this Investment Area</inlineHelpText>
+    <label>What outcomes will you achieve?</label>
+    <length>131072</length>
+    <trackTrending>false</trackTrending>
+    <type>Html</type>
+    <visibleLines>10</visibleLines>
+</CustomField>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SUM_Payments__c</fullName>
+    <description>It calculates sum of all payments associated with Initiatives where payment status is not canceled.</description>
+    <externalId>false</externalId>
+    <label>Payments</label>
+    <summarizedField>Payment__c.Amount__c</summarizedField>
+    <summaryFilterItems>
+        <field>Payment__c.Status__c</field>
+        <operation>notEqual</operation>
+        <value>Cancelled</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Payment__c.Initiative__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

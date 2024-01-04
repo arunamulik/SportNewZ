@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Details__c</fullName>
+    <description>General Notes about Investment Schedule.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Paste a link to Board approval papers and other information to be considered when approving this Investment Schedule.</inlineHelpText>
+    <label>Details</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Html</type>
+    <visibleLines>10</visibleLines>
+</CustomField>

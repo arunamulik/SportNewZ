@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Plan_name_populated_for_search_function</fullName>
+        <field>Plan_Name_for_search__c</field>
+        <formula>P_Name__c</formula>
+        <name>Plan name populated for search function</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Approved</fullName>
+        <field>Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Status &gt; Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Draft</fullName>
+        <field>Status__c</field>
+        <literalValue>Draft</literalValue>
+        <name>Status &gt; Draft</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Pending_Approval</fullName>
+        <field>Status__c</field>
+        <literalValue>Pending Approval</literalValue>
+        <name>Status &gt; Pending Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Rejected</fullName>
+        <field>Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Status &gt; Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Uncheck_Partner_Plan</fullName>
+        <field>Partner_Plan__c</field>
+        <literalValue>0</literalValue>
+        <name>Uncheck Partner Plan</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Uncheck_Summary_Partner_Plan</fullName>
+        <field>Summary_Partner_Plan__c</field>
+        <literalValue>0</literalValue>
+        <name>Uncheck Summary Partner Plan</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>Send_Partner_Plan_Report</fullName>
+        <apiVersion>35.0</apiVersion>
+        <endpointUrl>https://workflow.congamerge.com/OBMListener.ashx</endpointUrl>
+        <fields>Id</fields>
+        <fields>Partner_Plan_Workflow__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>systemadmin@sportnz.org.nz</integrationUser>
+        <name>Send Partner Plan Report</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>Send_Summary_Partner_Plan_Report</fullName>
+        <apiVersion>35.0</apiVersion>
+        <endpointUrl>https://workflow.congamerge.com/OBMListener.ashx</endpointUrl>
+        <fields>Id</fields>
+        <fields>Summary_Partner_Plan_Workflow__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>systemadmin@sportnz.org.nz</integrationUser>
+        <name>Send Summary Partner Plan Report</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>Partner Plan - Conga Workflow</fullName>
+        <actions>
+            <name>Uncheck_Partner_Plan</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Send_Partner_Plan_Report</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <formula>Partner_Plan__c = TRUE</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Plan Tasks</fullName>
+        <actions>
+            <name>Plan_Task_01</name>
+            <type>Task</type>
+        </actions>
+        <actions>
+            <name>Plan_Task_02</name>
+            <type>Task</type>
+        </actions>
+        <actions>
+            <name>Plan_Task_03</name>
+            <type>Task</type>
+        </actions>
+        <actions>
+            <name>Plan_Task_04</name>
+            <type>Task</type>
+        </actions>
+        <actions>
+            <name>Plan_Task_05</name>
+            <type>Task</type>
+        </actions>
+        <actions>
+            <name>Plan_Task_06</name>
+            <type>Task</type>
+        </actions>
+        <actions>
+            <name>Plan_Task_07</name>
+            <type>Task</type>
+        </actions>
+        <actions>
+            <name>Plan_Task_08</name>
+            <type>Task</type>
+        </actions>
+        <actions>
+            <name>Plan_Task_09</name>
+            <type>Task</type>
+        </actions>
+        <actions>
+            <name>Plan_Task_10</name>
+            <type>Task</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Plan__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Partner Plan</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Plan name for search function</fullName>
+        <actions>
+            <name>Plan_name_populated_for_search_function</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Plan__c.P_Name__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>on creation the plan name is copied to the plan name for search field</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Summary Partner Plan - Conga Workflow</fullName>
+        <actions>
+            <name>Uncheck_Summary_Partner_Plan</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Send_Summary_Partner_Plan_Report</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <formula>Summary_Partner_Plan__c = TRUE</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <tasks>
+        <fullName>Plan_Task_01</fullName>
+        <assignedToType>owner</assignedToType>
+        <dueDateOffset>-100</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Plan__c.Start_Date__c</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Open</status>
+        <subject>Create Draft Partner Plan</subject>
+    </tasks>
+    <tasks>
+        <fullName>Plan_Task_02</fullName>
+        <assignedToType>owner</assignedToType>
+        <dueDateOffset>-90</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Plan__c.Start_Date__c</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Open</status>
+        <subject>Gain Internal Agreement of Plan Content</subject>
+    </tasks>
+    <tasks>
+        <fullName>Plan_Task_03</fullName>
+        <assignedToType>owner</assignedToType>
+        <dueDateOffset>-75</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Plan__c.Start_Date__c</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Open</status>
+        <subject>Prioritize Initiatives</subject>
+    </tasks>
+    <tasks>
+        <fullName>Plan_Task_04</fullName>
+        <assignedToType>owner</assignedToType>
+        <dueDateOffset>-60</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Plan__c.Start_Date__c</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Open</status>
+        <subject>Gain Agreement of Plan Content with Partner</subject>
+    </tasks>
+    <tasks>
+        <fullName>Plan_Task_05</fullName>
+        <assignedToType>owner</assignedToType>
+        <dueDateOffset>-30</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Plan__c.Start_Date__c</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Open</status>
+        <subject>Business Case Approval</subject>
+    </tasks>
+    <tasks>
+        <fullName>Plan_Task_06</fullName>
+        <assignedToType>owner</assignedToType>
+        <dueDateOffset>365</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Plan__c.Start_Date__c</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Open</status>
+        <subject>Annual Review</subject>
+    </tasks>
+    <tasks>
+        <fullName>Plan_Task_07</fullName>
+        <assignedToType>owner</assignedToType>
+        <dueDateOffset>730</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Plan__c.Start_Date__c</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Open</status>
+        <subject>Annual Review</subject>
+    </tasks>
+    <tasks>
+        <fullName>Plan_Task_08</fullName>
+        <assignedToType>owner</assignedToType>
+        <dueDateOffset>1095</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Plan__c.Start_Date__c</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Open</status>
+        <subject>Annual Review</subject>
+    </tasks>
+    <tasks>
+        <fullName>Plan_Task_09</fullName>
+        <assignedToType>owner</assignedToType>
+        <dueDateOffset>1185</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Plan__c.Start_Date__c</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Open</status>
+        <subject>Prepare for Next Planning Period</subject>
+    </tasks>
+    <tasks>
+        <fullName>Plan_Task_10</fullName>
+        <assignedToType>owner</assignedToType>
+        <dueDateOffset>1460</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Plan__c.Start_Date__c</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Open</status>
+        <subject>Close Down the Plan</subject>
+    </tasks>
+</Workflow>

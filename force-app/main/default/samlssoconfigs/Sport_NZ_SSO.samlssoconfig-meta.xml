@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamlSsoConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <identityLocation>SubjectNameId</identityLocation>
+    <identityMapping>FederationId</identityMapping>
+    <issuer>http://login.sportnzgroup.org.nz/adfs/services/trust</issuer>
+    <loginUrl>https://login.sportnzgroup.org.nz/adfs/ls/</loginUrl>
+    <logoutUrl>https://sportnzgroup.my.salesforce.com</logoutUrl>
+    <name>Auto Log-in</name>
+    <oauthTokenEndpoint>https://sportnzgroup--preprod.sandbox.my.salesforce.com/services/oauth2/token?so=00D0T0000000qRi</oauthTokenEndpoint>
+    <redirectBinding>true</redirectBinding>
+    <requestSignatureMethod>0</requestSignatureMethod>
+    <requestSigningCertId>0P16F0000004EVs</requestSigningCertId>
+    <salesforceLoginUrl>https://sportnzgroup--preprod.sandbox.my.salesforce.com?so=00D0T0000000qRi</salesforceLoginUrl>
+    <samlEntityId>https://sportnzgroup.my.salesforce.com</samlEntityId>
+    <samlVersion>SAML2_0</samlVersion>
+    <useConfigRequestMethod>false</useConfigRequestMethod>
+    <useSameDigestAlgoForSigning>false</useSameDigestAlgoForSigning>
+    <userProvisioning>false</userProvisioning>
+    <validationCert>MIIDDjCCAfagAwIBAgIQMs5vKs3xqqxMy5lddqXITDANBgkqhkiG9w0BAQUFADAwMS4wLAYDVQQDEyVBREZTU2lnbmluZy1sb2dpbi5zcG9ydG56Z3JvdXAub3JnLm56MB4XDTE1MDgxNDAwMjEyNloXDTE4MDgxMzAwMDAwMFowMDEuMCwGA1UEAxMlQURGU1NpZ25pbmctbG9naW4uc3BvcnRuemdyb3VwLm9yZy5uejCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANOlmmkqzVU6Cl2nZeODNn1VzkNklDurcjp2Le2ZO4ahfWjtQx6WjK7XDXA3qCtFK+DeEZoyadBeXgm0c1NjVaf5HhGl/nbkFoxSouaK1h5CcDXrxjdDYwpetaL4wVcch4nf2xEZbV+InBPT9racBeOjx0Tv41dLp+x9C/sjB70L9UGP0F+B5BHGTH5jzDkfrJ4F6L9qXIPYAnka1KDeH9McQNoXbivH6mJvAyeG+eDlLUZujWcs3INKajmkQ996yGbGeu8giWnlZpM/Vo7HhSxOmWIZULNfmlPbp0uptckMpeUhQXmDRGhYn3e3/U/c4vLZAOwMAg2zZERtIWJEHccCAwEAAaMkMCIwCwYDVR0PBAQDAgSwMBMGA1UdJQQMMAoGCCsGAQUFBwMBMA0GCSqGSIb3DQEBBQUAA4IBAQAI137B73o4upckZGdsLNt7bqw6MjTagbAnhIs/L+X0JVB0pke6o2n7CV8krpi5Q520onB0IwBU+78d1O49GovtrpIlZ3/V5EbHHegxgKG/GGHexX4Cvei9zCXSk8g90vvRbaqdlnkACB5DJQJX1E0IbGnd55tfF9GGukwVavQOtQ3qd/DCK1xFu5lopEIaheF6CD+Kvc3g2qToltgsRNqmOYwzw/MsndBv2l+opynn/24FEKuqYEDHPTTXxrT20uijt4r6hJBWq7dddDOSo1LiMUwVsgKqz0PHW6qpFuxJ6R0KMjR5PIGISxGe9BypjJTkxQiYBhTihL59gLX367zC</validationCert>
+</SamlSsoConfig>

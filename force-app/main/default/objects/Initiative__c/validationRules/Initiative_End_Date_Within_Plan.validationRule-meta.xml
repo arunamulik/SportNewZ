@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Initiative_End_Date_Within_Plan</fullName>
+    <active>true</active>
+    <description>The Initiative End Date must be within the timeframe set on the related Plan.</description>
+    <errorConditionFormula>End_Date__c  &gt;   Plan__r.End_Date__c</errorConditionFormula>
+    <errorMessage>Initiative End Date must be within the selected Planning Period</errorMessage>
+</ValidationRule>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Scheduled_Payments</fullName>
+    <columns>NAME</columns>
+    <columns>Invoice_Number_Link__c</columns>
+    <columns>Partner__c</columns>
+    <columns>Amount__c</columns>
+    <columns>Date__c</columns>
+    <columns>Initiative__c</columns>
+    <columns>Description__c</columns>
+    <columns>Pending_Requirements__c</columns>
+    <columns>Overdue_Requirements__c</columns>
+    <columns>GL_Code__c</columns>
+    <columns>Status__c</columns>
+    <columns>Organisation_Flag__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Scheduled</value>
+    </filters>
+    <label>Scheduled Payments</label>
+</ListView>

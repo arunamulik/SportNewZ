@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Paid__c</fullName>
+    <externalId>false</externalId>
+    <label>Paid</label>
+    <summarizedField>Payment__c.Amount__c</summarizedField>
+    <summaryFilterItems>
+        <field>Payment__c.Status__c</field>
+        <operation>equals</operation>
+        <value>Paid, Processed</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Payment__c.RecordTypeId</field>
+        <operation>equals</operation>
+        <value>Payment, Credit, Refund, Payment Read Only, Credit Read Only, Refund Read Only</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Payment__c.Initiative__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

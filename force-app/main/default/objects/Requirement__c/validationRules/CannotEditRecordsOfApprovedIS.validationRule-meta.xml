@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CannotEditRecordsOfApprovedIS</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(OR(ISPICKVAL(Initiative__r.Business_Case__r.Status__c , &apos;Approved&apos;),ISPICKVAL(Initiative__r.Business_Case__r.Status__c , &apos;Signed&apos;)), $Profile.Name !=&apos;System Administrator&apos;,OR(ISCHANGED(Name),ISCHANGED(Initiative__c),ISCHANGED(Due_Date__c ),ISCHANGED(Description__c)))</errorConditionFormula>
+    <errorMessage>Woops! Current business rules will correctly prevent you from editing these fields. To proceed, you must Initiate a Variation.</errorMessage>
+</ValidationRule>

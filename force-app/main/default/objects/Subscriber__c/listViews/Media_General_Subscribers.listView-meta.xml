@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Media_General_Subscribers</fullName>
+    <columns>NAME</columns>
+    <columns>First_Name__c</columns>
+    <columns>Last_Name__c</columns>
+    <columns>Email_Address__c</columns>
+    <columns>Organisation__c</columns>
+    <columns>Subscribed__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Subscriber__c.Media</value>
+    </filters>
+    <filters>
+        <field>General_Media__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Media (General) Subscribers</label>
+</ListView>

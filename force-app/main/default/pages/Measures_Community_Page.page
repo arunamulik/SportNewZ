@@ -1,0 +1,173 @@
+<apex:page standardController="Measure__c" tabStyle="Measure__c">      
+    <apex:form >
+    <apex:sectionHeader title="Measure" subtitle="{!Measure__c.name}"/>
+    <apex:outputLink value="{!$Page.Initiative_Page}">Back to list</apex:outputLink>    
+    <apex:pageBlock title="Measure Detail">
+            <apex:pageBlockSection title="Information">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Name</apex:outputLabel>                       
+                    <apex:outputField value="{!Measure__c.Name}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Result Achieved</apex:outputLabel>                       
+                    <apex:outputField value="{!Measure__c.Result_Achieved_Icon__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Measure ID</apex:outputLabel>                       
+                    <apex:outputField value="{!Measure__c.Measure_ID__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Status</apex:outputLabel>                       
+                    <apex:outputField value="{!Measure__c.Status__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Organisation</apex:outputLabel>                       
+                    <apex:outputField value="{!Measure__c.Partner__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Reporting Type</apex:outputLabel>                       
+                    <apex:outputField value="{!Measure__c.Reporting_Type__c}" label="Name"/>
+                </apex:pageBlockSectionItem>     
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Description">               
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Description</apex:outputLabel>                       
+                    <apex:outputField value="{!Measure__c.Description__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Instructions</apex:outputLabel>                
+                    <apex:outputField value="{!Measure__c.Instructions__c}" label="Name"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <!-- If recordtype is Currency-->
+            <apex:outputPanel rendered="{!Measure__c.Recordtype.Name == 'Currency Completed' || Measure__c.Recordtype.Name == 'Currency'}">        
+                <apex:pageBlockSection title="Baseline, Target and Result">         
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Baseline</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Baseline_Currency__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Baseline Date</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Baseline_Date__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Target</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Target_Currency__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Target Date</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Target_Date__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Result</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Result_Currency__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Result Date</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Result_Date__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+            
+            <!-- If recordtype is Number-->
+            <apex:outputPanel rendered="{!Measure__c.Recordtype.Name == 'Number Completed' || Measure__c.Recordtype.Name == 'Number'}"> 
+            {!Measure__c.Recordtype.Name}       
+                <apex:pageBlockSection title="Baseline, Target and Result">         
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Baseline</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Baseline_Number__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Baseline Date</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Baseline_Date__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Target</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Target_Number__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Target Date</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Target_Date__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Result</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Result_Number__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Result Date</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Result_Date__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+            
+            <!-- If recordtype is Percent-->
+            <apex:outputPanel rendered="{!Measure__c.Recordtype.Name == 'Percent Completed' || Measure__c.Recordtype.Name == 'Percent'}">        
+                <apex:pageBlockSection title="Baseline, Target and Result">         
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Baseline</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Baseline_Percent__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Baseline Date</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Baseline_Date__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Target</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Target_Percent__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Target Date</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Target_Date__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Result</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Result_Percent__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Result Date</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Result_Date__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+            
+            <!-- If recordtype is Text-->
+            <apex:outputPanel rendered="{!Measure__c.Recordtype.Name == 'Text Completed' || Measure__c.Recordtype.Name == 'Text'}">        
+                <apex:pageBlockSection title="Baseline, Target and Result">         
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Baseline</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Baseline_Text__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Baseline Date</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Baseline_Date__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Target</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Target_Text__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Target Date</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Target_Date__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Result</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Result_Rich_Text__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Result Date</apex:outputLabel>                       
+                        <apex:outputField value="{!Measure__c.Result_Date__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!edit}" value="Edit" reRender="op1"/>
+            </apex:pageBlockButtons>
+         </apex:pageBlock>
+     </apex:form>
+     <apex:relatedList subject="{!Measure__c}" list="CombinedAttachments" />
+</apex:page>

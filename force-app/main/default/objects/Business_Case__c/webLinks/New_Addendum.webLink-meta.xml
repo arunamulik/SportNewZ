@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Addendum</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>New Addendum</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>/{!$Setup.LookupFields__c.Business_Case_Tab__c}/e?{!$Setup.LookupFields__c.Business_Case_Parent_Business_Case__c}={!Business_Case__c.Name}&amp;{!$Setup.LookupFields__c.Business_Case_Parent_Business_Case__c}_lkid={!Business_Case__c.Id}&amp;RecordType={!$Setup.RecordTypes__c.Business_Case_Business_Case_Addendum__c}</url>
+</WebLink>

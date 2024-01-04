@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Payment__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Related Payment</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>1 AND (((2 OR 8) AND 3) OR ((4 OR 9) AND 5) OR (6 OR 10)) AND 7</booleanFilter>
+        <filterItems>
+            <field>$Source.Initiative__c</field>
+            <operation>equals</operation>
+            <valueField>Payment__c.Initiative__c</valueField>
+        </filterItems>
+        <filterItems>
+            <field>$Source.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Credit</value>
+        </filterItems>
+        <filterItems>
+            <field>Payment__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Sent for Payment, Paid</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Refund</value>
+        </filterItems>
+        <filterItems>
+            <field>Payment__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Paid</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Buy Back</value>
+        </filterItems>
+        <filterItems>
+            <field>Payment__c.RecordType.Name</field>
+            <operation>equals</operation>
+            <value>Payment,Payment Read Only</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Credit Read Only</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Refund Read Only</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Buy Back Read Only</value>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>Payment__c</referenceTo>
+    <relationshipLabel>Credits</relationshipLabel>
+    <relationshipName>Payments</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

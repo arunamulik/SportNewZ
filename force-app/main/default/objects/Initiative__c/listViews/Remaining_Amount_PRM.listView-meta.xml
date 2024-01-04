@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Remaining_Amount_PRM</fullName>
+    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Planned__c</columns>
+    <columns>Remaining__c</columns>
+    <columns>Start_Date__c</columns>
+    <columns>End_Date__c</columns>
+    <columns>Investment_Area__c</columns>
+    <columns>Strategic_Area__c</columns>
+    <columns>Approved__c</columns>
+    <columns>Paid__c</columns>
+    <columns>Refunded__c</columns>
+    <columns>Scheduled__c</columns>
+    <columns>Draft__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Remaining__c</field>
+        <operation>notEqual</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>PRM</value>
+    </filters>
+    <filters>
+        <field>End_Date__c</field>
+        <operation>lessThan</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>Remaining Amount on PRM Initiatives</label>
+</ListView>

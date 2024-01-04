@@ -1,0 +1,254 @@
+<apex:page standardController="Initiative__c" extensions="RequirementReportingController" tabStyle="Initiative__c" lightningstylesheets="true">      
+    <style>
+        
+        .vfHelpText a            {position:relative;}
+        .vfHelpText a span       {display: none;}
+        .vfHelpText a:hover span {display: block;
+        position:absolute;
+        top:1.05em;
+        padding:2px 5px;
+        right:1em; width:17em;  
+        background-color:#FEFDB9;
+        color:black;
+        }
+        .fileMultiUploadOverlay .buttonBar #multiUploadSharingSettingsBtn{
+        display:none !important;
+        }
+        .dataCell{
+        text-decoration:none;
+        }
+        .actionColumn a:first-child {
+        display: none;
+        }
+        .cke_top {
+        display: none;
+        }
+        .cke_contents, .cke_reset{
+        height:150px;
+        }
+        .cke_contents, .cke_reset {
+        height: 150px !important;
+        }
+    </style>
+    <script>
+    setTimeout("scroll(0, 0)", 300);
+    setTimeout("scroll(0, 0)", 500);
+    setTimeout("scroll(0, 0)", 800);    
+    </script>
+    
+    <apex:form id="formid">
+        <apex:pageMessages />
+        <apex:sectionHeader title="Initiative" subtitle="{!Initiative__c.name}"/>
+            <apex:outputLink value="{!$Page.Initiative_Page}">Back to list</apex:outputLink>    
+            <apex:pageBlock title="Initiative Detail">
+               <!-- <apex:pageBlockSection title="Year">
+                     <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Select Year</apex:outputLabel>  
+                          <apex:selectList  multiselect="false" size="1">
+                            <apex:selectOption itemValue="Year1" itemLabel="Year1"/>
+                            <apex:selectOption itemValue="Year2" itemLabel="Year2"/>
+                            <apex:selectOption itemValue="Year3" itemLabel="Year3"/>
+                            <apex:selectOption itemValue="Year4" itemLabel="Year4"/>
+                        </apex:selectList>
+                     </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>-->
+                <apex:pageBlockSection title="Information">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Name</apex:outputLabel>                       
+                        <apex:outputField value="{!Initiative__c.name}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Start Date</apex:outputLabel>                       
+                        <apex:outputField value="{!Initiative__c.Start_Date__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >Organisation</apex:outputLabel>                       
+                        <apex:outputField value="{!Initiative__c.Partner__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel >End Date</apex:outputLabel>                       
+                        <apex:outputField value="{!Initiative__c.End_Date__c}" label="Name"/>
+                    </apex:pageBlockSectionItem>     
+                </apex:pageBlockSection>
+            <apex:pageBlockSection title="Description" >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Description</apex:outputLabel>
+                    <apex:outputField value="{!Initiative__c.Description__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >       
+                    <apex:outputLabel >Details</apex:outputLabel>
+                    <apex:outputField value="{!Initiative__c.Details__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+         </apex:pageBlock> 
+        
+        
+        <apex:pageBlock title="Requirement Details" >
+            <apex:pageBlockSection columns="2">
+                <apex:pageBlockSectionItem >
+            <apex:outputLabel >Name</apex:outputLabel> 
+            <apex:outputField value="{!objReq.Name}" style="width:450px;height:200px" styleClass="slds-input"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+            <apex:outputLabel >Description</apex:outputLabel> 
+            <apex:outputField value="{!objReq.Description__c}" style="width:450px;height:200px" styleClass="slds-input"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+         <apex:pageBlock title="Activities &  Measures" rendered="{!activityMeasure}" >
+            <apex:pageBlockSection columns="2">
+                      
+            <apex:outputField value="{!objIdt.What_activity_will_you_do_in_Year_1__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!year1}"/>
+            <apex:outputField value="{!objIdt.What_activity_will_you_do_in_Year_2__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!year2}"/>
+            <apex:outputField value="{!objIdt.What_activity_will_you_do_in_Year_3__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!year3}"/>
+            <apex:outputField value="{!objIdt.What_activity_will_you_do_in_Year_4__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!year4}"/>        
+              <apex:outputField value="{!objIdt.How_will_you_measure_success_in_Year_1__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!year1}"/>
+            <apex:outputField value="{!objIdt.How_will_you_measure_success_in_Year_2__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!year2}"/>
+            <apex:outputField value="{!objIdt.How_will_you_measure_success_in_Year_3__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!year3}"/>
+            <apex:outputField value="{!objIdt.How_will_you_measure_success_in_Year_4__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!year4}"/>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        
+        
+        <!-- Output panel to display Reporting Details -->
+         <apex:outputPanel rendered="{!editReport}" id="op1">
+            
+            <apex:pageBlock title="Reporting Details" >
+                
+                <apex:pageBlockSection columns="2">
+                    <!--apex:outputField value="{!objReport.Name}" styleClass="slds-input" rendered="{!natCSRubricReport || caseStudy ||regCSRubricReport ||CSBoardDiversity||CSBoardDiversityReadOnly }" /><br/-->
+                    <apex:inputField value="{!objReport.How_much_did_you_do__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!caseStudy}"/>
+                    <apex:inputField value="{!objReport.How_well_did_you_do_it__c}" style="width:450px;height:200px" styleClass="inputClass,slds-input" rendered="{!caseStudy}"/>
+                    <apex:inputField value="{!objReport.What_impact_did_this_have__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!caseStudy}"/>
+                    <apex:inputField value="{!objReport.What_were_your_learnings__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!caseStudy}"/>
+                    
+                    <apex:inputField value="{!objReport.How_well_are_you_delivering_2__c}" label="How well are you delivering against this initiative?" style="width:450px;height:200px" styleClass="slds-input" rendered="{!caseStudy2}"/>
+                    <apex:inputField value="{!objReport.What_impact_is_this_having_2__c}" label=" What impact is this having on your selected outcomes?" style="width:450px;height:200px" styleClass="slds-input" rendered="{!caseStudy2}"/>
+				    <apex:inputField value="{!objReport.What_are_you_learning_2__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!caseStudy2}"/>
+                        
+                                  
+                    <apex:inputField value="{!objReport.Case_study_name__c}" style="width:450px;" styleClass="slds-input" rendered="{!caseStudyField}"/>
+                    <apex:inputField value="{!objReport.Value_of_Auckland__c}"  style="width:250px;" styleClass="slds-input" rendered="{!natCSRubricReport && caseStudy}"/>
+                    <apex:inputField value="{!objReport.Value_of_Young_People__c}" style="width:250px;" styleClass="slds-input" rendered="{!regCSRubricReport && caseStudy}"/>
+                    
+                </apex:pageBlockSection>
+                
+                <apex:pageBlockSection columns="2">
+                    <apex:outputField value="{!objReport.How_much_did_you_do__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!ReadonlyMode}"/>
+                    <apex:outputField value="{!objReport.How_well_did_you_do_it__c}" style="width:450px;height:200px" styleClass="inputClass,slds-input" rendered="{!ReadonlyMode}"/>
+                    <apex:outputField value="{!objReport.What_impact_did_this_have__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!ReadonlyMode}"/>
+                    <apex:outputField value="{!objReport.What_were_your_learnings__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!ReadonlyMode}"/>
+                    <apex:outputField value="{!objReport.Case_study_name__c}" style="width:450px;" styleClass="slds-input" rendered="{!ReadonlyMode}"/>
+                    <apex:outputField value="{!objReport.Value_of_Auckland__c}"  style="width:250px;" styleClass="slds-input" rendered="{!ReadonlyMode }"/>
+                    <apex:outputField value="{!objReport.Value_of_Young_People__c}" style="width:250px;" styleClass="slds-input" rendered="{!ReadonlyMode}"/>
+                     <apex:inputField value="{!objReport.How_well_are_you_delivering_2__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!ReadonlyMode}"/>
+                    <apex:inputField value="{!objReport.What_impact_is_this_having_2__c}" style="width:450px;height:200px" styleClass="slds-input"  rendered="{!ReadonlyMode}"/>
+                    <apex:inputField value="{!objReport.What_are_you_learning_2__c}" style="width:450px;height:200px" styleClass="slds-input" rendered="{!ReadonlyMode}"/>
+                </apex:pageBlockSection>
+
+  <apex:pageBlockSection rendered="{!CSBoardDiversity}" columns="1">
+                    <apex:inputField label=" Number of women board members" value="{!objReport.BD_Total_female__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:inputField label="Number of men board members" value="{!objReport.BD_Total_male__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:inputField label="Number of gender diverse board members" value="{!objReport.BD_Total_gender_diverse__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:inputField label="Number of vacant board seats" value="{!objReport.BD_board_vacancies__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:outputText label="Total number of board members" value="{!BD_total_board_members}" />
+                </apex:pageBlockSection>
+                <apex:pageBlockSection rendered="{!CSBoardDiversity}" columns="2">
+                    <apex:inputField label="What will you do over the next year to maintain or reach the 40% target? " style="height: 150px; " value="{!objReport.BD_reach_target__c}"  styleClass="textAreaField,inputClass,slds-input"/>                
+                </apex:pageBlockSection>
+                <apex:pageBlockSection rendered="{!CSBoardDiversityReadOnly}" columns="1">
+                    <apex:inputfield label=" Number of women board members" value="{!objReport.BD_Total_female__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:inputfield label="Number of men board members" value="{!objReport.BD_Total_male__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:inputfield label="Number of gender diverse board members" value="{!objReport.BD_Total_gender_diverse__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:inputfield label="Number of vacant board seats" value="{!objReport.BD_board_vacancies__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:outputtext label="Total number of board members" value="{!BD_total_board_members}" />
+                </apex:pageBlockSection>
+                <apex:pageBlockSection rendered="{!CSBoardDiversityReadOnly}" columns="2">
+                    <apex:inputField label="What will you do over the next year to maintain or reach the 40% target? " style="height: 150px; " value="{!objReport.BD_reach_target__c}"  styleClass="textAreaField,inputClass,slds-input"/>                
+                </apex:pageBlockSection>                
+                <apex:pageBlockSection rendered="{!CSBoardDiversity}" columns="1">
+                    <apex:inputfield label="# Women Managers" value="{!objReport.Female_Managers__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:inputfield label="# Men Managers" value="{!objReport.Male_Managers__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:inputfield label="# Gender Diverse Managers" value="{!objReport.Gender_Diverse_Managers__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:inputfield label="Gender of your CEO" value="{!objReport.Gender_of_your_CEO__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:inputfield label="Gender of your Board Chair" value="{!objReport.Gender_of_your_Board_Chair__c}"  styleClass="inputClass,slds-input"/>
+                </apex:pageBlockSection>
+                
+                <apex:pageBlockSection rendered="{!CSBoardDiversityReadOnly}" columns="1">
+                    <apex:inputfield label="# Women Managers" value="{!objReport.Female_Managers__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:inputfield label="# Men Managers" value="{!objReport.Male_Managers__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:inputfield label="# Gender Diverse Managers" value="{!objReport.Gender_Diverse_Managers__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:inputfield label="Gender of your CEO" value="{!objReport.Gender_of_your_CEO__c}"  styleClass="inputClass,slds-input"/>
+                    <apex:inputfield label="Gender of your Board Chair" value="{!objReport.Gender_of_your_Board_Chair__c}"  styleClass="inputClass,slds-input"/>
+                </apex:pageBlockSection>
+
+
+            </apex:pageBlock>
+             
+             <apex:pageBlock title="Self Assessement Rating" rendered="{!selfassesmentField}" >
+                <apex:pageBlockSection >
+                 <apex:inputField label="Self Assessement Rating" value="{!objReport.Self_review_rating__c}"  styleClass="inputClass,slds-input"/>
+                 
+                </apex:pageBlockSection>
+                
+             </apex:pageBlock>
+             <apex:outputField value="{!objReport.Self_review_rating__c}" style="width:450px;height:200px" styleClass="slds-input"/>
+            <!-- Footer to display button for Reporting Details -->
+            <footer class="slds-modal__footer" style="margin-bottom: 1%;">
+                <div align="center" draggable="true" rendered="{!isSubmitted}">
+                    <!-- Disable button till loading-->
+                    <apex:actionStatus id="go">
+                        <apex:facet name="stop">                  
+                          <!--  <apex:commandButton id="cmd1"  action="{!saveMethod}" value="Save" styleclass="slds-button slds-button_brand" status="go" disabled="false" rerender="go"/>-->
+                             <apex:commandButton action="{!saveMethod}" value="Save" styleclass="slds-button slds-button_brand" status="go" disabled="false" />
+                                                  </apex:facet>
+                        <apex:facet name="start">
+                           <apex:commandButton status="go" value="Saving..." disabled="true" />
+                        </apex:facet>
+                    </apex:actionStatus>
+                    
+                     <apex:commandButton action="{!submitMethod}" value="Submit" styleclass="slds-button slds-button_brand" rendered="{!requirementStatusSubmit}" />
+                   
+                    <!--  rendered="" ->
+
+
+                    <!--<apex:commandButton id="cmd1"  action="{!saveMethod}" value="Save" styleclass="slds-button slds-button_brand"/>-->
+                    <apex:commandButton action="{!cancelMethod}"  value="Cancel" styleclass="slds-button slds-button_neutral" immediate="true"/>
+                </div>
+            </footer>
+         </apex:outputPanel>
+        
+        
+         <!-- Output panel to display Reporting Details in Read Only Mode -->
+         <apex:outputPanel rendered="{!readOnlyReport}">
+            <apex:pageBlock title="Reporting Details">
+                <apex:pageBlockSection columns="2">
+                    <!--apex:outputField value="{!objReport.Name}" styleClass="slds-input" rendered="{!natCSRubricReport || caseStudy ||regCSRubricReport ||CSBoardDiversity ||CSBoardDiversityReadOnly }"/><br/-->
+                    <apex:outputField value="{!objReport.How_much_did_you_do__c}"  styleClass="slds-input" rendered="{!caseStudy}"/>
+                    <apex:outputField value="{!objReport.How_well_did_you_do_it__c}" styleClass="slds-input"  rendered="{!caseStudy}" />
+                    <apex:outputField value="{!objReport.What_impact_did_this_have__c}" styleClass="slds-input" rendered="{!caseStudy}"/>
+                    <apex:outputField value="{!objReport.What_were_your_learnings__c}" styleClass="slds-input" rendered="{!caseStudy}"/>
+                    <apex:outputField value="{!objReport.Case_study_name__c}" styleClass="slds-input" rendered="{!caseStudyField}"/>
+                    <apex:outputField value="{!objReport.Value_of_Auckland__c}" styleClass="slds-input" rendered="{!auckland}" />
+                    <!--apex:outputField value="{!objReport.Value_of_Auckland__c}" styleClass="slds-input" rendered="{!natCSRubricReport && caseStudy}" /-->
+                    <apex:outputField value="{!objReport.Value_of_Young_People__c}" styleClass="slds-input" rendered="{!regCSRubricReport && caseStudy}"/>
+               </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+    <!-- Output Panel to display related list -->
+    <apex:outputPanel rendered="{!enableAttachment}" >
+        <apex:relatedList subject="{!objReport}" list="AttachedContentDocuments"/>
+    </apex:outputPanel>
+    
+    <!-- Output Panel to display disabled related list -->
+    <apex:outputPanel rendered="{!disableAttachment}" >
+        <apex:relatedList subject="{!objReport}" list="AttachedContentDocuments" >
+            <apex:facet name="header">&nbsp;</apex:facet>
+        </apex:relatedList>
+     <style> [Class*='actionColumn'] { display:none; visibility:hidden; } </style>
+     </apex:outputPanel>
+</apex:page>

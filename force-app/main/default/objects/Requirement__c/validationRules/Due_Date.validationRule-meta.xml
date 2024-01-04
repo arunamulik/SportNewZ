@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Due_Date</fullName>
+    <active>true</active>
+    <description>Ensures the due date for a new Requirement cannot be backdated in the past.</description>
+    <errorConditionFormula>isnew() &amp;&amp; Due_Date__c &lt;= today()</errorConditionFormula>
+    <errorDisplayField>Due_Date__c</errorDisplayField>
+    <errorMessage>The Due Date for a new Requirement must be a future date.</errorMessage>
+</ValidationRule>

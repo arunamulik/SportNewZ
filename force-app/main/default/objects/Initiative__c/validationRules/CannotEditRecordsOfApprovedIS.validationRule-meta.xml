@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CannotEditRecordsOfApprovedIS</fullName>
+    <active>true</active>
+    <description>This rule will prevent the edit of specific fields on Approved or Signed status of Investment Schedule.</description>
+    <errorConditionFormula>AND(OR( Status__c = &apos;Approved&apos;,Status__c = &apos;Scheduled&apos;), $Profile.Name =&apos;Kahiwi&apos;,OR(ISCHANGED(Name),ISCHANGED(Investment_Area__c),ISCHANGED(Initiative_Owner__c),ISCHANGED(Priority__c),ISCHANGED(Type__c),ISCHANGED(End_Date__c),ISCHANGED(Start_Date__c),ISCHANGED(Plan__c),ISCHANGED(Planned__c)))</errorConditionFormula>
+    <errorMessage>Woops! Current business rules will correctly prevent you from editing these fields. To proceed, you must Initiate a Variation.</errorMessage>
+</ValidationRule>

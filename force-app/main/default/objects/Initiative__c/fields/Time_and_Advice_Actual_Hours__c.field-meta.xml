@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Time_and_Advice_Actual_Hours__c</fullName>
+    <description>A &apos;Time &amp; Advice&apos; initiative is considered closed when the End Date has past and a value is entered into this field.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Estimate actual hours to nearest half day.  Enter this only after the initiative has been completed.  Once this field is populated and the Initiative End Date has passed, the Initiative status will automatically change to &apos;Closed&apos;.</inlineHelpText>
+    <label>Time and Advice – Actual Hours</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

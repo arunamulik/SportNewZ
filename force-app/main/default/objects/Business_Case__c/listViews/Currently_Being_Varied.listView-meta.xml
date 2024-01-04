@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Currently_Being_Varied</fullName>
+    <columns>Investment_Schedule_ID__c</columns>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>Organisation__c</columns>
+    <columns>Investment_Area_Available_Budget_Image__c</columns>
+    <columns>Total_Amount__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Variation_Count__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Being Varied</value>
+    </filters>
+    <label>Currently Being Varied</label>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

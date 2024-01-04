@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Role__c</fullName>
+    <externalId>false</externalId>
+    <label>Role</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Coach</fullName>
+                <default>false</default>
+                <label>Coach</label>
+            </value>
+            <value>
+                <fullName>Athlete</fullName>
+                <default>false</default>
+                <label>Athlete</label>
+            </value>
+            <value>
+                <fullName>Parent/Guardian</fullName>
+                <default>false</default>
+                <label>Parent/Guardian</label>
+            </value>
+            <value>
+                <fullName>Sport Leader/Administrator</fullName>
+                <default>false</default>
+                <label>Sport Leader/Administrator</label>
+            </value>
+            <value>
+                <fullName>Volunteer</fullName>
+                <default>false</default>
+                <label>Volunteer</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Rangatahi</fullName>
+                <default>false</default>
+                <label>Rangatahi</label>
+            </value>
+            <value>
+                <fullName>Teacher</fullName>
+                <default>false</default>
+                <label>Teacher</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Incomplete_Requirements__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Number of requirements related to this Strategic Area with the status of &apos;Pending&apos; or &apos;Overdue&apos;</inlineHelpText>
+    <label>Incomplete Requirements</label>
+    <summarizedField>Investment_Area__c.Incomplete_Requirements__c</summarizedField>
+    <summaryForeignKey>Investment_Area__c.Strategic_Area__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

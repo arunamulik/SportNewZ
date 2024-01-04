@@ -1,0 +1,801 @@
+<apex:page standardController="Business_Case__c"
+    extensions="InitiativeSchedule,SendPDFAgreementReport" docType="html-5.0" renderAs="pdf"
+    showHeader="false" sidebar="false" action="{!emailLeadPdf}"
+    standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false" >
+    <html>
+<head> 
+    <style>
+        body { font-family: 'Arial Unicode MS'; }
+    </style>
+    <style type="text/css" media="print">
+            <apex:outputPanel layout="none" rendered="{!IF(Business_Case__c.Status__c == 'Being Varied', true, false)}">
+            .watermark {
+                background-repeat: repeat;
+                background-image: url("{!URLFOR($Resource.Variation_Watermark)}");
+            }
+        </apex:outputPanel>
+        <apex:outputPanel layout="none" rendered="{!IF(Business_Case__c.Status__c == 'Pending Approval', true, false)}">
+            .watermark {
+                background-repeat: repeat;
+                background-image: url("{!URLFOR($Resource.PendingApprovalWatermark)}");
+            }
+        </apex:outputPanel>
+    </style>
+    
+<style type="text/css">
+@page {
+    margin-bottom: 2cm; @bottom-right { content : counter( page);
+    color: #808080; 
+}
+
+@bottom-left {
+    content: element(footer);
+}
+
+}
+div.footer {
+    display: block;
+    margin-left: 30px;
+    font-family:Arial Unicode MS;
+    font: 11pt;
+    position: running(footer);
+}
+
+.page-break {
+    display: block;
+    page-break-after: always;
+}
+
+
+
+.tablewidth {
+    width: 90%;
+    margin-left: 30px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.tablewidth1 {
+    width: 90%;
+    border-collapse: collapse;
+    border: 1px solid black;
+    border-spacing: 0;
+    margin-left: 30px;
+    -fs-table-paginate: paginate;
+    cellspacing: "0";
+    cellpadding: "0";
+}
+
+.divmargin {
+    margin-left: 30px;
+}
+
+.tablebold {
+    font-weight: bold;
+    font-family:Arial Unicode MS;
+    font: bold 11pt;
+    valign: "top";
+    vertical-align: top;
+}
+
+.tablewidth1 td {
+    font: 11pt;
+}
+
+.tncbody {
+    
+}
+
+.tnc {
+    
+}
+ol.split { list-style-type: none;list-style-position: outside; }
+    ol.split li:before
+    {
+      counter-increment: mycounter;
+      content: counter(mycounter) ".\00A0\00A0";
+     list-style-position: outside;
+      position: absolute;
+    margin-left: 70px;
+    }
+    ol.split li
+    {
+      text-align: justify;
+      font: 11pt;
+    }
+    ol.start { counter-reset: mycounter; }
+    
+</style>
+</head>
+<body class="watermark">
+    <apex:form >
+        <div class="footer">
+            <hr />
+            <apex:outputText value="{!objBusinessCase.Name}"
+                style="color : #808080;" />
+            <div>
+                <apex:outputText value="Investment Agreement Generated : "
+                    style="color : #808080;" />
+                <apex:outputText value="{0, date,  MMM dd, yyyy}"
+                    style="color : #808080;">
+                    <apex:param value="{!today()}"></apex:param>
+                </apex:outputText>
+            </div>
+        </div>
+
+
+        <table class="tablewidth">
+            <tr>
+                <td><br /></td>
+            </tr>
+            <tr>
+                <td style="width: 60%"><apex:OutputText style="font-family:Arial Unicode MS; font:bold 20pt"
+                        value="{!objBusinessCase.Organisation__r.Name}" /><br/>
+                    <!-- <p><apex:OutputText style="font-family:Arial Unicode MS; font:bold 18pt"
+                        value="Variation {!objBusinessCase.Variation_Count__c}" /></p>-->
+                    <p><apex:OutputText style="font-family:Arial Unicode MS;font: 16pt;"
+                        value="Investment Agreement for " /> 
+                         <apex:OutputText style="font-family:Arial Unicode MS; font: 16pt"
+                        value="{!objBusinessCase.Name}"/>
+                        <apex:OutputText style="font-family:Arial Unicode MS; font:bold 16pt"
+                        value=" - Variation {!objBusinessCase.Variation_Count__c} " rendered="{!objBusinessCase.Variation_Count__c > 0}" />
+                       </p></td>
+                <td style="text-align: right; width: 30%;"><apex:image url="{!$Resource.SportsNzlogo}" width="112.32px" height="120.96px"
+                        style="align:right" /></td>
+            </tr>        
+        </table>
+        <br />
+        <br />
+        <div class="divmargin" style="font-family:Arial Unicode MS;">
+            <!-- Update font size by RUL on 16/10/2018 as per PORT-134-->
+            <strong style="font-family:Arial Unicode MS; font: bold 14pt;">Introduction
+            </strong> <br /> <br />
+            <apex:OutputText label="" 
+                style="font-family:Arial Unicode MS;display: block;" escape="false"
+                value="{!TRIM(objBusinessCase.Executive_Summary__c)}" />
+        </div>
+ <br />
+        <div class="divmargin">
+            <table>
+                <tr>
+                    <td><strong style="font-family:Arial Unicode MS; font: bold 11pt;">Commencement
+                            Date : </strong></td>
+                    <td Style="width: 15%"></td>
+                    <td><apex:OutputText label="" value="{0, date, dd MMM yyyy}"
+                            style="font:11pt;">
+                            <apex:param value="{!objBusinessCase.Commencement_Date__c}" />
+                        </apex:OutputText></td>
+                </tr>
+
+                <tr>
+                    <td><strong style="font-family:Arial Unicode MS; font: bold 11pt;">End
+                            Date : </strong></td>
+                    <td></td>
+                    <td><apex:OutputText label="" value="{0, date, dd MMM yyyy}"
+                            style="font:11pt;">
+                            <apex:param value="{!objBusinessCase.End_Date__c}" />
+                        </apex:OutputText></td>
+                </tr>
+            </table>
+        </div>
+        
+        <div style="page-break-after: always"></div>
+        <div class="divmargin">
+             <!-- Update font size by RUL on 16/10/2018 as per PORT-134-->
+            <strong style="font-family:Arial Unicode MS; font: bold 14pt;">Initiatives
+                and related requirements and measures </strong>
+        </div>
+        <apex:repeat value="{!lstInitiative}" var="initiative">
+        <br />
+            <table class="tablewidth1" Style="border-bottom-style: none;">
+                <thead>
+                    <tr style="background-color: #b3b3b3;">
+                        <td><strong class="tablebold">Initiative: </strong> <apex:OutputText value="{!initiative.name}" styleClass="tablebold" /></td>
+                    </tr>
+
+                    <tr>
+                        <td><apex:OutputText label=""
+                                value="{!initiative.Description__c}" /></td>
+                    </tr>
+                </thead>
+            </table>
+            <table class="tablewidth1" Style="border-top-style: none;">
+                <tbody>
+                    <tr>
+                        <td style="width: 15%;"><strong class="tablebold">Start
+                                Date </strong></td>
+                        <td style="width: 35%;"><apex:OutputText label="Start Date"
+                                value="{0, date, dd MMM yyyy}">
+                                <apex:param value="{!initiative.Start_Date__c}" />
+                            </apex:OutputText></td>
+                        <td style="width: 15%;"><strong class="tablebold">End
+                                Date </strong></td>
+                        <td style="width: 35%;"><apex:OutputText label="End Date"
+                                value="{0, date, dd MMM yyyy}">
+                                <apex:param value="{!initiative.End_Date__c}" />
+                            </apex:OutputText></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 15%;"><strong class="tablebold">Type
+                        </strong></td>
+                        <td style="width: 35%;"><apex:OutputText label="Type"
+                                value="{!initiative.Type__c}" /></td>
+                        <td style="width: 15%;"><strong class="tablebold">Investment
+                        </strong></td>
+                        <td style="width: 35%;"><apex:Outputfield label="Type"
+                                value="{!initiative.Planned__c}" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+            </table>
+            
+            <apex:outputPanel rendered="{!initiative.Requirements__r.size!=0}">
+                <table class="tablewidth1">
+                    <thead>
+                        <tr style="background-color: #b3b3b3">
+                            <th class="tablebold">Requirements</th>
+                            <th class="tablebold "
+                                style="border: 1px solid Black; border-top-style: none; border-bottom-style: none;">Due
+                                Date</th>
+                            <th class="tablebold">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat value="{!mapwithInitiativeidAndMapofRequirement[initiative.Id]}"
+                            var="Requirements">
+
+                            <apex:repeat value="{!Requirements}" var="fieldKey">
+
+                                <tr>
+                                     <!-- Update font size by RUL on 16/11/2018 as per PORT-134-->
+                                    <td
+                                        style="width: 60%; font: bold 16px; border-top: 1px solid black">
+                                        
+                                            <apex:OutputText style="" label="" value="{!fieldKey}" />
+                                        </td>
+
+                                    <td
+                                        style="width: 15%; border: 1px solid Black; border-bottom-style: none;" />
+                                    <td style="width: 15%; border-top: 1px solid black" />
+
+                                </tr>
+
+                                <apex:repeat value="{!mapwithInitiativeidAndMapofRequirement[initiative.Id][fieldKey]}"
+                                    var="dueListy">
+                                    <apex:repeat value="{!dueListy}" var="q">
+                                        <tr>
+                                            <td style="width: 60%;"><apex:OutputText style=""
+                                                    label="" value="{!q.Description__c}" escape="false"/><br /></td>
+
+                                            <td
+                                                style="width: 15%; border: 1px solid Black; border-bottom-style: none; border-top-style: none; vertical-align: top;"><apex:OutputText label="" value="{0, date, dd MMM yyyy}">
+                                                    <apex:param value="{!q.Due_Date__c}" />
+                                                </apex:OutputText></td>
+                                            <td style="width: 15%; vertical-align: top;"><apex:OutputText label="" value="{!q.Status__c}" /></td>
+                                        </tr>
+                                    </apex:repeat>
+
+                                </apex:repeat>
+
+
+                                <tr>
+                                    <td style="border-top: 1px solid black; width: 60%" />
+                                    <td style="border-top: 1px solid black; width: 15%" />
+                                    <td style="border-top: 1px solid black; width: 15%" />
+                                </tr>
+                            </apex:repeat>
+
+
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </apex:outputPanel>
+
+            <apex:outputPanel rendered="{!initiative.Measures__r.size!=0}">
+                <table class="tablewidth1">
+                    <thead>
+                        <tr style="background-color: #b3b3b3">
+                            <th class="tablebold">Measures</th>
+                            <th class="tablebold"
+                                style="border: 1px solid Black; border-top-style: none; border-bottom-style: none; border-right-style: none;">Baseline</th>
+                            <th class="tablebold"
+                                style="border: 1px solid Black; border-top-style: none; border-bottom-style: none;">Target</th>
+                            <th class="tablebold">Target Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat value="{!mapwithInitiativeIdAndMapofMeasure[initiative.Id]}"
+                            var="Measures">
+
+                            <apex:repeat value="{!Measures}" var="measuresMapKey">
+
+                                <tr>
+                                     <!-- Update font size by RUL on 16/11/2018 as per PORT-134-->
+                                    <td
+                                        style="width: 45%; font: bold 16px; border-top: 1px solid black"><apex:OutputText style="" label=""
+                                            value="{!measuresMapKey}" /></td>
+                                    <td
+                                        style="border-top: 1px solid black; border-left: 1px solid black; width: 15%" />
+                                    <td
+                                        style="width: 15%; border: 1px solid Black; border-bottom-style: none;" />
+                                    <td style="width: 15%; border-top: 1px solid black" />
+
+                                    <apex:repeat value="{!mapwithInitiativeIdAndMapofMeasure[initiative.Id][measuresMapKey]}"
+                                        var="measureList">
+                                        <apex:repeat value="{!measureList}" var="varList">
+                                            <tr>
+
+                                                <td style="width: 45%;"><apex:OutputText label=""
+                                                        value="{!varList.Description__c}" /></td>
+                                                <td
+                                                    style="width: 15%; vertical-align: top; border: 1px solid Black; border-top-style: none; border-bottom-style: none; border-right-style: none;"><apex:OutputText label="" value="{!varList.Baseline_Formula__c}" /></td>
+                                                <td
+                                                    style="width: 15%; vertical-align: top; border: 1px solid Black; border-top-style: none; border-bottom-style: none;"><apex:OutputText label="" value="{!varList.Target_Formula__c}" /></td>
+                                                <td style="width: 15%; vertical-align: top;"><apex:OutputText label="" value="{0, date, dd MMM yyyy}">
+                                                        <apex:param value="{!varList.Target_Date__c}" />
+                                                    </apex:OutputText></td>
+
+                                            </tr>
+                                        </apex:repeat>
+
+                                    </apex:repeat>
+
+                                </tr>
+                                <tr>
+                                    <td style="border-top: 1px solid black; width: 45%" />
+                                    <td style="border-top: 1px solid black; width: 15%" />
+                                    <td style="border-top: 1px solid black; width: 15%" />
+                                    <td style="border-top: 1px solid black; width: 15%" />
+                                </tr>
+                            </apex:repeat>
+
+
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </apex:outputPanel>   
+
+        </apex:repeat>
+        <div style="page-break-after: always"></div>
+        <apex:outputPanel rendered="{!lstPayment.size!=0}">
+           
+            <div class="divmargin">
+                 <!-- Update font size by RUL on 16/10/2018 as per PORT-134-->
+                <strong style="font-family:Arial Unicode MS; font: bold 14pt;">Payments</strong>
+            </div>
+            <div class="divmargin">
+                <strong style="font-family:Arial Unicode MS; font: italic 8pt;">Note
+                    that payments may be subject to satisfactory completion of
+                    requirements</strong>
+            </div>
+            <br />
+            <div class="divmargin">
+                 <!-- Update font size by RUL on 16/10/2018 as per PORT-134-->
+                <strong style="font-family:Arial Unicode MS; font: bold 14pt;">Payments
+                    by date</strong>
+            </div>
+            <table class="tablewidth1">
+                <thead>
+                    <tr style="background-color: #b3b3b3; border: 1px solid Black;">
+
+                        <th class="tablebold"
+                            style="width: 70%; border-right: 1px solid black;">Payment
+                            Scheduled Date</th>
+                        <td style="text-align: center; vertical-align: top; width: 20%;"><Strong
+                            style="font-family:Arial Unicode MS; font: bold 11pt;">Amount</Strong><br />
+                            <apex:outputText style="font-family:Arial Unicode MS ;text-align: left;font : 8pt;"
+                                value="plus GST if applicable"></apex:outputText></td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <apex:repeat value="{!mapwithPaymentDateandAmount}"
+                        var="paymentswithdateKey">
+                        <tr style="border: 1px solid Black;">
+                            <td
+                                style="width: 70%; border: 1px solid Black; border-bottom-style: none; border-left-style: none;"><apex:OutputText label="" value="{0, date, dd MMM yyyy}">
+                                    <apex:param value="{!paymentswithdateKey}" />
+                                </apex:OutputText></td>
+                            <td
+                                style="width: 20%; text-align: right; border: 1px solid Black; border-bottom-style: none; border-left-style: none; border-right-style: none;"><apex:OutputField label=""
+                                    value="{!mapwithPaymentDateandAmount[paymentswithdateKey].Amount__c}" /></td>
+
+                        </tr>
+
+                    </apex:repeat>
+
+                </tbody>
+
+            </table>
+            <table class="tablewidth1" style="border-top-style: none;">
+                <tr style="background-color: #b3b3b3; border: 1px solid Black;">
+                    <td
+                        style="width: 70%; text-align: Left; border-right: 1px solid black; font-family:Arial Unicode MS; font: bold 11pt;"
+                        colspan="2"><b> Total Payments </b></td>
+                    <td
+                        style="width: 20%; text-align: right; font-family:Arial Unicode MS; font: bold 11pt;"><b><apex:Outputfield label="" value="{!oppInstance.Amount__c}" /></b></td>
+                </tr>
+            </table>
+
+            <br />
+            <div class="divmargin">
+                 <!-- Update font size by RUL on 16/10/2018 as per PORT-134-->
+                <strong style="font-family:Arial Unicode MS; font: bold 14pt;">Payments
+                    by initiative</strong>
+            </div>
+            <table class="tablewidth1">
+                <thead>
+                    <tr style="background-color: #b3b3b3; border: 1px solid Black;">
+
+                        <th class="tablebold"
+                            style="width: 70%; border-right: 1px solid black;">Payment
+                            Scheduled Date</th>
+                        <td style="text-align: center; vertical-align: top; width: 20%;"><Strong
+                            style="font-family:Arial Unicode MS; font: bold 11pt;">Amount</Strong><br />
+                            <apex:outputText style="font-family:Arial Unicode MS;text-align: left;font : 8pt;"
+                                value="plus GST if applicable"></apex:outputText></td>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <apex:repeat value="{!mapwithInitiativeIdAndMapofFinancialyear}"
+                        var="InitiativeName">
+                        <tr >
+                            <td
+                                style="width: 70%; font-family:Arial Unicode MS; font: bold 11pt; border-top: 1px solid black"><apex:OutputText style="; font: bold 11pt;" label=""
+                                    value="{!mapwithInitiaticeIdandInitiativename[InitiativeName]}" /></td>
+                            <td
+                                style="border-top: 1px solid black;  width: 20%" />
+                        </tr>
+
+                        <apex:repeat value="{!mapwithInitiativeIdAndMapofFinancialyear[InitiativeName]}"
+                            var="mapofFy">
+                            <apex:repeat value="{!mapwithInitiativeIdAndMapofFinancialyear[InitiativeName][mapofFy]}"
+                                var="fyamount">
+                                <tr>
+                                    <td
+                                        style="width: 70%; border: 1px solid Black; border-bottom-style: none; border-left-style: none;">
+                                        <apex:OutputText value="{!mapofFy}" />
+
+                                    </td>
+                                    <td
+                                        style="width: 20%; text-align: right; border: 1px solid Black; border-bottom-style: none; border-left-style: none; border-right-style: none;"><apex:OutputField label="" value="{!fyamount.Amount__c}" /></td>
+                                </tr>
+                            </apex:repeat>
+                        </apex:repeat>
+
+                    </apex:repeat>
+                </tbody>
+            </table>
+                        <table class="tablewidth1" style="border-top-style: none;">
+                <tr style="background-color: #b3b3b3; border: 1px solid Black;">
+                    <td
+                        style="width: 70%; text-align: Left; border-right: 1px solid black; font-family:Arial Unicode MS; font: bold 11pt;"
+                        colspan="2"><b> Total Payments </b></td>
+                    <td
+                        style="width: 20%; text-align: right; font-family:Arial Unicode MS; font: bold 11pt;"><b><apex:Outputfield label="" value="{!oppInstance.Amount__c}" /></b></td>
+                </tr>
+            </table>
+   
+
+        </apex:outputPanel>
+
+        <br />
+        <br />
+        <apex:outputPanel >
+            <table style="margin-left: 30px; width: 90%">
+                <tr>
+                    <th style="font-family:Arial Unicode MS; font: bold 11pt;">Sport NZ
+                        Signatory</th>
+                    <th style="font-family:Arial Unicode MS; font: bold 11pt; width: 50%;">Partner
+                        Signatory</th>
+
+                </tr>
+                <tr>
+                    <td style="max-width: 45%;">Signed:<br /> <!--                  <apex:outputText value="{!objBusinessCase.Actual_Approver_Signature__c}" escape="false" Style="width: 60%;height: 50%; visibility:{!blnApproved}" rendered="{!blnApproved}" /> -->
+                        <apex:Image url="{!objBusinessCase.Actual_Approver_Signature_URL__c}"
+                            Style="width: 60%;height: 50%;" rendered="{!blnApproved}" /> <br />
+                        <apex:outputText value="{!objBusinessCase.Actual_Approver_Name__c}"
+                            style="max-width:45%;visibility:{!blnApproved}"
+                            rendered="{!blnApproved}" /><br />
+                    </td>
+                    <td style="width: 45%; vertical-align: top;">Signed:</td>
+                </tr>
+
+                <tr>
+                    <td style="width: 45%;">Position:&nbsp; <apex:outputText value="{!objBusinessCase.Actual_Approver_Title__c}"
+                            rendered="{!blnApproved}" /></td>
+                    <td style="width: 45%;">Position:&nbsp;</td>
+                </tr>
+
+                <tr>
+                    <td style="width: 45%;">Date:<apex:outputText value="{0, date, dd MMM yyyy}" rendered="{!blnApproved}">
+                            <apex:param value="{!objBusinessCase.Actual_Approval_Date__c}" />
+                        </apex:outputText>
+                    </td>
+                    <td style="width: 45%;">Date:</td>
+                </tr>
+            </table>
+        </apex:outputPanel>
+        <div style="page-break-after: always"></div>
+        <apex:outputPanel rendered="{!If(objBusinessCase.T_Cs__c =='BC 2015 T&C' || objBusinessCase.T_Cs__c =='P2P 2015 T&C' ,True,false)}">
+        
+            <div style="margin-left: 30px;">
+                <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Terms
+                    and Conditions</strong>
+                <ul>
+                    <li style="font-family:Arial Unicode MS; font: 11pt;">You and Sport NZ will mutually agree on the selection of 
+                        any third party service provider to be contracted with these funds.</li>                        
+                    <li style="font-family:Arial Unicode MS; font: 11pt;">You and Sport NZ will mutually agree on the statement of 
+                        works and nature of contract for any third party service provider to be contracted with these 
+                        funds.</li>                        
+                    <li style="font-family:Arial Unicode MS; font: 11pt;">Sport NZ may assign a member of the Business Capability 
+                        team to work with your organisation on the deliverables in the schedule.</li>                    
+                </ul>
+            </div>
+        </apex:outputPanel>
+        
+        <apex:outputPanel rendered="{!If(objBusinessCase.T_Cs__c =='Rural Travel Fund T&C',True,false)}">
+        
+            <div style="margin-left: 50px;">
+                
+            <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Terms
+                and Conditions</strong><br/><br/>
+                
+                <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Rural Travel Fund assessment criteria</strong><br/>
+                <ol class="split start">
+                <li>You must only provide funding to eligible teams.  Eligible teams are rural sport club teams and rural school club teams, with members aged between 5 and 19 years, who require subsidies to assist with expenses from travelling to local sports competitions.</li>
+                <li>You must only provide funding to eligible teams to assist with eligible travel.  Eligible travel for school club teams is travel to participate in regular local sports competitions out of school time (excluding inter-school and intra-school competitions playing during school time).  Eligible travel for sport club teams is travel to participate in organised, regular sport competition through club membership outside of school time.</li>
+                <li>You must not provide funding for teams to attend regional or national events.</li>
+                </ol>  
+                <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Assessment process</strong><br/>
+                <ol class="split">
+                <li>You may determine your own application and assessment process in relation to the funding you provide, and must enter into appropriate arrangements with funding recipients to ensure that they are accountable for funding they receive.  However, you must apply the criteria in clauses 1 to 3 of these Terms and Conditions.  We will email you a template application form that you may use.</li>
+                </ol>
+                <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Fund promotion</strong><br/>
+                <ol class="split">
+                <li>You may use up to 5% of the funding that we provide to you to publicise the fund.  All advertising, application forms and promotional material must refer to the fund as the Sport NZ Rural Travel Fund, and acknowledge Sport New Zealand's contribution.</li>
+                </ol>
+                <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Accountability of recipients</strong><br/>
+                <ol class="split">
+                <li>You must ensure, and be satisfied that, the funding you provide to recipients is used for the purpose of this investment, as stated on the front page of this Agreement.  You must ensure that each recipient returns an accountability form to you that shows proof of purchases and includes receipts by 30 May each year.  We will email you a template accountability form that you may use.</li>
+                </ol>
+                <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Your accountability</strong><br/>
+                <ol class="split">
+                <li>You must provide a report to us that shows how the funding has been used, and what was achieved with the funding.  You must provide the report in electronic form by 30 June each year.  We will email you a template report that you must use. You must also provide any other information that we reasonably request in relation to the Rural Travel Fund or this Agreement.</li>
+                <li>If you fail to use the funding for the purpose of this investment, or fail to ensure that funding recipients use the funding for the purpose of this investment, then we may require you to repay the funding to us, on demand.</li>
+                </ol>
+                <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Audit and review</strong><br/>
+                <ol class="split">
+                <li>You agree that, if we have any concerns as to your management, governance or administration of the Rural Travel Fund, we may audit and review (or appoint an independent person to review) your governance, management, and/or administration of the fund, and you will co-operate with the audit and review.</li>
+                </ol>
+                <div style="page-break-after: always"></div>
+                <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Goods and Services Tax</strong><br/>
+                <ol class="split">
+                <li>If you provide funding to a GST registered organisation, you must pay that recipient the funding plus GST.</li>
+                </ol>
+                
+                <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Partial expenditure of funds</strong><br/>
+                <ol class="split">
+                <li>You must ensure that recipients return any unexpended funding, as at 30 June each year, to you.</li>
+                <li>Unless we agree otherwise in writing, you must return any unexpended funding that you have, or that is due to you from recipients, as at 30 June each year, to us.</li>
+                </ol>
+                
+                <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Legal compliance</strong><br/>
+                <ol class="split">
+                <li>In operating the Rural Travel Fund, you, and any recipients of funding from the Rural Travel Fund, must comply with all applicable laws.</li>
+                </ol>
+                
+                <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Publicity</strong><br/>
+                <ol class="split">
+                <li>You agree that Sport NZ may publically release information about its provision of funding to you and the administration of the Rural Travel Fund by you.</li>
+                </ol>
+                
+                <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Administration</strong><br/>
+                <ol class="split">
+                <li style="text-align: left;">Sport New Zealand's contact for this Agreement is Fiona Ramsay: <br/>
+                Phone:  04 472 8058 – extension 3012 <br/>
+                Email:  fiona.ramsay@sportnz.org.nz </li>
+                <li>You must provide the contact details of the person in your organisation who is responsible for managing the Rural Travel Fund to Fiona Ramsay.  Contact details should include the person's name, title, address, phone and fax number, and email.</li>
+                <li>You must provide the full account details of a nominated bank account into which the Rural Travel Fund will be deposited, and blank deposit slip.</li>
+                </ol>
+            </div>
+        </apex:outputPanel>
+
+        <apex:outputPanel rendered="{!If(objBusinessCase.T_Cs__c =='Short form T&C',True,false)}">
+        
+            <div style="margin-left: 50px;">
+                <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Terms
+                    and Conditions</strong><br/><br/>
+                    
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Term</strong><br/>
+                    <ol class="split start">
+                    <li>This Agreement starts on the Commencement Date set out on the front page of this Agreement and ends on the End Date set out on the front page of this Agreement.</li>
+                    </ol>  
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Mutual obligations</strong><br/>
+                    <ol class="split">
+                    <li style="text-align: left;">While carrying out its responsibilities under this Agreement, each party must:<br/>
+                    (a) act with reasonable care, skill and diligence; and<br/>
+                    (b) comply with applicable laws.</li>
+                    </ol>
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Your obligations</strong><br/>
+                    <ol class="split">
+                    <li>In addition to the general obligations set out in clause 2 of these Terms and Conditions, you must apply any funding strictly for the purposes set out in this Agreement;</li>
+                    </ol>
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Payment of funding</strong><br/>
+                    <ol class="split">
+                    <li style="text-align: left;">We will pay any funding to you, or to any other party as agreed, on the timeframe and terms set out in this Agreement.  We are not required to make any funding payment to you if, at the time the payment is due under this Agreement, you:<br/>
+                    (a) are in breach of this Agreement; or<br/>
+                    (b) do not satisfy any investment eligibility criteria.</li>
+                    </ol>
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Repayment of funding</strong><br/>
+                    <ol class="split">
+                    <li style="text-align: left;">We may require you to repay any funding on demand if:<br/>
+                    (a) you are in breach of clause 3 of these Terms and Conditions; or<br/>
+                    (b) the funding was more than required to satisfy the purpose set out in this Agreement (provided that the repayment is limited to the surplus). </li>
+                    </ol>
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Health and Safety</strong><br/>
+                    <ol class="split">
+                    <li style="text-align: left;">You:<br/>
+                    (a) acknowledge that you have obligations under health and safety legislation, and will comply with those obligations;<br/>
+                    (b) will ensure that anyone receiving funding from the investment, or otherwise performing work relating to the investment, is aware of and has appropriate systems in place to comply with their obligations under health and safety legislation;<br/>
+                    (c) will, if requested, provide us with relevant information on your health and safety practices; and<br/>
+                    (d) will immediately notify us of any notifiable event (as defined in the Health and Safety at Work Act 2015) relating to the investment. </li>
+                    </ol>
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Information and reports</strong><br/>
+                    <ol class="split">
+                    <li>If we request, you must provide any information reasonably required by us.</li>
+                    </ol>
+                    
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Termination</strong><br/>
+                    <ol class="split">
+                    <li>Either party may terminate this Agreement at any time by giving the other party at least three months' notice.</li>
+                    <li style="text-align: left;">Either party may immediately terminate this Agreement by giving notice in writing to the other party ("defaulting party") if any of the following occurs:<br/>
+                    (a) the defaulting party commits a breach of this Agreement and fails to remedy that breach within 20 business days of receipt of notice by the other party requiring the breach to be remedied; or <br/>
+                    (b) the defaulting party commits a material breach of this Agreement that is not capable of remedy.</li>
+                    </ol>
+                    
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Consequences of termination</strong><br/>
+                    <ol class="split">
+                    <li>Following termination of this Agreement for any reason unless otherwise agreed in writing with us, you will immediately repay to us all investment advanced by us to you, not expended by you.</li>
+                    </ol>
+                    
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Records and audits</strong><br/>
+                    <ol class="split">
+                    <li>You must keep full, accurate and up to date records relating to the performance of your obligations under this Agreement and must retain such records five years from the termination of this Agreement.  You must provide copies of any records reasonably requested by us.</li>
+                    <li>You must allow, and procure that your subcontractors and any recipients of funding provided by you allow, us and our auditors or advisors to access any of your premises, personnel, and relevant records as may be reasonably required to verify that you are complying with your obligations under this Agreement, in particular the expenditure of funding.</li>
+                    </ol>
+                    
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Miscellaneous</strong><br/>
+                    <ol class="split">
+                    <li>Each notice under this Agreement must be in writing and delivered to the person nominated by each party as contact person for the purpose of this Agreement.</li>
+                    <li>This Agreement may only be varied in writing, by agreement of both parties.  You will not unreasonably refuse to agree to any variation required to reflect any new or varied policy of ours.</li>
+                    <li>This Agreement constitutes the entire agreement between the parties and supersedes all prior correspondence, promises, representations, warranties, or agreements, whether written or oral.</li>
+                    <li>Following expiry or termination of this Agreement, clauses 5, 6(c) and (d), 7, 10, and 11, together with other provisions that are by their nature intended to survive, will remain in effect.</li>
+                    </ol>
+                    
+            </div>
+        </apex:outputPanel>
+
+        <apex:outputPanel rendered="{!If(objBusinessCase.T_Cs__c =='Long form T&C',True,false)}">
+        
+            <div style="margin-left: 50px;">
+                <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Terms
+                    and Conditions</strong><br/><br/>
+                    
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Term</strong><br/>
+                    <ol class="split start">
+                    <li>This Agreement starts on the Commencement Date set out on the front page of this Agreement and ends on the End Date set out on the front page of this Agreement.</li>
+                    </ol>  
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Mutual obligations</strong><br/>
+                    <ol class="split">
+                    <li style="text-align: left;">While carrying out its responsibilities under this Agreement, each party must:<br/>
+                    (a) act with reasonable care, skill and diligence;<br/>
+                    (b) not do, or permit to be done, anything which is or could be detrimental to the goodwill, name, or reputation of the other party; and<br/>
+                    (c) comply with applicable laws.</li>
+                    </ol>
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Your obligations</strong><br/>
+                    <ol class="split">
+                    <li style="text-align: left;">In addition to the general obligations set out in clause 2 of these Terms and Conditions, you must:<br/>
+                    (a) apply any funding strictly for the purposes set out in this Agreement;<br/>
+                    (b) adopt and comply with any applicable regulations or instruments relating to the integrity of sport, as required by us; and<br/>
+                    (c) unless agreed otherwise, comply with any of our national policies existing or amended from time to time.</li>
+                    </ol>
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Payment of funding</strong><br/>
+                    <ol class="split">
+                    <li style="text-align: left;">We will pay any funding to you, or to any other party as agreed, on the timeframe and terms set out in this Agreement.  We are not required to make any funding payment to you if, at the time the payment is due under this Agreement, you:<br/>
+                    (a) are in breach of this Agreement; or<br/>
+                    (b) do not satisfy any investment eligibility criteria.</li>
+                    </ol>
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Repayment of funding</strong><br/>
+                    <ol class="split">
+                    <li style="text-align: left;">We may require you to repay any funding on demand if:<br/>
+                    (a) you are in breach of clause 3(a) of these Terms and Conditions; or<br/>
+                    (b) the funding was more than required to satisfy the purpose set out in this Agreement (provided that the repayment is limited to the surplus).</li>
+                    </ol>
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Health and Safety</strong><br/>
+                    <ol class="split">
+                    <li style="text-align: left;">You:<br/>
+                    (a) acknowledge that you have obligations under health and safety legislation, and will comply with those obligations;<br/> 
+                    (b) will ensure that anyone receiving funding from the investment, or otherwise performing work relating to the investment, is aware of and has appropriate systems in place to comply with their obligations under health and safety legislation;<br/>
+                    (c) will, if requested, provide us with relevant information on your health and safety practices; and<br/>
+                    (d) will immediately notify us of any notifiable event (as defined in the Health and Safety at Work Act 2015) relating to the investment. </li>
+                    </ol>
+
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Information and reports</strong><br/>
+                    <ol class="split">
+                    <li>You must provide us with reports on any issues that may affect the achievement of any KPIs under the Agreement or performance of an obligation under the Agreement (including the nature of the issue and any remedial plan to address that issue) as soon as practicable after they become known (unless agreed otherwise between the parties).</li>
+                    <li>If we request, you must provide any information reasonably required by us. </li>
+                    </ol>
+                    
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Termination</strong><br/>
+                    <ol class="split">
+                    <li>Either party may terminate this Agreement at any time by giving the other party at least three months' notice.</li>
+                    <li style="text-align: left;">Either party may immediately terminate this Agreement by giving notice in writing to the other party ("defaulting party") if any of the following occurs:<br/>
+                    (a) the defaulting party commits a breach of this Agreement and fails to remedy that breach within 20 business days of receipt of notice by the other party requiring the breach to be remedied; or <br/>
+                    (b) the defaulting party commits a material breach of this Agreement that is not capable of remedy.</li>
+                    </ol>
+                    
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Consequences of termination</strong><br/>
+                    <ol class="split">
+                    <li style="text-align: left;">Following termination of this Agreement for any reason:<br/>
+                    (a) unless otherwise agreed in writing with us, you will immediately repay to us all investment advanced by us to you, not expended by you; and<br/>
+                    (b) unless otherwise agreed in writing with us, you will immediately cease to use any trademarks, logos or designs that are the intellectual property of ours.</li>
+                    </ol>
+                    
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Records and audits</strong><br/>
+                    <ol class="split">
+                    <li>You must keep full, accurate and up to date records relating to the performance of your obligations under this Agreement and must retain such records five years from the termination of this Agreement.  You must provide copies of any records reasonably requested by us.</li>
+                    <li>You must allow, and procure that your subcontractors and any recipients of funding provided by you allow, us and our auditors or advisors to access any of your premises, personnel, and relevant records as may be reasonably required to verify that you are complying with your obligations under this Agreement, in particular the expenditure of funding.</li>
+                    </ol>
+                    
+                    <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Miscellaneous</strong><br/>
+                    <ol class="split">
+                    <li>Each notice under this Agreement must be in writing and delivered to the person nominated by each party as contact person for the purpose of this Agreement.</li>
+                    <li>This Agreement may only be varied in writing, by agreement of both parties.  You will not unreasonably refuse to agree to any variation required to reflect any new or varied policy of ours.</li>
+                    <li>This Agreement constitutes the entire agreement between the parties and supersedes all prior correspondence, promises, representations, warranties, or agreements, whether written or oral.</li>
+                    <li>Following expiry or termination of this Agreement, clauses 5, 6(c) and (d), 8, 11, and 12, together with other provisions that are by their nature intended to survive, will remain in effect.</li>
+                    </ol>
+                    
+            </div>
+        </apex:outputPanel>
+        <div style="page-break-after: always"></div>
+        <apex:outputPanel rendered="{!lstInitiative.size!=0}">
+            <strong
+                style="font-family:Arial Unicode MS; margin-left: 30px; font: bold 11pt;">Appendix
+                1: Initiative Details</strong>
+            <br />
+            <apex:variable var="rownumber" value="{!1}" />
+            <br />
+            <div class="divmargin">
+                <apex:repeat value="{!lstInitiative}" var="init">
+                    <div
+                        style="background-color: #b3b3b3; min-width: 100%; padding-top: 10px; padding-bottom: 10px; padding-left: 7px;">
+                        <strong style="font-family:Arial Unicode MS; font: bold 11pt;">{!rownumber}.
+                            Initiative: {!init.name}</strong>
+                    </div>
+                    <br />
+                    <div>
+                        <strong style="font-family:Arial Unicode MS; font: bold 11pt;">Details:</strong>
+                    </div>
+                    <br />
+                    <div>
+                        <apex:outputText escape="false" value="{!init.Details__c}"
+                            style="min-width: 100%;max-width: 100%;font-family:Arial Unicode MS;font: 11pt; !important"/>
+                    </div>
+                    <br />
+                    <apex:variable var="rownumber" value="{!rownumber+1}" />
+                </apex:repeat>
+            </div>
+
+        </apex:outputPanel>
+
+    </apex:form>
+</body>
+    </html>
+</apex:page>

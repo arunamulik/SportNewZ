@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Programme and Event Data</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Programme and Event Data</value>
+    </caseValues>
+    <layouts>
+        <layout>Programme and Event Data Admin Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Programme Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Programme and Event Data Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Programme Information</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Valid_End_Date</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Add_a_Programme_or_Event</name>
+    </webLinks>
+</CustomObjectTranslation>

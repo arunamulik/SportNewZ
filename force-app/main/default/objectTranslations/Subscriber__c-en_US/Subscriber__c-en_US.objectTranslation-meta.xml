@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Subscriber</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Subscribers</value>
+    </caseValues>
+    <layouts>
+        <layout>HPSNZ Subscriber</layout>
+        <sections>
+            <label></label>
+            <section>Assigned HPSNZ Databases</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Marketing Cloud Subscriptions</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Organisation Information (If Applicable)</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Subscriber Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Integrity Subscriber</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Marketing Cloud Subscriptions</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Organisation Information (If Applicable)</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Subscriber Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Media Subscriber</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Marketing Cloud Subscriptions</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Organisation Information (If Applicable)</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Subscriber Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Public Subscriber</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Marketing Cloud Subscriptions</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Organisation Information (If Applicable)</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Subscriber Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Sport NZ Staff</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Subscriber Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Subscriber Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>High_Performance_Sport_NZ</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Integrity</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Media</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Public</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Sport_NZ_Staff</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assessor_Scoring</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Enter My Assessment Scores</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>window.open(&apos;apex/AssessorScoring?appRoundId={!Application_Round__c.Id}&amp;retURL={!Application_Round__c.Id}&apos;, &apos;_self&apos;);</url>
+</WebLink>

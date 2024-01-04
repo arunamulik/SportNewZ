@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Plan</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Plans</value>
+    </caseValues>
+    <layouts>
+        <layout>Bundled Plan Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Partner Plan Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Intentions</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Value Propositions</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Partner Plan Layout (Portal)</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Bundled_Plan</name>
+    </recordTypes>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Partner_Plan</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Start_and_End_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>StatusToBeSetByOnlyAdmins</name>
+    </validationRules>
+    <webLinks>
+        <label></label>
+        <name>Create_Contract</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Edit_Single_Page</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Old_Partner_Plan_Report</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Old_Summary_Partner_Plan_Report</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Partner_Plan_Report</name>
+    </webLinks>
+    <webLinks>
+        <label></label>
+        <name>Summary_Partner_Plan_Report</name>
+    </webLinks>
+    <workflowTasks>
+        <name>Plan_Task_01</name>
+        <subject></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>Plan_Task_02</name>
+        <subject></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>Plan_Task_03</name>
+        <subject></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>Plan_Task_04</name>
+        <subject></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>Plan_Task_05</name>
+        <subject></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>Plan_Task_06</name>
+        <subject></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>Plan_Task_07</name>
+        <subject></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>Plan_Task_08</name>
+        <subject></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>Plan_Task_09</name>
+        <subject></subject>
+    </workflowTasks>
+    <workflowTasks>
+        <name>Plan_Task_10</name>
+        <subject></subject>
+    </workflowTasks>
+</CustomObjectTranslation>

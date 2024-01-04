@@ -1,0 +1,361 @@
+<aura:component
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+    access="global" controller="ActivityOnboardingLandingPageController">
+    <aura:attribute name="firstStepActivityWizard" type="boolean" default="true" />
+    <aura:attribute name="secondStepActivityWizard" type="boolean" default="false" />
+    <aura:attribute name="thirdStepActivityWizard" type="boolean" default="false" />
+    <aura:attribute name="fourthStepActivityWizard" type="boolean" default="false" />
+    <aura:attribute name="fifthStepActivityWizard" type="boolean" default="false" />
+    <aura:attribute name="errormsg" type="string" />
+    <aura:attribute name="errormessage" type="string" />
+    <aura:attribute name="errormessage1" type="string" />
+    <aura:attribute name="newActivity" type="Activity__c" default="{ 'sobjectType': 'Activity__c'}" />
+    <aura:attribute name="newActivity1" type="Activity__c" default="{ 'sobjectType': 'Activity__c'}" />
+    <aura:attribute name="recordId" type="String" />
+
+    <aura:attribute name="picklistValuesHOPoutcome" type="Activity__c" />
+    <aura:attribute name="parent" type="Aura.Component" />
+    <aura:attribute name="isSubmitted" type="boolean" default="false" />
+
+    <aura:attribute name="fromLogin" type="boolean" default="false" />
+    <aura:attribute name="selectedLookUpRecord" type="Activity__c" />
+
+    <!-- Location Attributes -->
+    <aura:attribute name="picklistValuesRegion" type="Activity__c" />
+
+    <aura:attribute name="location" type="string" default="" />
+    <aura:attribute name="predictions" type="List" default="[]" />
+    <aura:attribute name="city" type="string" default="" />
+    <aura:attribute name="country" type="string" default="" />
+    <aura:attribute name="state" type="string" default="" />
+    <aura:attribute name="address" type="string" default="" />
+    <aura:attribute name="street" type="string" default="" />
+    <aura:attribute name="zip" type="string" default="" />
+    <aura:attribute name="latitude" type="string" default="" />
+    <aura:attribute name="longitude" type="string" default="" />
+    <aura:attribute name="boolean" type="boolean" default="false" />
+    <aura:attribute name="errormsgfirstname" type="string" />
+    <aura:attribute name="errormsglastname" type="string" />
+    <aura:attribute name="errormsgemail" type="string" />
+    <aura:attribute name="errormsgstartdate" type="string" />
+    <aura:attribute name="errormsgenddate" type="string" />
+    <aura:attribute name="errormsglocation" type="string" />
+    <aura:attribute name="errormsgdescription" type="string" />
+    <aura:attribute name="errormsgregion" type="string" />
+
+
+    <aura:method name="viewActivity" action="{!c.viewActivity}" />
+    <aura:method name="closeModel" action="{!c.closeModel}" />
+
+    <aura:handler name="init" value="this" action="{!c.doInit}" />
+    <aura:handler event="c:getRecordId" action="{!c.doInit}" />
+    <aura:attribute name="contactName" type="string" />
+    <aura:registerEvent name="CreateActivity" type="c:CreateActivityEvent" />
+    <aura:attribute name="picklistValuesCOVID" type="Activity__c" />
+    <aura:attribute name="HOPOutcomeDomainPicklist" type="Activity__c" />
+
+
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <aura:if isTrue="{!v.isSubmitted}">
+                <header class="slds-modal__header">
+                    <div class="lastStepHeader"></div>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning:icon iconName="action:approval" class="icn" size="x-large" alternativeText="sss" />
+                    <h1>
+                        Ka pai tāu mahi {!v.contactName}
+                    </h1>
+                    <h2>
+                        Click on the button below to view your activity.
+                    </h2>
+                    <!-- <div class="linkToRedirectToLanding"> <a onclick="{!c.linkToRedirectToLanding}">Ka pai rā tēnei mahi, {!v.contactName}!</a></div>-->
+                    <aura:if isTrue="{!v.fromLogin}">
+                        <lightning:button disabled="{!v.disablebuttonid}" class="buttonClassFooter" variant="neutral"
+                            name="callChild" label="View Activity" title="View Activity"
+                            onclick="{! c.viewActivity }" />
+                        <aura:set attribute="else">
+                            <lightning:button disabled="{!v.disablebuttonid}" class="buttonClassFooter"
+                                variant="neutral" label="View Activity" title="View Activity"
+                                onclick="{! c.viewActivityInInnperPage }" />
+                        </aura:set>
+                    </aura:if>
+
+                </div>
+                <aura:set attribute="else">
+                    <aura:if isTrue="{!v.firstStepActivityWizard}">
+                        <!-- Modal/Popup Box Header Starts here-->
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                                alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+                            <h2 style="font-size: 1em;font-family: 'Salesforce Sans', Arial, sans-serif;"
+                                id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">01/<span class="text-style-1">05</span> Kaupapa Details
+                            </h2>
+                        </header>
+                        <!--Modal/Popup Box Body Starts here-->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <!--label>Activity Name</label-->
+
+                            <lightning:input label="Kaupapa Name"
+                                class="lightningInputs" aura:id="activityName" value="{!v.newActivity.Name}" />
+                            <div class="errormessage">{!v.errormsg}</div>
+
+                            <!--label>Primary HOP Outcome</label-->
+                            <lightning:select label="Primary HOP Outcome" class="lightningInputs"
+                                name="HOPoutcomePicklist" aura:id="HOPoutcomePicklist"
+                                value="{!v.newActivity.HOP_Outcome__c}" onchange="{!c.onselectHandle}">
+                                onchange="{!c.onChangePicklist}">
+                                <aura:iteration items="{!v.picklistValuesHOPoutcome}" var="item">
+                                    <option value="{!item.value}" selected="{!item==v.newActivity.HOP_Outcome__c}">
+                                        {!item}
+                                    </option>
+                                </aura:iteration>
+                            </lightning:select>
+                            <div class="errormessage">{!v.errormessage}</div>
+                            <!--COVID_19_ALERT_LEVEL -->
+                            <div class="covid123">
+                                <p>COVID-19 Alert Level</p>
+                                <lightning:select label="What alert level does this activity relate to?"
+                                    class="lightningInputs" name="COVID19Picklist" aura:id="COVID19Picklist"
+                                    value="{!v.newActivity.COVID_19_ALERT_LEVEL__c}">
+                                    onchange="{!c.onChangePicklist}">
+                                    <option>--None--</option>
+                                    <aura:iteration items="{!v.picklistValuesCOVID}" var="item">
+                                        <option value="{!item.value}"
+                                            selected="{!item==v.newActivity.COVID_19_ALERT_LEVEL__c}">
+                                            {!item}
+                                        </option>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </div>
+                            <div class="HOPOutcomeDomain" >
+                               <!-- <p>HOP Outcome Domain</p>-->
+                                <lightning:select label="Select from drop down menu in row below"
+                                    class="slds-hidden" name="HOPOutcomeDomain" aura:id="HOPOutcomeDomain"
+                                    value="{!v.newActivity.HOP_Outcome_Domain__c}">
+                                    onchange="{!c.onChangePicklist}">
+                                    <option>--None--</option>
+                                    <aura:iteration items="{!v.HOPOutcomeDomainPicklist}" var="item">
+                                        <option value="{!item.value}"
+                                            selected="{!item==v.newActivity.HOP_Outcome_Domain__c}">
+                                            {!item}
+                                        </option>
+                                    </aura:iteration>
+                                </lightning:select>
+                            </div>
+                            <!-- <c:customLookup objectAPIName="Initiative__c" label="Initiative Name" selectedRecord="{!v.selectedLookUpRecord}"/>
+                              <div class="errormessage">{!v.errormessage1}</div>  -->
+                        </div>
+                        <!--Modal/Popup Box Footer Starts here-->
+                        <footer class="slds-modal__footer">
+                            <a class="GoBackLink" onclick="{!c.closeModel }">Go Back</a>
+                            <a class="NextButton" onclick="{!c.gotoStep2 }">Next</a>
+                            <!-- <lightning:button disabled="{!v.disablebuttonid}"
+                                               class="buttonClassFooter"
+                                               variant="neutral"
+                                               label="Go Back"
+                                               title="Cancel"
+                                               onclick="{! c.closeModel }"/>
+                             <lightning:button variant="brand"
+                                               label="Next"
+                                               title="OK"
+                                               onclick="{!c.gotoStep2}"/>-->
+                        </footer>
+                    </aura:if>
+                    <aura:if isTrue="{!v.secondStepActivityWizard}">
+                        <!-- Modal/Popup Box Header Starts here-->
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                                alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">02/<span class="text-style-1">05</span> Purpose of
+                                Kaupapa</h2>
+                        </header>
+                        <!--Modal/Popup Box Body Starts here-->
+                        <div class="slds-modal__content slds-p-around_medium" style="padding-top: 35px;"
+                            id="modal-content-id-1">
+                            <label>Why did you decide to plan this activity?</label>
+                            <lightning:textarea class="lightningInputs"
+                                aura:id="activityDesc" value="{!v.newActivity.Description__c}" />
+                        </div>
+                        <!--Modal/Popup Box Footer Starts here-->
+                        <footer class="slds-modal__footer">
+                            <a class="GoBackLink" onclick="{!c.goBacktoStep1 }">Go Back</a>
+                            <a class="NextButton" onclick="{!c.gotoStep3 }">Next</a>
+                            <!--<lightning:button class="buttonClassFooter"
+                                               variant="neutral"
+                                               label="Go Back"
+                                               title="Cancel"
+                                               onclick="{! c.goBacktoStep1 }"/>
+                             <lightning:button variant="brand"
+                                               label="Next"
+                                               title="OK"
+                                               onclick="{!c.gotoStep3}"/>-->
+                        </footer>
+                    </aura:if>
+                    <aura:if isTrue="{!v.thirdStepActivityWizard}">
+                        <!-- Modal/Popup Box Header Starts here-->
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                                alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">03/<span class="text-style-1">05</span> Expectations of
+                                Impact</h2>
+                        </header>
+                        <!--Modal/Popup Box Body Starts here-->
+                        <div class="slds-modal__content slds-p-around_medium" style="padding-top: 35px;"
+                            id="modal-content-id-1">
+                            <label>What impact will this have on whanau hapu iwi?</label>
+                            <lightning:textarea class="lightningInputs"
+                                aura:id="activityExpectDesc" value="{!v.newActivity.Expectations_of_Impact__c}" />
+                        </div>
+                        <!--Modal/Popup Box Footer Starts here-->
+                        <footer class="slds-modal__footer">
+                            <a class="GoBackLink" onclick="{!c.goBacktoStep2 }">Go Back</a>
+                            <!--<a class="NextButton" onclick="{!c.saveAndgotoStep1 }">Save and Continue</a>-->
+                            <a class="NextButton" onclick="{!c.gotoStep4 }">Next</a>
+                            <!--<lightning:button class="buttonClassFooter"
+                                               variant="neutral"
+                                               label="Go Back"
+                                               title="Cancel"
+                                               onclick="{! c.goBacktoStep2 }"/>
+                             <lightning:button class="buttonClassFooter"
+                                               variant="brand"
+                                               label="Save and Continue"
+                                               title="Save and Continue"
+                                               onclick="{! c.saveAndgotoStep1 }"/>
+                             <lightning:button variant="brand"
+                                               label="Save"
+                                               title="OK"
+                                               onclick="{!c.submitDetails}"/>-->
+                        </footer>
+                    </aura:if>
+
+                    <!-- Added by HP -->
+
+                    <aura:if isTrue="{!v.fourthStepActivityWizard}">
+                        <!-- Modal/Popup Box Header Starts here-->
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                                alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">04/<span class="text-style-1">05</span> Kaupapa Details (MARAEFIT)</h2>
+                        </header>
+                        <!--Modal/Popup Box Body Starts here-->
+                        <div class="slds-modal__content slds-p-around_medium" style="padding-top: 35px;"
+                            id="modal-content-id-1">
+                            <lightning:input label="Kaupapa Organiser First Name" class="lightningInputs first-name slds-float_left"
+                                aura:id="eventOrganiserFirstName"
+                                value="{!v.newActivity.Event_Organiser_First_Name__c}" />
+                            <div class="errormessage">{!v.errormsgfirstname}</div>
+
+                            <lightning:input label="Kaupapa Organiser Last Name" 
+                                class="lightningInputs last-name slds-float_left"
+                                aura:id="eventOrganiserLastName"
+                                value="{!v.newActivity.Event_Organiser_Last_Name__c}" />
+                            <div class="errormessage">{!v.errormsglastname}</div>
+
+                            <lightning:input type="email" label="Email"
+                                class="" aura:id="eventOrganiserEmail"
+                                value="{!v.newActivity.Event_Organiser_Email__c}" />
+                            <div class="errormessage">{!v.errormsgemail}</div>
+							
+                            
+                            <lightning:textarea class="eventTextarea"
+                                label="Kaupapa Description"
+                                aura:id="eventDescription" value="{!v.newActivity.Event_Description__c}" placeholder="Describe the activity in a way that encourages whānau to participate"/>
+                            
+                            <!-- <lightning:textarea label="Description" placeholder="A breif description outlining the purpose of this event" aura:id="eventDescription" value="{!v.newActivity.eventDescription}" /> -->
+
+                            <lightning:input type="datetime" label="Kaupapa Start Date/Time"
+                                aura:id="eventStartDateTime" value="{!v.newActivity.Activity_Start_Date_Time__c}" />
+                            <div class="errormessage">{!v.errormsgstartdate}</div>
+
+                            <lightning:input type="datetime" label="Kaupapa End Date/Time"
+                                class="lightningInputs"
+                                aura:id="eventEndDateTime" value="{!v.newActivity.Activity_End_Date_Time__c}" />
+                            <div class="errormessage">{!v.errormsgenddate}</div>
+
+                        </div>
+                        <!--Modal/Popup Box Footer Starts here-->
+                        <footer class="slds-modal__footer">
+                            <a class="GoBackLink" onclick="{!c.goBacktoStep3 }">Go Back</a>
+                            <!--<a class="NextButton" onclick="{!c.saveAndgotoStep1 }">Save and Continue</a>-->
+                            <a class="NextButton" onclick="{!c.gotoStep5 }">Next</a>
+                        </footer>
+                    </aura:if>
+
+                    <aura:if isTrue="{!v.fifthStepActivityWizard}">
+                        <!-- Modal/Popup Box Header Starts here-->
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                                alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">05/<span class="text-style-1">05</span> Kaupapa Location
+                                Details (MARAEFIT)</h2>
+                        </header>
+                        <!--Modal/Popup Box Body Starts here-->
+                        <div class="slds-modal__content slds-var-p-around_medium"
+                            id="modal-content-id-1">
+                            <lightning:input label="Location" name="location" aura:id="location" value="{!v.location}"
+                                onchange="{!c.getCitiesCommunities}" />
+
+                            <aura:if isTrue="{!v.predictions.length > 0}">
+                                <ul class="city_predictions">
+                                    <aura:iteration items="{!v.predictions}" var="prediction">
+                                        <li class="slds-listbox__item">
+                                            <a onclick="{!c.getCityDetailsCommunities}"
+                                                data-placeid="{!prediction.place_id}">{!prediction.description}</a>
+                                        </li>
+                                    </aura:iteration>
+                                </ul>
+                            </aura:if>
+
+                            <lightning:input label="Address" name="address" aura:id="address" value="{!v.address}" />
+
+                            <lightning:input label="Street" name="street" aura:id="street" value="{!v.newActivity.Street__c}" class="hidden" />
+
+                            <lightning:input label="City" name="city" aura:id="city" value="{!v.newActivity.City__c}" class="hidden"/>
+
+                            <lightning:input label="Province" name="state" aura:id="state" value="{!v.newActivity.State__c}" class="hidden"/>
+
+                            <lightning:input label="Country" name="country" aura:id="country" value="{!v.newActivity.Country__c}" class="hidden" />
+
+                            <lightning:input label="Postal Code" name="zip" aura:id="zip" value="{!v.zip}" class="hidden"/>
+
+                            <lightning:input label="Latitude" name="latitude" aura:id="latitude" class="hidden"
+                                value="{!v.newActivity.Latitude__c}" />
+
+                            <lightning:input label="Longitude" name="longitude" aura:id="longitude" class="hidden"
+                                value="{!v.newActivity.Longitude__c}" />
+							<div>
+                            <lightning:select label="Select Region" class="lightningInputs"
+                                name="RegionPicklist" aura:id="RegionPicklist"
+                                value="{!v.newActivity.Region__c}">
+                            	<option value="">Select Region</option>
+                                <aura:iteration items="{!v.picklistValuesRegion}" var="item">
+                                    
+                                    <option value1="{!item.value}" selected="{!item==v.newActivity.Region__c}">
+                                        {!item}
+                                    </option>
+                                </aura:iteration>
+                            </lightning:select>
+                                <div class="errormessage">{!v.errormsgregion}</div>
+                                </div>
+                        </div>
+                        <!--Modal/Popup Box Footer Starts here-->
+                        <footer class="slds-modal__footer">
+                            <a class="GoBackLink" onclick="{!c.goBacktoStep4 }">Go Back</a>
+                            <!--<a class="NextButton" onclick="{!c.saveAndgotoStep1 }">Save and Continue</a>-->
+                            <a class="NextButton" onclick="{!c.submitDetails }">Save</a>
+                        </footer>
+                    </aura:if>
+                    <!-- Added by HP Ends-->
+
+                </aura:set>
+            </aura:if>
+        </div>
+
+    </section>
+    <!-- <c:RUL_LandingComponent aura:id="childComp" />-->
+    <div class="slds-backdrop slds-backdrop_open"></div>
+
+</aura:component>

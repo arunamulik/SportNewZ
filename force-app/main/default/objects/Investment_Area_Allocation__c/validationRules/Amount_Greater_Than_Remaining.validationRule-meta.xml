@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Amount_Greater_Than_Remaining</fullName>
+    <active>true</active>
+    <errorConditionFormula>(isnew() &amp;&amp; Amount__c &gt; Funding_Allocation__r.Remaining__c) ||
+
+(ischanged (Amount__c) &amp;&amp; Amount__c &gt; (Funding_Allocation__r.Remaining__c + priorvalue(Amount__c)))</errorConditionFormula>
+    <errorDisplayField>Amount__c</errorDisplayField>
+    <errorMessage>The amount is more than what is available (remaining) for allocation.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>None</contactAccessLevel>
+    <description>Duke of Edinburgh&apos;s Hillary Award Customer User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Duke of Edinburgh&apos;s Hillary Award Customer User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>DukeofEdinburghsHillaryAwardCustomerManager</parentRole>
+</Role>

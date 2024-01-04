@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label></label>
+    <name>HOP_Outcome__c</name>
+    <picklistValues>
+        <masterLabel>--None--</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>1.1 Kaiwhakahaere participating as Leaders in their community</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>1.2 Increased Māori Sports Management capcity - leveraging potential and capacity</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>1.3 Increased Māori Sports Leadership sustaining Māori success</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>2.1 Increased opportunities to participate in sport and traditional physical recreation</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>2.2 Increased demand for Māori and non-Māori communities for opportunities to participate in Māori-led sport and traditional physical recreation</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>2.3 Increased opportunities for Māori and non-Māori to perform and excel in Māori sport and traditional physical recreation</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>3.1 Revitalisation and further development of sport and traditional physical recreation</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>3.2 Increased organisational capacity and capability to provide a range of formally organised sport and recreation opportunities in a diversity of Māori and non-Māori settings</masterLabel>
+        <translation></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>3.3 Strong Māori organisations and networks providing and promoting a wide range of high quality sport and traditional physical recreation opportunities in diverse Māori and non-Māori settings</masterLabel>
+        <translation></translation>
+    </picklistValues>
+</CustomFieldTranslation>

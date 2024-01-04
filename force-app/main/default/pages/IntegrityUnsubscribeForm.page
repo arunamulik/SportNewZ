@@ -1,0 +1,283 @@
+<apex:page standardController="Subscriber__c" extensions="IntegrityUnsubscriberFormCtrl" standardStylesheets="false" showHeader="false" sidebar="false">
+    <style>
+        .divider{
+        width:10px;
+        height:auto;
+        display:inline-block;
+        }
+        .custPopup{
+            border-width: 2px;
+            border-style: solid;
+            background:#FFFFFF;
+            text-align: center;
+            font-size:16px;
+            font-family:Barlow, Arial; 
+            font-weight: bold;
+            border:#FFEA00;
+            border-radius: 8px;
+            
+            z-index: 9999;
+            left: 50%;
+            padding:10px;
+            position: absolute;
+            /* These are the 3 css properties you will need to change so the popup
+            displays in the center of the screen. First set the width. Then set
+            margin-left to negative half of what the width is. You can add
+            the height property for a fixed size pop up if you want.*/
+            width: 500px;
+            margin-left: -250px;
+            top:100px;
+        }
+        .custErrorPopup{
+            border-width: 2px;
+            border-style: solid;
+            background:#FF0000;
+            text-align: center;
+            font-size:16px;
+            font-family:Barlow, Arial; 
+            font-weight: bold;
+            border:#FFEA00;
+            border-radius: 8px;
+            
+            z-index: 9999;
+            left: 50%;
+            padding:10px;
+            position: absolute;
+            /* These are the 3 css properties you will need to change so the popup
+            displays in the center of the screen. First set the width. Then set
+            margin-left to negative half of what the width is. You can add
+            the height property for a fixed size pop up if you want.*/
+            width: 500px;
+            margin-left: -250px;
+            top:100px;
+        }
+        .popupBackground{
+            background-color:black;
+            opacity: 0.20;
+            filter: alpha(opacity = 20);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9998;
+        }
+        .center {
+        margin-left: auto;
+        margin-right: auto;
+        }
+        .centertext {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        }
+        .checkbox{
+        height: 16px; 
+        width: 16px;
+        }
+        .inputboxSize{
+        height:20px; 
+        width:250px;
+        font-size:16px;
+        font-family:Barlow, Arial;
+        }
+        * {
+        box-sizing: border-box;
+        }
+       
+        .fontproperties {
+        font-size:16px;
+        font-family:Barlow, Arial; 
+        
+        }
+        .required
+        {
+        color: red;
+        }
+    </style>
+    
+    <apex:form id="frm">
+        <center>
+        <apex:pageBlock id="pBlock">
+            
+            <apex:pageBlockSection id="pbSection1" columns="2">
+                <br/>
+                <!--FirstName-->
+                <label class="fontproperties">
+                        {!$ObjectType.Subscriber__c.fields.First_Name__c.label}
+                </label>
+                <span class="required">*</span>
+                <apex:outputPanel >
+                    <br/>
+                    <div style="position:relative;left:40px;">
+                <apex:inputfield value="{!Subscriber__c.First_Name__c}" ignoreEditPermissionForRendering="true" styleclass="inputboxSize" html-disabled="true"/>
+                    </div>
+                    </apex:outputPanel>
+                <apex:outputLabel styleClass="fontproperties" rendered="{!firstNameEmpty}" style="color:red">
+                    First Name required
+                </apex:outputLabel>
+                <apex:outputPanel rendered="{!firstNameEmpty}">
+                </apex:outputPanel>
+                
+                <!--LastName-->
+                <br/>
+                <label class="fontproperties">
+                        {!$ObjectType.Subscriber__c.fields.Last_Name__c.label}
+                </label>
+                <span class="required">*</span>
+                <apex:outputPanel >
+                    <br/>
+                    <div style="position:relative;left:40px;">
+                <apex:inputfield value="{!Subscriber__c.Last_Name__c}" ignoreEditPermissionForRendering="true" styleclass="inputboxSize" html-disabled="true"/>
+                    </div>
+                    </apex:outputPanel>
+                <apex:outputLabel styleClass="fontproperties" rendered="{!lastNameEmpty}" style="color:red">
+                    Last Name required
+                </apex:outputLabel>
+                <apex:outputPanel rendered="{!lastNameEmpty}">
+                </apex:outputPanel>
+                
+                <!--EmailAddress-->
+                <br/>
+                <label class="fontproperties">
+                        {!$ObjectType.Subscriber__c.fields.Email_Address__c.label}
+                </label>
+                <span class="required">*</span>
+                
+                <apex:outputPanel >
+                    <br/>
+                    <div style="position:relative;left:40px;">
+                <apex:inputfield value="{!Subscriber__c.Email_Address__c}" ignoreEditPermissionForRendering="true" styleclass="inputboxSize" html-disabled="true"/>
+                    </div>
+                    </apex:outputPanel>
+                <apex:outputLabel styleClass="fontproperties" rendered="{!emailEmpty}" style="color:red">
+                    Email required
+                </apex:outputLabel>
+                <apex:outputPanel rendered="{!emailEmpty}">
+                </apex:outputPanel>
+                
+                <!--Location-->
+                <br/>
+                <label class="fontproperties">
+                        {!$ObjectType.Subscriber__c.fields.Location__c.label}
+                </label>
+                <apex:outputPanel >
+                    <br/>
+                    <div style="position:relative;left:40px;">
+                <apex:inputfield value="{!Subscriber__c.Location__c}" ignoreEditPermissionForRendering="true" styleclass="inputboxSize" html-disabled="true"/>
+                    </div>
+                    </apex:outputPanel>
+               <!-- <apex:outputLabel styleClass="fontproperties" rendered="{!locationEmpty}" style="color:red">
+                    Location required
+                </apex:outputLabel>
+                <apex:outputPanel rendered="{!locationEmpty}">
+                </apex:outputPanel>-->
+                
+                <!--Role-->
+                <br/>
+                <label class="fontproperties">
+                        {!$ObjectType.Subscriber__c.fields.Role__c.label}
+                </label>
+                <apex:outputPanel >
+                    <br/>
+                    <div style="position:relative;left:40px;">
+                <apex:inputfield value="{!Subscriber__c.Role__c}" ignoreEditPermissionForRendering="true" styleclass="inputboxSize" html-disabled="true"/>
+                    </div>
+                    </apex:outputPanel>
+               <!-- <apex:outputLabel styleClass="fontproperties" rendered="{!roleEmpty}" style="color:red">
+                    Role required
+                </apex:outputLabel>
+                <apex:outputPanel rendered="{!roleEmpty}">
+                </apex:outputPanel>-->
+                
+                <!--Organisation-->
+                <apex:outputLabel styleclass="fontproperties">
+                    <br/>
+                        {!$ObjectType.Subscriber__c.fields.Organisation__c.label}
+                </apex:outputLabel>
+                <apex:outputPanel >
+                    <br/>
+                    <div style="position:relative;left:40px;">
+                <apex:inputfield ignoreEditPermissionForRendering="true" value="{!Subscriber__c.Organisation__c}" styleclass="inputboxSize" html-disabled="true"/>
+                    </div>
+                    </apex:outputPanel>
+                
+            </apex:pageBlockSection>
+            
+            <!--apex:pageBlockButtons-->
+            <br/>
+            <br/>
+            <center>
+            <apex:commandButton style="background:#00857e; 
+                                       text-align:center; 
+                                       font-size:16px;
+                                       font-family:Barlow, Arial; 
+                                       font-weight: bold;
+                                       color: white;
+                                       border:#FF8D34;
+                                       height:30px;
+                                       border-radius: 8px;
+                                       width:300px;
+                                       cursor: pointer;" 
+                                value="UNSUBSCRIBE" 
+                                action="{!saveRecord}"/>  
+            <!--/apex:pageBlockButtons--> 
+            <br/>
+            <!--apex:outputText style="font-size:16px;font-family:Barlow, Arial;" value="You can unsubscribe at any time here or in footer of our newsletters"/-->
+                <p style="font-size:16px;font-family:Barlow, Arial;">
+                <apex:outputLink value="https://www.integritytransition.org.nz/privacy-statement/" target="_blank" style="text-decoration:none">
+                    <font color="#00857e">
+                    See here for information about our privacy practices
+                    </font>
+                </apex:outputLink>
+                </p>
+                
+            <!--apex:outputText style="font-size:16px;font-family:Barlow, Arial;"
+                             value="For information about our privacy practices, please visit our website."/-->
+                </center>
+            
+        </apex:pageBlock>
+    </center>
+        <!--{!displayPopUp}-->
+       <apex:outputPanel id="tstpopup">
+        <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+            <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}">
+                
+                You’ve successfully been unsubscribed.<br/><br/><br/>
+                <center>
+                <apex:commandButton style="background:black;
+                                           font-size:16px;
+                                           font-family:Barlow, Arial;
+                                           border-radius: 8px;
+                                           cursor: pointer;
+                                           color:White;
+                                           border:Black;" value="Close" action="{!closePopup}"/>
+                </center>
+            </apex:outputPanel>
+        </apex:outputPanel>
+        
+        <!--<apex:outputPanel id="errorpopup">
+        <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayErrorPopUp}"/>
+            <apex:outputPanel styleClass="custErrorPopup" layout="block" rendered="{!displayErrorPopUp}">
+                
+                You have already subscribed. Would you like to change the existing details?<br/><br/><br/>
+                
+                    <apex:commandButton style="background:white;
+                                               font-size:16px;
+                                               font-family:Barlow, Arial;
+                                               border-radius: 8px;
+                                               cursor: pointer;
+                                               border:white;" value="Edit" action="{!editSubscriber}"/>
+                <div class="divider"/>
+                    <apex:commandButton style="background:white;
+                                               font-size:16px;
+                                               font-family:Barlow, Arial;
+                                               border-radius: 8px;
+                                               cursor: pointer;
+                                               border:white;" value="Close" action="{!closePopup}"/>
+                
+            </apex:outputPanel>
+        </apex:outputPanel>-->
+        
+    </apex:form>
+</apex:page>

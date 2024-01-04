@@ -1,0 +1,426 @@
+<apex:page standardController="Business_Case__c" extensions="AssociateInitiatives" sidebar="false" title="Add / Remove Initiatives" tabStyle="Initiative__c" action="{!computeInvestmentAreaInitiative}">
+    <apex:includeScript value="{!URLFOR($Resource.jquery)}"/>
+    <apex:sectionHeader title="Add / Remove Initiatives to {!businessCase.Name}" subtitle="Associate Initiatives" />
+    
+    <script>
+    
+         function selectAllCheckboxes(obj,inputID){
+            var inputCheckBox = document.getElementsByTagName("input"); 
+            for(var i=0; i<inputCheckBox.length; i++){ 
+                if(inputCheckBox[i].id.indexOf(inputID)!=-1){ 
+                    inputCheckBox[i].checked = obj.checked;
+                }
+            }
+        }
+    </script>
+         
+    <!-- Status --> 
+    <apex:actionStatus id="idStatus">
+        <apex:facet name="start"> 
+            <apex:outputPanel style="top:300px; background-color:#FFFFFF; opacity:1; width:100%; height:100%; display:block; position:relative; z-index:40">
+                <apex:outputPanel style="left:0; position:absolute; text-align:center; top:0; z-index:80; width:100%; height:100%; display:block;">
+                    <apex:outputPanel style=" width:105px;">
+                        <apex:image url="/img/loading.gif" />
+                        <apex:outputText style="color: #666666; font-weight: bold; margin-left: 6px;" value="{!HTMLENCODE(' Processing ...')}" />
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </apex:outputPanel>                    
+        </apex:facet> 
+    </apex:actionStatus>    
+    <!-- Form --> 
+    <apex:form id="idForm">  
+        <apex:actionFunction name="filter" action="{!filterRecords}" reRender="idMessages,panel1,investmentAreaAllocationPanel,idPBSIResultSet"/>
+        <!-- removed 14/05/2015  -->
+        <!-- <apex:actionFunction name="computeSelected" action="{!computeSelected}" status="idStatus" rerender="idSummary, idMessages"/>  -->
+        <apex:actionFunction name="computeInvestmentAreaInitiative" action="{!computeInvestmentAreaInitiative}" status="idStatus" rerender="idMessages, investmentAreaAllocationPanel,panel1,panel2" oncomplete="comparisonLine('availableColumn');"/>      
+        <apex:pageMessages id="idMessages" />       
+        <apex:pageBlock id="idPBlock" >
+            <apex:pageBlockButtons location="top"> 
+                <apex:commandButton value="Save" action="{!processRecords}" />
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true" />
+            </apex:pageBlockButtons>                    
+            <!-- SECTION 1 --> 
+            <apex:pageBlockSection id="idPBlockSection0" collapsible="false">
+                <apex:outputPanel >
+                    <apex:actionRegion >
+                        Filter by Priority:&nbsp;
+                        <apex:selectList id="idFilterOptions" value="{!strFilter}" size="1" onchange="filter();">
+                          <apex:selectOptions value="{!filterOptions}"/>  
+                        </apex:selectList>              
+                        <apex:commandButton value="Filter" action="{!filterRecords}" rendered="false" />
+                    </apex:actionRegion>
+                </apex:outputPanel>     
+            </apex:pageBlockSection>
+            <!-- SECTION 2 -->  
+            <apex:pageBlockSection columns="1">         
+                    <apex:outputPanel id="idPBSIResultSet">  
+                    <!--  RESULTS -->                   
+                    <apex:pageBlockTable value="{!displayedRows}" var="a" rendered="{!bHasResults}">
+                        <apex:column width="50px">
+                            <apex:facet name="header">
+                                <center>
+                                    <!-- <input id="idMaster" type="checkbox" onclick="toggleMasterCheckBox(this,'idResultSet')" />-->
+                                    <input id="idMaster" type="checkbox" onclick="selectAllCheckboxes(this,'idResultSet');computeInvestmentAreaInitiative();" />
+                                </center>
+                            </apex:facet>
+                            <center>
+                                <apex:inputCheckBox id="idResultSet" value="{!a.bSelected}" onclick="computeInvestmentAreaInitiative();"/>
+                            </center> 
+                        </apex:column>      
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!toggleSort}" rerender="idPBSIResultSet, idMessages" status="idStatus">
+                                    <apex:param name="sortField" value="Priority__c" assignTo="{!sortField}"/>
+                                    <span>
+                                        <span style="{!IF(AND(sortField != 'Priority__c'), 'position:relative; top:4px;', '')}">Priority</span>
+                                        &nbsp;
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'up-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Priority__c', sortDir == 'asc'), true, false)}"
+                                                    style="position:relative; top:3px;" />
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'down-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Priority__c', sortDir == 'desc'), true, false)}"
+                                                    style="position:relative; top:3px;" />  
+                                    </span>                                                                 
+                                </apex:commandLink>                               
+                            </apex:facet>
+                            <apex:outputField value="{!a.initiative.Priority__c}" />
+                        </apex:column>
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!toggleSort}" rerender="idPBSIResultSet, idMessages" status="idStatus">
+                                    <apex:param name="sortField" value="Partner__c" assignTo="{!sortField}"/>
+                                    <span>
+                                        <span style="{!IF(AND(sortField != 'Partner__c'), 'position:relative; top:4px;', '')}">Partner</span>
+                                        &nbsp;
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'up-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Partner__c', sortDir == 'asc'), true, false)}"
+                                                    style="position:relative; top:3px;" />
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'down-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Partner__c', sortDir == 'desc'), true, false)}"
+                                                    style="position:relative; top:3px;" />  
+                                    </span>                                                                 
+                                </apex:commandLink>                               
+                            </apex:facet>
+                            <apex:outputField value="{!a.initiative.Partner__c}" />
+                        </apex:column>
+
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!toggleSort}" rerender="idPBSIResultSet, idMessages" status="idStatus">
+                                    <apex:param name="sortField" value="Name" assignTo="{!sortField}"/>
+                                    <span>
+                                        <span style="{!IF(AND(sortField != 'Name'), 'position:relative; top:4px;', '')}">Name</span>
+                                        &nbsp;
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'up-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Name', sortDir == 'asc'), true, false)}"
+                                                    style="position:relative; top:3px;" />
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'down-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Name', sortDir == 'desc'), true, false)}"
+                                                    style="position:relative; top:3px;" />  
+                                    </span>                                                                 
+                                </apex:commandLink>                               
+                            </apex:facet>
+                            <apex:outputField value="{!a.initiative.Name}" />
+                        </apex:column>                      
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!toggleSort}" rerender="idPBSIResultSet, idMessages" status="idStatus">
+                                    <apex:param name="sortField" value="Type__c" assignTo="{!sortField}"/>
+                                    <span>
+                                        <span style="{!IF(AND(sortField != 'Type__c'), 'position:relative; top:4px;', '')}">Type</span>
+                                        &nbsp;
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'up-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Type__c', sortDir == 'asc'), true, false)}"
+                                                    style="position:relative; top:3px;" />
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'down-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Type__c', sortDir == 'desc'), true, false)}"
+                                                    style="position:relative; top:3px;" />  
+                                    </span>                                                                 
+                                </apex:commandLink>                               
+                            </apex:facet>
+                            <apex:outputField value="{!a.initiative.Type__c}" />
+                        </apex:column>
+
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!toggleSort}" rerender="idPBSIResultSet, idMessages" status="idStatus">
+                                    <apex:param name="sortField" value="Planned__c" assignTo="{!sortField}"/>
+                                    <span>
+                                        <span style="{!IF(AND(sortField != 'Planned__c'), 'position:relative; top:4px;', '')}">Planned</span>
+                                        &nbsp;
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'up-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Planned__c', sortDir == 'asc'), true, false)}"
+                                                    style="position:relative; top:3px;" />
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'down-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Planned__c', sortDir == 'desc'), true, false)}"
+                                                    style="position:relative; top:3px;" />  
+                                    </span>                                                                 
+                                </apex:commandLink>                               
+                            </apex:facet>
+                            <apex:outputField value="{!a.initiative.Planned__c}" />
+                        </apex:column>
+
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!toggleSort}" rerender="idPBSIResultSet, idMessages" status="idStatus">
+                                    <apex:param name="sortField" value="SUM_Payments__c" assignTo="{!sortField}"/>
+                                    <span>
+                                        <span style="{!IF(AND(sortField != 'SUM_Payments__c'), 'position:relative; top:4px;', '')}">Payments</span>
+                                        &nbsp;
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'up-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'SUM_Payments__c', sortDir == 'asc'), true, false)}"
+                                                    style="position:relative; top:3px;" />
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'down-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'SUM_Payments__c', sortDir == 'desc'), true, false)}"
+                                                    style="position:relative; top:3px;" />  
+                                    </span>                                                                 
+                                </apex:commandLink>                               
+                            </apex:facet>
+                            <apex:outputField value="{!a.initiative.SUM_Payments__c}" />
+                        </apex:column>
+
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!toggleSort}" rerender="idPBSIResultSet, idMessages" status="idStatus">
+                                    <apex:param name="sortField" value="Start_Date__c" assignTo="{!sortField}"/>
+                                    <span>
+                                        <span style="{!IF(AND(sortField != 'Start_Date__c'), 'position:relative; top:4px;', '')}">Start Date</span>
+                                        &nbsp;
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'up-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Start_Date__c', sortDir == 'asc'), true, false)}"
+                                                    style="position:relative; top:3px;" />
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'down-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Start_Date__c', sortDir == 'desc'), true, false)}"
+                                                    style="position:relative; top:3px;" />  
+                                    </span>                                                                 
+                                </apex:commandLink>                               
+                            </apex:facet>
+                            <apex:outputField value="{!a.initiative.Start_Date__c}" />
+                        </apex:column>  
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!toggleSort}" rerender="idPBSIResultSet, idMessages" status="idStatus">
+                                    <apex:param name="sortField" value="End_Date__c" assignTo="{!sortField}"/>
+                                    <span>
+                                        <span style="{!IF(AND(sortField != 'End_Date__c'), 'position:relative; top:4px;', '')}">End Date</span>
+                                        &nbsp;
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'up-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'End_Date__c', sortDir == 'asc'), true, false)}"
+                                                    style="position:relative; top:3px;" />
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'down-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'End_Date__c', sortDir == 'desc'), true, false)}"
+                                                    style="position:relative; top:3px;" />  
+                                    </span>                                                                 
+                                </apex:commandLink>                               
+                            </apex:facet>
+                            <apex:outputField value="{!a.initiative.End_Date__c}" />
+                        </apex:column>
+                        <!-- removed 15/05/2015
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!toggleSort}" rerender="idPBSIResultSet, idMessages" status="idStatus">
+                                    <apex:param name="sortField" value="Requested__c" assignTo="{!sortField}"/>
+                                    <span>
+                                        <span style="{!IF(AND(sortField != 'Requested__c'), 'position:relative; top:4px;', '')}">Requested</span>
+                                        &nbsp;
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'up-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Requested__c', sortDir == 'asc'), true, false)}"
+                                                    style="position:relative; top:3px;" />
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'down-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Requested__c', sortDir == 'desc'), true, false)}"
+                                                    style="position:relative; top:3px;" />  
+                                    </span>                                                                 
+                                </apex:commandLink>                               
+                            </apex:facet>
+                            <apex:outputField value="{!a.initiative.Requested__c}" />
+                        </apex:column>  
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!toggleSort}" rerender="idPBSIResultSet, idMessages" status="idStatus">
+                                    <apex:param name="sortField" value="Planned__c" assignTo="{!sortField}"/>
+                                    <span>
+                                        <span style="{!IF(AND(sortField != 'Planned__c'), 'position:relative; top:4px;', '')}">Planned</span>
+                                        &nbsp;
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'up-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Planned__c', sortDir == 'asc'), true, false)}"
+                                                    style="position:relative; top:3px;" />
+                                        <apex:image value="{!URLFOR($Resource.AssociateInitiativesImages, 'down-arrow.gif')}" width="15px" height="15px" 
+                                                    rendered="{!IF(AND(sortField == 'Planned__c', sortDir == 'desc'), true, false)}"
+                                                    style="position:relative; top:3px;" />  
+                                    </span>                                                                 
+                                </apex:commandLink>                               
+                            </apex:facet>
+                            <apex:outputField value="{!a.initiative.Planned__c}" />
+                        </apex:column>
+                        -->                                                                                                                                                     
+                    </apex:pageBlockTable>
+                    <!-- removed 14/05/2015 -->
+                    <apex:pageBlock mode="mainDetail" id="panel1">
+                        <apex:outputPanel style="float: right; display:block;" id="idSummary"> 
+                        <table>
+                            <!--
+                            <tr>
+                                <td><strong>Total Requested: </strong></td>
+                                <td style="text-align: right;">
+                                    <apex:outputText value="${0, number, ###,###,###,##0.00}">
+                                        <apex:param value="{!doubTotalRequested}" />
+                                    </apex:outputText>
+                                </td>
+                            </tr>
+							-->
+                            <tr>
+                                <td><strong>Total Planned: </strong></td>
+                                <td style="text-align: right;">
+                                    <apex:outputText value="${0, number, ###,###,###,##0.00}">
+                                        <apex:param value="{!doubTotalPlanned}" />
+                                    </apex:outputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Payments: </strong></td>
+                                <td style="text-align: right;">
+                                    <apex:outputText value="${0, number, ###,###,###,##0.00}">
+                                        <apex:param value="{!doubTotalPayments}" />
+                                    </apex:outputText>
+                                </td>
+                            </tr>
+                        </table>
+                        </apex:outputPanel>
+                    </apex:pageBlock>
+                    <!-- END -->
+                    <!-- NAVIGATION BUTTONS  RESULTS -->
+                    <apex:pageBlock id="idPBlockButtonsResultSet" mode="maindetail">
+                        <apex:pageBlockButtons location="bottom" >
+                            <!-- FIRST PAGE Button -->
+                            <apex:commandButton value="|< First" action="{!first}" 
+                                                disabled="{!NOT(hasPrevious)}" title="First Page" />
+                            <!-- PREVIOUS Button -->                    
+                            <apex:commandButton value="< Previous" action="{!previous}" 
+                                                disabled="{!NOT(hasPrevious)}" title="Previous Page" />&nbsp;
+                            <!-- Current Page Number / Total Number of Pages -->                    
+                            <span style="display:inline-block; vertical-align:middle">
+                                <apex:outputText value="{!pageNumber} of {!totalPages}" />&nbsp;
+                            </span> 
+                            <!-- NEXT Button -->
+                            <apex:commandButton value="Next >" action="{!next}" 
+                                                disabled="{!NOT(hasNext)}" title="Next Page" />
+                            <!-- LAST PAGE Button -->                   
+                            <apex:commandButton value="Last >|" action="{!last}" 
+                                                disabled="{!NOT(hasNext)}" title="Last Page" />
+                        </apex:pageBlockButtons>
+                    </apex:pageBlock>                       
+                    </apex:outputPanel>
+            </apex:pageBlockSection>    
+
+            <br />
+            <!-- add 15/06/2015 -->
+            <!-- 
+            <apex:outputPanel id="investmentAreaAllocationPanel">
+                <apex:pageBlockSection columns="1">
+                    <apex:pageBlockTable value="{!investmentAreaList}" var="inv">
+                        <apex:column headerValue="Investment Area">
+                            <apex:outputText value="{!inv.investmentAreaStr}" />
+                        </apex:column>
+                        <apex:column headerValue="Initiatives">
+                            <apex:outputText value="{!inv.initiativeName}" />
+                        </apex:column>
+                        <apex:column headerValue="Financial Year(of Investment area Allocation)">
+                            <apex:outputText value="{!inv.financialYearStr}" />
+                        </apex:column>
+                        <apex:column headerValue="Funding Available (of Investment area Allocation)">
+                            <apex:outputText value="${0, number, ###,###,###,##0.00}">
+                                <apex:param value="{!inv.amountDec}" />
+                            </apex:outputText>
+                        </apex:column>
+                        <apex:column headerValue="Consumed (Payment amount)">
+                            <apex:outputText value="${0, number, ###,###,###,##0.00}">
+                                <apex:param value="{!inv.consumedDec}" />
+                            </apex:outputText>
+                        </apex:column>
+                        <apex:column headerValue="Available" id="availableColumn">
+                            <apex:outputText value="${0, number, ###,###,###,##0.00}">
+                                <apex:param value="{!inv.availableDec}"  />
+                            </apex:outputText>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>                    
+            </apex:outputPanel>
+            -->
+            
+            <!-- 
+            <apex:pageBlock mode="mainDetail" id="panel2">
+                <apex:outputPanel style="float: right; display:block;" id="idSummary"> 
+                <table>
+                    <tr>
+                        <td><strong>Total Allocated Fund: </strong></td>
+                        <td style="text-align: right;">
+                            <apex:outputText value="${0, number, ###,###,###,##0.00}">
+                                <apex:param value="{!totalAllocatedFund}" />
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>Total Fund Consumed: </strong></td>
+                        <td style="text-align: right;">
+                            <apex:outputText value="${0, number, ###,###,###,##0.00}">
+                                <apex:param value="{!totalFundConsumed}" />
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                     
+                    <tr>
+                        <td><strong>Total fund Available After consumption: </strong></td>
+                        <td style="text-align: right;">
+                            <apex:outputText value="${0, number, ###,###,###,##0.00}">
+                                <apex:param value="{!totalAvailableFundAfterConsume}" />
+                            </apex:outputText>
+                        </td>
+                    </tr>
+                                                                        
+                </table>
+                </apex:outputPanel>
+            </apex:pageBlock>
+        -->     
+        </apex:pageBlock>
+    </apex:form>
+    <script type="text/javascript">
+        function toggleMasterCheckBox(field, criteria) {
+            //alert('Testing ');
+            var checkBoxes = document.getElementsByTagName("input");
+            //alert('Testing length '+checkBoxes.length);
+            for(var i=0;i<checkBoxes.length; i++) {
+                if(checkBoxes[i].type == "checkbox" && checkBoxes[i].id.indexOf(criteria) != -1) {
+                    checkBoxes[i].checked = field.checked;
+                }
+            }
+        }
+
+        $(document).ready(function() {
+            comparisonLine('availableColumn');
+        });
+
+        //comparison highlight logic
+        function comparisonLine(element) {
+            var val = $('[id$=availableColumn]').text();
+             console.log(val);
+             //console.log(formatNumber(val));  
+             //var newVal = parseInt(val);
+             //console.log(newVal);
+            //var val = parseInt($(element).text().replace('$',''));
+            //if greater than zero add css attribute
+           
+            if(val < 0) {
+                $('[id$=availableColumn]').css('background', '#FF0000');
+            }
+            /
+            //console.log(newVal);
+            //$('[id$=availableColumn]').text('$ ' + formatNumber(newVal)); 
+         }
+
+         function formatNumber (num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+        }
+
+    </script>           
+</apex:page>

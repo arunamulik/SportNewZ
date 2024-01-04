@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IS_Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF((ISPICKVAL(Status__c, &apos;Approved&apos;) || ISPICKVAL(Status__c, &apos;Pending Approval&apos;)|| ISPICKVAL(Status__c, &apos;Signed&apos;)) &amp;&amp; Variation_Count__c&gt;0,CASE( Status__c, &apos;Approved&apos;,IMAGE(&quot;/resource/SNZ_Varied&quot;, &apos;None&apos;),&apos;Pending Approval&apos;,IMAGE(&quot;/resource/SNZ_BeingVaried&quot;, &apos;None&apos;),&apos;Signed&apos;,IMAGE(&quot;/resource/SNZ_Varied&quot;, &apos;None&apos;),&apos;&apos;),CASE(Status__c,&apos;Being Varied&apos;,IMAGE(&quot;/resource/SNZ_BeingVaried&quot;, &apos;None&apos;),&apos;&apos;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Indicates the current variation status. Blank = Never been Varied, Currently Being Varied = Variations are currently being made, Has Been Varied = This Investment Schedule is varied from its original state.</inlineHelpText>
+    <label>Current Variation Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

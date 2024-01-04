@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>What_were_your_learnings__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Please provide a clear and concise description of the lessons you have learnt over the past 12 months, and how are you planning to apply these moving forward. 
+ 
+In your answer, consider how the information you have collected will help you work towards the outcomes you are targeting.</inlineHelpText>
+    <label>What did you learn?</label>
+    <length>5000</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>5</visibleLines>
+</CustomField>
